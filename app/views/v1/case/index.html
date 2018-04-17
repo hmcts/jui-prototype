@@ -27,7 +27,7 @@
 			{% include "v1/includes/case-nav.html" %}
 
     	<h1 class="govuk-heading-xl"> Summary </h1>
-			
+
 			<div class="govuk-o-grid">
 			  <div class="govuk-o-grid__item govuk-o-grid__item--one-half">
 			    {{ govukTable({
@@ -115,20 +115,10 @@
 
       <h2 class="govuk-heading-l"> Recent events </h2>
 
-			
-
-
-
-
     </main>
   </div>
 {% endblock%}
-		
 
 {% block page_scripts %}
-
-<script>
-  // $('body').html('yeah');
-</script>
-
+  {% include "v1/includes/global-scripts.html" %}
 {% endblock %}
