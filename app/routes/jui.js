@@ -147,18 +147,21 @@ router.get('/app/cases/:id/documents', (req, res) => {
 });
 
 router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
+	
 	var _case = helpers.getCase(req.session.cases, req.params.case_id);
 
 	var pageObject = {
 		documents: _case.documents,
 		casebar: helpers.getCaseBarObject(_case),
 		casenav: helpers.getCaseNavObject(_case),
-		caseActions: helpers.getCaseActions(_case)
+		caseActions: helpers.getCaseActions(_case),
+		activeDocument: req.params.document_id
 	};
 
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
 
 	res.render(templatePath, pageObject);
+
 });
 
 router.get('/app/cases/:id/timeline', (req, res) => {

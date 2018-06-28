@@ -14,7 +14,13 @@ $govuk-global-styles: true;
 // JUI styles
 @import "jui/all";
 
-.js-enabled .js-hidden { display: none !important; }
+html {
+  background-color: govuk-colour("grey-3");
+}
+
+.js-enabled .js-hidden { 
+  display: none !important; 
+}
 
 mark.comment {
   background-color: govuk-colour(orange);

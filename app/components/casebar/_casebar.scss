@@ -33,8 +33,8 @@
 
     .jui-casebar__options {
       float: right;
-      margin-top: - govuk-spacing(1);
-      margin-bottom: - govuk-spacing(1);
+      margin-top: - govuk-spacing(1) - 1; // 6px
+      margin-bottom: - govuk-spacing(1) - 1; // 6px
     }
 
   }
