@@ -16,21 +16,22 @@
 
       <h1 class="govuk-heading-l">Case file</h1>
 
-      <div class="jui-casefile govuk-!-margin-bottom-6">
+      <div class="jui-casefile-2 govuk-!-margin-bottom-6">
 
-        <div class="jui-casefile-files">
-          <ul class="jui-casefile-list">
+        <div class="jui-casefile-2-files">
+          <ul class="jui-casefile-2-list">
             {% for document in documents %}
-              <li class="jui-casefile-list__item">
-                <a class="jui-casefile-list__link" href="/app/cases/{{casenav.id}}/documents/{{document.id}}" {{ 'aria-current=true' if activeDocument == document.id}}>{{document.label}}</a>
-              </li>
+              <li><a href="/app/cases/{{casenav.id}}/documents/{{document.id}}">{{document.label}}</a></li>
             {% endfor %}
           </ul>
         </div>
-        <div class="jui-casefile-document-wrapper">
-          <div class="jui-casefile-page editable">
+        <div class="jui-casefile-2-document-wrapper">
+          <div class="jui-casefile-2-page editable">
             {% block file_content %}{% endblock %}
           </div>
+        </div>
+        <div class="jui-casefile-2-document-comments">
+
         </div>
       </div>
     </main>
@@ -59,15 +60,20 @@
         }
       }));
 
-      // this.classApplier = rangy.createClassApplier('comment', {
-      //   elementTagName: 'mark',
-      //   normalize: true
-      // });
-
       this.button = this.document.createElement('button');
       this.button.classList.add('medium-editor-action');
       this.button.innerHTML = 'Comment';
       this.on(this.button, 'click', this.handleClick.bind(this));
+
+      var storedHighlights = window.sessionStorage.getItem('highlights');
+      if(storedHighlights) {
+        highlighter.deserialize(storedHighlights);
+        $(".comment").each(function() {
+          highlight = highlighter.getHighlightForElement($(this)[0])
+          $(this).attr("data-highlight-id", highlight.id)
+        });
+      }
+
     },
 
     getButton: function () {
@@ -81,8 +87,26 @@
         var highlight = highlighter.getHighlightForElement(sel.focusNode.parentNode);
         highlighter.removeHighlights( [highlight] );
       } else {
-        highlighter.highlightSelection('comment');
-        var dialog = window.prompt('What’s your comment?');
+        var dialog = window.prompt('Comment');
+        if(dialog) {
+          var highlight = highlighter.highlightSelection('comment');
+          $(".comment").each(function() {
+            highlight = highlighter.getHighlightForElement($(this)[0]);
+            $(this).attr("data-highlight-id", highlight.id);
+          });
+          var firstMark = $('[data-highlight-id='+highlight.id+']')[0];
+
+          console.log($(firstMark).offset());
+
+
+          var comment = $('<div class="boom" data-c-highlight-id="'+highlight.id+'">'+dialog+'</div>');
+          comment.css('top', $(firstMark).offset().top+'px');
+
+          $('.jui-casefile-2-document-comments').append(comment);
+
+
+          window.sessionStorage.setItem('highlights', highlighter.serialize());
+        }
       }
 
       // Ensure the editor knows about an html change so watchers are notified

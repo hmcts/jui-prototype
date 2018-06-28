@@ -66,7 +66,7 @@ if (env === 'production' && useAuth === 'true') {
 var appViews = [path.join(__dirname, '/app/views/'),
   path.join(__dirname, '/lib/'),
   path.join(__dirname, '/app/components/'),
-  path.join(__dirname, 'node_modules/govuk-frontend/'),
+  path.join(__dirname, 'node_modules/govuk-frontend/'),  // template path
   path.join(__dirname, '/node_modules/govuk-frontend/components')]
 
 var nunjucksAppEnv = nunjucks.configure(appViews, {
@@ -83,18 +83,18 @@ utils.addNunjucksFilters(nunjucksAppEnv)
 app.set('view engine', 'html')
 
 // Middleware to serve static assets
+app.use('/assets', express.static('./node_modules/govuk-frontend/assets'));
 app.use('/public', express.static(path.join(__dirname, '/public')))
 
-// Expose the compiled SCSS publically
-app.use('/govuk-frontend/', express.static('./node_modules/govuk-frontend'));
-app.use('/assets', express.static('./node_modules/govuk-frontend/assets'));
+// load govuk-frontend 'all' js
+app.use('/public/javascripts', express.static('./node_modules/govuk-frontend'));
 
 // Set up documentation app
 if (useDocumentation) {
   var documentationViews = [path.join(__dirname, '/docs/views/'),
     path.join(__dirname, '/lib/'),
-    path.join(__dirname, '/node_modules/govuk_template_jinja/views/layouts'),
-    path.join(__dirname, '/node_modules/govuk-frontend/')]
+    path.join(__dirname, '/node_modules/govuk-frontend/'),
+    path.join(__dirname, '/node_modules/govuk-frontend/components')]
 
   var nunjucksDocumentationEnv = nunjucks.configure(documentationViews, {
     autoescape: true,

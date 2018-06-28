@@ -88,7 +88,6 @@
         {% block page_scripts %}{% endblock %}
       {% endblock %}
       {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
-      <script src="/govuk-frontend/all.js"></script>
       <script>GOVUKFrontend.initAll()</script>
       <!-- <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script> -->
     {% endblock %}
