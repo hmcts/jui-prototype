@@ -67,8 +67,8 @@ router.get('/app/dashboard', (req, res) => {
 		cells.push({ html: helpers.getPartiesLine(c)	});
 		cells.push({ html: helpers.getCaseTypeLabel(c) });
 		cells.push({ html: c.status });
-		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) + ' at ' + helpers.getFormattedTime(c.applicationDate) });
-		cells.push({ html: helpers.getFormattedShortDate(c.lastAction) + ' at ' + helpers.getFormattedTime(c.lastAction) });
+		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
+		cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 
 		return cells;
 
