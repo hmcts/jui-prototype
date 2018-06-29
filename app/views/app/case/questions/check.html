@@ -23,16 +23,16 @@
 
           <h1 class="govuk-heading-xl">Check your questions before sending</h1>
 
-          <dl class="govuk-check-your-answers  govuk-check-your-answers--short  govuk-!-margin-bottom-6">
+          <dl class="app-check-your-answers  app-check-your-answers--short  govuk-!-margin-bottom-6">
 
             {% for question in questions %}
-              <div class="govuk-check-your-answers__contents">
+              <div class="app-check-your-answers__contents">
 
-                <dt class="govuk-check-your-answers__question">{{question.subject}}</dt>
+                <dt class="app-check-your-answers__question">{{question.subject}}</dt>
 
-                <dd class="govuk-check-your-answers__answer">{{question.body}}</dd>
+                <dd class="app-check-your-answers__answer">{{question.body}}</dd>
 
-                <dd class="govuk-check-your-answers__change">
+                <dd class="app-check-your-answers__change">
                   <a href="/app/cases/{{_case.id}}/questions/{{question.id}}/edit">Change <span class="govuk-visually-hidden">{{question.subject}}</span></a>
                 </dd>
 

@@ -2,14 +2,19 @@
 // in the govuk frontend toolkit"s url-helpers partial
 $path: "/public/images/";
 
+// global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
 // Import GOV.UK Frontend
-@import "govuk-frontend/all";
+@import "node_modules/govuk-frontend/all";
 
-// Patterns that aren"t in GOV.UK Frontend
+// Patterns that aren't in Frontend
 @import "patterns/check-your-answers";
+@import "patterns/task-list";
 @import "patterns/related-items";
+
+// Components that aren't in Frontend
+@import "components/cookie-banner";
 
 // JUI styles
 @import "jui/all";
@@ -18,8 +23,8 @@ html {
   background-color: govuk-colour("grey-3");
 }
 
-.js-enabled .js-hidden { 
-  display: none !important; 
+.js-enabled .js-hidden {
+  display: none !important;
 }
 
 mark.comment {
