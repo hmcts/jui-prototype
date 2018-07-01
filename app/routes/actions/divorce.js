@@ -68,7 +68,17 @@ function viewCostsOrder(req, res) {
 
 }
 
+function saveDecision(req, res) {
+	if (req.body.satisfied === 'no') {
+		res.redirect('provide-reason');
+	} else {
+		res.redirect('costs-order');
+	}
+}
+
+
 exports.viewCaseSummary = viewCaseSummary;
 exports.viewMakeDecision = viewMakeDecision;
+exports.saveDecision = saveDecision;
 exports.viewParties = viewParties;
 exports.viewCostsOrder = viewCostsOrder;
