@@ -9,7 +9,7 @@ function showCaseSummary(req, res) {
 		success: req.session.success,
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
 		detailsRows: [],
 		panelRows: [],
 		recentEvents: helpers.getRecentEvents(_case)

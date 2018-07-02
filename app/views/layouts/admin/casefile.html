@@ -12,7 +12,9 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      {% include "includes/secondary-nav.html" %}
+      {{ juiSecondaryNav({
+        items: caseNavItems
+      }) }}
 
       <h1 class="govuk-heading-l">Case file</h1>
 

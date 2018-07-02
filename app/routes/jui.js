@@ -152,7 +152,7 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 	var pageObject = {
 		documents: _case.documents,
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
 		caseActions: helpers.getCaseActions(_case),
 		activeDocument: req.params.document_id
 	};
@@ -169,7 +169,7 @@ router.get('/app/cases/:id/timeline', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
 		caseActions: helpers.getCaseActions(_case),
 		events: helpers.getEvents(_case)
 	};

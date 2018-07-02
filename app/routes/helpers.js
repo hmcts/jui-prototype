@@ -86,6 +86,40 @@ function getCaseActions(_case) {
 	}
 }
 
+function getCaseNavItems(_case, id) {
+	switch(_case.typeId) {
+		case 'pip':
+			return [
+				{
+					href: `/app/cases/${_case.id}`,
+					text: 'Summary',
+					selected: id === 'summary'
+				},
+				{
+					href: `/app/cases/${_case.id}/documents`,
+					text: 'Case file',
+					selected: id === 'casefile'
+				},
+				{
+					href: `/app/cases/${_case.id}/timeline`,
+					text: 'Timeline',
+					selected: id === 'timeline'
+				},
+				{
+					href: `/app/cases/${_case.id}/questions`,
+					text: 'Questions',
+					selected: id === 'questions'
+				}
+			];
+		case 'divorce':
+			return [
+
+			];
+	}
+}
+
+
+
 function getCaseBarObject(_case) {
 	return {
 		parties: getPartiesLine(_case),
@@ -191,3 +225,4 @@ exports.getFormattedShortDate = getFormattedShortDate;
 exports.getFormattedTime = getFormattedTime;
 exports.getRecentEvents = getRecentEvents;
 exports.getEvents = getEvents;
+exports.getCaseNavItems = getCaseNavItems;
