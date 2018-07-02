@@ -85,6 +85,8 @@ router.post('/app/cases/:id/pip/list-for-hearing', (req, res) => {
 router.get('/app/cases/:id/pip/check-hearing-notes', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
 		backLink: {
 			href: `/app/cases/${_case.id}/pip/list-for-hearing`
 		},
