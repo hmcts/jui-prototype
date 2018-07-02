@@ -8,7 +8,7 @@ router.get('/app/cases/:id/directions', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case),
 		createDirectionLink: {
 			href: '/app/cases/' + req.params.id + '/directions/create-direction'
 		},

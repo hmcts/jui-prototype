@@ -40,21 +40,6 @@ function getCaseTypeLabel(_case) {
 	return caseType;
 }
 
-function getCaseNavObject(_case) {
-	switch(_case.typeId) {
-		case 'pip':
-			return {
-				id: _case.id,
-				questions: true
-			};
-		case 'divorce':
-			return {
-				id: _case.id,
-				parties: true
-			};
-	}
-}
-
 function getCaseActions(_case) {
 	switch(_case.typeId) {
 		case 'pip':
@@ -113,7 +98,26 @@ function getCaseNavItems(_case, id) {
 			];
 		case 'divorce':
 			return [
-
+				{
+					href: `/app/cases/${_case.id}`,
+					text: 'Summary',
+					selected: id === 'summary'
+				},
+				{
+					href: `/app/cases/${_case.id}/parties`,
+					text: 'Parties',
+					selected: id === 'parties'
+				},
+				{
+					href: `/app/cases/${_case.id}/documents`,
+					text: 'Case file',
+					selected: id === 'casefile'
+				},
+				{
+					href: `/app/cases/${_case.id}/timeline`,
+					text: 'Timeline',
+					selected: id === 'timeline'
+				}
 			];
 	}
 }
@@ -209,8 +213,7 @@ function getEvents(_case) {
 
 
 exports.getCaseBarObject = getCaseBarObject;
-exports.getCaseNavObject = getCaseNavObject;
-exports.getPartiesLine   = getPartiesLine;
+exports.getPartiesLine = getPartiesLine;
 exports.getCase = getCase;
 exports.getCaseType = getCaseType;
 exports.getCaseTypeLabel = getCaseTypeLabel;

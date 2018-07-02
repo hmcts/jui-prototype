@@ -9,7 +9,7 @@ router.get('/app/cases/:id/questions', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'questions'),
 		caseActions: helpers.getCaseActions(_case),
 		appellantName: helpers.getAppellantName(_case),
 		createQuestionsLink: {
@@ -77,7 +77,6 @@ router.get('/app/cases/:id/questions/check', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		backLink: {
 			href: `/app/cases/${_case.id}/questions/`
@@ -112,7 +111,7 @@ router.get('/app/cases/:id/questions/new', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'questions'),
 		caseActions: helpers.getCaseActions(_case),
 		_case: _case
 	};

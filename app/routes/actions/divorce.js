@@ -7,7 +7,7 @@ function showCaseSummary(req, res) {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
 		detailsRows: [],
 		representativesRows: [],
 		recentEvents: helpers.getRecentEvents(_case)
@@ -35,7 +35,7 @@ function viewParties(req, res) {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-		casenav: helpers.getCaseNavObject(_case)
+		caseNavItems: helpers.getCaseNavItems(_case, 'parties')
 	};
 
 	res.render('app/case/divorce/parties', pageObject);

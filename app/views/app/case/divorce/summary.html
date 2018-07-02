@@ -1,7 +1,5 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set casenavId = "summary" %}
-
 {% block page_title %}Case summary{% endblock %}
 
 {% block content %}
@@ -12,7 +10,9 @@
 
   <main role="main" class="govuk-main-wrapper">
 
-    {% include "includes/secondary-nav.html" %}
+    {{ juiSecondaryNav({
+      items: caseNavItems
+    }) }}
 
     <h1 class="govuk-heading-l">Summary</h1>
 
@@ -43,7 +43,7 @@
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-4">Recent events</h2>
 
         {% if recentEvents.length %}
-         
+
           {{juiTimeline({
             "classes": "govuk-!-margin-bottom-4",
             "isPageSpecific": false,
