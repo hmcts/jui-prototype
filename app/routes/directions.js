@@ -27,12 +27,11 @@ router.get('/app/cases/:id/directions/create-direction', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'directions'),
 		caseId: _case.id
 	};
 
 	res.render('app/case/directions/create-direction', pageObject);
-
 });
 
 module.exports = router;

@@ -66,7 +66,7 @@ router.post('/app/cases/:id/divorce/costs-order', (req, res) => {
 
 router.get('/app/cases/:id/divorce/confirmation', (req, res) => {
 	var pageObject = {
-		casenav: helpers.getCaseNavObject(req.params.id)
+		_case: helpers.getCase(req.session.cases, req.params.id)
 	};
 	res.render('app/case/divorce/decision/confirmation', pageObject);
 });

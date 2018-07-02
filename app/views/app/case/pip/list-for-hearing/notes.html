@@ -15,17 +15,17 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-l">Make decision</h1>
+      <h1 class="govuk-heading-l">List for hearing</h1>
 
       <form method="post">
         {{ govukTextarea({
-          "id": "decision-notes",
-          "name": "decision-notes",
+          "id": "hearing-notes",
+          "name": "hearing-notes",
           "classes": "govuk-input--width-30",
           "label": {
-            "text": "Decision notes"
+            "text": "Hearing notes (optional)"
           },
-          value: decision
+          value: data['hearing-notes']
         }) }}
 
         {{ govukButton({
