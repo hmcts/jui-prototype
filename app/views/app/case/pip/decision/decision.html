@@ -17,6 +17,13 @@
 
       <h1 class="govuk-heading-l">Make decision</h1>
 
+      {% if errors %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+      {% endif %}
+
       <form method="post">
         {{ govukTextarea({
           "id": "decision-notes",

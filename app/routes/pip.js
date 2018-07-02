@@ -17,7 +17,24 @@ router.get('/app/cases/:id/pip/make-decision', (req, res) => {
 });
 
 router.post('/app/cases/:id/pip/make-decision', (req, res) => {
-  res.redirect(`/app/cases/${req.params.id}/pip/check-decision`);
+	if(req.body['decision-notes'].length === 0) {
+		var _case = helpers.getCase(req.session.cases, req.params.id);
+		var pageObject = {
+			casebar: helpers.getCaseBarObject(_case),
+			caseActions: helpers.getCaseActions(_case),
+			backLink: {
+				href: `/app/cases/${_case.id}`
+			},
+			errors: [{
+				text: 'Enter your decision notes',
+				href: '#decision-notes'
+			}]
+		};
+		res.render('app/case/pip/decision/decision', pageObject);
+	} else {
+		res.redirect(`/app/cases/${req.params.id}/pip/check-decision`);
+	}
+
 });
 
 router.get('/app/cases/:id/pip/check-decision', (req, res) => {
