@@ -28,7 +28,10 @@ router.post('/app/cases/:id/pip/make-decision', (req, res) => {
 			errors: [{
 				text: 'Enter your decision notes',
 				href: '#decision-notes'
-			}]
+			}],
+			decisionNotesError:  {
+				text: 'Enter your decision notes'
+			}
 		};
 		res.render('app/case/pip/decision/decision', pageObject);
 	} else {

@@ -30,9 +30,11 @@
           "name": "decision-notes",
           "classes": "govuk-input--width-30",
           "label": {
-            "text": "Decision notes"
+            "text": "Decision notes",
+            "classes": "govuk-heading-m"
           },
-          value: data['decision-notes']
+          value: data['decision-notes'],
+          errorMessage: decisionNotesError
         }) }}
 
         {{ govukButton({
