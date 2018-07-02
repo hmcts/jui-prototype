@@ -121,7 +121,7 @@ router.get('/app/dashboard', (req, res) => {
 			break;
 	}
 
-	res.render('app/dashboard/index', pageObject);
+	res.render('app/dashboard', pageObject);
 
 });
 
