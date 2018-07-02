@@ -5,17 +5,10 @@ We do have a few guidelines to bear in mind.
 
 ## Community
 
-<<<<<<< HEAD
-We have two Slack channels for the Prototype kit. You'll need a government email address to join them.
-
-* [Slack channel for users of the prototype kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit/)
-* [Slack channel for developers of the prototype kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit-dev/)
-=======
 We have two Slack channels for the Prototype Kit. You'll need a government email address to join them.
 
 * [Slack channel for users of the Prototype Kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit/)
 * [Slack channel for developers of the Prototype Kit](https://ukgovernmentdigital.slack.com/messages/prototype-kit-dev/)
->>>>>>> cc5645e6396fb094284beabc9ee6550b91e6b21a
 
 ## Raising bugs
 
@@ -32,14 +25,6 @@ Please raise feature requests as issues before contributing any code.
 
 This ensures they are discussed properly before any time is spent on them.
 
-<<<<<<< HEAD
-## GOV.UK Elements
-
-The project contains code taken from the [GOV.UK Elements](https://github.com/alphagov/govuk_elements/) project.
-Please check that any issues related to that code are raised with that project, not this one.
-
-=======
->>>>>>> cc5645e6396fb094284beabc9ee6550b91e6b21a
 ## Contributing code
 
 ### Indentation and whitespace
@@ -66,11 +51,8 @@ which describes how we prefer git history and commit messages to read.
 
 ## To release a new version
 
-<<<<<<< HEAD
-=======
 Checkout a new branch for the release.
 
->>>>>>> cc5645e6396fb094284beabc9ee6550b91e6b21a
 Update [CHANGELOG.md](https://github.com/alphagov/govuk_prototype_kit/blob/master/CHANGELOG.md) to summarise the changes made since the last release.
 
 To see the commits to be summarised in the changelog since the last release, [compare the latest-release branch with master](https://github.com/alphagov/govuk_prototype_kit/compare/latest-release...master).

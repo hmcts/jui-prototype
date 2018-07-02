@@ -3,10 +3,6 @@
   ===========
   removes folders:
     - public
-<<<<<<< HEAD
-    - govuk_modules
-=======
->>>>>>> cc5645e6396fb094284beabc9ee6550b91e6b21a
 */
 
 const gulp = require('gulp')
