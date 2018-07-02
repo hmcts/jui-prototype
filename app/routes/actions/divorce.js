@@ -1,6 +1,6 @@
 var helpers = require('../helpers');
 
-function viewCaseSummary(req, res) {
+function showCaseSummary(req, res) {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
@@ -28,19 +28,6 @@ function viewCaseSummary(req, res) {
 
 }
 
-function viewMakeDecision(req, res) {
-
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-
-	var pageObject = {
-		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case)
-	};
-
-	res.render('app/case/divorce/make-decision', pageObject);
-
-}
-
 function viewParties(req, res) {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -55,30 +42,5 @@ function viewParties(req, res) {
 
 }
 
-function viewCostsOrder(req, res) {
-
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-
-	var pageObject = {
-		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case)
-	};
-
-	res.render('app/case/divorce/costs-order', pageObject);
-
-}
-
-function saveDecision(req, res) {
-	if (req.body.satisfied === 'no') {
-		res.redirect('provide-reason');
-	} else {
-		res.redirect('costs-order');
-	}
-}
-
-
-exports.viewCaseSummary = viewCaseSummary;
-exports.viewMakeDecision = viewMakeDecision;
-exports.saveDecision = saveDecision;
+exports.showCaseSummary = showCaseSummary;
 exports.viewParties = viewParties;
-exports.viewCostsOrder = viewCostsOrder;

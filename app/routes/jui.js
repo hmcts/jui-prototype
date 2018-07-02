@@ -132,14 +132,13 @@ router.post('/app/get-new-case', (req, res) => {
 
 router.get('/app/cases/:id', (req, res) => {
 	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).viewCaseSummary(req, res);
+	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).showCaseSummary(req, res);
 });
 
 router.get('/app/cases/:id/parties', (req, res) => {
 	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
 	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).viewParties(req, res);
 });
-
 
 router.get('/app/cases/:id/documents', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -178,82 +177,6 @@ router.get('/app/cases/:id/timeline', (req, res) => {
 	res.render('app/case/timeline', pageObject);
 
 });
-
-
-router.get('/app/cases/:id/make-decision', (req, res) => {
-	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).viewMakeDecision(req, res);
-});
-
-router.post('/app/cases/:id/make-decision', (req, res) => {
-	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).saveDecision(req, res);
-});
-
-router.get('/app/cases/:id/check-decision', (req, res) => {
-	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).checkDecision(req, res);
-});
-
-router.post('/app/cases/:id/submit-decision', (req, res) => {
-	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).submitDecision(req, res);
-});
-
-router.get('/app/cases/:id/decision-confirmation', (req, res) => {
-	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).showDecisionConfirmation(req, res);
-});
-
-router.get('/app/cases/:id/provide-reason', (req, res) => {
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-	var pageObject = {
-		casebar: helpers.getCaseBarObject(_case),
-		backLink: {
-			href: `/app/cases/${_case.id}/make-decision`
-		}
-	};
-	res.render('app/case/divorce/provide-reason', pageObject);
-});
-
-router.post('/app/cases/:id/provide-reason', (req, res) => {
-	res.redirect('generate-order');
-});
-
-router.get('/app/cases/:id/generate-order', (req, res) => {
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-	var pageObject = {
-		casebar: helpers.getCaseBarObject(_case)
-	};
-	res.render('app/case/divorce/generate-order', pageObject);
-});
-
-router.post('/app/cases/:id/generate-order', (req, res) => {
-	res.redirect('confirmation');
-});
-
-// Yes option route
-router.get('/app/cases/:id/costs-order', require('./actions/divorce').viewCostsOrder);
-
-router.post('/app/cases/:id/costs-order', (req, res) => {
-	res.redirect('confirmation');
-});
-
-// router.get('/app/cases/:id/check-your-answers', (req, res) => {
-// 	var _case = helpers.getCase(req.session.cases, req.params.id);
-// 	var pageObject = {
-// 		casebar: helpers.getCaseBarObject(_case)
-// 	};
-// 	res.render('app/case/divorce/check-your-answers', pageObject);
-// });
-
-router.get('/app/cases/:id/confirmation', (req, res) => {
-	var pageObject = {
-		casenav: helpers.getCaseNavObject(req.params.id)
-	};
-	res.render('app/case/divorce/confirmation', pageObject);
-});
-
 
 router.get('/app/cases/:id/directions', (req, res) => {
 

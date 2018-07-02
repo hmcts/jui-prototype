@@ -1,0 +1,42 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block page_title %}Decision{% endblock %}
+
+{% block content %}
+
+  {% include "includes/casebar.html" %}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-l">Make decision</h1>
+
+      <form method="post">
+        {{ govukTextarea({
+          "id": "decision-notes",
+          "name": "decision-notes",
+          "classes": "govuk-input--width-30",
+          "label": {
+            "text": "Decision notes"
+          },
+          value: decision
+        }) }}
+
+        {{ govukButton({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+		</main>
+
+	</div>
+
+{% endblock %}
+

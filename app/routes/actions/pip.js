@@ -1,21 +1,6 @@
 var helpers = require('../helpers');
 
-
-function getCaseActions(_case) {
-	return [
-		{
-			href: `/app/cases/${_case.id}/make-decision`,
-			text: 'Make decision'
-		},
-		{
-			href: `/app/cases/${_case.id}/list-for-hearing`,
-			text: 'List for hearing'
-		}
-	];
-}
-
-
-function viewCaseSummary(req, res) {
+function showCaseSummary(req, res) {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
@@ -23,7 +8,7 @@ function viewCaseSummary(req, res) {
 		_case: _case,
 		success: req.session.success,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: getCaseActions(_case),
+		caseActions: helpers.getCaseActions(_case),
 		casenav: helpers.getCaseNavObject(_case),
 		detailsRows: [],
 		panelRows: [],
@@ -41,54 +26,4 @@ function viewCaseSummary(req, res) {
 
 }
 
-
-function viewMakeDecision(req, res) {
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-
-	var pageObject = {
-		casebar: helpers.getCaseBarObject(_case),
-		caseActions: getCaseActions(_case),
-		decision: req.session.data['decision-notes']
-	};
-
-	res.render('app/case/pip/decision/make-decision', pageObject);
-}
-
-function saveDecision(req, res) {
-	res.redirect(`/app/cases/${req.params.id}/check-decision`);
-}
-
-function checkDecision(req, res) {
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-	var pageObject = {
-		casebar: helpers.getCaseBarObject(_case),
-		casenav: helpers.getCaseNavObject(_case),
-		caseActions: helpers.getCaseActions(_case),
-		backLink: {
-			href: `/app/cases/${_case.id}/make-decision/`
-		},
-		decision: req.session.data['decision-notes'],
-		_case: _case
-	};
-
-	res.render('app/case/pip/decision/check-decision', pageObject);
-}
-
-function submitDecision(req, res) {
-	res.redirect(`/app/cases/${req.params.id}/decision-confirmation`);
-}
-
-function showDecisionConfirmation(req, res) {
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-	var pageObject = {
-		_case: _case
-	};
-	res.render('app/case/pip/decision/decision-confirmation', pageObject);
-}
-
-exports.viewCaseSummary = viewCaseSummary;
-exports.viewMakeDecision = viewMakeDecision;
-exports.saveDecision = saveDecision;
-exports.checkDecision = checkDecision;
-exports.submitDecision = submitDecision;
-exports.showDecisionConfirmation = showDecisionConfirmation;
+exports.showCaseSummary = showCaseSummary;
