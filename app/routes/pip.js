@@ -16,8 +16,74 @@ router.get('/app/cases/:id/pip/make-decision', (req, res) => {
 	res.render('app/case/pip/decision/decision', pageObject);
 });
 
+function Validator(req) {
+	this.req = req;
+	this.validators = [];
+	this.errors = [];
+}
+
+Validator.prototype.add = function(name, rules) {
+	this.validators.push({
+    name: name,
+    rules: rules
+  });
+};
+
+Validator.prototype.getErrors = function() {
+	return this.errors;
+};
+
+Validator.prototype.getFormattedErrors = function() {
+	return this.errors.map(this.formatError);
+};
+
+Validator.prototype.formatError = function(error) {
+	return {
+		text: error.message,
+		href: '#' + error.name
+	}
+};
+
+Validator.prototype.getError = function(name) {
+	return this.getErrors().filter(error => error.name == name).map(this.formatError)[0];
+};
+
+Validator.prototype.validate = function() {
+	this.errors = [];
+  var validator = null,
+    validatorValid = true,
+    i,
+    j;
+  for (i = 0; i < this.validators.length; i++) {
+    validator = this.validators[i];
+    for (j = 0; j < validator.rules.length; j++) {
+      validatorValid = validator.rules[j].fn(this.req.body[validator.name],
+        validator.rules[j].params);
+      if (!validatorValid) {
+        this.errors.push({
+          name: validator.name,
+          message: validator.rules[j].message
+        });
+        break;
+      }
+    }
+  }
+  return this.errors.length === 0;
+}
+
 router.post('/app/cases/:id/pip/make-decision', (req, res) => {
-	if(req.body['decision-notes'].length === 0) {
+
+	var v = new Validator(req);
+	v.add('decision-notes', [{
+		fn: (value) => {
+			return value.trim().length > 0;
+		},
+		message: 'Enter your decision notes'
+	}]);
+
+	if(v.validate()) {
+		res.redirect(`/app/cases/${req.params.id}/pip/check-decision`);
+	} else {
 		var _case = helpers.getCase(req.session.cases, req.params.id);
 		var pageObject = {
 			casebar: helpers.getCaseBarObject(_case),
@@ -25,19 +91,11 @@ router.post('/app/cases/:id/pip/make-decision', (req, res) => {
 			backLink: {
 				href: `/app/cases/${_case.id}`
 			},
-			errors: [{
-				text: 'Enter your decision notes',
-				href: '#decision-notes'
-			}],
-			decisionNotesError:  {
-				text: 'Enter your decision notes'
-			}
+			errors: v.getFormattedErrors(),
+			decisionNotesError: v.getError('decision-notes')
 		};
 		res.render('app/case/pip/decision/decision', pageObject);
-	} else {
-		res.redirect(`/app/cases/${req.params.id}/pip/check-decision`);
 	}
-
 });
 
 router.get('/app/cases/:id/pip/check-decision', (req, res) => {
