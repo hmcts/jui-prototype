@@ -76,7 +76,7 @@ function getCaseNavItems(_case, id) {
 		case 'pip':
 			return [
 				{
-					href: `/app/cases/${_case.id}`,
+					href: `/app/cases/${_case.id}/pip`,
 					text: 'Summary',
 					selected: id === 'summary'
 				},
@@ -99,12 +99,12 @@ function getCaseNavItems(_case, id) {
 		case 'divorce':
 			return [
 				{
-					href: `/app/cases/${_case.id}`,
+					href: `/app/cases/${_case.id}/divorce`,
 					text: 'Summary',
 					selected: id === 'summary'
 				},
 				{
-					href: `/app/cases/${_case.id}/parties`,
+					href: `/app/cases/${_case.id}/divorce/parties`,
 					text: 'Parties',
 					selected: id === 'parties'
 				},

@@ -22,7 +22,7 @@
           <ul class="jui-casefile-list">
             {% for document in documents %}
               <li class="jui-casefile-list__item">
-                <a class="jui-casefile-list__link" href="/app/cases/{{casenav.id}}/documents/{{document.id}}" {{ 'aria-current=true' if activeDocument == document.id}}>{{document.label}}</a>
+                <a class="jui-casefile-list__link" href="/app/cases/{{_case.id}}/documents/{{document.id}}" {{ 'aria-current=true' if activeDocument == document.id}}>{{document.label}}</a>
               </li>
             {% endfor %}
           </ul>

@@ -132,12 +132,7 @@ router.post('/app/get-new-case', (req, res) => {
 
 router.get('/app/cases/:id', (req, res) => {
 	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).showCaseSummary(req, res);
-});
-
-router.get('/app/cases/:id/parties', (req, res) => {
-	var _case = req.session.cases.filter(c => c.id == req.params.id)[0];
-	require('./actions/' + helpers.getCaseType(_case).toLowerCase()).viewParties(req, res);
+	res.redirect(`/app/cases/${_case.id}/` + helpers.getCaseType(_case).toLowerCase());
 });
 
 router.get('/app/cases/:id/documents', (req, res) => {
@@ -154,7 +149,8 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
 		caseActions: helpers.getCaseActions(_case),
-		activeDocument: req.params.document_id
+		activeDocument: req.params.document_id,
+		_case: _case
 	};
 
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
