@@ -1,0 +1,104 @@
+{% extends "layouts/admin/base.html" %}
+
+
+{% block bodyStart %}
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-tabs-enabled' : 'js-tabs-enabled');</script>
+{% endblock %}
+
+{% block page_title %}Tabs for GDS{% endblock %}
+
+{% block content %}
+
+<div class="jui-casebar">
+
+  <div class="jui-width-container">
+
+    <div class="jui-casebar__details">
+      SC1231612322<span class="jui-casebar__title"> Warren Sutton versus Susan Sutton</span>
+    </div>
+
+
+    <div class="jui-casebar__options">
+
+      <nav class="jui-case-actions">
+  <ul class="jui-case-actions__list">
+
+      <li class="jui-case-actions__item">
+        <a class="jui-case-actions__link" href="/app/cases/SC1231612322/pip/make-decision">Make decision</a>
+      </li>
+
+  </ul>
+</nav>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div class="jui-width-container">
+
+  <main role="main" class="govuk-main-wrapper">
+
+    {{ juiSecondaryNav({
+      items: [{
+        href: '',
+        text: 'Summary'
+      },{
+        href: '',
+        text: 'Parties'
+      },{
+        href: '',
+        text: 'Case file'
+      },{
+        href: '',
+        text: 'Consent orders',
+        selected: true
+      }]
+    }) }}
+
+
+    <h1 class="govuk-heading-l">Consent orders</h1>
+
+    <form>
+      {{ govukFileUpload({
+        id: "file-upload-1",
+        name: "file-upload-1",
+        label: {
+          text: "Upload new version",
+          classes: 'govuk-label--m'
+        }
+      }) }}
+
+      {{ govukButton({
+        "text": "Upload"
+      }) }}
+    </form>
+
+    <h2 class="govuk-heading-m">Latest version</h2>
+
+    <ul class="govuk-list">
+      <li><a href="" class="jui-timeline__document-link">Consent order [date]</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-m">Previous versions</h2>
+
+    <ul class="govuk-list">
+      <li><a href="" class="jui-timeline__document-link">Consent order [date]</a></li>
+      <li><a href="" class="jui-timeline__document-link">Consent order [date]</a></li>
+      <li><a href="" class="jui-timeline__document-link">Consent order [date]</a></li>
+      <li><a href="" class="jui-timeline__document-link">Consent order [date]</a></li>
+      <li><a href="" class="jui-timeline__document-link">Consent order [date]</a></li>
+    </ul>
+
+
+
+
+
+  </main>
+
+</div>
+
+{% endblock %}

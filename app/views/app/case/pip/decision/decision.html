@@ -1,6 +1,10 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Decision{% endblock %}
+{% block pageTitle %}
+{% if errors %}
+  ({{errors.length}}) errors —
+{% endif %}
+Decision{% endblock %}
 
 {% block content %}
 
@@ -17,32 +21,36 @@
 
       <h1 class="govuk-heading-l">Make decision</h1>
 
-      {% if errors %}
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: errors,
-          classes: 'jui-measure'
-        }) }}
-      {% endif %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
 
-      <form method="post">
-        {{ govukTextarea({
-          "id": "decision-notes",
-          "name": "decision-notes",
-          "classes": "govuk-input--width-30",
-          "label": {
-            "text": "Decision notes",
-            "classes": "govuk-label--m"
-          },
-          value: data['decision-notes'],
-          errorMessage: decisionNotesError
-        }) }}
+          {% if errors %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errors
+            }) }}
+          {% endif %}
 
-        {{ govukButton({
-          "text": "Continue"
-        }) }}
+          <form method="post">
+            {{ govukTextarea({
+              "id": "decision-notes",
+              "name": "decision-notes",
+              "classes": "govuk-input--width-30x",
+              "label": {
+                "text": "Decision notes",
+                "classes": "govuk-label--m"
+              },
+              value: data['decision-notes'],
+              errorMessage: decisionNotesError
+            }) }}
 
-      </form>
+            {{ govukButton({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
 
 		</main>
 
