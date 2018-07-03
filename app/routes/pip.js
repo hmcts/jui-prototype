@@ -1,6 +1,7 @@
 var express = require('express');
 var router  = express.Router();
 var helpers = require('./helpers');
+var Validator = require('./validator');
 
 router.get('/app/cases/:id/pip/make-decision', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -15,61 +16,6 @@ router.get('/app/cases/:id/pip/make-decision', (req, res) => {
 
 	res.render('app/case/pip/decision/decision', pageObject);
 });
-
-function Validator(req) {
-	this.req = req;
-	this.validators = [];
-	this.errors = [];
-}
-
-Validator.prototype.add = function(name, rules) {
-	this.validators.push({
-    name: name,
-    rules: rules
-  });
-};
-
-Validator.prototype.getErrors = function() {
-	return this.errors;
-};
-
-Validator.prototype.getFormattedErrors = function() {
-	return this.errors.map(this.formatError);
-};
-
-Validator.prototype.formatError = function(error) {
-	return {
-		text: error.message,
-		href: '#' + error.name
-	}
-};
-
-Validator.prototype.getError = function(name) {
-	return this.getErrors().filter(error => error.name == name).map(this.formatError)[0];
-};
-
-Validator.prototype.validate = function() {
-	this.errors = [];
-  var validator = null,
-    validatorValid = true,
-    i,
-    j;
-  for (i = 0; i < this.validators.length; i++) {
-    validator = this.validators[i];
-    for (j = 0; j < validator.rules.length; j++) {
-      validatorValid = validator.rules[j].fn(this.req.body[validator.name],
-        validator.rules[j].params);
-      if (!validatorValid) {
-        this.errors.push({
-          name: validator.name,
-          message: validator.rules[j].message
-        });
-        break;
-      }
-    }
-  }
-  return this.errors.length === 0;
-}
 
 router.post('/app/cases/:id/pip/make-decision', (req, res) => {
 
