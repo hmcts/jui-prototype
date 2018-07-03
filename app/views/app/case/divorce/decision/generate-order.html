@@ -6,7 +6,13 @@
 
 {% block content %}
 
-{% include "includes/casebar.html" %}
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
 
 <div class="jui-width-container">
 
