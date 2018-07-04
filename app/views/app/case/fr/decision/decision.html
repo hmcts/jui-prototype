@@ -1,0 +1,90 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}
+{% if errors %}
+  ({{errors.length}}) errors —
+{% endif %}
+Decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-l">Make decision</h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          {% if errors %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errors
+            }) }}
+          {% endif %}
+
+          <form method="post">
+
+              {{ govukRadios({
+                "idPrefix": "approve",
+                "name": "approve",
+                "classes": "govuk-radios--inline",
+                "fieldset": {
+                  "legend": {
+                    "html": "Do you approve the consent order?",
+                    "classes": "govuk-fieldset__legend--m"
+                  }
+                },
+                "items": [
+                  {
+                    "value": "yes",
+                    "html": "Yes"
+                  },
+                  {
+                    "value": "no",
+                    "html": "No"
+                  }
+                ]
+              }) }}
+
+
+            {{ govukTextarea({
+              "id": "decision-notes",
+              "name": "decision-notes",
+              "classes": "govuk-input--width-30x",
+              "label": {
+                "text": "Notes",
+                "classes": "govuk-label--m"
+              },
+              value: data['decision-notes'],
+              errorMessage: decisionNotesError
+            }) }}
+
+            {{ govukButton({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
+

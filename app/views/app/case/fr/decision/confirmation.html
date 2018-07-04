@@ -1,0 +1,36 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block page_title %}Decision confirmation{% endblock %}
+
+{% block content %}
+
+  <div class="jui-width-container">
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h2 class="govuk-panel__title">Consent order approved</h2>
+            <div class="govuk-panel__body">
+              {{_case.id}}
+            </div>
+          </div>
+
+          <p>
+            Something here?
+          </p>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p>We’ve sent your decision to admin and it will be issued to the parties involved.</p>
+          <p><a href="/app/dashboard">Go to your dashboard</a></p>
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+{% endblock %}

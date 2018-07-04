@@ -65,4 +65,53 @@ router.get('/app/cases/:id/fr/upload', (req, res) => {
 	res.render('app/case/fr/upload', pageObject);
 });
 
+
+
+
+
+router.get('/app/cases/:id/fr/make-decision', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}`
+    }
+	};
+
+	res.render('app/case/fr/decision/decision', pageObject);
+});
+
+router.post('/app/cases/:id/fr/make-decision', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/check-decision`);
+});
+
+router.get('/app/cases/:id/fr/check-decision', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		backLink: {
+			href: `/app/cases/${_case.id}/fr/make-decision/`
+		},
+		_case: _case
+	};
+
+	res.render('app/case/fr/decision/check', pageObject);
+});
+
+router.post('/app/cases/:id/fr/submit-decision', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/decision-confirmation`);
+});
+
+router.get('/app/cases/:id/fr/decision-confirmation', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		_case: _case
+	};
+	res.render('app/case/fr/decision/confirmation', pageObject);
+});
+
+
+
+
 module.exports = router;
