@@ -22,8 +22,6 @@ router.get('/app/cases/:id/fr', (req, res) => {
   pageObject.detailsRows.push([{ html: 'Divorce case number' }, {html: _case.divorceCase.id}]);
   pageObject.detailsRows.push([{ html: 'Divorce case status' }, {html: _case.divorceCase.status}]);
 	pageObject.detailsRows.push([{ html: 'Case type' }, {html: helpers.getCaseTypeLabel(_case)}]);
-	pageObject.detailsRows.push([{ html: 'Tribunal centre' }, {html: _case.tribunalCentre}]);
-	pageObject.detailsRows.push([{ html: 'Additional requirements' }, {html: _case.requirements}]);
 
 	res.render('app/case/fr/summary', pageObject);
 });

@@ -13,7 +13,6 @@ module.exports = [
     status: 'Deadline expired',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
-    urgent: true,
     tribunalCentre: 'Fox Court',
     requirements: 'Assisted Digital support requested',
     parties: [
@@ -40,10 +39,13 @@ module.exports = [
     ],
     documents: [{
       id: '1',
-      label: 'Some document'
+      label: 'Consent order'
     }, {
       id: '2',
-      label: 'Another document'
+      label: 'Form A'
+    }, {
+      id: '3',
+      label: 'D81'
     }]
   },
 
