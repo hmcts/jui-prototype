@@ -8,6 +8,7 @@ var uuid = require('uuid/v4');
 router.get('/app/cases/:id/questions', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
+		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'questions'),
 		caseActions: helpers.getCaseActions(_case),

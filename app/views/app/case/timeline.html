@@ -26,12 +26,15 @@
 
         <h1 class="govuk-heading-l">Timeline</h1>
 
-        {{juiTimeline({
-          "classes": "jui-timeline--full",
-          "isPageSpecific": true,
-          "events": events
-        })}}
-
+        {% if events.length %}
+          {{juiTimeline({
+            "classes": "jui-timeline--full",
+            "isPageSpecific": true,
+            "events": events
+          })}}
+        {% else %}
+          <p>No events.</p>
+        {% endif %}
       </div>
 
     </div>

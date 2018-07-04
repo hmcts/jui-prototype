@@ -1,0 +1,67 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block page_title %}Case summary{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
+
+<div class="jui-width-container">
+
+  <main role="main" class="govuk-main-wrapper">
+
+    {{ juiSecondaryNav({
+      items: caseNavItems
+    }) }}
+
+    <h1 class="govuk-heading-l">Summary</h1>
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Case details</h2>
+
+        {{ govukTable({
+          "classes": "govuk-!-margin-bottom-7  jui-table  jui-table--fixed",
+          "firstCellIsHeader": true,
+          "rows": detailsRows
+        }) }}
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+
+        <h2 class="govuk-heading-m  govuk-!-margin-bottom-4">Recent events</h2>
+
+        {% if recentEvents.length %}
+
+          {{juiTimeline({
+            "classes": "govuk-!-margin-bottom-4",
+            "isPageSpecific": false,
+            "events": recentEvents
+          })}}
+
+          <p><a href="/app/cases/{{_case.id}}/timeline">View all events</a></p>
+
+        {% else %}
+
+          <p>No events.</p>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+{% endblock %}

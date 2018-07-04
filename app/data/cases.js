@@ -3,6 +3,49 @@ var uuid = require('uuid/v4');
 var moment = require('moment');
 
 module.exports = [
+  {
+    id: 'FR1231612322',
+    divorceCase: {
+      id: 'SC1245612322',
+      status: 'The divorce status'
+    },
+    typeId: types.fr.id,
+    status: 'Deadline expired',
+    applicationDate: moment('2017-11-20 13:01'),
+    lastAction: moment('2018-01-25 16:48'),
+    urgent: true,
+    tribunalCentre: 'Fox Court',
+    requirements: 'Assisted Digital support requested',
+    parties: [
+      {
+        type: 'Petitioner',
+        firstName: 'Thomas',
+        lastName: 'Jones',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      },
+      {
+        type: 'Respondent',
+        firstName: 'Victoria',
+        lastName: 'Jones',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      }
+    ],
+    documents: [{
+      id: '1',
+      label: 'Some document'
+    }, {
+      id: '2',
+      label: 'Another document'
+    }]
+  },
 
   {
     id: 'SC1231612322',
@@ -77,12 +120,12 @@ module.exports = [
         response: {
           author: 'Appellant',
           date: new Date(),
-          body: '<p>I have a walk-in bath and a shower but I don’t use the shower since the accident because I can’t put my arms above my head and it makes it painful.</p>'
+          body: '<p>I have to walk to the bus stop, which is about 10 minutes from my house. I stop several times along the way. I can manage the bus, although getting off is very painful. I can only carry one bag, as my arms are too weak. I am exhasuted by the time I get home and in a lot of pain.</p>'
         }
       },
       {
         id: uuid(),
-        subject: 'How you prepare your food?',
+        subject: 'How do you prepare your meals?',
         body: 'Explain how you prepare your meals. Include information about the types of meals you eat, how you prepare them and whether there are any tasks in the kitchen you need assistance with.',
         author: 'Judge Prita Shah',
         dateChanged: new Date(),
@@ -90,7 +133,7 @@ module.exports = [
         response: {
           author: 'Appellant',
           date: moment('2018-05-28').toDate(),
-          body: '<p>I have a walk-in bath and a shower but I don’t use the shower since the accident because I can’t put my arms above my head and it makes it painful.</p>'
+          body: '<p>I only eat simple meals that I can put in the microwave. I find that I can\'t cut things with a knife as I do not have the strength.</p>'
         }
       },
       {

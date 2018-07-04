@@ -96,6 +96,29 @@ function getCaseNavItems(_case, id) {
 					selected: id === 'questions'
 				}
 			];
+		case 'fr':
+			return [
+				{
+					href: `/app/cases/${_case.id}/fr`,
+					text: 'Summary',
+					selected: id === 'summary'
+				},
+				{
+					href: `/app/cases/${_case.id}/documents`,
+					text: 'Case file',
+					selected: id === 'casefile'
+				},
+				{
+					href: `/app/cases/${_case.id}/timeline`,
+					text: 'Timeline',
+					selected: id === 'timeline'
+				},
+				{
+					href: `/app/cases/${_case.id}/consent-orders`,
+					text: 'Consent orders',
+					selected: id === 'consentorders'
+				}
+			];
 		case 'divorce':
 			return [
 				{
