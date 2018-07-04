@@ -1,5 +1,30 @@
 {% extends "layouts/admin/casefile.html" %}
 
+{% block file_actions %}
+
+  <div class="jui-file-actions">
+
+    {{govukButton({
+      text: 'View history',
+      classes: 'jui-button--secondary',
+      href: '/app/cases/' + _case.id + '/fr/history'
+    })}}
+
+    {{govukButton({
+      text: 'Download',
+      classes: 'jui-button--secondary',
+      href: '/app/cases/' + _case.id + '/fr/download'
+    })}}
+
+    {{govukButton({
+      text: 'Upload new version',
+      classes: 'jui-button--secondary',
+      href: '/app/cases/' + _case.id + '/fr/upload'
+    })}}
+  </div>
+
+{% endblock %}
+
 {% block file_content %}
 
   <div class="jui-casefile-page-content" data-page="1">
@@ -10,60 +35,9 @@
 
     <div class="jui-casefile-page-body">
 
-      <h2 class="govuk-heading-l">Personal independence payment</h2>
+      <h2 class="govuk-heading-l">Consent order</h2>
 
-      {{ govukTable({
-        "firstCellIsHeader": true,
-        "caption": "Section 1",
-        "captionClasses": "govuk-heading-s",
-        "classes": "govuk-!-margin-bottom-8  jui-table  jui-table--fixed",
-        "rows": [
-          [
-            {"text": "Appeal Tribunal Reference Number"},
-            {"text": "SC242/17/1234"}
-          ],
-          [
-            {"text": "Personal details"},
-            {"text": "Alan Jones"}
-          ],
-          [
-            {"text": "Address"},
-            {"html": "24 Park Road<br>Lewisham<br>London<br>E11 4PR"}
-          ],
-          [
-            {"text": "Date of birth"},
-            {"html": "20 September 1983 (34 years old)"}
-          ],
-          [
-            {"text": "National Insurance number"},
-            {"html": "JK 02 03 04 extends"}
-          ],
-          [
-            {"text": "Benefit"},
-            {"html": "PIP"}
-          ],
-          [
-            {"text": "Date of claim"},
-            {"html": "16/03/2017"}
-          ],
-          [
-            {"text": "Decision effective date"},
-            {"html": "Alan was previously awarded the lower rate Mobility and lowest rate Car components of Disability Living Allowance.<br><br>DLA was in payment until 11/07/2017, the last day of the 28 day period which started on the first DLA payday after the Personal Independence Payment decision of 13/06/2017.<br><br> <b>If the Tribunal decide to award benefit, the earliest date for any PIP award is 12/07/2017.</b><br><br> <b>The specific legislation is the Personal Independence Payment (Transitional Provisions) Regulations 2013 reg 17(1)(b).</b>"}
-          ],
-          [
-            {"text": "Date of outcome decision"},
-            {"html": "13/06/2017"}
-          ],
-          [
-            {"text": "Date of Reconsideration Decision"},
-            {"html": "27/09/2017"}
-          ],
-          [
-            {"text": "Date of Appeal Request"},
-            {"html": "16/11/2017"}
-          ]
-        ]
-      }) }}
+      <p>By reason of mental and physical health problems significantly limited. As a result Mr Alan Jones qualifies for the above award of Personal Independence Payment. In reaching its decision the Tribunal considered all of the evidence.</p>
 
     </div>
 

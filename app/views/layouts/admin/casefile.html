@@ -34,6 +34,7 @@
           </ul>
         </div>
         <div class="jui-casefile-document-wrapper">
+          {% block file_actions %}{% endblock %}
           <div class="jui-casefile-page editable">
             {% block file_content %}{% endblock %}
           </div>

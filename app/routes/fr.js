@@ -39,4 +39,30 @@ router.get('/app/cases/:id/fr/consent-orders', (req, res) => {
 	res.render('app/case/fr/consent-orders', pageObject);
 });
 
+router.get('/app/cases/:id/fr/history', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'casefile')
+	};
+
+	res.render('app/case/fr/history', pageObject);
+});
+
+router.get('/app/cases/:id/fr/upload', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'consentorders')
+	};
+
+	res.render('app/case/fr/consent-orders', pageObject);
+});
+
 module.exports = router;

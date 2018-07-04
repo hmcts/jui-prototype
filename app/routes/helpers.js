@@ -119,11 +119,6 @@ function getCaseNavItems(_case, id) {
 					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					selected: id === 'timeline'
-				},
-				{
-					href: `/app/cases/${_case.id}/fr/consent-orders`,
-					text: 'Consent orders',
-					selected: id === 'consentorders'
 				}
 			];
 		case 'divorce':
