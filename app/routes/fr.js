@@ -19,7 +19,9 @@ router.get('/app/cases/:id/fr', (req, res) => {
 	// Case details
 	pageObject.detailsRows.push([{ html: 'Parties' }, {html: helpers.getPartiesLine(_case)}]);
 	pageObject.detailsRows.push([{ html: 'Case number' }, {html: _case.id}]);
-  pageObject.detailsRows.push([{ html: 'Divorce case number' }, {html: _case.divorceCase.id}]);
+  pageObject.detailsRows.push([{ html: 'Divorce case number' }, {
+		html: `<a href="">${_case.divorceCase.id}</a>`
+	}]);
   pageObject.detailsRows.push([{ html: 'Divorce case status' }, {html: _case.divorceCase.status}]);
 	pageObject.detailsRows.push([{ html: 'Case type' }, {html: helpers.getCaseTypeLabel(_case)}]);
 
