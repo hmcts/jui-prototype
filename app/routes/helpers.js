@@ -43,16 +43,23 @@ function getCaseTypeLabel(_case) {
 function getCaseActions(_case) {
 	switch(_case.typeId) {
 		case 'pip':
-		return [
-			{
-				href: `/app/cases/${_case.id}/pip/make-decision`,
-				text: 'Make decision'
-			},
-			{
-				href: `/app/cases/${_case.id}/pip/list-for-hearing`,
-				text: 'List for hearing'
-			}
-		];
+			return [
+				{
+					href: `/app/cases/${_case.id}/pip/make-decision`,
+					text: 'Make decision'
+				},
+				{
+					href: `/app/cases/${_case.id}/pip/list-for-hearing`,
+					text: 'List for hearing'
+				}
+			];
+		case 'fr':
+			return [
+				{
+					href: `/app/cases/${_case.id}/fr/make-decision`,
+					text: 'Make decision'
+				}
+			];
 		case 'divorce':
 			return [
 				{
@@ -114,7 +121,7 @@ function getCaseNavItems(_case, id) {
 					selected: id === 'timeline'
 				},
 				{
-					href: `/app/cases/${_case.id}/consent-orders`,
+					href: `/app/cases/${_case.id}/fr/consent-orders`,
 					text: 'Consent orders',
 					selected: id === 'consentorders'
 				}
