@@ -59,10 +59,10 @@ router.get('/app/cases/:id/fr/upload', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-		caseNavItems: helpers.getCaseNavItems(_case, 'consentorders')
+		caseNavItems: helpers.getCaseNavItems(_case, 'casefile')
 	};
 
-	res.render('app/case/fr/consent-orders', pageObject);
+	res.render('app/case/fr/upload', pageObject);
 });
 
 module.exports = router;
