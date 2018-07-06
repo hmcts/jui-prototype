@@ -42,21 +42,24 @@ Decision{% endblock %}
               {{ govukRadios({
                 "idPrefix": "approve",
                 "name": "approve",
-                "classes": "govuk-radios--inline",
                 "fieldset": {
                   "legend": {
-                    "html": "Do you approve the consent order?",
+                    "html": "What would you like to do with the consent order?",
                     "classes": "govuk-fieldset__legend--m"
                   }
                 },
                 "items": [
                   {
-                    "value": "yes",
-                    "html": "Yes"
+                    "value": "approve",
+                    "html": "Approve it"
                   },
                   {
-                    "value": "no",
-                    "html": "No"
+                    "value": "approve-with-amendments",
+                    "html": "Approve it with amendments"
+                  },
+                  {
+                    "value": "reject",
+                    "html": "Reject it"
                   }
                 ]
               }) }}
