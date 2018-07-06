@@ -1,0 +1,47 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block page_title %}Casefile{% endblock %}
+
+{% block content %}
+
+  {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties,
+    caseActions: {
+      actions: caseActions
+    }
+  }) }}
+
+  <div class="jui-width-container">
+
+    <main class="govuk-main-wrapper" role="main">
+
+      {{ juiSecondaryNav({
+        items: caseNavItems
+      }) }}
+
+      <h1 class="govuk-heading-l">Case file</h1>
+      {% block file_actions %}{% endblock %}
+
+      <div class="jui-casefile govuk-!-margin-bottom-6">
+
+        <div class="jui-casefile-files">
+          <ul class="jui-casefile-list">
+            {% for document in documents %}
+              <li class="jui-casefile-list__item">
+                <a class="jui-casefile-list__link" href="/app/cases/{{_case.id}}/documents/{{document.id}}" {{ 'aria-current=true' if activeDocument == document.id}}>{{document.label}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="jui-casefile-document-wrapper">
+
+          <div class="jui-casefile-page editable">
+            {% block file_content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+{% endblock %}

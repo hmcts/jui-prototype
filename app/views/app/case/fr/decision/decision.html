@@ -39,6 +39,27 @@ Decision{% endblock %}
 
           <form method="post">
 
+
+            {% set confirmUploadedHtml %}
+            {{ govukCheckboxes({
+              "idPrefix": "reason",
+              "name": "reason",
+              "fieldset": {
+                "legend": {
+                  "text": 'Confirm you have uploaded a new version of the consent order',
+                  "classes": 'govuk-fieldset__legend--m'
+                }
+              },
+              "items": [
+                {
+                  "value": "Uploaded new version",
+                  "html": "I confirm"
+                }
+              ]
+            }) }}
+            {% endset %}
+
+
               {{ govukRadios({
                 "idPrefix": "approve",
                 "name": "approve",
@@ -55,7 +76,10 @@ Decision{% endblock %}
                   },
                   {
                     "value": "approve-with-amendments",
-                    "html": "Approve it with amendments"
+                    "html": "Approve it with amendments",
+                    "conditional": {
+                      "html": confirmUploadedHtml
+                    }
                   },
                   {
                     "value": "reject",
