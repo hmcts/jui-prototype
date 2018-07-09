@@ -157,7 +157,4 @@ router.get('/app/cases/:id/fr/decision-confirmation', (req, res) => {
 	res.render('app/case/fr/decision/confirmation', pageObject);
 });
 
-
-
-
 module.exports = router;
