@@ -19,11 +19,17 @@ router.get('/app/cases/:id/fr', (req, res) => {
 	// Case details
 	pageObject.detailsRows.push([{ html: 'Parties' }, {html: helpers.getPartiesLine(_case)}]);
 	pageObject.detailsRows.push([{ html: 'Case number' }, {html: _case.id}]);
-  pageObject.detailsRows.push([{ html: 'Divorce case number' }, {
-		html: `<a href="">${_case.divorceCase.id}</a>`
-	}]);
-  pageObject.detailsRows.push([{ html: 'Divorce case status' }, {html: _case.divorceCase.status}]);
 	pageObject.detailsRows.push([{ html: 'Case type' }, {html: helpers.getCaseTypeLabel(_case)}]);
+
+	pageObject.linkedCaseRows = [];
+
+	_case.linkedCases.forEach((item) => {
+		pageObject.linkedCaseRows.push([{
+			html: item.type
+		}, {
+			html: `<a href="/">${item.id}</a>`
+		}])
+	});
 
 	res.render('app/case/fr/summary', pageObject);
 });
@@ -67,11 +73,7 @@ router.get('/app/cases/:id/fr/upload', (req, res) => {
 	res.render('app/case/fr/upload', pageObject);
 });
 
-
-
-
-
-router.get('/app/cases/:id/fr/make-decision', (req, res) => {
+router.get('/app/cases/:id/fr/decision', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 
 	var pageObject = {
@@ -85,15 +87,57 @@ router.get('/app/cases/:id/fr/make-decision', (req, res) => {
 	res.render('app/case/fr/decision/decision', pageObject);
 });
 
-router.post('/app/cases/:id/fr/make-decision', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/fr/check-decision`);
+router.post('/app/cases/:id/fr/decision', (req, res) => {
+	if(req.body.approve === 'reject') {
+		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
+	} else {
+		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+	}
 });
 
-router.get('/app/cases/:id/fr/check-decision', (req, res) => {
+router.get('/app/cases/:id/fr/notes', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/fr/decision`
+    }
+	};
+
+	res.render('app/case/fr/decision/notes', pageObject);
+});
+
+router.post('/app/cases/:id/fr/notes', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+});
+
+router.get('/app/cases/:id/fr/reject-reasons', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}`
+    }
+	};
+
+	res.render('app/case/fr/decision/reject-reasons', pageObject);
+});
+
+router.post('/app/cases/:id/fr/reject-reasons', (req, res) => {
+  res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+});
+
+router.get('/app/cases/:id/fr/check', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
 		backLink: {
-			href: `/app/cases/${_case.id}/fr/make-decision/`
+			href: `/app/cases/${_case.id}/fr/notes`
 		},
 		_case: _case
 	};

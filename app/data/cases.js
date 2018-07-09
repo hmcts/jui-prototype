@@ -5,10 +5,6 @@ var moment = require('moment');
 module.exports = [
   {
     id: 'FR1231612322',
-    divorceCase: {
-      id: 'SC1245612322',
-      status: 'The divorce status'
-    },
     typeId: types.fr.id,
     status: 'Deadline expired',
     applicationDate: moment('2017-11-20 13:01'),
@@ -46,6 +42,10 @@ module.exports = [
     }, {
       id: '3',
       label: 'D81'
+    }],
+    linkedCases: [{
+      type: 'Divorce',
+      id: 'SC1245612322'
     }]
   },
 

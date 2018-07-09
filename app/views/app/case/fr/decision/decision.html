@@ -25,8 +25,6 @@ Decision{% endblock %}
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-l">Make decision</h1>
-
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -41,64 +39,55 @@ Decision{% endblock %}
 
 
             {% set confirmUploadedHtml %}
-            {{ govukCheckboxes({
+            {{ govukRadios({
+              "classes": 'govuk-radios--inline',
               "idPrefix": "reason",
               "name": "reason",
               "fieldset": {
                 "legend": {
-                  "text": 'Confirm you have uploaded a new version of the consent order',
+                  "text": 'Have you upload a new version of the consent order?',
                   "classes": 'govuk-fieldset__legend--m'
                 }
               },
               "items": [
                 {
-                  "value": "Uploaded new version",
-                  "html": "I confirm"
+                  "value": "yes",
+                  "html": "Yes"
+                },
+                {
+                  "value": "no",
+                  "html": "No"
                 }
               ]
             }) }}
             {% endset %}
 
 
-              {{ govukRadios({
-                "idPrefix": "approve",
-                "name": "approve",
-                "fieldset": {
-                  "legend": {
-                    "html": "What would you like to do with the consent order?",
-                    "classes": "govuk-fieldset__legend--m"
+            {{ govukRadios({
+              "idPrefix": "approve",
+              "name": "approve",
+              "fieldset": {
+                "legend": {
+                  "html": '<h1 class="govuk-heading-l">What would you like to do with the consent order?</h1>'
+                }
+              },
+              "items": [
+                {
+                  "value": "approve",
+                  "html": "Approve it"
+                },
+                {
+                  "value": "approve-with-amendments",
+                  "html": "Approve it with amendments",
+                  "conditional": {
+                    "html": confirmUploadedHtml
                   }
                 },
-                "items": [
-                  {
-                    "value": "approve",
-                    "html": "Approve it"
-                  },
-                  {
-                    "value": "approve-with-amendments",
-                    "html": "Approve it with amendments",
-                    "conditional": {
-                      "html": confirmUploadedHtml
-                    }
-                  },
-                  {
-                    "value": "reject",
-                    "html": "Reject it"
-                  }
-                ]
-              }) }}
-
-
-            {{ govukTextarea({
-              "id": "decision-notes",
-              "name": "decision-notes",
-              "classes": "govuk-input--width-30x",
-              "label": {
-                "text": "Notes",
-                "classes": "govuk-label--m"
-              },
-              value: data['decision-notes'],
-              errorMessage: decisionNotesError
+                {
+                  "value": "reject",
+                  "html": "Reject it"
+                }
+              ]
             }) }}
 
             {{ govukButton({

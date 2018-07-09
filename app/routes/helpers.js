@@ -56,7 +56,7 @@ function getCaseActions(_case) {
 		case 'fr':
 			return [
 				{
-					href: `/app/cases/${_case.id}/fr/make-decision`,
+					href: `/app/cases/${_case.id}/fr/decision`,
 					text: 'Make decision'
 				}
 			];

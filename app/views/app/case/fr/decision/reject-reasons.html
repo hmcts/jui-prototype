@@ -1,0 +1,79 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}
+{% if errors %}
+  ({{errors.length}}) errors —
+{% endif %}
+Decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          {% if errors %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errors
+            }) }}
+          {% endif %}
+
+          <form method="post">
+
+              {{ govukCheckboxes({
+                "idPrefix": "approve",
+                "name": "reject",
+                "fieldset": {
+                  "legend": {
+                    "text": 'What are you rejecting the consent order?',
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                "items": [
+                  {
+                    "value": "Reason 1",
+                    "html": "Reason 1"
+                  },
+                  {
+                    "value": "Reason 1",
+                    "html": "Reason 1"
+                  },
+                  {
+                    "value": "Reason 3",
+                    "html": "Reason 3"
+                  }
+                ]
+              }) }}
+
+            {{ govukButton({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
+
