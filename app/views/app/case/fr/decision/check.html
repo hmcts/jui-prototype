@@ -33,11 +33,11 @@
               <dt class="app-check-your-answers__question">Decision</dt>
 
               <dd class="app-check-your-answers__answer">
-                {% if data.approve == 'approve' %}
+                {% if data.decision == 'approve' %}
                   Approve
-                {% elseif data.approve == 'approve-with-changes' %}
+                {% elseif data.decision == 'approve-with-changes' %}
                   Approve with changes
-                {% elseif data.approve == 'reject' %}
+                {% elseif data.decision == 'reject' %}
                   Reject
                 {% endif %}
               </dd>
@@ -47,7 +47,7 @@
               </dd>
 
             </div>
-            {% if data.approve == 'reject' %}
+            {% if data.decision == 'reject' %}
               <div class="app-check-your-answers__contents">
 
                 <dt class="app-check-your-answers__question">Reasons</dt>

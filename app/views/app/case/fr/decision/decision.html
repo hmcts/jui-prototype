@@ -64,11 +64,13 @@ Decision{% endblock %}
 
 
             {{ govukRadios({
-              "idPrefix": "approve",
-              "name": "approve",
+              "idPrefix": "decision",
+              "name": "decision",
               "fieldset": {
                 "legend": {
-                  "html": '<h1 class="govuk-heading-l">Make decision</h1>'
+                  text: 'Make decision',
+                  isPageHeading: true,
+                  classes: 'govuk-fieldset__legend--l'
                 }
               },
               "items": [
@@ -78,10 +80,7 @@ Decision{% endblock %}
                 },
                 {
                   "value": "approve-with-changes",
-                  "html": "Approve with changes",
-                  "conditional": {
-                    "html": confirmUploadedHtml
-                  }
+                  "html": "Approve with changes"
                 },
                 {
                   "value": "reject",

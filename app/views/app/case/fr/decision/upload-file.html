@@ -1,0 +1,58 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          {% if errors %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errors
+            }) }}
+          {% endif %}
+
+          <form method="post">
+
+            {{ govukFileUpload({
+              id: 'file-upload-1',
+              name: 'file-upload-1',
+              label: {
+                text: 'Upload amended consent order',
+                classes: 'govuk-label--l',
+                isPageHeading: true
+              }
+            }) }}
+
+
+            {{ govukButton({
+              "text": "Continue"
+            }) }}
+
+          </form>
+        </div>
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
+

@@ -60,19 +60,6 @@ router.get('/app/cases/:id/fr/history', (req, res) => {
 	res.render('app/case/fr/history', pageObject);
 });
 
-router.get('/app/cases/:id/fr/upload', (req, res) => {
-  var _case = helpers.getCase(req.session.cases, req.params.id);
-
-	var pageObject = {
-		_case: _case,
-		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
-		caseNavItems: helpers.getCaseNavItems(_case, 'casefile')
-	};
-
-	res.render('app/case/fr/upload', pageObject);
-});
-
 router.get('/app/cases/:id/fr/decision', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 
@@ -91,7 +78,35 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 	if(req.body.approve === 'reject') {
 		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 	} else {
-		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+		res.redirect(`/app/cases/${req.params.id}/fr/upload`);
+	}
+});
+
+router.get('/app/cases/:id/fr/upload', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/fr/decision`
+    }
+	};
+
+	res.render('app/case/fr/decision/upload-file', pageObject);
+});
+
+router.post('/app/cases/:id/fr/upload', (req, res) => {
+	switch(req.session.data.decision) {
+		case 'approve':
+			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+			break;
+		case 'approve-with-changes':
+			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+			break;
+		case 'reject':
+			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
+			break;
 	}
 });
 

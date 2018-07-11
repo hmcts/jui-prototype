@@ -106,7 +106,9 @@
 }
 
 .jui-casefile-actions {
-  font-size: .1px; // Removes space when using inline-block
+  // font-size: .1px; // Removes space when using inline-block
+  margin-bottom: govuk-spacing(2);
+  text-align: right;
 }
 
 .jui-casefile-actions__list {
