@@ -37,6 +37,37 @@ Decision{% endblock %}
 
           <form method="post">
 
+            {% set subReasonsHtml %}
+              {{ govukCheckboxes({
+                "idPrefix": "rejectsub",
+                "name": "rejectsub",
+                "fieldset": {
+                  "legend": {
+                    "text": '',
+                    classes: "govuk-fieldset__legend--m"
+                  }
+                },
+                "items": [
+                  {
+                    html: " parties’ capital position",
+                    value: "Reason 1"
+                  },
+                  {
+                    html: "parties’ housing",
+                    value: "Reason 1"
+                  },
+                  {
+                    html: "parties’ pension",
+                    value: "Reason 3"
+                  },
+                  {
+                    html: "children’s housing",
+                    value: "Reason 3"
+                  }
+                ]
+            }) }}
+            {% endset %}
+
             {% set otherReasonHtml %}
               {{ govukInput({
                 "id": "otherReason",
@@ -50,54 +81,45 @@ Decision{% endblock %}
             {% endset %}
 
 
-              {{ govukCheckboxes({
-                "idPrefix": "approve",
-                "name": "reject",
-                "fieldset": {
-                  "legend": {
-                    "text": 'Reasons for rejecting the consent order',
-                    isPageHeading: true,
-                    classes: "govuk-fieldset__legend--l"
+            {{ govukCheckboxes({
+              "idPrefix": "reject",
+              "name": "reject",
+              "fieldset": {
+                "legend": {
+                  "text": 'Reasons for rejecting the consent order',
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+              "items": [
+                {
+                  html: "Not enough information given on how the order will affect the",
+                  value: "Reason 1",
+                  conditional: {
+                    html: subReasonsHtml
                   }
                 },
-                "items": [
-                  {
-                    html: "Not enough information given on how the order will affect the parties’ capital position",
-                    value: "Reason 1"
-                  },
-                  {
-                    html: "Not enough information given on how the order will affect the parties’ housing",
-                    value: "Reason 1"
-                  },
-                  {
-                    html: "Not enough information given on how the order will affect the parties’ pension",
-                    value: "Reason 3"
-                  },
-                  {
-                    html: "Not enough information given on how the order will affect the children’s housing",
-                    value: "Reason 3"
-                  },
-                  {
-                    html: "Pension annex not uploaded",
-                    value: "Reason 3"
-                  },
-                  {
-                    html: "Not clear if respondent has taken independent legal advice",
-                    value: "Reason 3"
-                  },
-                  {
-                    html: "D81 form is incomplete",
-                    value: "Reason 3"
-                  },
-                  {
-                    html: "Other",
-                    value: "Reason 3",
-                    conditional: {
-                      html: otherReasonHtml
-                    }
+                {
+                  html: "Pension annex not uploaded",
+                  value: "Reason 3"
+                },
+                {
+                  html: "Not clear if respondent has taken independent legal advice",
+                  value: "Reason 3"
+                },
+                {
+                  html: "D81 form is incomplete",
+                  value: "Reason 3"
+                },
+                {
+                  html: "Other",
+                  value: "Reason 3",
+                  conditional: {
+                    html: otherReasonHtml
                   }
-                ]
-              }) }}
+                }
+              ]
+            }) }}
 
             {{ govukButton({
               "text": "Continue"
