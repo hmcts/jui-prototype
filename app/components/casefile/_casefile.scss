@@ -89,3 +89,38 @@
   font-weight: bold;
   text-decoration: none;
 }
+
+
+
+// This is temp for demo purposes
+.jui-heading {
+  @include govuk-clearfix;
+}
+
+.jui-heading__title {
+  float: left;
+}
+
+.jui-heading__actions {
+  float: right;
+}
+
+.jui-casefile-actions {
+  font-size: .1px; // Removes space when using inline-block
+}
+
+.jui-casefile-actions__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jui-casefile-actions__list-item {
+  display: inline-block;
+  margin-right: govuk-spacing(2);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+}

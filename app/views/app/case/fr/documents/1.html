@@ -1,15 +1,5 @@
 {% extends "layouts/admin/casefile-3.html" %}
 
-{% block file_actions %}
-
-  <div class="jui-file-actions" style="text-align: right">
-    <a href="/app/cases/{{_case.id}}/fr/history">View history</a>
-    <a href="/app/cases/{{_case.id}}/fr/download">Download</a>
-    <a href="/app/cases/{{_case.id}}/fr/upload">Upload</a>
-  </div>
-
-{% endblock %}
-
 {% block file_content %}
 
   <div class="jui-casefile-page-content" data-page="1">
@@ -43,11 +33,11 @@
         "classes": "  govuk-!-margin-bottom-8  jui-table  jui-table--fixed",
         "rows": [
           [
-            {"text": "Decision Maker's name and address where documents for the Decision Maker may be sent or delivered"},
+            {"text": "Decision Maker’s name and address where documents for the Decision Maker may be sent or delivered"},
             {"html": "Arron Setton<br>Personal Independence Payment (9)<br>Mall Handling Site 29<br>Liverpool, WV78 1AA"}
           ],
           [
-            {"text": "name and addresses of any other respondents and their representatives."},
+            {"text": "Name and addresses of any other respondents and their representatives."},
             {"html": "Joseph Fontainour<br>123 The Way<br>London<br>B4 4FF"}
           ],
           [

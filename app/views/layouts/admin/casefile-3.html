@@ -20,8 +20,25 @@
         items: caseNavItems
       }) }}
 
-      <h1 class="govuk-heading-l">Case file</h1>
-      {% block file_actions %}{% endblock %}
+      <div class="jui-heading">
+        
+        <h1 class="govuk-heading-l jui-heading__title">Case file</h1>
+
+        {% block file_actions %}
+        <div class="jui-heading__actions">
+
+          <div class="jui-casefile-actions">
+            <ul class="jui-casefile-actions__list">
+              <li class="jui-casefile-actions__list-item"><a class="govuk-button jui-button--secondary" href="/app/cases/{{_case.id}}/fr/history">View history</a></li>
+              <li class="jui-casefile-actions__list-item"><a class="govuk-button jui-button--secondary" href="/app/cases/{{_case.id}}/fr/download">Download latest</a></li>
+              <li class="jui-casefile-actions__list-item"><a class="govuk-button jui-button--secondary" href="/app/cases/{{_case.id}}/fr/upload">Upload new version</a></li>
+            </ul>
+          </div>
+      
+        </div>
+        {% endblock %}
+
+      </div>
 
       <div class="jui-casefile govuk-!-margin-bottom-6">
 
