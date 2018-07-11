@@ -37,28 +37,64 @@ Decision{% endblock %}
 
           <form method="post">
 
+            {% set otherReasonHtml %}
+              {{ govukInput({
+                "id": "otherReason",
+                "name": "otherReason",
+                "label": {
+                  "text": 'Other reason',
+                  "classes": "govuk-label--m"
+                },
+                value: ''
+              }) }}
+            {% endset %}
+
+
               {{ govukCheckboxes({
                 "idPrefix": "approve",
                 "name": "reject",
                 "fieldset": {
                   "legend": {
-                    "text": 'What are you rejecting the consent order?',
+                    "text": 'Reason for rejecting the consent order',
                     isPageHeading: true,
                     classes: "govuk-fieldset__legend--l"
                   }
                 },
                 "items": [
                   {
-                    "value": "Reason 1",
-                    "html": "Reason 1"
+                    html: "Not enough information given on how the order will affect the parties’ capital position",
+                    value: "Reason 1"
                   },
                   {
-                    "value": "Reason 1",
-                    "html": "Reason 1"
+                    html: "Not enough information given on how the order will affect the parties’ housing",
+                    value: "Reason 1"
                   },
                   {
-                    "value": "Reason 3",
-                    "html": "Reason 3"
+                    html: "Not enough information given on how the order will affect the parties’ pension",
+                    value: "Reason 3"
+                  },
+                  {
+                    html: "Not enough information given on how the order will affect the children’s housing",
+                    value: "Reason 3"
+                  },
+                  {
+                    html: "Pension annex not uploaded",
+                    value: "Reason 3"
+                  },
+                  {
+                    html: "Not clear if respondent has taken independent legal advice",
+                    value: "Reason 3"
+                  },
+                  {
+                    html: "D81 form is incomplete",
+                    value: "Reason 3"
+                  },
+                  {
+                    html: "Other",
+                    value: "Reason 3",
+                    conditional: {
+                      html: otherReasonHtml
+                    }
                   }
                 ]
               }) }}

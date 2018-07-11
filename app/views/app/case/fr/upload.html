@@ -13,34 +13,27 @@
 }) }}
 
 <div class="jui-width-container">
+  {{ govukBackLink({
+    text: "Back",
+    href: '/app/cases/' + _case.id + '/documents'
+  }) }}
 
   <main role="main" class="govuk-main-wrapper">
 
-    {{ juiSecondaryNav({
-      items: caseNavItems
-    }) }}
-
-    {{ govukBackLink({
-      "text": "Back",
-      "href": '/app/cases/' + _case.id + '/documents'
-    }) }}
-
-    <br><br>
-
-    <h1 class="govuk-heading-l">Upload new version</h1>
-
     <form>
         {{ govukFileUpload({
-          id: "file-upload-1",
-          name: "file-upload-1",
+          id: 'file-upload-1',
+          name: 'file-upload-1',
           label: {
-            text: "Upload new version",
-            classes: 'govuk-label--m'
+            text: 'Upload new consent order',
+            classes: 'govuk-label--l',
+            isPageHeading: true
           }
         }) }}
 
         {{ govukButton({
-          "text": "Upload"
+          text: 'Upload',
+          href: '/app/cases/' + _case.id + '/documents'
         }) }}
       </form>
 

@@ -12,7 +12,16 @@
         <div class="govuk-grid-column-two-thirds">
 
           <div class="govuk-panel govuk-panel--confirmation">
-            <h2 class="govuk-panel__title">Consent order approved</h2>
+            <h2 class="govuk-panel__title">
+              {% if data.approve == 'approve' %}
+                Consent order approved
+              {% elseif data.approve == 'approve-with-changes' %}
+                Consent order approved with changes
+              {% elseif data.approve == 'reject' %}
+                Consent order rejected
+              {% endif %}
+
+            </h2>
             <div class="govuk-panel__body">
               {{_case.id}}
             </div>
