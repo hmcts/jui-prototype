@@ -2,25 +2,10 @@
 
 {% block file_actions %}
 
-  <div class="jui-file-actions">
-
-    {{govukButton({
-      text: 'View history',
-      classes: 'jui-button--secondary',
-      href: '/app/cases/' + _case.id + '/fr/history'
-    })}}
-
-    {{govukButton({
-      text: 'Download',
-      classes: 'jui-button--secondary',
-      href: '/app/cases/' + _case.id + '/fr/download'
-    })}}
-
-    {{govukButton({
-      text: 'Upload new version',
-      classes: 'jui-button--secondary',
-      href: '/app/cases/' + _case.id + '/fr/upload'
-    })}}
+  <div class="jui-file-actions" style="text-align: right">
+    <a href="/app/cases/{{_case.id}}/fr/history">View history</a>
+    <a href="/app/cases/{{_case.id}}/fr/download">Download</a>
+    <a href="/app/cases/{{_case.id}}/fr/upload">Upload</a>
   </div>
 
 {% endblock %}
