@@ -31,19 +31,46 @@
 
           <form method="post">
 
-            {{ govukFileUpload({
-              id: 'file-upload-1',
-              name: 'file-upload-1',
-              label: {
-                text: 'Upload amended consent order',
-                classes: 'govuk-label--l',
-                isPageHeading: true
-              }
+            {% set uploadFieldHtml %}
+              {{ govukFileUpload({
+                id: 'file-upload-1',
+                name: 'file-upload-1',
+                label: {
+                  text: 'Upload amended consent order',
+                  classes: 'govuk-label--m'
+                }
+              }) }}
+            {% endset %}
+
+
+            {{ govukRadios({
+              idPrefix: 'uploadnew',
+              name: 'uploadnew',
+              fieldset: {
+                legend: {
+                  text: 'Do you want to upload an amended consent order?',
+                  isPageHeading: true,
+                  classes: 'govuk-fieldset__legend--l'
+                }
+              },
+              items: [
+                {
+                  value: 'yes',
+                  html: 'Yes',
+                  conditional: {
+                    html: uploadFieldHtml
+                  }
+                },
+                {
+                  value: 'no',
+                  html: 'No'
+                }
+              ]
             }) }}
 
 
             {{ govukButton({
-              "text": "Continue"
+              text: 'Continue'
             }) }}
 
           </form>
