@@ -78,11 +78,11 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 	if(req.body.approve === 'reject') {
 		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 	} else {
-		res.redirect(`/app/cases/${req.params.id}/fr/upload`);
+		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
 	}
 });
 
-router.get('/app/cases/:id/fr/upload', (req, res) => {
+router.get('/app/cases/:id/fr/upload-1', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 
 	var pageObject = {
@@ -90,17 +90,49 @@ router.get('/app/cases/:id/fr/upload', (req, res) => {
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/fr/decision`
-    }
+		},
+		_case: _case
 	};
 
-	res.render('app/case/fr/decision/upload-file', pageObject);
+	res.render('app/case/fr/decision/upload-1', pageObject);
 });
 
-router.post('/app/cases/:id/fr/upload', (req, res) => {
-	switch(req.session.data.decision) {
-		case 'approve':
-			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+router.post('/app/cases/:id/fr/upload-1', (req, res) => {
+	switch(req.session.data.uploadnew) {
+		case 'yes':
+			res.redirect(`/app/cases/${req.params.id}/fr/upload-2`);
 			break;
+		case 'no':
+			switch(req.session.data.decision) {
+				case 'approve':
+				case 'approve-with-changes':
+					res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+					break;
+				case 'reject':
+					res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
+					break;
+			}
+			break;
+	}
+});
+
+router.get('/app/cases/:id/fr/upload-2', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/fr/upload-1`
+		},
+		_case: _case
+	};
+
+	res.render('app/case/fr/decision/upload-2', pageObject);
+});
+
+router.post('/app/cases/:id/fr/upload-2', (req, res) => {
+	switch(req.session.data.decision) {
 		case 'approve-with-changes':
 			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
 			break;

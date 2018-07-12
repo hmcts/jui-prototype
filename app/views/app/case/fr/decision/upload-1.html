@@ -29,9 +29,9 @@
             }) }}
           {% endif %}
 
-          <form method="post">
+          <form method="post" action="/app/cases/{{_case.id}}/fr/upload-1">
 
-            {% set uploadFieldHtml %}
+            {# {% set uploadFieldHtml %}
               {{ govukFileUpload({
                 id: 'file-upload-1',
                 name: 'file-upload-1',
@@ -43,12 +43,13 @@
                   html: '<a href="/">Download latest version</a>'
                 }
               }) }}
-            {% endset %}
+            {% endset %} #}
 
 
             {{ govukRadios({
               idPrefix: 'uploadnew',
               name: 'uploadnew',
+              classes: 'govuk-radios--inline',
               fieldset: {
                 legend: {
                   text: 'Do you want to upload an amended consent order?',
@@ -59,10 +60,7 @@
               items: [
                 {
                   value: 'yes',
-                  html: 'Yes',
-                  conditional: {
-                    html: uploadFieldHtml
-                  }
+                  html: 'Yes'
                 },
                 {
                   value: 'no',
