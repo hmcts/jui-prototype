@@ -75,8 +75,10 @@ router.get('/app/cases/:id/fr/decision', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/decision', (req, res) => {
-	if(req.body.approve === 'Reject') {
-		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
+	if(req.body.decision === 'Approve') {
+		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+	} else if(req.body.decision === 'Approve with changes') {
+		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
 	} else {
 		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
 	}
@@ -98,21 +100,18 @@ router.get('/app/cases/:id/fr/upload-1', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/upload-1', (req, res) => {
-	switch(req.session.data.uploadnew) {
-		case 'yes':
-			res.redirect(`/app/cases/${req.params.id}/fr/upload-2`);
-			break;
-		case 'no':
-			switch(req.session.data.decision) {
-				case 'Approve':
-				case 'Approve with changes':
-					res.redirect(`/app/cases/${req.params.id}/fr/notes`);
-					break;
-				case 'Reject':
-					res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
-					break;
-			}
-			break;
+	if(req.body.uploadnew == 'Yes') {
+		res.redirect(`/app/cases/${req.params.id}/fr/upload-2`);
+	} else {
+		switch(req.session.data.decision) {
+			case 'Approve':
+			case 'Approve with changes':
+				res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+				break;
+			case 'Reject':
+				res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
+				break;
+		}
 	}
 });
 
@@ -132,13 +131,10 @@ router.get('/app/cases/:id/fr/upload-2', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/upload-2', (req, res) => {
-	switch(req.session.data.decision) {
-		case 'Approve with changes':
-			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
-			break;
-		case 'Reject':
-			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
-			break;
+	if(req.session.data.decision === 'Approve with changes') {
+		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+	} else {
+		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 	}
 });
 

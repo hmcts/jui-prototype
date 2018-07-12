@@ -13,14 +13,13 @@
 
           <div class="govuk-panel govuk-panel--confirmation">
             <h2 class="govuk-panel__title">
-              {% if data.decision == 'approve' %}
+              {% if data.decision == 'Approve' %}
                 Consent order approved
-              {% elseif data.decision == 'approve-with-changes' %}
+              {% elseif data.decision == 'Approve with changes' %}
                 Consent order approved with changes
-              {% elseif data.decision == 'reject' %}
+              {% elseif data.decision == 'Reject' %}
                 Consent order rejected
               {% endif %}
-
             </h2>
             <div class="govuk-panel__body">
               {{_case.id}}
