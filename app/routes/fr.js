@@ -186,8 +186,35 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 		backLink: {
 			href: `/app/cases/${_case.id}/fr/notes`
 		},
-		_case: _case
+		_case: _case,
+		reasons: []
 	};
+
+	req.session.data.reject.forEach((item) => {
+		if(item == 'not enough') {
+			// loop through sub reasons and attach as sub reasons
+			var r = {
+				text: 'Not enough information on',
+				sub: []
+			};
+
+			req.session.data.rejectsub.forEach((item) => {
+				r.sub.push({
+					text: item
+				});
+			});
+			pageObject.reasons.push(r);
+		} else if (item == 'Other') {
+			// grab other text input and add as reason
+			pageObject.reasons.push({
+				text: `Other: ${req.session.data.otherReason}`
+			});
+		} else {
+			pageObject.reasons.push({
+				text: item
+			});
+		}
+	});
 
 	res.render('app/case/fr/decision/check', pageObject);
 });
