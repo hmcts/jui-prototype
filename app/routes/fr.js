@@ -75,7 +75,7 @@ router.get('/app/cases/:id/fr/decision', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/decision', (req, res) => {
-	if(req.body.approve === 'reject') {
+	if(req.body.approve === 'Reject') {
 		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 	} else {
 		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
@@ -104,11 +104,11 @@ router.post('/app/cases/:id/fr/upload-1', (req, res) => {
 			break;
 		case 'no':
 			switch(req.session.data.decision) {
-				case 'approve':
-				case 'approve-with-changes':
+				case 'Approve':
+				case 'Approve with changes':
 					res.redirect(`/app/cases/${req.params.id}/fr/notes`);
 					break;
-				case 'reject':
+				case 'Reject':
 					res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 					break;
 			}
@@ -133,10 +133,10 @@ router.get('/app/cases/:id/fr/upload-2', (req, res) => {
 
 router.post('/app/cases/:id/fr/upload-2', (req, res) => {
 	switch(req.session.data.decision) {
-		case 'approve-with-changes':
+		case 'Approve with changes':
 			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
 			break;
-		case 'reject':
+		case 'Reject':
 			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 			break;
 	}
@@ -190,31 +190,33 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 		reasons: []
 	};
 
-	req.session.data.reject.forEach((item) => {
-		if(item == 'not enough') {
-			// loop through sub reasons and attach as sub reasons
-			var r = {
-				text: 'Not enough information on',
-				sub: []
-			};
+	if(req.session.data.reject) {
+		req.session.data.reject.forEach((item) => {
+			if(item == 'not enough') {
+				// loop through sub reasons and attach as sub reasons
+				var r = {
+					text: 'Not enough information on',
+					sub: []
+				};
 
-			req.session.data.rejectsub.forEach((item) => {
-				r.sub.push({
+				req.session.data.rejectsub.forEach((item) => {
+					r.sub.push({
+						text: item
+					});
+				});
+				pageObject.reasons.push(r);
+			} else if (item == 'Other') {
+				// grab other text input and add as reason
+				pageObject.reasons.push({
+					text: `Other: ${req.session.data.otherReason}`
+				});
+			} else {
+				pageObject.reasons.push({
 					text: item
 				});
-			});
-			pageObject.reasons.push(r);
-		} else if (item == 'Other') {
-			// grab other text input and add as reason
-			pageObject.reasons.push({
-				text: `Other: ${req.session.data.otherReason}`
-			});
-		} else {
-			pageObject.reasons.push({
-				text: item
-			});
-		}
-	});
+			}
+		});
+	}
 
 	res.render('app/case/fr/decision/check', pageObject);
 });

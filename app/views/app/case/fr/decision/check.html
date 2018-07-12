@@ -33,13 +33,7 @@
               <dt class="app-check-your-answers__question">Decision</dt>
 
               <dd class="app-check-your-answers__answer">
-                {% if data.decision == 'approve' %}
-                  Approve
-                {% elseif data.decision == 'approve-with-changes' %}
-                  Approve with changes
-                {% elseif data.decision == 'reject' %}
-                  Reject
-                {% endif %}
+                {{data.decision}}
               </dd>
 
               <dd class="app-check-your-answers__change">
@@ -47,7 +41,7 @@
               </dd>
 
             </div>
-            {% if data.decision == 'reject' %}
+            {% if reasons %}
               <div class="app-check-your-answers__contents">
 
                 <dt class="app-check-your-answers__question">Reasons</dt>
@@ -68,7 +62,7 @@
                 </dd>
 
                 <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/decision">Change <span class="govuk-visually-hidden">decision</span></a>
+                  <a href="/app/cases/{{_case.id}}/fr/reject-reasons">Change <span class="govuk-visually-hidden">decision</span></a>
                 </dd>
 
               </div>

@@ -75,16 +75,19 @@ Decision{% endblock %}
               },
               "items": [
                 {
-                  "value": "approve",
-                  "html": "Approve"
+                  value: "Approve",
+                  html: "Approve",
+                  checked: checked('decision', "Approve") == 'checked'
                 },
                 {
-                  "value": "approve-with-changes",
-                  "html": "Approve with changes"
+                  value: "Approve with changes",
+                  html: "Approve with changes",
+                  checked: checked('decision', "Approve with changes") == 'checked'
                 },
                 {
-                  "value": "reject",
-                  "html": "Reject"
+                  value: "Reject",
+                  html: "Reject",
+                  checked: checked('decision', "Reject") == 'checked'
                 }
               ]
             }) }}
