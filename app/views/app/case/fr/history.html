@@ -23,11 +23,38 @@
 
     <h1 class="govuk-heading-l">Consent order version history</h1>
 
-    <ul class="govuk-list">
-      <li><a href="" class="jui-timeline__document-link">11 Jan 2018 at 9:01am</a> (latest version)</li>
-      <li><a href="" class="jui-timeline__document-link">10 Jan 2018 at 8am</a></li>
-      <li><a href="" class="jui-timeline__document-link">1 Jan 2018 at 3:33am</a></li>
-    </ul>
+    {{ govukTable({
+      head: [
+        { text: 'Version'},
+        { text: 'Date'},
+        { text: 'Time'},
+        { text: 'Author'},
+        { text: 'Download'}
+      ],
+      rows: [
+        [
+          { text: 'Version 3'},
+          { text: '11 Jan 2018'},
+          { text: '9am'},
+          { text: 'Judge Prita Shah'},
+          { html: '<a href="">Download</a>'}
+        ],
+        [
+          { text: 'Version 2'},
+          { text: '11 Jan 2018'},
+          { text: '8.54am'},
+          { text: 'Judge Prita Shah'},
+          { html: '<a href="">Download</a>'}
+        ],
+        [
+          { text: 'Version 1'},
+          { text: '1 Jan 2018'},
+          { text: '10.31am'},
+          { text: 'Someone else'},
+          { html: '<a href="">Download</a>'}
+        ]
+      ]
+    }) }}
 
   </main>
 
