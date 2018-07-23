@@ -11,11 +11,37 @@ module.exports = [
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'Fox Court',
     requirements: 'Assisted Digital support requested',
+    events: [
+      {
+        id: uuid(),
+        date: moment('2018-05-20 13:01'),
+        title: 'D8 submitted',
+        by: 'John Smith'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-07-07 13:01'),
+        title: 'D84 submitted',
+        by: 'John Smith'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-07-10 13:01'),
+        title: 'Form A submitted',
+        by: 'John Smith'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-08-10 13:01'),
+        title: 'Draft consent order submitted',
+        by: 'John Smith'
+      }
+    ],
     parties: [
       {
         type: 'Petitioner',
-        firstName: 'Thomas',
-        lastName: 'Jones',
+        firstName: 'John',
+        lastName: 'Smith',
         representative: {
           name: '',
           role: '',
@@ -24,8 +50,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Victoria',
-        lastName: 'Jones',
+        firstName: 'Jane',
+        lastName: 'Smith',
         representative: {
           name: '',
           role: '',
