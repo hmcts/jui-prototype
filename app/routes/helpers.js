@@ -9,7 +9,7 @@ function getPartiesLine(_case) {
 			return party.firstName + ' ' + party.lastName;
 		}
 
-	}).join(' versus ');
+	}).join(' v ');
 }
 
 function getAppellantName(_case) {
