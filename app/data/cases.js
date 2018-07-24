@@ -346,10 +346,10 @@ module.exports = [
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
-      id: '1',
+      id: 'key-facts',
       label: 'Key facts'
     }, {
-      id: '2',
+      id: 'decree-nisi-application',
       label: 'Application for decree nisi'
     }],
     lastAction: moment('2018-05-09'),
@@ -385,8 +385,8 @@ module.exports = [
     parties: [
       {
         type: 'Petitioner',
-        firstName: 'Thomas',
-        lastName: 'Jones',
+        firstName: 'John',
+        lastName: 'Smith',
         representative: {
           name: '',
           role: '',
@@ -395,8 +395,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Victoria',
-        lastName: 'Jones',
+        firstName: 'Jane',
+        lastName: 'Smith',
         representative: {
           name: '',
           role: '',
@@ -408,11 +408,11 @@ module.exports = [
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
-      id: '1',
-      label: 'Key facts'
+      id: 'd8',
+      label: 'D8'
     }, {
-      id: '2',
-      label: 'Application for decree nisi'
+      id: 'd84',
+      label: 'D84'
     }],
     lastAction: moment('2018-05-09'),
     petitioner: '',
