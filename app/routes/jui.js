@@ -10,7 +10,7 @@ router.use(function(req, res, next) {
 	next();
 });
 
-router.get('/signout', (req, res) => {
+router.get('/sign-out', (req, res) => {
 	req.session.destroy();
 	res.redirect('/app/signin');
 });

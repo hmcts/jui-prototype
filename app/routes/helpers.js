@@ -9,7 +9,7 @@ function getPartiesLine(_case) {
 			return party.firstName + ' ' + party.lastName;
 		}
 
-	}).join(' versus ');
+	}).join(' v ');
 }
 
 function getAppellantName(_case) {
@@ -46,7 +46,7 @@ function getCaseActions(_case) {
 			return [
 				{
 					href: `/app/cases/${_case.id}/pip/make-decision`,
-					text: 'Make decision'
+					text: 'Make a decision'
 				},
 				{
 					href: `/app/cases/${_case.id}/pip/list-for-hearing`,
@@ -57,14 +57,14 @@ function getCaseActions(_case) {
 			return [
 				{
 					href: `/app/cases/${_case.id}/fr/decision`,
-					text: 'Make decision'
+					text: 'Make a decision'
 				}
 			];
 		case 'divorce':
 			return [
 				{
 					href: `/app/cases/${_case.id}/divorce/make-decision`,
-					text: 'Make decision'
+					text: 'Make a decision'
 				},
 				{
 					href: `/app/cases/${_case.id}/divorce/mark-as-prepared`,

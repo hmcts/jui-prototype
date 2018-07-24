@@ -25,33 +25,29 @@
 
     {{ govukTable({
       head: [
-        { text: 'Version'},
+        { text: 'Version' },
         { text: 'Date'},
         { text: 'Time'},
-        { text: 'Author'},
-        { text: 'Download'}
+        { text: 'Created by'}
       ],
       rows: [
         [
-          { text: 'Version 3'},
+          { html: '<a href="">Version 3</a>' },
           { text: '11 Jan 2018'},
           { text: '9am'},
-          { text: 'Judge Prita Shah'},
-          { html: '<a href="">Download</a>'}
+          { text: 'Judge Prita Shah'}
         ],
         [
-          { text: 'Version 2'},
+        { html: '<a href="">Version 2</a>' },
           { text: '11 Jan 2018'},
           { text: '8.54am'},
-          { text: 'Judge Prita Shah'},
-          { html: '<a href="">Download</a>'}
+          { text: 'Judge Prita Shah'}
         ],
         [
-          { text: 'Version 1'},
+        { html: '<a href="">Version 1</a>' },
           { text: '1 Jan 2018'},
           { text: '10.31am'},
-          { text: 'Someone else'},
-          { html: '<a href="">Download</a>'}
+          { text: 'Someone else'}
         ]
       ]
     }) }}

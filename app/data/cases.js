@@ -6,7 +6,7 @@ module.exports = [
   {
     id: 'FR1231612322',
     typeId: types.fr.id,
-    status: 'Deadline expired',
+    status: 'Draft consent order submitted',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'Fox Court',
@@ -71,7 +71,7 @@ module.exports = [
     }],
     linkedCases: [{
       type: 'Divorce',
-      id: 'SC1245612322'
+      id: 'BV18D00153'
     }]
   },
 
@@ -346,10 +346,10 @@ module.exports = [
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
-      id: '1',
+      id: 'key-facts',
       label: 'Key facts'
     }, {
-      id: '2',
+      id: 'decree-nisi-application',
       label: 'Application for decree nisi'
     }],
     lastAction: moment('2018-05-09'),
@@ -378,11 +378,15 @@ module.exports = [
   {
     id: 'BV18D00153',
     typeId: types.divorce.id,
+    linkedCases: [{
+      type: 'Financial remedy',
+      id: 'FR1231612322'
+    }],
     parties: [
       {
         type: 'Petitioner',
-        firstName: 'Thomas',
-        lastName: 'Jones',
+        firstName: 'John',
+        lastName: 'Smith',
         representative: {
           name: '',
           role: '',
@@ -391,8 +395,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Victoria',
-        lastName: 'Jones',
+        firstName: 'Jane',
+        lastName: 'Smith',
         representative: {
           name: '',
           role: '',
@@ -404,11 +408,11 @@ module.exports = [
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
-      id: '1',
-      label: 'Key facts'
+      id: 'd8',
+      label: 'D8'
     }, {
-      id: '2',
-      label: 'Application for decree nisi'
+      id: 'd84',
+      label: 'D84'
     }],
     lastAction: moment('2018-05-09'),
     petitioner: '',
