@@ -71,7 +71,7 @@ module.exports = [
     }],
     linkedCases: [{
       type: 'Divorce',
-      id: 'SC1245612322'
+      id: 'BV18D00153'
     }]
   },
 
@@ -378,6 +378,10 @@ module.exports = [
   {
     id: 'BV18D00153',
     typeId: types.divorce.id,
+    linkedCases: [{
+      type: 'Financial remedy',
+      id: 'FR1231612322'
+    }],
     parties: [
       {
         type: 'Petitioner',

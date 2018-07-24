@@ -27,7 +27,7 @@ router.get('/app/cases/:id/fr', (req, res) => {
 		pageObject.linkedCaseRows.push([{
 			html: item.type
 		}, {
-			html: `<a href="/">${item.id}</a>`
+			html: `<a href="/app/cases/${item.id}">${item.id}</a>`
 		}])
 	});
 

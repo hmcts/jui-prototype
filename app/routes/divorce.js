@@ -25,6 +25,16 @@ router.get('/app/cases/:id/divorce', (req, res) => {
 	pageObject.representativesRows.push([{ html: 'Petitioner' }, { html: _case.petitioner ? _case.petitioner : 'Unrepresented' }]);
 	pageObject.representativesRows.push([{ html: 'Respondent' }, { html: _case.respondent ? _case.respondent : 'Unrepresented' }]);
 
+	pageObject.linkedCaseRows = [];
+
+	_case.linkedCases.forEach((item) => {
+		pageObject.linkedCaseRows.push([{
+			html: item.type
+		}, {
+			html: `<a href="/app/cases/${item.id}">${item.id}</a>`
+		}])
+	});
+
 	res.render('app/case/divorce/summary', pageObject);
 });
 

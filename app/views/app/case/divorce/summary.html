@@ -34,6 +34,14 @@
           "rows": detailsRows
         }) }}
 
+        <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Linked cases</h2>
+
+        {{ govukTable({
+          "classes": "govuk-!-margin-bottom-7  jui-table  jui-table--fixed",
+          "firstCellIsHeader": true,
+          "rows": linkedCaseRows
+        }) }}
+
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Representatives</h2>
 
         {{ govukTable({
