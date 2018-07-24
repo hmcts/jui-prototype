@@ -6,7 +6,7 @@ module.exports = [
   {
     id: 'FR1231612322',
     typeId: types.fr.id,
-    status: 'Deadline expired',
+    status: 'Draft consent order submitted',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'Fox Court',
