@@ -28,10 +28,10 @@ Decision{% endblock %}
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-          {% if errors %}
+          {% if errorSummary.items.length %}
             {{ govukErrorSummary({
               titleText: "There is a problem",
-              errorList: errors
+              errorList: errorSummary.items
             }) }}
           {% endif %}
 
@@ -64,9 +64,10 @@ Decision{% endblock %}
 
 
             {{ govukRadios({
-              "idPrefix": "decision",
-              "name": "decision",
-              "fieldset": {
+              idPrefix: "decision",
+              name: "decision",
+              errorMessage: inlineErrors.decision,
+              fieldset: {
                 "legend": {
                   text: 'Make decision',
                   isPageHeading: true,

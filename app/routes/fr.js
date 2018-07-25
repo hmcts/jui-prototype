@@ -1,6 +1,7 @@
 var express = require('express');
 var router  = express.Router();
 var helpers = require('./helpers');
+var Validator = require('./validator');
 
 router.get('/app/cases/:id/fr', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -75,12 +76,39 @@ router.get('/app/cases/:id/fr/decision', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/decision', (req, res) => {
-	if(req.body.decision === 'Approve') {
-		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
-	} else if(req.body.decision === 'Approve with changes') {
-		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
+	var v = new Validator(req, res);
+	v.add('decision', [{
+		fn: (value) => {
+			var valid = true;
+			if(!value || value.trim().length ==  0) {
+				valid = false;
+			}
+			return valid;
+		},
+		message: 'Select your decision'
+	}]);
+
+	if(v.validate()) {
+		if(req.body.decision === 'Approve') {
+			res.redirect(`/app/cases/${req.params.id}/fr/notes`);
+		} else if(req.body.decision === 'Approve with changes') {
+			res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
+		} else {
+			res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
+		}
 	} else {
-		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
+
+		var _case = helpers.getCase(req.session.cases, req.params.id);
+
+		var pageObject = {
+			casebar: helpers.getCaseBarObject(_case),
+			caseActions: helpers.getCaseActions(_case),
+			backLink: {
+				href: `/app/cases/${_case.id}`
+			}
+		};
+
+		res.render('app/case/fr/decision/decision', pageObject);
 	}
 });
 
