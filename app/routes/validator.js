@@ -1,5 +1,6 @@
-function Validator(req) {
-	this.req = req;
+function Validator(req, res) {
+  this.req = req;
+  this.res = res;
 	this.validators = [];
 	this.errors = [];
 }
@@ -19,6 +20,20 @@ Validator.prototype.getFormattedErrors = function() {
 	return this.errors.map(this.formatError);
 };
 
+Validator.prototype.exposeInlineErrors = function() {
+  this.res.locals.inlineErrors = {};
+  this.errors.forEach(error => {
+    const { name, message } = error;
+    this.res.locals.inlineErrors[name] = { text: message };
+  });
+};
+
+Validator.prototype.exposeErrorSummaryItems = function() {
+  this.res.locals.errorSummary = {
+    items: this.getFormattedErrors()
+  };
+};
+
 Validator.prototype.formatError = function(error) {
 	return {
 		text: error.message,
@@ -28,29 +43,6 @@ Validator.prototype.formatError = function(error) {
 
 Validator.prototype.getError = function(name) {
 	return this.getErrors().filter(error => error.name == name).map(this.formatError)[0];
-};
-
-Validator.prototype.validate = function() {
-	this.errors = [];
-  var validator = null,
-    validatorValid = true,
-    i,
-    j;
-  for (i = 0; i < this.validators.length; i++) {
-    validator = this.validators[i];
-    for (j = 0; j < validator.rules.length; j++) {
-      validatorValid = validator.rules[j].fn(this.req.body[validator.name],
-        validator.rules[j].params);
-      if (!validatorValid) {
-        this.errors.push({
-          name: validator.name,
-          message: validator.rules[j].message
-        });
-        break;
-      }
-    }
-  }
-  return this.errors.length === 0;
 };
 
 Validator.prototype.validate = function() {
@@ -75,6 +67,8 @@ Validator.prototype.validate = function() {
   }
 
   this.errors = errors;
+  this.exposeInlineErrors();
+  this.exposeErrorSummaryItems();
 
   return errors.length == 0;
 }
