@@ -40,6 +40,9 @@
   <head>
       <meta charset="utf-8" />
       <title>
+        {% if hasValidationErrors %}
+          Errors:
+        {% endif %}
         {% block pageTitle %}
           Judicial case manager
         {% endblock %}

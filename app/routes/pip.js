@@ -43,7 +43,7 @@ router.get('/app/cases/:id/pip/make-decision', (req, res) => {
 
 router.post('/app/cases/:id/pip/make-decision', (req, res) => {
 
-	var v = new Validator(req);
+	var v = new Validator(req, res);
 	v.add('decision-notes', [{
 		fn: (value) => {
 			return value.trim().length > 0;
@@ -60,9 +60,7 @@ router.post('/app/cases/:id/pip/make-decision', (req, res) => {
 			caseActions: helpers.getCaseActions(_case),
 			backLink: {
 				href: `/app/cases/${_case.id}`
-			},
-			errors: v.getFormattedErrors(),
-			decisionNotesError: v.getError('decision-notes')
+			}
 		};
 		res.render('app/case/pip/decision/decision', pageObject);
 	}
