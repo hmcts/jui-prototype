@@ -226,6 +226,10 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 		reasons: []
 	};
 
+	if(req.session.data.decision === 'List for hearing') {
+		pageObject.backLink.href = `/app/cases/${_case.id}/fr/hearing-details`
+	}
+
 	if(req.session.data.reject) {
 		req.session.data.reject.forEach((item) => {
 			if(item == 'not enough') {

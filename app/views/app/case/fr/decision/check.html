@@ -41,6 +41,105 @@
               </dd>
 
             </div>
+            {% if data.reason %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Reason for hearing</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data.reason}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
+            {% if data.duration %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Hearing duration (minutes)</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data.duration}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
+            {% if data['minimum-notice-needed'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Minimum duration needed (working days)</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data['minimum-notice-needed']}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
+
+            {% if data['latest-listing-date-day'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Latest date this can be listed</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data['latest-listing-date-day']}}/{{data['latest-listing-date-month']}}/{{data['latest-listing-date-year']}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
+            {% if data['listed-for-you'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Do you want it to be listed for you?</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data['listed-for-you']}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
+            {% if data['transfer'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Do you want the hearing to be transferred to another court?</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data['transfer']}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
+            {% if data['name-of-court'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Name of court</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data['name-of-court']}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
+                </dd>
+              </div>
+            {% endif %}
             {% if reasons.length %}
               <div class="app-check-your-answers__contents">
 
@@ -67,6 +166,7 @@
 
               </div>
             {% endif %}
+
             {% if data['information-needed'] %}
               <div class="app-check-your-answers__contents">
 
