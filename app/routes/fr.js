@@ -159,6 +159,25 @@ router.post('/app/cases/:id/fr/more-information', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/fr/check`);
 });
 
+router.get('/app/cases/:id/fr/hearing-details', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/fr/decision`
+		},
+		_case: _case
+	};
+
+	res.render('app/case/fr/decision/hearing-details', pageObject);
+});
+
+router.post('/app/cases/:id/fr/hearing-details', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+});
+
 router.get('/app/cases/:id/fr/notes', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 
