@@ -69,6 +69,7 @@ Validator.prototype.validate = function() {
   this.errors = errors;
   this.exposeInlineErrors();
   this.exposeErrorSummaryItems();
+  this.res.locals.hasValidationErrors = true;
 
   return errors.length == 0;
 }
