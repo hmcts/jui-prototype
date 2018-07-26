@@ -46,7 +46,7 @@ function getCaseActions(_case) {
 			return [
 				{
 					href: `/app/cases/${_case.id}/pip/make-decision`,
-					text: 'Make a decision'
+					text: 'Make decision'
 				},
 				{
 					href: `/app/cases/${_case.id}/pip/list-for-hearing`,
@@ -57,14 +57,14 @@ function getCaseActions(_case) {
 			return [
 				{
 					href: `/app/cases/${_case.id}/fr/decision`,
-					text: 'Make a decision'
+					text: 'Make decision'
 				}
 			];
 		case 'divorce':
 			return [
 				{
 					href: `/app/cases/${_case.id}/divorce/make-decision`,
-					text: 'Make a decision'
+					text: 'Make decision'
 				},
 				{
 					href: `/app/cases/${_case.id}/divorce/mark-as-prepared`,

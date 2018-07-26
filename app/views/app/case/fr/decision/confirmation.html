@@ -13,25 +13,25 @@
 
           <div class="govuk-panel govuk-panel--confirmation">
             <h2 class="govuk-panel__title">
-              {% if data.decision == 'Approve' %}
-                Consent order approved
-              {% elseif data.decision == 'Approve with changes' %}
-                Consent order approved with changes
-              {% elseif data.decision == 'Reject' %}
-                Consent order rejected
-              {% endif %}
+              Decision submitted
             </h2>
             <div class="govuk-panel__body">
               {{_case.id}}
             </div>
           </div>
 
-          <p>
-            Something here?
-          </p>
-
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p>We’ve sent your decision to admin and it will be issued to the parties involved.</p>
+
+          {% if data.decision == 'Approve consent order' %}
+            <p>Your decision has been sent to a court administrator who will seal the consent order and send it out to the parties.</p>
+          {% elseif data.decision == 'Ask for more information' %}
+            <p>Your request for more information has been sent to the parties.</p>
+          {% elseif data.decision == 'List for hearing' %}
+            <p>TBD</p>
+          {% elseif data.decision == 'Reject consent order' %}
+            <p>Your decision has been sent to a court administrator who will seal the consent order and send it out to the parties.</p>
+          {% endif %}
+
           <p><a href="/app/dashboard">Go to your dashboard</a></p>
 
         </div>

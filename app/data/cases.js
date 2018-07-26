@@ -6,7 +6,7 @@ module.exports = [
   {
     id: 'FR1231612322',
     typeId: types.fr.id,
-    status: 'Draft consent order submitted',
+    status: '<a href="/app/cases/FR1231612322/documents/1">Review draft consent order</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'Fox Court',
@@ -20,13 +20,13 @@ module.exports = [
       },
       {
         id: uuid(),
-        date: moment('2018-07-07 13:01'),
-        title: 'D84 submitted',
+        date: moment('2018-05-20 13:01'),
+        title: 'Statement of information (D81) submitted',
         by: 'John Smith'
       },
       {
         id: uuid(),
-        date: moment('2018-07-10 13:01'),
+        date: moment('2018-05-20 13:01'),
         title: 'Form A submitted',
         by: 'John Smith'
       },
@@ -61,13 +61,13 @@ module.exports = [
     ],
     documents: [{
       id: '1',
-      label: 'Consent order'
+      label: 'Draft consent order'
+    }, {
+      id: '3',
+      label: 'Statement of information (D81)'
     }, {
       id: '2',
       label: 'Form A'
-    }, {
-      id: '3',
-      label: 'D81'
     }],
     linkedCases: [{
       type: 'Divorce',
@@ -78,7 +78,7 @@ module.exports = [
   {
     id: 'SC1231612322',
     typeId: types.pip.id,
-    status: 'Deadline expired',
+    status: 'Review case',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     urgent: true,
@@ -273,7 +273,7 @@ module.exports = [
         }
       }
     ],
-    status: 'Party replied',
+    status: 'Review party response',
     applicationDate: moment('2018-05-09'),
     lastAction: moment('2018-05-09'),
     urgent: false,
@@ -342,7 +342,7 @@ module.exports = [
         }
       }
     ],
-    status: 'Consider decree nisi',
+    status: 'Review decree nisi',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
@@ -404,7 +404,7 @@ module.exports = [
         }
       }
     ],
-    status: 'Consider decree nisi',
+    status: 'Review decree nisi',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{

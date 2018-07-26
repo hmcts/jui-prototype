@@ -75,10 +75,12 @@ router.get('/app/cases/:id/fr/decision', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/decision', (req, res) => {
-	if(req.body.decision === 'Approve') {
+	if(req.body.decision === 'Approve consent order') {
 		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
-	} else if(req.body.decision === 'Approve with changes') {
-		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
+	} else if(req.body.decision === 'Ask for more information') {
+		res.redirect(`/app/cases/${req.params.id}/fr/more-information`);
+	} else if(req.body.decision === 'List for hearing') {
+		res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
 	} else {
 		res.redirect(`/app/cases/${req.params.id}/fr/upload-1`);
 	}
@@ -104,11 +106,11 @@ router.post('/app/cases/:id/fr/upload-1', (req, res) => {
 		res.redirect(`/app/cases/${req.params.id}/fr/upload-2`);
 	} else {
 		switch(req.session.data.decision) {
-			case 'Approve':
-			case 'Approve with changes':
+			case 'Approve consent order':
+			case 'Ask for more information':
 				res.redirect(`/app/cases/${req.params.id}/fr/notes`);
 				break;
-			case 'Reject':
+			case 'Reject consent order':
 				res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 				break;
 		}
@@ -131,11 +133,30 @@ router.get('/app/cases/:id/fr/upload-2', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/upload-2', (req, res) => {
-	if(req.session.data.decision === 'Approve with changes') {
+	if(req.session.data.decision === 'Ask for more information') {
 		res.redirect(`/app/cases/${req.params.id}/fr/notes`);
 	} else {
 		res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 	}
+});
+
+router.get('/app/cases/:id/fr/more-information', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/fr/decision`
+		},
+		_case: _case
+	};
+
+	res.render('app/case/fr/decision/more-information', pageObject);
+});
+
+router.post('/app/cases/:id/fr/more-information', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/check`);
 });
 
 router.get('/app/cases/:id/fr/notes', (req, res) => {

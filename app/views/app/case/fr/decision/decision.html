@@ -68,26 +68,31 @@ Decision{% endblock %}
               "name": "decision",
               "fieldset": {
                 "legend": {
-                  text: 'Make decision',
+                  text: 'Make a decision',
                   isPageHeading: true,
                   classes: 'govuk-fieldset__legend--l'
                 }
               },
               "items": [
                 {
-                  value: "Approve",
-                  html: "Approve",
-                  checked: checked('decision', "Approve") == 'checked'
+                  value: "Approve consent order",
+                  html: "Approve consent order",
+                  checked: checked('decision', "Approve consent order") == 'checked'
                 },
                 {
-                  value: "Approve with changes",
-                  html: "Approve with changes",
-                  checked: checked('decision', "Approve with changes") == 'checked'
+                  value: "Ask for more information",
+                  html: "Ask for more information",
+                  checked: checked('decision', "Ask for more information") == 'checked'
                 },
                 {
-                  value: "Reject",
-                  html: "Reject",
-                  checked: checked('decision', "Reject") == 'checked'
+                  value: "List for hearing",
+                  html: "List for hearing",
+                  checked: checked('decision', "List for hearing") == 'checked'
+                },
+                {
+                  value: "Reject consent order",
+                  html: "Reject consent order",
+                  checked: checked('decision', "Reject consent order") == 'checked'
                 }
               ]
             }) }}
