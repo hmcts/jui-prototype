@@ -42,3 +42,23 @@ mark.comment {
 .jui-measure {
   max-width: 833px;
 }
+
+.jui-case-action-alert {
+  background-color: govuk-colour("bright-red");
+  color: govuk-colour("white");
+  padding: govuk-spacing(4);
+  margin-bottom: govuk-spacing(6);
+}
+
+.jui-case-action-alert h2 {
+  color: govuk-colour("white");
+}
+
+.jui-case-action-alert p {
+  margin-bottom: 0;
+  color: govuk-colour("white");
+}
+
+.jui-case-action-alert a {
+  color: govuk-colour("white");
+}
