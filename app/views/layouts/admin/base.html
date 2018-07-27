@@ -20,19 +20,19 @@
 {%- from "warning-text/macro.njk" import govukWarningText %}
 {%- from "checkboxes/macro.njk" import govukCheckboxes %}
 {%- from "radios/macro.njk" import govukRadios %}
-
-<!-- Temp override until GDS do this work -->
 {%- from "tabs/macro.njk" import govukTabs %}
 
-<!-- JUI specific -->
+<!-- HMCTS -->
+{%- from "timeline/macro.njk" import hmctsTimeline %}
+{%- from "sub-navigation/macro.njk" import hmctsSubNavigation %}
+
+<!-- App specific -->
 {%- from "status/macro.njk" import juiStatus %}
 {%- from "alert/macro.njk" import juiAlert %}
 {%- from "information-panel/macro.njk" import juiInformationPanel %}
 {%- from "case-actions/macro.njk" import juiCaseActions %}
 {%- from "casebar/macro.njk" import juiCasebar %}
-{%- from "timeline/macro.njk" import hmctsTimeline %}
 {%- from "document/macro.njk" import juiDocument %}
-{%- from "secondary-nav/macro.njk" import juiSecondaryNav %}
 
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="{{ html_lang|default('en') }}"><![endif]-->
