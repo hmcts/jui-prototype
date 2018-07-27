@@ -1,9 +1,9 @@
 var express = require('express');
 var router  = express.Router();
 var helpers = require('./helpers');
+var Validator = require('./Validator');
 var moment = require('moment');
 var uuid = require('uuid/v4');
-
 
 router.get('/app/cases/:id/questions', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -201,17 +201,55 @@ router.get('/app/cases/:case_id/questions/:question_id/edit', (req, res) => {
 
 router.post('/app/cases/:case_id/questions/:question_id/edit', (req, res) => {
 
-	var _case = helpers.getCase(req.session.cases, req.params.case_id);
+	var v = new Validator(req, res);
+	v.add('subject', [{
+		fn: (value) => {
+			var valid = true;
+			if(!value || value.trim().length ==  0) {
+				valid = false;
+			}
+			return valid;
+		},
+		message: 'Enter the subject'
+	}]);
+	v.add('body', [{
+		fn: (value) => {
+			var valid = true;
+			if(!value || value.trim().length ==  0) {
+				valid = false;
+			}
+			return valid;
+		},
+		message: 'Enter the question'
+	}]);
 
+	var _case = helpers.getCase(req.session.cases, req.params.case_id);
 	var question = helpers.getQuestion(_case, req.params.question_id);
 
-	question.subject = req.body.subject;
-	question.body = req.body.body;
-	question.dateChanged = new Date();
+	if(v.validate()) {
 
-	req.flash('success', 'question updated')
 
-	res.redirect(`/app/cases/${_case.id}/questions`);
+		question.subject = req.body.subject;
+		question.body = req.body.body;
+		question.dateChanged = new Date();
+
+		req.flash('success', 'question updated')
+
+		res.redirect(`/app/cases/${_case.id}/questions`);
+	} else {
+		var pageObject = {
+			casebar: helpers.getCaseBarObject(_case),
+			caseActions: helpers.getCaseActions(_case)
+		};
+		pageObject.backLink = {
+			href: `/app/cases/${_case.id}/questions/${question.id}`
+		};
+
+		res.render('app/case/questions/edit', pageObject);
+	}
+
+
+
 
 });
 

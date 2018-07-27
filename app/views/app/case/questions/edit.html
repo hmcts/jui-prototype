@@ -27,6 +27,13 @@
 
           <h1 class="govuk-heading-xl">Edit question</h1>
 
+          {% if errorSummary.items.length %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorSummary.items
+            }) }}
+          {% endif %}
+
           <form method="post">
 
             {{ govukInput({
@@ -35,7 +42,8 @@
               },
               "id": "subject",
               "name": "subject",
-              "value": question.subject
+              "value": question.subject,
+              errorMessage: inlineErrors.subject
             }) }}
 
             {{ govukTextarea({
@@ -44,7 +52,8 @@
               },
               "id": "body",
               "name": "body",
-              "value": question.body
+              "value": question.body,
+              errorMessage: inlineErrors.body
             }) }}
 
             {{ govukButton({
