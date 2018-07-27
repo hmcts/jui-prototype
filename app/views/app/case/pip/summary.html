@@ -63,9 +63,9 @@
 
         {% if recentEvents.length %}
 
-          {{juiTimeline({
-            "isPageSpecific": false,
-            "events": recentEvents
+          {{hmctsTimeline({
+            headingLevel: 3,
+            events: recentEvents
           })}}
 
           <p><a href="/app/cases/{{_case.id}}/timeline">View full timeline</a></p>

@@ -211,6 +211,7 @@ function getFormattedShortDate(m) {
 }
 
 function getFormattedTime(m) {
+	console.log(m);
 	var date = moment(m);
 	return date.minutes() > 0 ? date.format('h:mma') : date.format('ha');
 }
@@ -233,6 +234,15 @@ function getEvents(_case) {
 		});
 		events = events.reverse()
 	}
+
+	// events = events.map((event) => {
+	// 	// const clone = {...event};
+	// 	// event.date = getFormattedDate(clone.dateUtc);
+	// 	// event.time = getFormattedTime(clone.dateUtc);
+	// 	// event.dateUtc = clone.date;
+	// 	return event;
+	// });
+
 	return events;
 }
 

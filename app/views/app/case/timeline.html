@@ -27,10 +27,8 @@
         <h1 class="govuk-heading-l">Timeline</h1>
 
         {% if events.length %}
-          {{juiTimeline({
-            "classes": "jui-timeline--full",
-            "isPageSpecific": true,
-            "events": events
+          {{hmctsTimeline({
+            events: events
           })}}
         {% else %}
           <p>No events.</p>
