@@ -202,7 +202,8 @@ function removeItemFromArray(array, element) {
 
 function getFormattedDate(m) {
 	var date = moment(m);
-	return date.format('D MMMM YYYY');
+	var format = date.format('D MMMM YYYY');
+	return format;
 }
 
 function getFormattedShortDate(m) {
@@ -211,7 +212,6 @@ function getFormattedShortDate(m) {
 }
 
 function getFormattedTime(m) {
-	console.log(m);
 	var date = moment(m);
 	return date.minutes() > 0 ? date.format('h:mma') : date.format('ha');
 }
@@ -222,8 +222,19 @@ function getRecentEvents(_case) {
 
 function getEvents(_case) {
 	var events = [];
-	if(_case.events) {
-		events = _case.events.sort((a, b) => {
+
+	var caseEvents = _case.events.slice();
+
+	if(caseEvents) {
+		events = caseEvents.map(originalEvent => {
+			var o = Object.create(originalEvent);
+			o.dateUtc = originalEvent.date;
+			o.date = getFormattedDate(originalEvent.date);
+			o.time = getFormattedTime(originalEvent.date);
+			return o;
+		});
+
+		events = events.sort((a, b) => {
 			if(a.date < b.date) {
 				return -1;
 			}
@@ -232,16 +243,8 @@ function getEvents(_case) {
 			}
 			return 0;
 		});
-		events = events.reverse()
+		events = events.reverse();
 	}
-
-	// events = events.map((event) => {
-	// 	// const clone = {...event};
-	// 	// event.date = getFormattedDate(clone.dateUtc);
-	// 	// event.time = getFormattedTime(clone.dateUtc);
-	// 	// event.dateUtc = clone.date;
-	// 	return event;
-	// });
 
 	return events;
 }
