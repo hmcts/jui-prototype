@@ -27,13 +27,15 @@ router.get('/app/cases/:id/divorce', (req, res) => {
 
 	pageObject.linkedCaseRows = [];
 
-	_case.linkedCases.forEach((item) => {
-		pageObject.linkedCaseRows.push([{
-			html: item.type
-		}, {
-			html: `<a href="/app/cases/${item.id}">${item.id}</a>`
-		}])
-	});
+	if(_case.linkedCases) {
+		_case.linkedCases.forEach((item) => {
+			pageObject.linkedCaseRows.push([{
+				html: item.type
+			}, {
+				html: `<a href="/app/cases/${item.id}">${item.id}</a>`
+			}])
+		});
+	}
 
 	res.render('app/case/divorce/summary', pageObject);
 });

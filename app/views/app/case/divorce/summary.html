@@ -58,10 +58,9 @@
 
         {% if recentEvents.length %}
 
-          {{juiTimeline({
-            "classes": "govuk-!-margin-bottom-4",
-            "isPageSpecific": false,
-            "events": recentEvents
+          {{hmctsTimeline({
+            headingLevel: 3,
+            events: recentEvents
           })}}
 
           <p><a href="/app/cases/{{_case.id}}/timeline">View full timeline</a></p>
