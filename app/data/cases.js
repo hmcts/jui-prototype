@@ -20,19 +20,19 @@ module.exports = [
       },
       {
         id: uuid(),
-        date: moment('2018-05-20 13:01'),
+        date: moment('2018-05-20 13:02'),
         title: 'Statement of information (D81) submitted',
         by: 'John Smith'
       },
       {
         id: uuid(),
-        date: moment('2018-05-20 13:01'),
+        date: moment('2018-05-20 13:03'),
         title: 'Form A submitted',
         by: 'John Smith'
       },
       {
         id: uuid(),
-        date: moment('2018-08-10 13:01'),
+        date: moment('2018-05-20 13:04'),
         title: 'Draft consent order submitted',
         by: 'John Smith'
       }

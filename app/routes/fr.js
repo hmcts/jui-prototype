@@ -95,8 +95,8 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 			res.redirect(`/app/cases/${req.params.id}/fr/more-information`);
 		} else if(req.body.decision === 'List for hearing') {
 			res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
-		} else if(req.body.decision === 'List for hearing') {
-			res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
+		} else if(req.body.decision === 'Reject consent order') {
+			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 		}
 	} else {
 			var _case = helpers.getCase(req.session.cases, req.params.id);
