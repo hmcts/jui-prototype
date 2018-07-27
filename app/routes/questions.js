@@ -1,7 +1,7 @@
 var express = require('express');
 var router  = express.Router();
 var helpers = require('./helpers');
-var Validator = require('./Validator');
+var Validator = require('./validator');
 var moment = require('moment');
 var uuid = require('uuid/v4');
 
