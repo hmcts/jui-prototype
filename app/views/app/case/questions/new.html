@@ -24,14 +24,14 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <div class="jui-add-another">
+          <div class="hmcts-add-another">
 
-            <h1 class="govuk-heading-xl jui-add-another__heading" tabindex="-1">Create questions</h1>
+            <h1 class="govuk-heading-xl hmcts-add-another__heading" tabindex="-1">Create questions</h1>
 
             <form method="post" action="/app/cases/{{_case.id}}/questions/new">
 
               {% call govukFieldset({
-                classes: 'jui-add-another__item',
+                classes: 'hmcts-add-another__item',
                 legend: {
                   text: "Question",
                   classes: "govuk-fieldset__legend--m  govuk-heading-m",
@@ -68,7 +68,7 @@
               <div class="jui-button-action">
                 {{ govukButton({
                   "text": "Add another question",
-                  "classes": "jui-button--secondary  govuk-!-margin-bottom-4  jui-add-another__add-button"
+                  "classes": "jui-button--secondary  govuk-!-margin-bottom-4  hmcts-add-another__add-button"
                 }) }}
               </div>
 
@@ -93,6 +93,6 @@
 
 {% block page_scripts %}
   <script>
-    new AddAnother($('.jui-add-another'));
+    new HMCTSFrontend.AddAnother($('.hmcts-add-another'));
   </script>
 {% endblock %}
