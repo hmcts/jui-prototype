@@ -36,11 +36,22 @@
 /* Style variants
    ========================================================================== */
 
+
+// Success
 .jui-alert--success {
   border-color: govuk-colour("green");
 }
 
-
 .jui-alert__icon--success {
   background-image: url(#{$jui-assets-path}icon-success.svg);
+}
+
+
+// Unsuccessfull
+.jui-alert--unsuccessful {
+  border-color: govuk-colour("red");
+}
+
+.jui-alert__icon--unsuccessful {
+  background-image: url(#{$jui-assets-path}icon-unsuccessful.svg);
 }
