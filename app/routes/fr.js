@@ -30,7 +30,7 @@ router.get('/app/cases/:id/fr', (req, res) => {
 			html: item.type
 		}, {
 			html: `<a href="/app/cases/${item.id}">${item.id}</a>`
-		}])
+		}]);
 	});
 
 	res.render('app/case/fr/summary', pageObject);
@@ -253,7 +253,7 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 	};
 
 	if(req.session.data.decision === 'List for hearing') {
-		pageObject.backLink.href = `/app/cases/${_case.id}/fr/hearing-details`
+		pageObject.backLink.href = `/app/cases/${_case.id}/fr/hearing-details`;
 	}
 
 	if(req.session.data.reject) {
