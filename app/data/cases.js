@@ -11,6 +11,7 @@ module.exports = [
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'Fox Court',
     requirements: 'Assisted Digital support requested',
+    decreeDate: moment('2018-05-01 13:01'),
     events: [
       {
         id: uuid(),
