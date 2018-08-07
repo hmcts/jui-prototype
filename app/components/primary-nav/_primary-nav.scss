@@ -4,7 +4,7 @@
 
 .jui-primary-nav {
   color: govuk-colour(white);
-  margin-top: 3px;
+  margin-top: govuk-spacing(1);
 }
 
 
@@ -27,8 +27,6 @@
 
 
 .jui-primary-nav__link {
-  font-weight: bold;
-  text-decoration: none;
 
   &:link,
   &:visited,
