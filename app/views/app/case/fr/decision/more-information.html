@@ -17,34 +17,37 @@ More information
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
+
         <div class="govuk-grid-column-two-thirds">
 
           <form method="post">
 
             {{ govukTextarea({
-              "id": "information-needed",
-              "name": "information-needed",
-              "label": {
-                "text": 'What information do you need?',
-                "isPageHeading": true,
-                "classes": "govuk-label--l"
+              id: 'information-needed',
+              name: 'information-needed',
+              label: {
+                text: 'What information do you need?',
+                isPageHeading: true,
+                classes: 'govuk-label--l'
               },
               value: data['information-needed']
             }) }}
 
             {{ govukButton({
-              "text": "Continue"
+              text: 'Continue'
             }) }}
 
           </form>
+
         </div>
+
       </div>
 
 		</main>
@@ -52,4 +55,3 @@ More information
 	</div>
 
 {% endblock %}
-

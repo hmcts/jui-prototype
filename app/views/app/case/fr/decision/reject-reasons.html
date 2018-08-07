@@ -19,8 +19,8 @@ Decision{% endblock %}
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -39,34 +39,34 @@ Decision{% endblock %}
 
             {% set subReasonsHtml %}
               {{ govukCheckboxes({
-                "idPrefix": "rejectsub",
-                "name": "rejectsub",
-                "fieldset": {
-                  "legend": {
-                    "text": '',
-                    classes: "govuk-fieldset__legend--m"
+                idPrefix: 'rejectsub',
+                name: 'rejectsub',
+                fieldset: {
+                  legend: {
+                    text: '',
+                    classes: 'govuk-fieldset__legend--m'
                   }
                 },
-                "items": [
+                items: [
                   {
-                    html: "parties’ capital position",
-                    value: "parties’ capital position",
-                    checked: checked('rejectsub', "parties’ capital position") == 'checked'
+                    html: 'parties’ capital position',
+                    value: 'parties’ capital position',
+                    checked: checked('rejectsub', 'parties’ capital position') == 'checked'
                   },
                   {
-                    html: "parties’ housing",
-                    value: "parties’ housing",
-                    checked: checked('rejectsub', "parties’ housing") == 'checked'
+                    html: 'parties’ housing',
+                    value: 'parties’ housing',
+                    checked: checked('rejectsub', 'parties’ housing') == 'checked'
                   },
                   {
-                    html: "parties’ pension",
-                    value: "parties’ pension",
-                    checked: checked('rejectsub', "parties’ pension") == 'checked'
+                    html: 'parties’ pension',
+                    value: 'parties’ pension',
+                    checked: checked('rejectsub', 'parties’ pension') == 'checked'
                   },
                   {
-                    html: "children’s housing",
-                    value: "children’s housing",
-                    checked: checked('rejectsub', "children’s housing") == 'checked'
+                    html: 'children’s housing',
+                    value: 'children’s housing',
+                    checked: checked('rejectsub', 'children’s housing') == 'checked'
                   }
                 ]
             }) }}
@@ -74,54 +74,54 @@ Decision{% endblock %}
 
             {% set otherReasonHtml %}
               {{ govukInput({
-                "id": "otherReason",
-                "name": "otherReason",
-                "label": {
-                  "text": 'Other reason',
-                  "classes": "govuk-label--m"
+                id: 'otherReason',
+                name: 'otherReason',
+                label: {
+                  text: 'Other reason',
+                  classes: 'govuk-label--m'
                 },
                 value: data.otherReason
               }) }}
             {% endset %}
 
             {{ govukCheckboxes({
-              "idPrefix": "reject",
-              "name": "reject",
-              "fieldset": {
-                "legend": {
-                  "text": 'Reasons for rejecting the consent order',
+              idPrefix: 'reject',
+              name: 'reject',
+              fieldset: {
+                legend: {
+                  text: 'Reasons for rejecting the consent order',
                   isPageHeading: true,
-                  classes: "govuk-fieldset__legend--l"
+                  classes: 'govuk-fieldset__legend--l'
                 }
               },
               "items": [
                 {
-                  html: "Not enough information given on how the order will affect the",
-                  value: "not enough",
+                  html: 'Not enough information given on how the order will affect the',
+                  value: 'not enough',
                   checked: (checked('reject','not enough') == 'checked'),
                   conditional: {
                     html: subReasonsHtml
                   }
                 },
                 {
-                  html: "Pension annex not uploaded",
-                  value: "Pension annex not uploaded",
+                  html: 'Pension annex not uploaded',
+                  value: 'Pension annex not uploaded',
                   checked: (checked('reject','Pension annex not uploaded') == 'checked')
                 },
                 {
-                  html: "Not clear if respondent has taken independent legal advice",
-                  value: "Not clear if respondent has taken independent legal advice",
+                  html: 'Not clear if respondent has taken independent legal advice',
+                  value: 'Not clear if respondent has taken independent legal advice',
                   checked: (checked('reject','Not clear if respondent has taken independent legal advice') == 'checked')
 
                 },
                 {
-                  html: "D81 form is incomplete",
-                  value: "D81 form is incomplete",
+                  html: 'D81 form is incomplete',
+                  value: 'D81 form is incomplete',
                   checked: (checked('reject','D81 form is incomplete') == 'checked')
                 },
                 {
-                  html: "Other",
-                  value: "Other",
+                  html: 'Other',
+                  value: 'Other',
                   checked: (checked('reject','Other') == 'checked'),
                   conditional: {
                     html: otherReasonHtml
@@ -131,11 +131,13 @@ Decision{% endblock %}
             }) }}
 
             {{ govukButton({
-              "text": "Continue"
+              text: 'Continue'
             }) }}
 
           </form>
+
         </div>
+
       </div>
 
 		</main>
@@ -143,4 +145,3 @@ Decision{% endblock %}
 	</div>
 
 {% endblock %}
-
