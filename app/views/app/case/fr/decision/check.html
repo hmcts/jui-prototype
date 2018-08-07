@@ -28,6 +28,7 @@
           <h1 class="govuk-heading-xl">Check your decision</h1>
 
           <dl class="app-check-your-answers  app-check-your-answers--short  govuk-!-margin-bottom-6">
+            
             <div class="app-check-your-answers__contents">
 
               <dt class="app-check-your-answers__question">Decision</dt>
@@ -41,10 +42,11 @@
               </dd>
 
             </div>
-            {% if data.reason %}
+
+            {% if data['decision'] === 'List for hearing' and data.reason %}
               <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Reason for hearing</dt>
+                <dt class="app-check-your-answers__question">Notes for listings officer</dt>
 
                 <dd class="app-check-your-answers__answer">
                   {{data.reason}}
@@ -55,92 +57,9 @@
                 </dd>
               </div>
             {% endif %}
-            {% if data.duration %}
-              <div class="app-check-your-answers__contents">
+            
 
-                <dt class="app-check-your-answers__question">Hearing duration (minutes)</dt>
-
-                <dd class="app-check-your-answers__answer">
-                  {{data.duration}}
-                </dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-              </div>
-            {% endif %}
-            {% if data['minimum-notice-needed'] %}
-              <div class="app-check-your-answers__contents">
-
-                <dt class="app-check-your-answers__question">Minimum duration needed (working days)</dt>
-
-                <dd class="app-check-your-answers__answer">
-                  {{data['minimum-notice-needed']}}
-                </dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-              </div>
-            {% endif %}
-
-            {% if data['latest-listing-date-day'] %}
-              <div class="app-check-your-answers__contents">
-
-                <dt class="app-check-your-answers__question">Latest date the hearing can be listed</dt>
-
-                <dd class="app-check-your-answers__answer">
-                  {{data['latest-listing-date-day']}}/{{data['latest-listing-date-month']}}/{{data['latest-listing-date-year']}}
-                </dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-              </div>
-            {% endif %}
-            {% if data['listed-for-you'] %}
-              <div class="app-check-your-answers__contents">
-
-                <dt class="app-check-your-answers__question">Do you want the hearing to be listed for you?</dt>
-
-                <dd class="app-check-your-answers__answer">
-                  {{data['listed-for-you']}}
-                </dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-              </div>
-            {% endif %}
-            {% if data['transfer'] %}
-              <div class="app-check-your-answers__contents">
-
-                <dt class="app-check-your-answers__question">Do you want the hearing to be transferred to another court?</dt>
-
-                <dd class="app-check-your-answers__answer">
-                  {{data['transfer']}}
-                </dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-              </div>
-            {% endif %}
-            {% if data['name-of-court'] %}
-              <div class="app-check-your-answers__contents">
-
-                <dt class="app-check-your-answers__question">Name of court</dt>
-
-                <dd class="app-check-your-answers__answer">
-                  {{data['name-of-court']}}
-                </dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-              </div>
-            {% endif %}
-            {% if reasons.length %}
+            {% if data['decision'] === 'Reject consent order' and reasons.length %}
               <div class="app-check-your-answers__contents">
 
                 <dt class="app-check-your-answers__question">Reasons</dt>
@@ -167,10 +86,27 @@
               </div>
             {% endif %}
 
-            {% if data['information-needed'] %}
+
+
+            {% if data['decision'] === 'Reject consent order' and data['reject-notes'] %}
               <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Information needed</dt>
+                <dt class="app-check-your-answers__question">Notes</dt>
+
+                <dd class="app-check-your-answers__answer">{{data['reject-notes']}}</dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/more-information">Change <span class="govuk-visually-hidden">notes</span></a>
+                </dd>
+
+              </div>
+            {% endif %}
+
+
+            {% if data['decision'] === 'Ask for more information' and data['information-needed'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">What information do you need?</dt>
 
                 <dd class="app-check-your-answers__answer">{{data['information-needed']}}</dd>
 
@@ -180,10 +116,13 @@
 
               </div>
             {% endif %}
-            {% if data['decision-notes'] %}
+
+
+            <!-- -->
+            {% if data['decision'] === 'Approve consent order' and data['decision-notes'] %}
               <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Notes</dt>
+                <dt class="app-check-your-answers__question">Notes for court administrator</dt>
 
                 <dd class="app-check-your-answers__answer">{{data['decision-notes']}}</dd>
 
@@ -193,6 +132,7 @@
 
               </div>
             {% endif %}
+
 
           </dl>
 

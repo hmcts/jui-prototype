@@ -19,18 +19,19 @@ Decision{% endblock %}
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
+        
         <div class="govuk-grid-column-two-thirds">
 
           {% if errors %}
             {{ govukErrorSummary({
-              titleText: "There is a problem",
+              titleText: 'There is a problem',
               errorList: errors
             }) }}
           {% endif %}
@@ -38,23 +39,24 @@ Decision{% endblock %}
           <form method="post">
 
             {{ govukTextarea({
-              "id": "decision-notes",
-              "name": "decision-notes",
-              "classes": "govuk-input--width-30x",
-              "label": {
-                "text": 'Notes for court administrator',
-                "isPageHeading": true,
-                "classes": "govuk-label--l"
+              id: 'decision-notes',
+              name: 'decision-notes',
+              label: {
+                text: 'Notes for court administrator',
+                isPageHeading: true,
+                classes: 'govuk-label--l'
               },
               value: data['decision-notes']
             }) }}
 
             {{ govukButton({
-              "text": "Continue"
+              text: 'Continue'
             }) }}
 
           </form>
+
         </div>
+
       </div>
 
 		</main>
@@ -62,4 +64,3 @@ Decision{% endblock %}
 	</div>
 
 {% endblock %}
-

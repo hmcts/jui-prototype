@@ -6,7 +6,7 @@ module.exports = [
   {
     id: 'FR1231612322',
     typeId: types.fr.id,
-    status: '<a href="/app/cases/FR1231612322/documents/1">Review draft consent order</a>',
+    status: '<a href="/app/cases/FR1231612322/documents/1">Draft consent order</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'Fox Court',
@@ -69,6 +69,9 @@ module.exports = [
     }, {
       id: '2',
       label: 'Form A'
+    }, {
+      id: '4',
+      label: 'Grant of decree nisi'
     }],
     linkedCases: [{
       type: 'Divorce',
@@ -79,7 +82,7 @@ module.exports = [
   {
     id: 'SC1231612322',
     typeId: types.pip.id,
-    status: 'Review case',
+    status: '<a href="#">Appellant’s reply</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     urgent: true,
@@ -274,7 +277,7 @@ module.exports = [
         }
       }
     ],
-    status: 'Review party response',
+    status: '<a href="#">Appellant’s reply</a>',
     applicationDate: moment('2018-05-09'),
     lastAction: moment('2018-05-09'),
     urgent: false,
@@ -343,7 +346,7 @@ module.exports = [
         }
       }
     ],
-    status: 'Review decree nisi',
+    status: '<a href="#">Decree nisi application</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
@@ -405,7 +408,7 @@ module.exports = [
         }
       }
     ],
-    status: 'Review decree nisi',
+    status: '<a href="#">Decree nisi application</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{

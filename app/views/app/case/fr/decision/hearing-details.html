@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}
-Hearing details
-{% endblock %}
+{% block pageTitle %}Hearing details{% endblock %}
 
 {% block content %}
 
@@ -17,149 +15,37 @@ Hearing details
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
 
-        <h1 class="govuk-heading-l">Hearing details</h1>
-
       <div class="govuk-grid-row">
+
         <div class="govuk-grid-column-two-thirds">
 
           <form method="post">
 
             {{ govukTextarea({
-              "id": "reason",
-              "name": "reason",
-              "label": {
-                "text": 'Reason',
-                "classes": "govuk-label--m"
+              id: 'reason',
+              name: 'reason',
+              label: {
+                text: 'Notes for listings officer',
+                isPageHeading: true,
+                classes: 'govuk-label--l'
               },
               value: data['reason']
             }) }}
 
-            {{ govukInput({
-              id: 'duration',
-              name: 'duration',
-              classes: 'govuk-input--width-5',
-              label: {
-                text: 'Duration (minutes)',
-                classes: 'govuk-label--m'
-              },
-              value: data['duration']
-            }) }}
-
-            {{ govukInput({
-              id: 'minimum-notice-needed',
-              name: 'minimum-notice-needed',
-              classes: 'govuk-input--width-5',
-              label: {
-                text: 'Minimum notice needed (working days)',
-                classes: 'govuk-label--m'
-              },
-              value: data['minimum-notice-needed']
-            }) }}
-
-            {{ govukDateInput({
-              id: "latest-listing-date",
-              name: "latest-listing-date",
-              fieldset: {
-                legend: {
-                  text: "Latest date this can be listed",
-                  classes: "govuk-fieldset__legend--m"
-                }
-              },
-              hint: {
-                text: "For example, 31 3 2018"
-              },
-              items: [
-                {
-                  name: "day",
-                  value: data['latest-listing-date-day']
-                },
-                {
-                  name: "month",
-                  value: data['latest-listing-date-month']
-                },
-                {
-                  name: "year",
-                  value: data['latest-listing-date-year']
-                }
-              ]
-            }) }}
-
-            {{ govukRadios({
-              'idPrefix': "listed-for-you",
-              name: "listed-for-you",
-              classes: "govuk-radios--inline",
-              fieldset: {
-                legend: {
-                  text: 'Do you want it to be listed for you?',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              items: [
-                {
-                  value: "Yes",
-                  html: "Yes",
-                  checked: checked('listed-for-you', "Yes") == 'checked'
-                },
-                {
-                  value: "No",
-                  html: "No",
-                  checked: checked('listed-for-you', "No") == 'checked'
-                }
-              ]
-            }) }}
-
-            {% set courtNameInputHtml %}
-              {{ govukInput({
-                id: 'name-of-court',
-                name: 'name-of-court',
-                label: {
-                  text: 'Name of court',
-                  classes: 'govuk-label--m'
-                },
-                value: data['name-of-court']
-              }) }}
-            {% endset %}
-
-            {{ govukRadios({
-              'idPrefix': "transfer",
-              name: "transfer",
-              classes: "govuk-radios--inlin",
-              fieldset: {
-                legend: {
-                  text: 'Do you want the hearing to be transferred to another court?',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              items: [
-                {
-                  value: "Yes",
-                  html: "Yes",
-                  checked: checked('transfer', "Yes") == 'checked',
-                  conditional: {
-                    html: courtNameInputHtml
-                  }
-                },
-                {
-                  value: "No",
-                  html: "No",
-                  checked: checked('transfer', "No") == 'checked'
-                }
-              ]
-            }) }}
-
-
             {{ govukButton({
-              text: "Continue"
+              text: 'Continue'
             }) }}
 
           </form>
+
         </div>
+
       </div>
 
 		</main>
@@ -167,4 +53,3 @@ Hearing details
 	</div>
 
 {% endblock %}
-
