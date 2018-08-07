@@ -69,6 +69,9 @@ module.exports = [
     }, {
       id: '2',
       label: 'Form A'
+    }, {
+      id: '4',
+      label: 'Grant of decree nisi'
     }],
     linkedCases: [{
       type: 'Divorce',
