@@ -1,0 +1,64 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      "text": "Back",
+      "href": backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-l">Check or add comments</h1>
+
+      <div class="govuk-grid-row">
+      
+        <div class="govuk-grid-column-two-thirds">
+
+          <iframe class="jui-casefile-document-iframe" src="/public/downloads/ConsentOrder.pdf" height="2235" width="100%" border="0"></iframe>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+          <form method="post">
+
+            {{ govukTextarea({
+              id: 'document-notes',
+              name: 'document-notes',
+              rows: 20,
+              label: {
+                text: 'Notes',
+                classes: 'govuk-label--m'
+              },
+              value: ''
+            }) }}
+
+            {{ govukButton({
+              text: 'Save'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
+
