@@ -101,28 +101,39 @@
   float: left;
 }
 
+
+
+
 .jui-heading__actions {
   float: right;
 }
 
+
+// CASE FILE ACTIONS
+
 .jui-casefile-actions {
-  // font-size: .1px; // Removes space when using inline-block
-  margin-bottom: govuk-spacing(2);
+  font-size: .1px; // Removes space when using inline-block
+  margin-bottom: govuk-spacing(4);
   text-align: right;
 }
 
 .jui-casefile-actions__list {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 .jui-casefile-actions__list-item {
+  @include govuk-font(16);
   display: inline-block;
-  margin-right: govuk-spacing(2);
+  margin-right: govuk-spacing(4);
 
   &:last-child {
     margin-right: 0;
   }
 
 }
+
+// END CASE FILE ACTIONS
+
+
