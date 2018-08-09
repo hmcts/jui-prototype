@@ -87,9 +87,13 @@ mark.comment {
 
 }
 
-.jui-case-action-alert__link:link {
+.jui-case-action-alert__link:link,
+.jui-case-action-alert__link:visited {
   color: govuk-colour("white");
-}// Path to assets for use with the file-url function
+}
+
+
+// Path to assets for use with the file-url function
 // in the govuk frontend toolkit"s url-helpers partial
 $path: "/public/images/";
 
