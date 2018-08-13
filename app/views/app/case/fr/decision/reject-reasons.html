@@ -8,13 +8,13 @@ Decision{% endblock %}
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
-}) }}
+  {# {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties,
+    caseActions: {
+      actions: caseActions
+    }
+  }) }} #}
 
 	<div class="jui-width-container">
 
@@ -26,6 +26,7 @@ Decision{% endblock %}
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
+      
         <div class="govuk-grid-column-two-thirds">
 
           {% if errors %}

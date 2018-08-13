@@ -4,19 +4,19 @@
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
-}) }}
+  {# {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties,
+    caseActions: {
+      actions: caseActions
+    }
+  }) }} #}
 
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -36,71 +36,70 @@
 
             {% set confirmUploadedHtml %}
             {{ govukRadios({
-              "classes": 'govuk-radios--inline',
-              "idPrefix": "reason",
-              "name": "reason",
-              "fieldset": {
-                "legend": {
-                  "text": 'Have you upload a new version of the consent order?',
-                  "classes": 'govuk-fieldset__legend--m'
+              classes: 'govuk-radios--inline',
+              idPrefix: 'reason',
+              name: 'reason',
+              fieldset: {
+                legend: {
+                  text: 'Have you upload a new version of the consent order?',
+                  classes: 'govuk-fieldset__legend--m'
                 }
               },
-              "items": [
+              items: [
                 {
-                  "value": "yes",
-                  "html": "Yes"
+                  value: 'yes',
+                  html: 'Yes'
                 },
                 {
-                  "value": "no",
-                  "html": "No"
+                  value: 'no',
+                  html: 'No'
                 }
               ]
             }) }}
             {% endset %}
 
-
             {{ govukRadios({
-              idPrefix: "decision",
-              name: "decision",
+              idPrefix: 'decision',
+              name: 'decision',
               errorMessage: inlineErrors.decision,
               fieldset: {
-                "legend": {
+                legend: {
                   text: 'Make a decision',
                   isPageHeading: true,
                   classes: 'govuk-fieldset__legend--l'
                 }
               },
-              "items": [
+              items: [
                 {
-                  value: "Approve consent order",
-                  html: "Approve consent order",
-                  checked: checked('decision', "Approve consent order") == 'checked'
+                  value: 'Approve consent order',
+                  html: 'Approve consent order',
+                  checked: checked('decision', 'Approve consent order') == 'checked'
                 },
                 {
-                  value: "Ask for more information",
-                  html: "Ask for more information",
-                  checked: checked('decision', "Ask for more information") == 'checked'
+                  value: 'Ask for more information',
+                  html: 'Ask for more information',
+                  checked: checked('decision', 'Ask for more information') == 'checked'
                 },
                 {
-                  value: "Send annotated order to solicitors",
-                  html: "Send annotated order to solicitors",
-                  checked: checked('decision', "Send annotated order to solicitors") == 'checked'
+                  value: 'Send annotated order to solicitors',
+                  html: 'Send annotated order to solicitors',
+                  checked: checked('decision', 'Send annotated order to solicitors') == 'checked'
                 },
                 {
-                  value: "List for hearing",
-                  html: "List for hearing",
-                  checked: checked('decision', "List for hearing") == 'checked'
+                  value: 'List for hearing',
+                  html: 'List for hearing',
+                  checked: checked('decision', 'List for hearing') == 'checked'
                 },
                 {
-                  value: "Reject consent order",
-                  html: "Reject consent order",
-                  checked: checked('decision', "Reject consent order") == 'checked'
+                  value: 'Reject consent order',
+                  html: 'Reject consent order',
+                  checked: checked('decision', 'Reject consent order') == 'checked'
                 }
               ]
             }) }}
 
             {{ govukButton({
-              "text": "Continue"
+              text: 'Continue'
             }) }}
 
           </form>
@@ -114,4 +113,3 @@
 	</div>
 
 {% endblock %}
-

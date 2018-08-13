@@ -4,19 +4,19 @@
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
-}) }}
+  {# {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties,
+    caseActions: {
+      actions: caseActions
+    }
+  }) }} #}
 
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -26,9 +26,7 @@
       <div class="govuk-grid-row">
       
         <div class="govuk-grid-column-two-thirds">
-
           <iframe class="jui-casefile-document-iframe" src="/public/downloads/ConsentOrder.pdf" height="2235" width="100%" border="0"></iframe>
-
         </div>
 
         <div class="govuk-grid-column-one-third">
@@ -64,4 +62,3 @@
 	</div>
 
 {% endblock %}
-

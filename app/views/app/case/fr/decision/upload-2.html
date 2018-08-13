@@ -2,13 +2,13 @@
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
-}) }}
+  {# {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties,
+    caseActions: {
+      actions: caseActions
+    }
+  }) }} #}
 
 	<div class="jui-width-container">
 
@@ -20,6 +20,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
+
         <div class="govuk-grid-column-two-thirds">
 
           <form method="post" action="/app/cases/{{_case.id}}/fr/upload-2">
@@ -41,7 +42,9 @@
             }) }}
 
           </form>
+
         </div>
+
       </div>
 
 		</main>
@@ -49,4 +52,3 @@
 	</div>
 
 {% endblock %}
-
