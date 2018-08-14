@@ -1,16 +1,8 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Decision{% endblock %}
+{% block pageTitle %}Send questions or comments to the parties{% endblock %}
 
 {% block content %}
-
-  {# {{ juiCasebar({
-    caseId: casebar.id,
-    parties: casebar.parties,
-    caseActions: {
-      actions: caseActions
-    }
-  }) }} #}
 
 	<div class="jui-width-container">
 
@@ -21,7 +13,9 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-l">Check or add comments</h1>
+      <h1 class="govuk-heading-l">Send questions or comments to the parties</h1>
+
+      <h2 class="govuk-heading-m">Draft consent order</h2>
 
       <div class="govuk-grid-row">
       
@@ -33,22 +27,26 @@
 
           <form method="post">
 
-            {{ govukTextarea({
-              id: 'document-notes',
-              name: 'document-notes',
-              rows: 20,
-              label: {
-                text: 'Notes',
-                classes: 'govuk-label--m'
-              },
-              hint: {
-                text: 'Page 1'
-              },
-              value: ''
+            {{ govukButton({
+              text: 'Save',
+              classes: 'hmcts-button--secondary'
             }) }}
 
             {{ govukButton({
-              text: 'Save'
+              text: 'Continue to send'
+            }) }}
+
+            {{ govukTextarea({
+              id: 'document-notes',
+              name: 'document-notes',
+              rows: 10,
+              label: {
+                text: 'Page 1 comments',
+                classes: 'govuk-label--m'
+              },
+              hint: {
+                text: 'If you’ve already added in comments earlier, they will display here.'
+              }
             }) }}
 
           </form>

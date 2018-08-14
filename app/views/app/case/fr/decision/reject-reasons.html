@@ -1,20 +1,10 @@
 {% extends "layouts/admin/base.html" %}
 
 {% block pageTitle %}
-{% if errors %}
-  ({{errors.length}}) errors —
-{% endif %}
-Decision{% endblock %}
+{% if errors %}({{errors.length}}) errors —{% endif %} Decision
+{% endblock %}
 
 {% block content %}
-
-  {# {{ juiCasebar({
-    caseId: casebar.id,
-    parties: casebar.parties,
-    caseActions: {
-      actions: caseActions
-    }
-  }) }} #}
 
 	<div class="jui-width-container">
 
@@ -38,97 +28,18 @@ Decision{% endblock %}
 
           <form method="post">
 
-            {% set subReasonsHtml %}
-              {{ govukCheckboxes({
-                idPrefix: 'rejectsub',
-                name: 'rejectsub',
-                fieldset: {
-                  legend: {
-                    text: '',
-                    classes: 'govuk-fieldset__legend--m'
-                  }
-                },
-                items: [
-                  {
-                    html: 'parties’ capital position',
-                    value: 'parties’ capital position',
-                    checked: checked('rejectsub', 'parties’ capital position') == 'checked'
-                  },
-                  {
-                    html: 'parties’ housing',
-                    value: 'parties’ housing',
-                    checked: checked('rejectsub', 'parties’ housing') == 'checked'
-                  },
-                  {
-                    html: 'parties’ pension',
-                    value: 'parties’ pension',
-                    checked: checked('rejectsub', 'parties’ pension') == 'checked'
-                  },
-                  {
-                    html: 'children’s housing',
-                    value: 'children’s housing',
-                    checked: checked('rejectsub', 'children’s housing') == 'checked'
-                  }
-                ]
-            }) }}
-            {% endset %}
-
-            {% set otherReasonHtml %}
-              {{ govukInput({
-                id: 'otherReason',
-                name: 'otherReason',
-                label: {
-                  text: 'Other reason',
-                  classes: 'govuk-label--m'
-                },
-                value: data.otherReason
-              }) }}
-            {% endset %}
-
-            {{ govukCheckboxes({
-              idPrefix: 'reject',
-              name: 'reject',
-              fieldset: {
-                legend: {
-                  text: 'Reasons for rejecting the consent order',
-                  isPageHeading: true,
-                  classes: 'govuk-fieldset__legend--l'
-                }
+            {{ govukTextarea({
+              id: 'reject-notes',
+              name: 'reject-notes',
+              label: {
+                text: 'Reason',
+                isPageHeading: true,
+                classes: 'govuk-label--l'
               },
-              "items": [
-                {
-                  html: 'Not enough information given on how the order will affect the:',
-                  value: 'not enough',
-                  checked: true,
-                  conditional: {
-                    html: subReasonsHtml
-                  }
-                },
-                {
-                  html: 'Pension annex not uploaded',
-                  value: 'Pension annex not uploaded',
-                  checked: (checked('reject','Pension annex not uploaded') == 'checked')
-                },
-                {
-                  html: 'Not clear if respondent has taken independent legal advice',
-                  value: 'Not clear if respondent has taken independent legal advice',
-                  checked: (checked('reject','Not clear if respondent has taken independent legal advice') == 'checked')
-
-                },
-                {
-                  html: 'D81 form is incomplete',
-                  value: 'D81 form is incomplete',
-                  checked: (checked('reject','D81 form is incomplete') == 'checked')
-                },
-                {
-                  html: 'Other',
-                  value: 'Other',
-                  checked: (checked('reject','Other') == 'checked'),
-                  conditional: {
-                    html: otherReasonHtml
-                  }
-                }
-              ]
+              hint: {
+                text: 'This will be sent to the parties.'
+              },
+              value: data['reject-notes']
             }) }}
 
             {{ govukButton({

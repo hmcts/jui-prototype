@@ -27,7 +27,7 @@
 
           {% if errorSummary.items.length %}
             {{ govukErrorSummary({
-              titleText: "There is a problem",
+              titleText: 'There is a problem',
               errorList: errorSummary.items
             }) }}
           {% endif %}
@@ -76,19 +76,14 @@
                   checked: checked('decision', 'Approve consent order') == 'checked'
                 },
                 {
-                  value: 'Ask for more information',
-                  html: 'Ask for more information',
-                  checked: checked('decision', 'Ask for more information') == 'checked'
+                  value: 'Send questions or comments on draft order to parties',
+                  html: 'Send questions or comments on draft order to parties',
+                  checked: checked('decision', 'Send questions or comments on draft order to parties') == 'checked'
                 },
                 {
-                  value: 'Send annotated order to solicitors',
-                  html: 'Send annotated order to solicitors',
-                  checked: checked('decision', 'Send annotated order to solicitors') == 'checked'
-                },
-                {
-                  value: 'List for hearing',
-                  html: 'List for hearing',
-                  checked: checked('decision', 'List for hearing') == 'checked'
+                  value: 'Ask parties to attend hearing',
+                  html: 'Ask parties to attend hearing',
+                  checked: checked('decision', 'Ask parties to attend hearing') == 'checked'
                 },
                 {
                   value: 'Reject consent order',

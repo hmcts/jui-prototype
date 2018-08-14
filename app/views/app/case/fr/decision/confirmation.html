@@ -24,8 +24,8 @@
             <p>A court administrator will send the final consent order to the parties.</p>
           {% elseif data.decision == 'Ask for more information' %}
             <p>Your request for more information has been sent to the parties.</p>
-          {% elseif data.decision == 'List for hearing' %}
-            <p>Your request has been sent to the listings officer who will schedule the hearing.</p>
+          {% elseif data.decision == 'Ask parties to attend hearing' %}
+            <p>Your decision will be sent to the parties and a hearing will be scheduled.</p>
           {% elseif data.decision == 'Reject consent order' %}
             <p>Your decision has been sent to a court administrator who will contact the parties.</p>
           {% endif %}
