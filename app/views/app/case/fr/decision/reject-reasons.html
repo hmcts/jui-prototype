@@ -1,10 +1,15 @@
 {% extends "layouts/admin/base.html" %}
 
 {% block pageTitle %}
-{% if errors %}({{errors.length}}) errors —{% endif %} Decision
+{% if errors %}({{errors.length}}) errors —{% endif %} Reject consent order reason
 {% endblock %}
 
 {% block content %}
+
+  {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties
+  }) }}
 
 	<div class="jui-width-container">
 
@@ -21,7 +26,7 @@
 
           {% if errors %}
             {{ govukErrorSummary({
-              titleText: "There is a problem",
+              titleText: 'There is a problem',
               errorList: errors
             }) }}
           {% endif %}
@@ -34,7 +39,7 @@
               label: {
                 text: 'Reason',
                 isPageHeading: true,
-                classes: 'govuk-label--l'
+                classes: 'govuk-label--xl'
               },
               hint: {
                 text: 'This will be sent to the parties.'

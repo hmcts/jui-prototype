@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Timeline - Judicial UI prototype{% endblock %}
+{% block pageTitle %}Timeline{% endblock %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
 
 <div class="jui-width-container">
 
-  <main role="main" class="govuk-main-wrapper">
+  <main class="govuk-main-wrapper" role="main">
 
     {{ hmctsSubNavigation({
       label: 'Case navigation',
@@ -25,15 +25,20 @@
 
       <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-l">Timeline</h1>
+        <h1 class="govuk-heading-xl">Timeline</h1>
 
         {% if events.length %}
+
           {{hmctsTimeline({
             events: events
           })}}
+
         {% else %}
+
           <p>No events.</p>
+
         {% endif %}
+        
       </div>
 
     </div>

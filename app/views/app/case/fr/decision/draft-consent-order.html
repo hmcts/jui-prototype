@@ -4,6 +4,11 @@
 
 {% block content %}
 
+  {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties
+  }) }}
+
 	<div class="jui-width-container">
 
     {{ govukBackLink({
@@ -13,7 +18,7 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-l">Send questions or comments to the parties</h1>
+      <h1 class="govuk-heading-xl">Send questions or comments to the parties</h1>
 
       <h2 class="govuk-heading-m">Draft consent order</h2>
 
@@ -33,7 +38,7 @@
             }) }}
 
             {{ govukButton({
-              text: 'Continue to send'
+              text: 'Continue'
             }) }}
 
             {{ govukTextarea({

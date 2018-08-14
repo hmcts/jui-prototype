@@ -2,47 +2,46 @@
 
 {% set pageID = "Dashboard" %}
 
-{% block page_title %}Dashboard - Judicial UI prototype{% endblock %}
+{% block pageTitle %}Dashboard{% endblock %}
 
 {% block content %}
 
 <div class="jui-width-container">
 
-  <main role="main" class="govuk-main-wrapper">
+  <main class="govuk-main-wrapper" role="main">
 
     {% if success %}
       {{ juiAlert(
         {
-          "icon": true,
-          "iconClasses": "jui-alert__icon--success",
-          "iconText": "Success!",
-          "alertText": success,
-          "alertClasses": "jui-alert--success"
+          icon: true,
+          iconClasses: 'jui-alert__icon--success',
+          iconText: 'Success!',
+          alertText: success,
+          alertClasses: 'jui-alert--success'
         })
       }}
     {% endif %}
 
-    <h1 class="govuk-heading-l">Dashboard</h1>
+    <h1 class="govuk-heading-xl">Dashboard</h1>
 
     {{ govukTable({
-        "classes": "",
-        "caption": "Your cases",
-        "captionClasses": "govuk-heading-m",
-        "firstCellIsHeader": true,
-        "head": [
-          {"text": "Case number"},
-          {"text": "Parties"},
-          {"text": "Type"},
-          {"text": "Decision needed on"},
-          {"text": "Case received"},
-          {"text": "Date of last event"}
+        caption: 'Your cases',
+        captionClasses: 'govuk-heading-m',
+        firstCellIsHeader: true,
+        head: [
+          {text: 'Case number'},
+          {text: 'Parties'},
+          {text: 'Type'},
+          {text: 'Decision needed on'},
+          {text: 'Case received'},
+          {text: 'Date of last event'}
         ],
-        "rows": caseList
+        rows: caseList
       }) }}
 
       {{ govukButton({
-        "text": "Get new case",
-        "href": "./get-new-case"
+        text: 'Get new case',
+        href: './get-new-case'
       }) }}
 
   </main>

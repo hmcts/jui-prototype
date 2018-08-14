@@ -227,7 +227,7 @@ router.post('/app/cases/:id/fr/hearing-details', (req, res) => {
 });
 
 
-// Draft consent order
+// Draft consent order`
 router.get('/app/cases/:id/fr/draft-consent-order', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {

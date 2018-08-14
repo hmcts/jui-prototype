@@ -40,12 +40,8 @@
   <head>
       <meta charset="utf-8" />
       <title>
-        {% if hasValidationErrors %}
-          Errors:
-        {% endif %}
-        {% block pageTitle %}
-          Judicial case manager
-        {% endblock %}
+        {% if hasValidationErrors %}Errors:{% endif %}
+        {% block pageTitle %}{% endblock %}
       </title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> {# Hardcoded value of $govuk-black #}

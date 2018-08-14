@@ -1,16 +1,15 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Hearing details{% endblock %}
+{% block pageTitle %}
+{% if errors %}({{errors.length}}) errors —{% endif %} Hearing details
+{% endblock %}
 
 {% block content %}
 
-  {# {{ juiCasebar({
+  {{ juiCasebar({
     caseId: casebar.id,
-    parties: casebar.parties,
-    caseActions: {
-      actions: caseActions
-    }
-  }) }} #}
+    parties: casebar.parties
+  }) }}
 
 	<div class="jui-width-container">
 
@@ -25,6 +24,13 @@
 
         <div class="govuk-grid-column-two-thirds">
 
+          {% if errors %}
+            {{ govukErrorSummary({
+              titleText: 'There is a problem',
+              errorList: errors
+            }) }}
+          {% endif %}
+
           <form method="post">
 
             {{ govukTextarea({
@@ -33,7 +39,7 @@
               label: {
                 text: 'Notes for court administrator or listings officer',
                 isPageHeading: true,
-                classes: 'govuk-label--l'
+                classes: 'govuk-label--xl'
               },
               hint: {
                 text: 'For example, give length of hearing or transfer to a different court.'

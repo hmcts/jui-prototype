@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Consent orders{% endblock %}
+{% block pageTitle %}Consent order version history{% endblock %}
 
 {% block content %}
 
@@ -15,13 +15,13 @@
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    text: 'Back to case file',
+    text: 'Back',
     href: '/app/cases/' + _case.id + '/documents'
   }) }}
 
   <main class="govuk-main-wrapper" role="main">
 
-    <h1 class="govuk-heading-l">Consent order version history</h1>
+    <h1 class="govuk-heading-xl">Consent order version history</h1>
 
     {{ govukTable({
       head: [

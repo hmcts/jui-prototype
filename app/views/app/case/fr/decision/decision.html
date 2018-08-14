@@ -1,16 +1,15 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Decision{% endblock %}
+{% block pageTitle %}
+{% if errors %}({{errors.length}}) errors —{% endif %} Make a decision
+{% endblock %}
 
 {% block content %}
 
-  {# {{ juiCasebar({
+  {{ juiCasebar({
     caseId: casebar.id,
-    parties: casebar.parties,
-    caseActions: {
-      actions: caseActions
-    }
-  }) }} #}
+    parties: casebar.parties
+  }) }}
 
 	<div class="jui-width-container">
 
@@ -66,7 +65,7 @@
                 legend: {
                   text: 'Make a decision',
                   isPageHeading: true,
-                  classes: 'govuk-fieldset__legend--l'
+                  classes: 'govuk-fieldset__legend--xl'
                 }
               },
               items: [

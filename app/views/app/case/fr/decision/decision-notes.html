@@ -1,10 +1,15 @@
 {% extends "layouts/admin/base.html" %}
 
 {% block pageTitle %}
-{% if errors %}({{errors.length}}) errors —{% endif %} Decision
+{% if errors %}({{errors.length}}) errors —{% endif %} Notes for court administrator
 {% endblock %}
 
 {% block content %}
+
+  {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties
+  }) }}
 
 	<div class="jui-width-container">
 
@@ -34,7 +39,7 @@
               label: {
                 text: 'Notes for court administrator',
                 isPageHeading: true,
-                classes: 'govuk-label--l'
+                classes: 'govuk-label--xl'
               },
               value: data['decision-notes']
             }) }}
