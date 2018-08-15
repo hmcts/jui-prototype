@@ -5,9 +5,13 @@ $path: "/public/images/";
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
+
+// Width of main container
+$hmcts-page-width: 1220px;
+
+
 // Import GOV.UK Frontend
 @import "node_modules/govuk-frontend/all";
-
 @import "node_modules/@hmcts/frontend/all";
 
 // Patterns that aren't in Frontend

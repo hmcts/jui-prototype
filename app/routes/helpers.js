@@ -85,22 +85,22 @@ function getCaseNavItems(_case, id) {
 				{
 					href: `/app/cases/${_case.id}/pip`,
 					text: 'Summary',
-					selected: id === 'summary'
+					active: id === 'summary'
 				},
 				{
 					href: `/app/cases/${_case.id}/documents`,
 					text: 'Case file',
-					selected: id === 'casefile'
+					active: id === 'casefile'
 				},
 				{
 					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
-					selected: id === 'timeline'
+					active: id === 'timeline'
 				},
 				{
 					href: `/app/cases/${_case.id}/questions`,
 					text: 'Questions',
-					selected: id === 'questions'
+					active: id === 'questions'
 				}
 			];
 		case 'fr':
@@ -108,17 +108,17 @@ function getCaseNavItems(_case, id) {
 				{
 					href: `/app/cases/${_case.id}/fr`,
 					text: 'Summary',
-					selected: id === 'summary'
+					active: id === 'summary'
 				},
 				{
 					href: `/app/cases/${_case.id}/documents`,
 					text: 'Case file',
-					selected: id === 'casefile'
+					active: id === 'casefile'
 				},
 				{
 					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
-					selected: id === 'timeline'
+					active: id === 'timeline'
 				}
 			];
 		case 'divorce':
@@ -126,22 +126,22 @@ function getCaseNavItems(_case, id) {
 				{
 					href: `/app/cases/${_case.id}/divorce`,
 					text: 'Summary',
-					selected: id === 'summary'
+					active: id === 'summary'
 				},
 				{
 					href: `/app/cases/${_case.id}/divorce/parties`,
 					text: 'Parties',
-					selected: id === 'parties'
+					active: id === 'parties'
 				},
 				{
 					href: `/app/cases/${_case.id}/documents`,
 					text: 'Case file',
-					selected: id === 'casefile'
+					active: id === 'casefile'
 				},
 				{
 					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
-					selected: id === 'timeline'
+					active: id === 'timeline'
 				}
 			];
 	}
