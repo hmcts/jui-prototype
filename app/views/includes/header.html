@@ -3,7 +3,7 @@
   {{ hmctsGlobalHeader({
 
     service: {
-      name: 'Judicial Case Manager',
+      name: 'Judicial case manager',
       url: '/app/dashboard'
     }
 
@@ -17,7 +17,7 @@
   {{ hmctsGlobalHeader({
 
     service: {
-      name: 'Judicial Case Manager',
+      name: 'Judicial case manager',
       url: '/app/dashboard'
     },
 
@@ -31,6 +31,16 @@
 
   }) }}
 
+  {{ hmctsPrimaryNavigation({
+    label: 'Primary navigation',
+    classes: 'govuk-!-margin-bottom-0',
+    items: [{
+      text: 'Dashboard',
+      href: '/app/dashboard',
+      active: true
+    }]
+  }) }}
+
 {% endif %}
 
 
@@ -39,7 +49,7 @@
   {{ hmctsGlobalHeader({
 
     service: {
-      name: 'Judicial Case Manager',
+      name: 'Judicial case manager',
       url: '/app/dashboard'
     },
 
