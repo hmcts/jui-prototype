@@ -1,22 +1,65 @@
-<header class="jui-header" role="banner">
+{% if pageID == "Signin" %}
 
-  <div class="jui-width-container">
+  {{ hmctsGlobalHeader({
 
-    <div class="jui-header__service">
-      <a href="/app/dashboard">Judicial Case Manager</a>
-    </div>
+    service: {
+      name: 'Judicial Case Manager',
+      url: '/app/dashboard'
+    }
 
-    <div class="jui-header__account">
+  }) }}
 
-      <nav class="jui-primary-nav" aria-label="Global navigation">
-        <ul class="jui-primary-nav__list">
-          <li class="jui-primary-nav__item"><a class="jui-primary-nav__link" href="/app/dashboard">Dashboard</a></li>
-          <li class="jui-primary-nav__item"><a class="jui-primary-nav__link" href="/sign-out">Sign out</a></li>
-        </ul>
-      </nav>
+{% endif %}
 
-    </div>
 
-  </div>
+{% if pageID == "Dashboard" %}
 
-</header>
+  {{ hmctsGlobalHeader({
+
+    service: {
+      name: 'Judicial Case Manager',
+      url: '/app/dashboard'
+    },
+
+    navigation: {
+      label: 'Account navigation',
+      items: [{
+        text: 'Sign out',
+        href: '/sign-out'
+      }]
+    }
+
+  }) }}
+
+{% endif %}
+
+
+{% if (pageID != "Dashboard") and (pageID != "Signin") %}
+
+  {{ hmctsGlobalHeader({
+
+    service: {
+      name: 'Judicial Case Manager',
+      url: '/app/dashboard'
+    },
+
+    navigation: {
+      label: 'Account navigation',
+      items: [{
+        text: 'Sign out',
+        href: '/sign-out'
+      }]
+    }
+
+  }) }}
+
+  {{ hmctsPrimaryNavigation({
+    label: 'Primary navigation',
+    classes: 'govuk-!-margin-bottom-0',
+    items: [{
+      text: 'Dashboard',
+      href: '/app/dashboard'
+    }]
+  }) }}
+
+{% endif %}

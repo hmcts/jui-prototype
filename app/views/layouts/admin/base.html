@@ -24,6 +24,8 @@
 
 <!-- HMCTS -->
 {%- from "timeline/macro.njk" import hmctsTimeline %}
+{%- from "global-header/macro.njk" import hmctsGlobalHeader %}
+{%- from "primary-navigation/macro.njk" import hmctsPrimaryNavigation %}
 {%- from "sub-navigation/macro.njk" import hmctsSubNavigation %}
 
 <!-- App specific -->
@@ -78,7 +80,8 @@
     {% endblock %}
 
     {% block header %}
-      {% include "header/header.html" %}
+      {# {% include "header/header.html" %} #}
+      {% include "includes/header.html" %}
     {% endblock %}
 
     {% block content %}{% endblock %}
