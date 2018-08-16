@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set pageID = "Costs order" %}
-
-{% block page_title %}Costs order{% endblock %}
+{% block pageTitle %}Make a decision on costs{% endblock %}
 
 {% block content %}
 
@@ -17,8 +15,8 @@
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    "text": "Back",
-    "href": "./make-decision"
+    text: 'Back',
+    href: './make-decision'
   }) }}
 
   <main role="main" class="govuk-main-wrapper">
@@ -140,7 +138,7 @@
           {% endset %}
 
 
-          <!-- Costs order decision -->
+          <!-- How should costs be handled? -->
           {{ govukRadios({
             idPrefix: 'costs-order-decision',
             name: 'costs-order-decision',
@@ -178,7 +176,6 @@
               }
             ]
           }) }}
-
 
           {{ govukButton({
             text: 'Submit'

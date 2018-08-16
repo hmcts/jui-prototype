@@ -409,6 +409,7 @@ module.exports = [
       }
     ],
     status: '<a href="#">Decree nisi application</a>',
+    summaryStatus: '<a href="/app/cases/BV18D00153/documents/d84">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
@@ -447,15 +448,36 @@ module.exports = [
   {
     id: 'BV18D00156',
     typeId: types.divorce.id,
+    
     linkedCases: [{
       type: 'Financial remedy',
       id: 'FR1231612322'
     }],
+
+    petitioner: [{
+      fullname: 'Margaret Ann Richardson',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'margaret.richardson@gmail.com',
+      representative: ''
+    }],
+
+    respondent: [{
+      fullname: 'William Robert Richardson',
+      dateOfBirth: moment('1979-04-16'),
+      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      phone: '07700 900 772',
+      email: 'william.richardson@gmail.com',
+      representative: ''
+    }],
+
     parties: [
       {
         type: 'Petitioner',
         firstName: 'Margaret',
-        lastName: 'Ann Richardson',
+        middleName: 'Ann',
+        lastName: 'Richardson',
         representative: {
           name: '',
           role: '',
@@ -465,7 +487,8 @@ module.exports = [
       {
         type: 'Respondent',
         firstName: 'William',
-        lastName: 'Robert Richardson',
+        middleName: 'Robert',
+        lastName: 'Richardson',
         representative: {
           name: '',
           role: '',
@@ -473,6 +496,7 @@ module.exports = [
         }
       }
     ],
+
     status: '<a href="/app/cases/BV18D00156/documents/d84">Decree nisi application</a>',
     summaryStatus: '<a href="/app/cases/BV18D00156/documents/d84">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
@@ -486,26 +510,24 @@ module.exports = [
       label: 'Application for divorce (D8)'
     }],
     lastAction: moment('2018-05-09'),
-    petitioner: '',
-    respondent: '',
     events: [
       {
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (D. Francis)'
+        by: 'Petitioner (M. Richardson)'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (S. Francis)'
+        by: 'Respondent (W. Richardson)'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (D . Francis)'
+        by: 'Petitioner (M. Richardson)'
       }
     ]
   }

@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set pageID = "Make decision" %}
-
-{% block page_title %}Make decision - Judicial UI prototype{% endblock %}
+{% block pageTitle %}Make a decision{% endblock %}
 
 {% block content %}
 
@@ -17,8 +15,8 @@
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    "text": "Back",
-    "href": "./"
+    text: 'Back',
+    href: './'
   }) }}
 
   <main role="main" class="govuk-main-wrapper">
@@ -31,13 +29,15 @@
 
         <form method="post">
 
+          {% set legendText %}Are you satisfied that <strong>{{ petitioner }}</strong> is entitled to a decree nisi on the grounds of adultery?{% endset %}
+
           {{ govukRadios({
             idPrefix: 'satisfied',
             name: 'satisfied',
             classes: 'govuk-radios--inline',
             fieldset: {
               legend: {
-                html: 'Are you satisfied that <strong>Margaret Ann Richardson</strong> is entitled to a decree nisi on the grounds of adultery?'
+                html: legendText
               }
             },
             items: [

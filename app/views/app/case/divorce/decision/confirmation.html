@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set pageID = "Confirmation" %}
-
-{% block page_title %}Confirmation - Judicial UI prototype{% endblock %}
+{% block pageTtitle %}Decision submitted{% endblock %}
 
 {% block content %}
 
@@ -16,8 +14,8 @@
     </div>
 
     {{ govukButton({
-      "text": "Back to dashboard",
-      "href": "/app/dashboard"
+      text: 'Back to dashboard',
+      href: '/app/dashboard'
     }) }}
 
   </main>
