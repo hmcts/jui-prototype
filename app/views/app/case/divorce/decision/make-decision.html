@@ -32,29 +32,28 @@
         <form method="post">
 
           {{ govukRadios({
-            "idPrefix": "satisfied",
-            "name": "satisfied",
-            "classes": "govuk-radios--inline",
-            "fieldset": {
-              "legend": {
-                "html": "Are you satisfied that <p class=\"govuk-body govuk-!-margin-top-4  govuk-!-margin-bottom-0\">David Francis is entitled to a decree nisi of divorce for reason of adultery.</p>",
-                "classes": "govuk-fieldset__legend--m"
+            idPrefix: 'satisfied',
+            name: 'satisfied',
+            classes: 'govuk-radios--inline',
+            fieldset: {
+              legend: {
+                html: 'Are you satisfied that <strong>Margaret Ann Richardson</strong> is entitled to a decree nisi on the grounds of adultery?'
               }
             },
-            "items": [
+            items: [
               {
-                "value": "yes",
-                "html": "Yes<span class=\"visually-hidden\">, I am satisfied</span>"
+                value: 'yes',
+                html: 'Yes<span class=\'govuk-visually-hidden\'>, I am satisfied</span>'
               },
               {
-                "value": "no",
-                "html": "No<span class=\"visually-hidden\">, I am not satisfied</span>"
+                value: 'no',
+                html: 'No<span class=\'govuk-visually-hidden\'>, I am not satisfied</span>'
               }
             ]
           }) }}
 
           {{ govukButton({
-            "text": "Continue"
+            text: 'Continue'
           }) }}
 
         </form>

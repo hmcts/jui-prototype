@@ -2,7 +2,7 @@
 
 {% set pageID = "Costs order" %}
 
-{% block page_title %}Costs order - Judicial UI prototype{% endblock %}
+{% block page_title %}Costs order{% endblock %}
 
 {% block content %}
 
@@ -27,22 +27,23 @@
 
       <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">Costs order</h1>
+        <h1 class="govuk-heading-xl">Make a decision on costs</h1>
 
         {{ juiInformationPanel({
-          "classes": "jui-panel--information",
-          "details": [
+          'heading': '<h2 class=\"heading-m govuk-!-margin-top-0\">Key facts to consider</h2>',
+          'classes': 'jui-panel--information',
+          'details': [
             {
-              "title": "Divorce petition",
-              "description": "The applicant is also applying to the court to claim the costs of the divorce from the respondent."
+              'title': 'Divorce petition',
+              'description': 'The applicant is also applying to the court to claim the costs of the divorce from the respondent.'
             },
             {
-              "title": "Acknowledgement of service",
-              "description": "I think we should pay equal amounts for the divorce as we both want it to happen."
+              'title': 'Acknowledgement of service',
+              'description': 'I think we should pay equal amounts for the divorce as we both want it to happen.'
             },
             {
-              "title": "Application for Decree nisi",
-              "description": "I will accept the amount my wife has suggested."
+              'title': 'Application for Decree nisi',
+              'description': 'I will accept the amount my wife has suggested.'
             }
           ]
         }) }}
@@ -85,21 +86,21 @@
               "items": [
                 {
                   "value": "1",
-                  "text": "Agreed to",
+                  "text": "Costs agreed to",
                   "conditional": {
                     "html": poundsPercentages
                   }
                 },
                 {
                   "value": "2",
-                  "text": "Limited to",
+                  "text": "Costs limited to",
                   "conditional": {
                     "html": poundsPercentages
                   }
                 },
                 {
                   "value": "3",
-                  "text": "To be subject to detailed assessment if not agreed"
+                  "text": "Costs to be subject to detailed assessment if not agreed"
                 }
               ]
             }) }}
@@ -138,6 +139,9 @@
           {% endset %}
 
 
+          <h1 class="govuk-heading-m">What costs order is needed?</h1>
+
+
           <!-- Costs order decision -->
           {{ govukRadios({
             "idPrefix": "costs-order-decision",
@@ -148,25 +152,28 @@
             "items": [
               {
                 "value": "1",
-                "text": "An order that the Respondent shall pay the costs of the Petitioner",
+                "text": "Respondent to pay petitioner’s costs",
                 "conditional": {
                   "html": respondentPay
                 }
               },
               {
                 "value": "2",
-                "text": "A financial order in terms agreed between the parties and approved by the court",
+                "text": "Terms agreed between the parties and approved by the court",
                 "conditional": {
                   "html": financialOrder
                 }
               },
               {
-                "value": "3",
-                "text": "No order for costs"
+                value: '4',
+                html: 'Other'
               },
               {
-                "value": "4",
-                "text": "Other"
+                divider: 'or'
+              },
+              {
+                value: '3',
+                text: 'No order for costs'
               }
             ]
           }) }}
