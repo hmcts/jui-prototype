@@ -25,14 +25,23 @@
      padding: 0;
      list-style: none;
 
-     a {
-       color: $color-footer-link;
+    li {
+      margin-bottom: 5px; 
 
-       &:hover {
-         color: govuk-colour(black);
-       }
+      &:last-child {
+        margin-bottom: 0;
+      }
 
-     }
+    }
+
+    a {
+    color: $color-footer-link;
+
+    &:hover {
+      color: govuk-colour(black);
+    }
+
+    }
 
    }
 
