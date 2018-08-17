@@ -503,11 +503,11 @@ module.exports = [
     applicationDate: moment('2018-05-09'),
     documents: [{
       id: 'd84',
-      label: 'Application for decree nisi (D84)'
+      label: 'Decree nisi application (D84)'
     },
     {
       id: 'd8',
-      label: 'Application for divorce (D8)'
+      label: 'Divorce application (D8)'
     }],
     lastAction: moment('2018-05-09'),
     events: [
