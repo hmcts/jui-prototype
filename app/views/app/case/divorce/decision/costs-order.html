@@ -47,7 +47,7 @@
 
 
           <!-- Pounds or percentages -->
-          {% set respondentPoundsOrPercentages %}
+          {% set poundsOrPercentages %}
 
             {{ govukInput({
               label: {
@@ -85,14 +85,14 @@
                   text: 'Agreed to',
                   value: 'Agreed to',
                   conditional: {
-                    html: respondentPoundsOrPercentages
+                    html: poundsOrPercentages
                   }
                 },
                 {
                   text: 'Lmited to',
                   value: 'Limited to',
                   conditional: {
-                    html: respondentPoundsOrPercentages
+                    html: poundsOrPercentages
                   }
                 },
                 {
@@ -117,14 +117,14 @@
                   text: 'Agreed to',
                   value: 'Agreed to',
                   conditional: {
-                    html: poundsPercentages
+                    html: poundsOrPercentages
                   }
                 },
                 {
                   text: 'Limited to',
                   value: 'Limited to',
                   conditional: {
-                    html: poundsPercentages
+                    html: poundsOrPercentages
                   }
                 },
                 {
