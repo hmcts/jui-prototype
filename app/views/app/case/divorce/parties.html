@@ -31,6 +31,7 @@
 					<div class="govuk-grid-column-one-half">
 						<h2 class="govuk-heading-l">Petitioner</h2>
 						{{ govukTable({
+							firstCellIsHeader: true,
 							rows: petitionerRows
 						}) }}
 					</div>
@@ -42,6 +43,7 @@
 					<div class="govuk-grid-column-one-half">
 						<h2 class="govuk-heading-l">Respondent</h2>
 						{{ govukTable({
+							firstCellIsHeader: true,
 							rows: respondentRows
 						}) }}
 					</div>

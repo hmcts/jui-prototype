@@ -455,7 +455,7 @@ module.exports = [
     }],
 
     petitioner: [{
-      fullname: 'Margaret Ann Richardson',
+      fullname: 'Margaret Richardson',
       dateOfBirth: moment('1981-06-07'),
       address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
       phone: '07787 557 967',
@@ -464,7 +464,7 @@ module.exports = [
     }],
 
     respondent: [{
-      fullname: 'William Robert Richardson',
+      fullname: 'William Richardson',
       dateOfBirth: moment('1979-04-16'),
       address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
       phone: '07700 900 772',
