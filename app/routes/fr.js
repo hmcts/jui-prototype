@@ -90,17 +90,33 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 	}]);
 
 	if(v.validate()) {
-		if(req.body.decision === 'Approve consent order') {
+		
+		// Approve consent order as drafted
+		if(req.body.decision === 'Approve consent order as drafted') {
+
 			res.redirect(`/app/cases/${req.params.id}/fr/decision-notes`);
+
+		
 		} else if(req.body.decision === 'Ask for more information') {
+
 			res.redirect(`/app/cases/${req.params.id}/fr/more-information`);
-		} else if(req.body.decision === 'Send questions or comments on draft order to parties') {
-			res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order`);
-		} else if(req.body.decision === 'Ask parties to attend hearing') {
-			res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
-		} else if(req.body.decision === 'Reject consent order') {
+
+		} else if(req.body.decision === 'Request changes or ask for more information from parties') {
+
 			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
+
+		// Ask parties to attend hearing
+		} else if(req.body.decision === 'Ask parties to attend hearing') {
+
+			res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
+
+		// Reject consent order
+		} else if(req.body.decision === 'Reject consent order') {
+
+			res.redirect(`/app/cases/${req.params.id}/fr/reject-reason`);
+
 		}
+
 	} else {
 			var _case = helpers.getCase(req.session.cases, req.params.id);
 			var pageObject = {
@@ -260,9 +276,27 @@ router.get('/app/cases/:id/fr/reject-reasons', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/reject-reasons', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+	res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order`);
 });
 
+
+
+// Reject reason
+router.get('/app/cases/:id/fr/reject-reason', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}`
+    }
+	};
+	res.render('app/case/fr/decision/reject-reason', pageObject);
+});
+
+router.post('/app/cases/:id/fr/reject-reason', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+});
 
 
 
@@ -336,6 +370,26 @@ router.post('/app/cases/:id/fr/submit-decision', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/fr/decision-confirmation`);
 });
 
+
+
+router.get('/app/cases/:id/fr/draft-consent-order', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}`
+    }
+	};
+	res.render('app/case/fr/decision/draft-consent-order', pageObject);
+});
+
+router.post('/app/cases/:id/fr/draft-consent-order', (req, res) => {
+  res.redirect(`/app/cases/${req.params.id}/fr/check`);
+});
+
+
+
 router.get('/app/cases/:id/fr/decision-confirmation', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
@@ -343,5 +397,7 @@ router.get('/app/cases/:id/fr/decision-confirmation', (req, res) => {
 	};
 	res.render('app/case/fr/decision/confirmation', pageObject);
 });
+
+
 
 module.exports = router;

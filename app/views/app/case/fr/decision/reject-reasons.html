@@ -33,17 +33,103 @@
 
           <form method="post">
 
-            {{ govukTextarea({
-              id: 'reject-notes',
-              name: 'reject-notes',
-              label: {
-                text: 'Reason',
-                isPageHeading: true,
-                classes: 'govuk-label--xl'
+            {% set subReasonsHtml %}
+              {{ govukCheckboxes({
+                idPrefix: 'rejectsub',
+                name: 'rejectsub',
+                fieldset: {
+                  legend: {
+                    text: '',
+                    classes: 'govuk-fieldset__legend--m'
+                  }
+                },
+                items: [
+                  {
+                    html: 'the parties’ capital positions if the order were affected',
+                    value: 'parties’ capital position',
+                    checked: checked('rejectsub', 'parties’ capital position') == 'checked'
+                  },
+                  {
+                    html: 'the parties’ housing needs and whether they are met by the order',
+                    value: 'parties’ housing',
+                    checked: checked('rejectsub', 'parties’ housing') == 'checked'
+                  },
+                  {
+                    html: 'the justification for departure from equality of capital',
+                    value: 'parties’ pension',
+                    checked: checked('rejectsub', 'parties’ pension') == 'checked'
+                  },
+                  {
+                    html: 'the parties’ pension provision if the order were affected',
+                    value: 'children’s housing',
+                    checked: checked('rejectsub', 'children’s housing') == 'checked'
+                  },
+                  {
+                    html: 'the children’s housing needs and whether they are met by the order',
+                    value: 'children’s housing',
+                    checked: checked('rejectsub', 'children’s housing') == 'checked'
+                  }
+                ]
+            }) }}
+            {% endset %}
+
+            {% set otherReasonHtml %}
+
+              {{ govukTextarea({
+                name: 'otherReason',
+                id: 'otherReason',
+                label: {
+                  text: 'Other reason',
+                  classes: 'govuk-label--m'
+                },
+                value: data.otherReason
+              }) }}
+
+            {% endset %}
+
+            {{ govukCheckboxes({
+              idPrefix: 'reject',
+              name: 'reject',
+              fieldset: {
+                legend: {
+                  text: 'Reasons you couldn’t approve consent order yet',
+                  isPageHeading: true,
+                  classes: 'govuk-fieldset__legend--xl'
+                }
               },
-              hint: {
-                text: 'This will be sent to the parties.'
+              items: [
+              {
+                html: 'Not enough information given on:',
+                value: 'not enough',
+                checked: true,
+                conditional: {
+                  html: subReasonsHtml
+                }
               },
+              {
+                html: 'Pension annex not uploaded',
+                value: 'Pension annex not uploaded',
+                checked: (checked('reject','Pension annex not uploaded') == 'checked')
+              },
+              {
+                html: 'Not clear if respondent has taken independent legal advice',
+                value: 'Not clear if respondent has taken independent legal advice',
+                checked: (checked('reject','Not clear if respondent has taken independent legal advice') == 'checked')
+              },
+              {
+                html: 'D81 form is incomplete',
+                value: 'D81 form is incomplete',
+                checked: (checked('reject','D81 form is incomplete') == 'checked')
+              },
+              {
+                html: 'Other',
+                value: 'Other',
+                checked: (checked('reject','Other') == 'checked'),
+                conditional: {
+                  html: otherReasonHtml
+                }
+              }
+            ],
               value: data['reject-notes']
             }) }}
 

@@ -20,11 +20,11 @@
 
           <h2 class="govuk-heading-m">What happens next</h2>
 
-          {% if data.decision == 'Approve consent order' %}
+          {% if data.decision == 'Approve consent order as drafted' %}
             
             <p>A court administrator will send the final consent order to the parties.</p>
 
-          {% elseif data.decision == 'Ask for more information' %}
+          {% elseif data.decision == 'Request changes or ask for more information from parties' %}
 
             <p>Your request for more information has been sent to the parties.</p>
 
