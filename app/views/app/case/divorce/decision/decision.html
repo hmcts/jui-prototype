@@ -6,10 +6,7 @@
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 <div class="jui-width-container">
@@ -29,7 +26,7 @@
 
         <form method="post">
 
-          {% set legendText %}Are you satisfied that <strong>{{ petitioner }}</strong> is entitled to a decree nisi on the grounds of adultery?{% endset %}
+          {% set legendText %}Are you satisfied that {{ petitioner }} is entitled to a decree nisi on the grounds of adultery?{% endset %}
 
           {{ govukRadios({
             idPrefix: 'satisfied',
@@ -42,12 +39,14 @@
             },
             items: [
               {
-                value: 'yes',
-                html: 'Yes<span class=\'govuk-visually-hidden\'>, I am satisfied</span>'
+                html: 'Yes<span class=\'govuk-visually-hidden\'>, I am satisfied</span>',
+                value: 'Yes',
+                checked: checked('satisfied', 'Yes') == 'checked'
               },
               {
-                value: 'no',
-                html: 'No<span class=\'govuk-visually-hidden\'>, I am not satisfied</span>'
+                html: 'No<span class=\'govuk-visually-hidden\'>, I am not satisfied</span>',
+                value: 'No',
+                checked: checked('satisfied', 'No') == 'checked'
               }
             ]
           }) }}

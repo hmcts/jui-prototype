@@ -455,20 +455,20 @@ module.exports = [
     }],
 
     petitioner: [{
-      fullname: 'Margaret Richardson',
+      fullname: 'Margaret Blake',
       dateOfBirth: moment('1981-06-07'),
       address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
       phone: '07787 557 967',
-      email: 'margaret.richardson@gmail.com',
+      email: 'margaret.blake@gmail.com',
       representative: ''
     }],
 
     respondent: [{
-      fullname: 'William Richardson',
+      fullname: 'William Blake',
       dateOfBirth: moment('1979-04-16'),
       address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
       phone: '07700 900 772',
-      email: 'william.richardson@gmail.com',
+      email: 'william.blake@gmail.com',
       representative: ''
     }],
 
@@ -476,8 +476,7 @@ module.exports = [
       {
         type: 'Petitioner',
         firstName: 'Margaret',
-        middleName: 'Ann',
-        lastName: 'Richardson',
+        lastName: 'Blake',
         representative: {
           name: '',
           role: '',
@@ -487,8 +486,7 @@ module.exports = [
       {
         type: 'Respondent',
         firstName: 'William',
-        middleName: 'Robert',
-        lastName: 'Richardson',
+        lastName: 'Blake',
         representative: {
           name: '',
           role: '',
@@ -515,19 +513,19 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (M. Richardson)'
+        by: 'Petitioner (M. Blake)'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (W. Richardson)'
+        by: 'Respondent (W. Blake)'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (M. Richardson)'
+        by: 'Petitioner (M. Blake)'
       }
     ]
   }
