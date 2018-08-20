@@ -1,24 +1,25 @@
 {% extends "layouts/admin/base.html" %}
 
+<<<<<<< HEAD
+{% block pageTitle %}Make a decision on costs{% endblock %}
+=======
 {% set pageID = "Costs order" %}
 
 {% block page_title %}Costs order - Judicial UI prototype{% endblock %}
+>>>>>>> master
 
 {% block content %}
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    "text": "Back",
-    "href": "./make-decision"
+    text: 'Back',
+    href: backLink.href
   }) }}
 
   <main role="main" class="govuk-main-wrapper">
@@ -37,12 +38,21 @@
               "description": "The applicant is also applying to the court to claim the costs of the divorce from the respondent."
             },
             {
+<<<<<<< HEAD
+              title: 'Acknowledgement of service',
+              description: '“I think we should pay equal amounts for the divorce as we both want it to happen.”'
+            },
+            {
+              title: 'Application for Decree nisi',
+              description: '“I will accept the amount my wife has suggested.”'
+=======
               "title": "Acknowledgement of service",
               "description": "I think we should pay equal amounts for the divorce as we both want it to happen."
             },
             {
               "title": "Application for Decree nisi",
               "description": "I will accept the amount my wife has suggested."
+>>>>>>> master
             }
           ]
         }) }}
@@ -52,15 +62,16 @@
 
 
           <!-- Pounds or percentages -->
-          {% set poundsPercentages %}
+          {% set respondentPoundsOrPercentages %}
 
             {{ govukInput({
               label: {
                 text: 'In pounds'
               },
               classes: 'govuk-input--width-10',
-              id: 'in-pounds',
-              name: 'in-pounds'
+              id: 'inPounds',
+              name: 'inPounds',
+              value: ''
             }) }}
 
             {{ govukInput({
@@ -68,8 +79,9 @@
                 text: 'Or as a percentage'
               },
               classes: 'govuk-input--width-10',
-              id: 'in-percentages',
-              name: 'in-percentages'
+              id: 'inPercentages',
+              name: 'inPercentages',
+              value: ''
             }) }}
 
           {% endset %}
@@ -78,13 +90,31 @@
           <!-- Respondent pay -->
           {% set respondentPay %}
             {{ govukRadios({
-              idPrefix: 'respondent-pay',
-              name: 'respondent-pay',
+              idPrefix: 'respondentPay',
+              name: 'respondentPay',
               fieldset: {
                 legendHtml: '<span class=\"govuk-!-w-bold\">Select one of the options below.</span>'
               },
               items: [
                 {
+<<<<<<< HEAD
+                  text: 'Agreed to',
+                  value: 'Agreed to',
+                  conditional: {
+                    html: respondentPoundsOrPercentages
+                  }
+                },
+                {
+                  text: 'Lmited to',
+                  value: 'Limited to',
+                  conditional: {
+                    html: respondentPoundsOrPercentages
+                  }
+                },
+                {
+                  text: 'To be subject to detailed assessment if not agreed',
+                  value: 'To be subject to detailed assessment if not agreed'
+=======
                   "value": "1",
                   "text": "Agreed to",
                   "conditional": {
@@ -101,56 +131,86 @@
                 {
                   "value": "3",
                   "text": "To be subject to detailed assessment if not agreed"
+>>>>>>> master
                 }
               ]
             }) }}
           {% endset %}
 
 
-          <!-- Financial order -->
-          {% set financialOrder %}
+          <!-- TermsAgreed -->
+          {% set termsAgreed %}
             {{ govukRadios({
-              idPrefix: 'financial-order',
-              name: 'financial-order',
+              idPrefix: 'termsAgreed',
+              name: 'termsAgreed',
               fieldset: {
                 legendHtml: '<span class=\"govuk-!-w-bold\">Select one of the options below.</span>'
               },
               items: [
                 {
-                  value: '1',
                   text: 'Agreed to',
+                  value: 'Agreed to',
                   conditional: {
                     html: poundsPercentages
                   }
                 },
                 {
-                  value: '2',
                   text: 'Limited to',
+                  value: 'Limited to',
                   conditional: {
                     html: poundsPercentages
                   }
                 },
                 {
-                  value: '3',
-                  text: 'To be subject to detailed assessment if not agreed'
+                  text: 'To be subject to detailed assessment if not agreed',
+                  value: 'To be subject to detailed assessment if not agreed'
                 }
               ]
             }) }}
           {% endset %}
 
 
-          <!-- Costs order decision -->
+          <!-- How should costs be handled? -->
           {{ govukRadios({
-            idPrefix: 'costs-order-decision',
-            name: 'costs-order-decision',
+            idPrefix: 'costsOrderDecision',
+            name: 'costsOrderDecision',
             fieldset: {
               legend: {
-                text: "How should costs be handled?",
-                classes: "govuk-fieldset__legend--m"
+                text: 'How should costs be handled?',
+                classes: 'govuk-fieldset__legend--m'
               }
             },
             items: [
               {
+<<<<<<< HEAD
+                text: 'Respondent to pay petitioner’s costs',
+                value: 'Respondent to pay petitioner’s costs',
+                checked: checked('costsOrderDecision', 'Respondent to pay petitioner’s costs') == 'checked',
+                conditional: {
+                  html: respondentPay
+                }
+              },
+              {
+                text: 'Terms have been agreed between the parties and approved by the court',
+                value: 'Terms have been agreed between the parties and approved by the court',
+                checked: checked('costsOrderDecision', 'Terms have been agreed between the parties and approved by the court') == 'checked',
+                conditional: {
+                  html: termsAgreed
+                }
+              },
+              {
+                text: 'Other',
+                value: 'Other',
+                checked: checked('costsOrderDecision', 'Other') == 'checked'
+              },
+              {
+                divider: 'or'
+              },
+              {
+                text: 'No order for costs',
+                value: 'No order for costs',
+                checked: checked('costsOrderDecision', 'No order for costs') == 'checked'
+=======
                 "value": "1",
                 "text": "An order that the Respondent shall pay the costs of the Petitioner",
                 "conditional": {
@@ -171,10 +231,10 @@
               {
                 "value": "4",
                 "text": "Other"
+>>>>>>> master
               }
             ]
           }) }}
-
 
           {{ govukButton({
             text: 'Submit'

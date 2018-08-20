@@ -20,6 +20,16 @@ function getAppellantName(_case) {
 	})[0];
 }
 
+
+function getPetitionerName(_case) {
+	return _case.parties.map(function(party) {
+		if(party.firstName) {
+			return party.firstName + ' ' + party.lastName;
+		}
+	})[0];
+}
+
+
 function getCaseType(_case) {
 	var caseType = '';
 	Object.keys(types).forEach(function(key) {
@@ -63,17 +73,18 @@ function getCaseActions(_case) {
 		case 'divorce':
 			return [
 				{
-					href: `/app/cases/${_case.id}/divorce/make-decision`,
+					href: `/app/cases/${_case.id}/divorce/decision`,
 					text: 'Make decision'
-				},
-				{
-					href: `/app/cases/${_case.id}/divorce/mark-as-prepared`,
-					text: 'Mark as prepared'
-				},
-				{
-					href: `/app/cases/${_case.id}/divorce/reassign`,
-					text: 'Reassign'
 				}
+				//,
+				// {
+				// 	href: `/app/cases/${_case.id}/divorce/mark-as-prepared`,
+				// 	text: 'Mark as prepared'
+				// },
+				// {
+				// 	href: `/app/cases/${_case.id}/divorce/reassign`,
+				// 	text: 'Reassign'
+				// }
 			];
 	}
 }
@@ -261,9 +272,11 @@ exports.isDraftQuestion = isDraftQuestion;
 exports.removeQuestion = removeQuestion;
 exports.removeItemFromArray = removeItemFromArray;
 exports.getAppellantName = getAppellantName;
+exports.getPetitionerName = getPetitionerName;
 exports.getFormattedDate = getFormattedDate;
 exports.getFormattedShortDate = getFormattedShortDate;
 exports.getFormattedTime = getFormattedTime;
 exports.getRecentEvents = getRecentEvents;
 exports.getEvents = getEvents;
+exports.getCaseNavItems = getCaseNavItems;
 exports.getCaseNavItems = getCaseNavItems;

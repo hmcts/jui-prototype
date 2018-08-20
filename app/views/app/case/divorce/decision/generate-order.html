@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set pageID = "Generate order" %}
-
-{% block page_title %}Generate order - Judicial UI prototype{% endblock %}
+{% block pageTitle %}Generate order{% endblock %}
 
 {% block content %}
 
@@ -17,8 +15,8 @@
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    "text": "Back",
-    "href": "./"
+    text: 'Back',
+    href: './'
   }) }}
 
   <main role="main" class="govuk-main-wrapper">
@@ -27,24 +25,27 @@
 
       <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">Preview and edit order</h1>
-
         <form method="post">
 
           {{ govukTextarea({
-            "name": "generate-order",
-            "id": "generate-order",
-            "rows": "12",
-            "label": {
-              "text": "Create order based on your decisions"
-            },
-            "value": "It is directed that the petitioner should read the guidance on completing the divorce application to identify the appropriate provisions to establish jurisdiction. The petitioner should then provide the information by completing the online application and re-submitting. \n\n It is directed that the petitioner provide either the original or certified copy of the marriage certificate.  A certified copy should be available from the appropriate Registry. \n\n A free text entry to add any additional information that may be required."
-          }) }}
+              id: 'generate-order',
+              name: 'generate-order',
+              rows: 10,
+              label: {
+                text: 'Preview and edit order',
+                isPageHeading: true,
+                classes: 'govuk-label--xl'
+              },
+              hint: {
+                text: 'Create order based on your decisions.'
+              },
+              value: 'It is directed that the petitioner should read the guidance on completing the divorce application to identify the appropriate provisions to establish jurisdiction. The petitioner should then provide the information by completing the online application and re-submitting. \n\n It is directed that the petitioner provide either the original or certified copy of the marriage certificate.  A certified copy should be available from the appropriate Registry. \n\n A free text entry to add any additional information that may be required.'
+            }) }}
 
-          {{ govukButton({
-            "text": "Create order",
-            "element": "button"
-          }) }}
+            {{ govukButton({
+              text: 'Create order',
+              element: 'button'
+            }) }}
 
         </form>
 

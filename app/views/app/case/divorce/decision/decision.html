@@ -1,24 +1,19 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set pageID = "Make decision" %}
-
-{% block page_title %}Make decision - Judicial UI prototype{% endblock %}
+{% block pageTitle %}Make a decision{% endblock %}
 
 {% block content %}
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    "text": "Back",
-    "href": "./"
+    text: 'Back',
+    href: './'
   }) }}
 
   <main role="main" class="govuk-main-wrapper">
@@ -31,7 +26,17 @@
 
         <form method="post">
 
+          {% set legendText %}Are you satisfied that {{ petitioner }} is entitled to a decree nisi on the grounds of adultery?{% endset %}
+
           {{ govukRadios({
+<<<<<<< HEAD:app/views/app/case/divorce/decision/decision.html
+            idPrefix: 'satisfied',
+            name: 'satisfied',
+            classes: 'govuk-radios--inline',
+            fieldset: {
+              legend: {
+                html: legendText
+=======
             "idPrefix": "satisfied",
             "name": "satisfied",
             "classes": "govuk-radios--inline",
@@ -39,16 +44,28 @@
               "legend": {
                 "html": "Are you satisfied that <p class=\"govuk-body govuk-!-margin-top-4  govuk-!-margin-bottom-0\">David Francis is entitled to a decree nisi of divorce for reason of adultery.</p>",
                 "classes": "govuk-fieldset__legend--m"
+>>>>>>> master:app/views/app/case/divorce/decision/make-decision.html
               }
             },
             "items": [
               {
+<<<<<<< HEAD:app/views/app/case/divorce/decision/decision.html
+                html: 'Yes<span class=\'govuk-visually-hidden\'>, I am satisfied</span>',
+                value: 'Yes',
+                checked: checked('satisfied', 'Yes') == 'checked'
+              },
+              {
+                html: 'No<span class=\'govuk-visually-hidden\'>, I am not satisfied</span>',
+                value: 'No',
+                checked: checked('satisfied', 'No') == 'checked'
+=======
                 "value": "yes",
                 "html": "Yes<span class=\"visually-hidden\">, I am satisfied</span>"
               },
               {
                 "value": "no",
                 "html": "No<span class=\"visually-hidden\">, I am not satisfied</span>"
+>>>>>>> master:app/views/app/case/divorce/decision/make-decision.html
               }
             ]
           }) }}

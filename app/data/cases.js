@@ -409,6 +409,7 @@ module.exports = [
       }
     ],
     status: '<a href="#">Decree nisi application</a>',
+    summaryStatus: '<a href="/app/cases/BV18D00153/documents/d84">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
@@ -441,6 +442,95 @@ module.exports = [
         by: 'Petitioner (D . Francis)'
       }
     ]
+<<<<<<< HEAD
+  },
+
+
+  {
+    id: 'BV18D00156',
+    typeId: types.divorce.id,
+    
+    linkedCases: [{
+      type: 'Financial remedy',
+      id: 'FR1231612322'
+    }],
+
+    petitioner: [{
+      fullname: 'Margaret Blake',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'margaret.blake@gmail.com',
+      representative: ''
+    }],
+
+    respondent: [{
+      fullname: 'William Blake',
+      dateOfBirth: moment('1979-04-16'),
+      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      phone: '07700 900 772',
+      email: 'william.blake@gmail.com',
+      representative: ''
+    }],
+
+    parties: [
+      {
+        type: 'Petitioner',
+        firstName: 'Margaret',
+        lastName: 'Blake',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      },
+      {
+        type: 'Respondent',
+        firstName: 'William',
+        lastName: 'Blake',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      }
+    ],
+
+    status: '<a href="/app/cases/BV18D00156/documents/d84">Decree nisi application</a>',
+    summaryStatus: '<a href="/app/cases/BV18D00156/documents/d84">Application for decree nisi received</a>',
+    reason: 'Separated for 2 years and consent',
+    applicationDate: moment('2018-05-09'),
+    documents: [{
+      id: 'd84',
+      label: 'Decree nisi application (D84)'
+    },
+    {
+      id: 'd8',
+      label: 'Divorce application (D8)'
+    }],
+    lastAction: moment('2018-05-09'),
+    events: [
+      {
+        id: uuid(),
+        date: moment('2018-02-27 13:01'),
+        title: 'Application for decree nisi received',
+        by: 'Petitioner (M. Blake)'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-04-24 15:22'),
+        title: 'Acknowledgement of service by the court',
+        by: 'Respondent (W. Blake)'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-04-16 14:10'),
+        title: 'Application for divorce submitted',
+        by: 'Petitioner (M. Blake)'
+      }
+    ]
+=======
+>>>>>>> master
   }
 
 ];
