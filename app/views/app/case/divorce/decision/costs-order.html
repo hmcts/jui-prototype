@@ -1,12 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-<<<<<<< HEAD
 {% block pageTitle %}Make a decision on costs{% endblock %}
-=======
-{% set pageID = "Costs order" %}
-
-{% block page_title %}Costs order - Judicial UI prototype{% endblock %}
->>>>>>> master
 
 {% block content %}
 
@@ -38,21 +32,12 @@
               "description": "The applicant is also applying to the court to claim the costs of the divorce from the respondent."
             },
             {
-<<<<<<< HEAD
               title: 'Acknowledgement of service',
               description: '“I think we should pay equal amounts for the divorce as we both want it to happen.”'
             },
             {
               title: 'Application for Decree nisi',
               description: '“I will accept the amount my wife has suggested.”'
-=======
-              "title": "Acknowledgement of service",
-              "description": "I think we should pay equal amounts for the divorce as we both want it to happen."
-            },
-            {
-              "title": "Application for Decree nisi",
-              "description": "I will accept the amount my wife has suggested."
->>>>>>> master
             }
           ]
         }) }}
@@ -97,7 +82,6 @@
               },
               items: [
                 {
-<<<<<<< HEAD
                   text: 'Agreed to',
                   value: 'Agreed to',
                   conditional: {
@@ -114,24 +98,6 @@
                 {
                   text: 'To be subject to detailed assessment if not agreed',
                   value: 'To be subject to detailed assessment if not agreed'
-=======
-                  "value": "1",
-                  "text": "Agreed to",
-                  "conditional": {
-                    "html": poundsPercentages
-                  }
-                },
-                {
-                  "value": "2",
-                  "text": "Limited to",
-                  "conditional": {
-                    "html": poundsPercentages
-                  }
-                },
-                {
-                  "value": "3",
-                  "text": "To be subject to detailed assessment if not agreed"
->>>>>>> master
                 }
               ]
             }) }}
@@ -182,7 +148,6 @@
             },
             items: [
               {
-<<<<<<< HEAD
                 text: 'Respondent to pay petitioner’s costs',
                 value: 'Respondent to pay petitioner’s costs',
                 checked: checked('costsOrderDecision', 'Respondent to pay petitioner’s costs') == 'checked',
@@ -210,28 +175,6 @@
                 text: 'No order for costs',
                 value: 'No order for costs',
                 checked: checked('costsOrderDecision', 'No order for costs') == 'checked'
-=======
-                "value": "1",
-                "text": "An order that the Respondent shall pay the costs of the Petitioner",
-                "conditional": {
-                  "html": respondentPay
-                }
-              },
-              {
-                "value": "2",
-                "text": "A financial order in terms agreed between the parties and approved by the court",
-                "conditional": {
-                  "html": financialOrder
-                }
-              },
-              {
-                "value": "3",
-                "text": "No order for costs"
-              },
-              {
-                "value": "4",
-                "text": "Other"
->>>>>>> master
               }
             ]
           }) }}
