@@ -442,7 +442,6 @@ module.exports = [
         by: 'Petitioner (D . Francis)'
       }
     ]
-<<<<<<< HEAD
   },
 
 
@@ -529,8 +528,6 @@ module.exports = [
         by: 'Petitioner (M. Blake)'
       }
     ]
-=======
->>>>>>> master
   }
 
 ];
