@@ -324,6 +324,25 @@ module.exports = [
   {
     id: 'BV18D00150',
     typeId: types.divorce.id,
+
+    petitioner: [{
+      fullname: 'David Francis',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'david.francis@gmail.com',
+      representative: ''
+    }],
+
+    respondent: [{
+      fullname: 'Susan Francis',
+      dateOfBirth: moment('1979-04-16'),
+      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      phone: '07700 900 772',
+      email: 'susan.francis@gmail.com',
+      representative: ''
+    }],
+    
     parties: [
       {
         type: 'Petitioner',
@@ -346,6 +365,7 @@ module.exports = [
         }
       }
     ],
+
     status: '<a href="#">Decree nisi application</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
@@ -386,6 +406,25 @@ module.exports = [
       type: 'Financial remedy',
       id: 'FR1231612322'
     }],
+
+    petitioner: [{
+      fullname: 'John Smith',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'john.smith@gmail.com',
+      representative: ''
+    }],
+
+    respondent: [{
+      fullname: 'Jane Smith',
+      dateOfBirth: moment('1979-04-16'),
+      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      phone: '07700 900 772',
+      email: 'jane.smith@gmail.com',
+      representative: ''
+    }],
+
     parties: [
       {
         type: 'Petitioner',
@@ -408,6 +447,7 @@ module.exports = [
         }
       }
     ],
+
     status: '<a href="#">Decree nisi application</a>',
     summaryStatus: '<a href="/app/cases/BV18D00153/documents/d84">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
@@ -420,8 +460,6 @@ module.exports = [
       label: 'D84'
     }],
     lastAction: moment('2018-05-09'),
-    petitioner: '',
-    respondent: '',
     events: [
       {
         id: uuid(),
