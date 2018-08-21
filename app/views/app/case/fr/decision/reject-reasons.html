@@ -103,7 +103,8 @@
               items: [
               {
                 html: 'Not enough information given',
-                value: 'not enough',
+                value: 'Not enough information given',
+                checked: (checked('reject','Not enough information given') == 'checked'),
                 conditional: {
                   html: subReasonsHtml
                 }
@@ -133,6 +134,16 @@
               }
             ],
               value: data['reject-notes']
+            }) }}
+
+            {{ govukTextarea({
+              name: 'furtherInformation',
+              id: 'furtherInformation',
+              label: {
+                text: 'Further information needed from parties (optional)',
+                classes: 'govuk-label--m'
+              },
+              value: data.furtherInformation
             }) }}
 
             {{ govukButton({

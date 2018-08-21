@@ -337,10 +337,10 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 
 	if(req.session.data.reject) {
 		req.session.data.reject.forEach((item) => {
-			if(item == 'not enough') {
+			if(item == 'Not enough information given') {
 				// loop through sub reasons and attach as sub reasons
 				var r = {
-					text: 'Not enough information on',
+					text: 'Not enough information given',
 					sub: []
 				};
 
