@@ -39,33 +39,33 @@
                 name: 'rejectsub',
                 fieldset: {
                   legend: {
-                    text: '',
+                    text: 'Type of information missing',
                     classes: 'govuk-fieldset__legend--m'
                   }
                 },
                 items: [
                   {
-                    html: 'the parties’ capital positions if the order were affected',
+                    html: 'Parties’ capital positions if the order were to take effect',
                     value: 'parties’ capital position',
                     checked: checked('rejectsub', 'parties’ capital position') == 'checked'
                   },
                   {
-                    html: 'the parties’ housing needs and whether they are met by the order',
+                    html: 'Parties’ housing needs and whether they are met by the order',
                     value: 'parties’ housing',
                     checked: checked('rejectsub', 'parties’ housing') == 'checked'
                   },
                   {
-                    html: 'the justification for departure from equality of capital',
+                    html: 'Justification for departure from equality of capital',
                     value: 'parties’ pension',
                     checked: checked('rejectsub', 'parties’ pension') == 'checked'
                   },
                   {
-                    html: 'the parties’ pension provision if the order were affected',
+                    html: 'Parties’ pension provision if the order were to take effect',
                     value: 'children’s housing',
                     checked: checked('rejectsub', 'children’s housing') == 'checked'
                   },
                   {
-                    html: 'the children’s housing needs and whether they are met by the order',
+                    html: 'Children’s housing needs and whether they are met by the order',
                     value: 'children’s housing',
                     checked: checked('rejectsub', 'children’s housing') == 'checked'
                   }
@@ -92,16 +92,18 @@
               name: 'reject',
               fieldset: {
                 legend: {
-                  text: 'Reasons you couldn’t approve consent order yet',
+                  text: 'Why couldn’t you approve the consent order?',
                   isPageHeading: true,
                   classes: 'govuk-fieldset__legend--xl'
                 }
               },
+              hint: {
+                text: 'Select all that apply.'
+              },
               items: [
               {
-                html: 'Not enough information given on:',
+                html: 'Not enough information given',
                 value: 'not enough',
-                checked: true,
                 conditional: {
                   html: subReasonsHtml
                 }
