@@ -326,15 +326,6 @@ module.exports = [
     typeId: types.divorce.id,
 
     petitioner: [{
-      fullname: 'David Francis',
-      dateOfBirth: moment('1981-06-07'),
-      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
-      phone: '07787 557 967',
-      email: 'david.francis@gmail.com',
-      representative: ''
-    }],
-
-    respondent: [{
       fullname: 'Susan Francis',
       dateOfBirth: moment('1979-04-16'),
       address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
@@ -342,24 +333,33 @@ module.exports = [
       email: 'susan.francis@gmail.com',
       representative: ''
     }],
+
+    respondent: [{
+      fullname: 'David Francis',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'david.francis@gmail.com',
+      representative: ''
+    }],
     
     parties: [
       {
         type: 'Petitioner',
-        firstName: 'David',
+        firstName: 'Susan',
         lastName: 'Francis',
         representative: {
-          name: 'Clive Walters',
+          name: 'David Jones',
           role: 'Solicitor',
           company: 'Chadwick and Walters'
         }
       },
       {
         type: 'Respondent',
-        firstName: 'Susan',
+        firstName: 'David',
         lastName: 'Francis',
         representative: {
-          name: 'David Jones',
+          name: 'Clive Walters',
           role: 'Solicitor',
           company: 'Chadwick and Walters'
         }
@@ -382,19 +382,19 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (D. Francis)'
+        by: 'Petitioner (S. Francis)'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (S. Francis)'
+        by: 'Respondent (D. Francis)'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (D . Francis)'
+        by: 'Petitioner (S . Francis)'
       }
     ]
   },
