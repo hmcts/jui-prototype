@@ -22,20 +22,17 @@
 {%- from "radios/macro.njk" import govukRadios %}
 {%- from "tabs/macro.njk" import govukTabs %}
 
-<!-- HMCTS -->
 {%- from "timeline/macro.njk" import hmctsTimeline %}
 {%- from "global-header/macro.njk" import hmctsGlobalHeader %}
 {%- from "primary-navigation/macro.njk" import hmctsPrimaryNavigation %}
 {%- from "sub-navigation/macro.njk" import hmctsSubNavigation %}
 
-<!-- App specific -->
 {%- from "status/macro.njk" import juiStatus %}
 {%- from "alert/macro.njk" import juiAlert %}
 {%- from "information-panel/macro.njk" import juiInformationPanel %}
 {%- from "case-actions/macro.njk" import juiCaseActions %}
 {%- from "casebar/macro.njk" import juiCasebar %}
 {%- from "document/macro.njk" import juiDocument %}
-
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="{{ html_lang|default('en') }}"><![endif]-->
 <!--[if gt IE 8]><!--><html lang="{{ html_lang|default('en') }}"><!--<![endif]-->
@@ -46,7 +43,7 @@
         {% block pageTitle %}{% endblock %}
       </title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}" /> {# Hardcoded value of $govuk-black #}
+      <meta name="theme-color" content="{{ themeColor | default('#0b0c0c') }}"> {# Hardcoded value of $govuk-black #}
 
       {% block headIcons %}
         <link rel="shortcut icon" href="{{ assetPath | default('/assets') }}/images/favicon.ico" type="image/x-icon" />
@@ -59,8 +56,8 @@
 
       {% block head %}
         <!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-        <!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+        <!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="screen" rel="stylesheet"><!--<![endif]-->
+        <link href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" media="screen" rel="stylesheet">
       {% endblock %}
 
       {# The default og:image is added below head so that scrapers see any custom metatags first, and this is just a fallback #}
