@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}
-{% if errors %}({{errors.length}}) errors —{% endif %} Hearing details
-{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors —{% endif %} Hearing details{% endblock %}
 
 {% block content %}
 
@@ -31,18 +29,135 @@
             }) }}
           {% endif %}
 
+          <h1 class="govuk-heading-xl">Hearing details</h1>
+
           <form method="post">
+            
+            {% set transferCourtYes %}
+
+              {{ govukRadios({
+                idPrefix: 'whoseCourt',
+                name: 'whoseCourt',
+                fieldset: {
+                  legend: {
+                    text: 'Whose court?'
+                  }
+                },
+                items: [
+                  {
+                    value: 'Petitioner',
+                    text: 'Petitioner'
+                  },
+                  {
+                    value: 'Respondent',
+                    text: 'Respondent'
+                  }
+                ]
+              }) }}
+
+              {{ govukRadios({
+                idPrefix: 'whatDoYouNeedToTransfer',
+                name: 'whatDoYouNeedToTransfer',
+                fieldset: {
+                  legend: {
+                    text: 'What do you need to transfer?'
+                  }
+                },
+                items: [
+                  {
+                    value: 'Financial remedy case only',
+                    text: 'Financial remedy case only'
+                  },
+                  {
+                    value: 'Entire case including divorce and remedy',
+                    text: 'Entire case including divorce and remedy'
+                  }
+                ]
+              }) }}
+
+            {% endset -%}
+
+            {{ govukInput({
+              label: {
+                text: 'Estimate length of hearing (minutes)'
+              },
+              classes: 'govuk-input--width-3',
+              id: 'estimateLengthOfHearing',
+              name: 'estimateLengthOfHearing'
+            }) }}
+
+            {{ govukDateInput({
+              id: 'dateOfHearing',
+              name: 'dateOfHearing',
+              fieldset: {
+                legend: {
+                  text: 'Date of hearing'
+                }
+              },
+              hint: {
+                text: 'For example, 22 8 2018'
+              },
+              items: [
+                {
+                  name: 'day'
+                },
+                {
+                  name: 'month'
+                },
+                {
+                  name: 'year'
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: 'doYouNeedToHearTheCase',
+              name: 'doYouNeedToHearTheCase',
+              fieldset: {
+                legend: {
+                  text: 'Do you need to hear the case?'
+                }
+              },
+              items: [
+                {
+                  value: 'Yes, I need to hear the case',
+                  html: 'Yes<span class="govuk-visually-hidden">, I need to hear the case</span>'
+                },
+                {
+                  value: 'No, any judge can hear the case',
+                  html: 'No<span class="govuk-visually-hidden">, any judge can hear the case</span>'
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: 'transferCourt',
+              name: 'transferCourt',
+              fieldset: {
+                legend: {
+                  text: 'Do you need to transfer to another court for listings and directions?'
+                }
+              },
+              items: [
+                {
+                  value: 'Yes, I need to transfer to another court for listings and directions',
+                  html: 'Yes<span class="govuk-visually-hidden">, I need to transfer to another court for listings and directions</span>',
+                  conditional: {
+                    html: transferCourtYes
+                  }
+                },
+                {
+                  value: 'No, I don’t need to transfer to another court for listings and directions',
+                  html: 'No<span class="govuk-visually-hidden">, I don’t need to transfer to another court for listings and directions</span>'
+                }
+              ]
+            }) }}
 
             {{ govukTextarea({
               id: 'reason',
               name: 'reason',
               label: {
-                text: 'Notes for court administrator or listings officer',
-                isPageHeading: true,
-                classes: 'govuk-label--xl'
-              },
-              hint: {
-                text: 'For example, give length of hearing or transfer to a different court.'
+                text: 'Notes for court administrator or listings officer'
               },
               value: data['reason']
             }) }}
