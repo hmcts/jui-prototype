@@ -70,7 +70,7 @@
               {% if data['furtherInformation'] %}
               <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Further information need from parties</dt>
+                <dt class="app-check-your-answers__question">Further information needed from the parties</dt>
 
                 <dd class="app-check-your-answers__answer">
                   {{data['furtherInformation']}}
@@ -85,14 +85,29 @@
               {% if data['document-notes'] %}
               <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Comments</dt>
+                <dt class="app-check-your-answers__question">Comments on draft consent order</dt>
 
                 <dd class="app-check-your-answers__answer">
                   {{data['document-notes']}}
                 </dd>
 
                 <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/draft-consent-order">Change <span class="govuk-visually-hidden">draft consent order</span></a>
+                  <a href="/app/cases/{{_case.id}}/fr/draft-consent-order">Change <span class="govuk-visually-hidden">comments on draft consent order</span></a>
+                </dd>
+              </div>
+              {% endif %}
+
+              {% if data['notesForCourtAdministrator'] %}
+              <div class="app-check-your-answers__contents">
+
+                <dt class="app-check-your-answers__question">Notes for court administrator</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{data['notesForCourtAdministrator']}}
+                </dd>
+
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/notes-from-court-administrator">Change <span class="govuk-visually-hidden">notes from court administrator</span></a>
                 </dd>
               </div>
               {% endif %}

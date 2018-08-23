@@ -257,9 +257,26 @@ router.get('/app/cases/:id/fr/draft-consent-order', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/draft-consent-order', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+	res.redirect(`/app/cases/${req.params.id}/fr/notes-for-court-administrator`);
 });
 
+
+// Notes for court administrator
+router.get('/app/cases/:id/fr/notes-for-court-administrator', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/fr/draft-consent-order`
+    }
+	};
+	res.render('app/case/fr/decision/notes-for-court-administrator', pageObject);
+});
+
+router.post('/app/cases/:id/fr/notes-for-court-administrator', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+});
 
 
 // Reject reasons

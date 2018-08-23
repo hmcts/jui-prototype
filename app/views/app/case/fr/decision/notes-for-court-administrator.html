@@ -1,0 +1,64 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}
+{% if errors %}({{errors.length}}) errors —{% endif %} Notes for court administrator
+{% endblock %}
+
+{% block content %}
+
+  {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties
+  }) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-two-thirds">
+
+          {% if errors %}
+            {{ govukErrorSummary({
+              titleText: 'There is a problem',
+              errorList: errors
+            }) }}
+          {% endif %}
+
+          <form method="post">
+
+            {{ govukTextarea({
+              id: 'notesForCourtAdministrator',
+              name: 'notesForCourtAdministrator',
+              label: {
+                text: 'Notes for court administrator',
+                isPageHeading: true,
+                classes: 'govuk-label--xl'
+              },
+              hint: {
+                text: 'This won’t be seen by the parties.'
+              },
+              value: data['notesForCourtAdministrator']
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
