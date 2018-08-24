@@ -6,44 +6,48 @@
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
-	<div class="jui-width-container">
+<div class="jui-width-container">
 
-    {{ govukBackLink({
-      "text": "Back",
-      "href": "./"
-    }) }}
+  {{ govukBackLink({
+    text: 'Back',
+    href: backLink.href
+  }) }}
 
-    <main class="govuk-main-wrapper" role="main">
+  <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-l">List for hearing</h1>
+    <h1 class="govuk-heading-xl">List for hearing</h1>
 
-      <form method="post">
-        {{ govukTextarea({
-          "id": "hearing-notes",
-          "name": "hearing-notes",
-          "classes": "govuk-input--width-30",
-          "label": {
-            "text": "Hearing notes (optional)",
-            "classes": "govuk-label--m"
-          },
-          value: data['hearing-notes']
-        }) }}
+    <div class="govuk-grid-row">
 
-        {{ govukButton({
-          "text": "Continue"
-        }) }}
+      <div class="govuk-grid-column-two-thirds">
 
-      </form>
+        <form method="post">
 
-		</main>
+          {{ govukTextarea({
+            id: 'hearing-notes',
+            name: 'hearing-notes',
+            label: {
+              text: 'Hearing notes (optional)',
+              classes: 'govuk-label--m'
+            },
+            value: data['hearing-notes']
+          }) }}
 
-	</div>
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
 
 {% endblock %}
-

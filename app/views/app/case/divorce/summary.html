@@ -6,10 +6,7 @@
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 <div class="jui-width-container">
@@ -20,7 +17,21 @@
       items: caseNavItems
     }) }}
 
-    <h1 class="govuk-heading-xl">Summary</h1>
+    <div class="hmcts-page-heading">
+
+      <div class="hmcts-page-heading__title-wrapper">      
+        <h1 class="hmcts-page-heading__title govuk-heading-xl">Summary</h1>      
+      </div>
+
+      <div class="hmcts-page-heading__actions-wrapper">
+        {{govukButton({
+          classes: 'hmcts-page-heading__button',
+          href: '/app/cases/'+_case.id+'/divorce/decision',
+          text: 'Make a decision'
+        })}}
+      </div>
+
+    </div>
 
     <div class="govuk-grid-row">
 
@@ -29,25 +40,25 @@
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Case details</h2>
 
         {{ govukTable({
-          "classes": "govuk-!-margin-bottom-7  jui-table  jui-table--fixed",
-          "firstCellIsHeader": true,
-          "rows": detailsRows
+          classes: 'govuk-!-margin-bottom-7  jui-table  jui-table--fixed',
+          firstCellIsHeader: true,
+          rows: detailsRows
         }) }}
 
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Linked cases</h2>
 
         {{ govukTable({
-          "classes": "govuk-!-margin-bottom-7  jui-table  jui-table--fixed",
-          "firstCellIsHeader": true,
-          "rows": linkedCaseRows
+          classes: 'govuk-!-margin-bottom-7  jui-table  jui-table--fixed',
+          firstCellIsHeader: true,
+          rows: linkedCaseRows
         }) }}
 
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Representatives</h2>
 
         {{ govukTable({
-          "classes": "govuk-!-margin-bottom-7  jui-table  jui-table--fixed",
-          "firstCellIsHeader": true,
-          "rows": representativesRows
+          classes: 'govuk-!-margin-bottom-7  jui-table  jui-table--fixed',
+          firstCellIsHeader: true,
+          rows: representativesRows
         }) }}
 
       </div>

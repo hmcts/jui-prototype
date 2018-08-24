@@ -10,7 +10,6 @@ router.get('/app/cases/:id/fr', (req, res) => {
 		_case: _case,
 		success: req.session.success,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
 		detailsRows: [],
 		panelRows: [],
@@ -18,7 +17,7 @@ router.get('/app/cases/:id/fr', (req, res) => {
 	};
 
 	// Case details
-	pageObject.detailsRows.push([{ html: 'Parties' }, {html: helpers.getPartiesLine(_case)}]);
+	pageObject.detailsRows.push([{ html: 'Parties' }, {html: helpers.getPartiesLineSummary(_case)}]);
 	pageObject.detailsRows.push([{ html: 'Case number' }, {html: _case.id}]);
 	pageObject.detailsRows.push([{ html: 'Case type' }, {html: helpers.getCaseTypeLabel(_case)}]);
 	pageObject.detailsRows.push([{ html: 'Decree nisi granted' }, {html: helpers.getFormattedDate(_case.decreeDate)}]);
@@ -35,6 +34,32 @@ router.get('/app/cases/:id/fr', (req, res) => {
 
 	res.render('app/case/fr/summary', pageObject);
 });
+
+
+
+
+
+
+// Timeline
+router.get('/app/cases/:id/fr/timeline', (req, res) => {
+
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
+		caseActions: helpers.getCaseActions(_case),
+		events: helpers.getEvents(_case)
+	};
+
+	res.render('app/case/fr/timeline', pageObject);
+
+});
+
+
+
+
 
 router.get('/app/cases/:id/fr/consent-orders', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);

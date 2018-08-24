@@ -1,21 +1,19 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Create questions - Continous Online Resolution{% endblock %}
+{% block page_title %}Create questions{% endblock %}
 
 {% block content %}
+
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": "./"
+      text: 'Back',
+      href: './'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -33,33 +31,33 @@
               {% call govukFieldset({
                 classes: 'hmcts-add-another__item',
                 legend: {
-                  text: "Question",
-                  classes: "govuk-fieldset__legend--m  govuk-heading-m",
+                  text: 'Question',
+                  classes: 'govuk-fieldset__legend--m  govuk-heading-m',
                   isPageHeading: false
                 }
               }) %}
 
                 {{ govukInput({
-                  "label": {
-                    "html": "Subject"
+                  label: {
+                    html: 'Subject'
                   },
-                  "id": "questions[0][subject]",
-                  "name": "questions[0][subject]",
-                  "attributes": {
-                    "data-name": "questions[%index%][subject]",
-                    "data-id": "questions[%index%][subject]"
+                  id: 'questions[0][subject]',
+                  name: 'questions[0][subject]',
+                  attributes: {
+                    'data-name': 'questions[%index%][subject]',
+                    'data-id': 'questions[%index%][subject]'
                   }
                 }) }}
 
                 {{ govukTextarea({
-                  "name": "questions[0][question]",
-                  "id": "questions[0][question]",
-                  "attributes": {
-                    "data-name": "questions[%index%][question]",
-                    "data-id": "questions[%index%][question]"
+                  name: 'questions[0][question]',
+                  id: 'questions[0][question]',
+                  attributes: {
+                    'data-name': 'questions[%index%][question]',
+                    'data-id': 'questions[%index%][question]'
                   },
-                  "label": {
-                    "html": "Question"
+                  label: {
+                    html: 'Question'
                   }
                 }) }}
 
@@ -67,14 +65,14 @@
 
               <div class="jui-button-action">
                 {{ govukButton({
-                  "text": "Add another question",
-                  "classes": "jui-button--secondary  govuk-!-margin-bottom-4  hmcts-add-another__add-button"
+                  text: 'Add another question',
+                  classes: 'jui-button--secondary  govuk-!-margin-bottom-4  hmcts-add-another__add-button'
                 }) }}
               </div>
 
               <div class="jui-button-action">
                 {{ govukButton({
-                  "text": "Save questions"
+                  text: 'Save questions'
                 }) }}
               </div>
 

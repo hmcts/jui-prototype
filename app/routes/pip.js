@@ -18,7 +18,7 @@ router.get('/app/cases/:id/pip', (req, res) => {
 	};
 
 	// Case details
-	pageObject.detailsRows.push([{ html: 'Parties' }, {html: helpers.getPartiesLine(_case)}]);
+	pageObject.detailsRows.push([{ html: 'Parties' }, {html: helpers.getPartiesLineSummary(_case)}]);
 	pageObject.detailsRows.push([{ html: 'Case number' }, {html: _case.id}]);
 	pageObject.detailsRows.push([{ html: 'Case type' }, {html: helpers.getCaseTypeLabel(_case)}]);
 	pageObject.detailsRows.push([{ html: 'Tribunal centre' }, {html: _case.tribunalCentre}]);
@@ -26,6 +26,25 @@ router.get('/app/cases/:id/pip', (req, res) => {
 
 	res.render('app/case/pip/summary', pageObject);
 });
+
+
+// Timeline
+router.get('/app/cases/:id/timeline', (req, res) => {
+
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
+		caseActions: helpers.getCaseActions(_case),
+		events: helpers.getEvents(_case)
+	};
+
+	res.render('app/case/pip/timeline', pageObject);
+
+});
+
 
 router.get('/app/cases/:id/pip/make-decision', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -60,15 +79,18 @@ router.post('/app/cases/:id/pip/make-decision', (req, res) => {
 			caseActions: helpers.getCaseActions(_case),
 			backLink: {
 				href: `/app/cases/${_case.id}`
-			}
+			},
+			_case: _case
 		};
 		res.render('app/case/pip/decision/decision', pageObject);
 	}
 });
 
+
 router.get('/app/cases/:id/pip/check-decision', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
 		backLink: {
 			href: `/app/cases/${_case.id}/pip/make-decision/`
 		},
@@ -77,6 +99,7 @@ router.get('/app/cases/:id/pip/check-decision', (req, res) => {
 
 	res.render('app/case/pip/decision/check', pageObject);
 });
+
 
 router.post('/app/cases/:id/pip/submit-decision', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/pip/decision-confirmation`);

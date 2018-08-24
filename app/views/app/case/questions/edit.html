@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Edit question - Continous Online Resolution{% endblock %}
+{% block page_title %}Edit question{% endblock %}
 
 {% block content %}
 
@@ -15,8 +15,8 @@
 	<div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -29,7 +29,7 @@
 
           {% if errorSummary.items.length %}
             {{ govukErrorSummary({
-              titleText: "There is a problem",
+              titleText: 'There is a problem',
               errorList: errorSummary.items
             }) }}
           {% endif %}
@@ -37,27 +37,27 @@
           <form method="post">
 
             {{ govukInput({
-              "label": {
-                "text": "Subject"
+              label: {
+                text: 'Subject'
               },
-              "id": "subject",
-              "name": "subject",
-              "value": question.subject,
+              id: 'subject',
+              name: 'subject',
+              value: question.subject,
               errorMessage: inlineErrors.subject
             }) }}
 
             {{ govukTextarea({
-              "label": {
-                "text": "Question"
+              label: {
+                text: 'Question'
               },
-              "id": "body",
-              "name": "body",
-              "value": question.body,
+              id: 'body',
+              name: 'body',
+              value: question.body,
               errorMessage: inlineErrors.body
             }) }}
 
             {{ govukButton({
-              "text": "Save question"
+              text: 'Save question'
             }) }}
 
           </form>

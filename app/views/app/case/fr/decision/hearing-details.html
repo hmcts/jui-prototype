@@ -40,7 +40,8 @@
                 name: 'whoseCourt',
                 fieldset: {
                   legend: {
-                    text: 'Whose court?'
+                    text: 'Whose court?',
+                    classes: 'govuk-fieldset__legend--m'
                   }
                 },
                 items: [
@@ -60,7 +61,8 @@
                 name: 'whatDoYouNeedToTransfer',
                 fieldset: {
                   legend: {
-                    text: 'What do you need to transfer?'
+                    text: 'What do you need to transfer?',
+                    classes: 'govuk-fieldset__legend--m'
                   }
                 },
                 items: [
@@ -79,7 +81,8 @@
 
             {{ govukInput({
               label: {
-                text: 'Estimate length of hearing (minutes)'
+                text: 'Estimate length of hearing (minutes)',
+                classes: 'govuk-label--m'
               },
               classes: 'govuk-input--width-3',
               id: 'estimateLengthOfHearing',
@@ -91,7 +94,8 @@
               name: 'dateOfHearing',
               fieldset: {
                 legend: {
-                  text: 'Date of hearing'
+                  text: 'Date of hearing',
+                  classes: 'govuk-fieldset__legend--m'
                 }
               },
               hint: {
@@ -115,7 +119,8 @@
               name: 'doYouNeedToHearTheCase',
               fieldset: {
                 legend: {
-                  text: 'Do you need to hear the case?'
+                  text: 'Do you need to hear the case?',
+                  classes: 'govuk-fieldset__legend--m'
                 }
               },
               items: [
@@ -135,7 +140,8 @@
               name: 'transferCourt',
               fieldset: {
                 legend: {
-                  text: 'Do you need to transfer to another court for listings and directions?'
+                  text: 'Do you need to transfer to another court for listings and directions?',
+                  classes: 'govuk-fieldset__legend--m'
                 }
               },
               items: [
@@ -157,7 +163,8 @@
               id: 'reason',
               name: 'reason',
               label: {
-                text: 'Notes for court administrator or listings officer'
+                text: 'Notes for court administrator or listings officer',
+                classes: 'govuk-label--m'
               },
               value: data['reason']
             }) }}

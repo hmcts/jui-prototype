@@ -44,6 +44,25 @@ router.get('/app/cases/:id/divorce', (req, res) => {
 });
 
 
+
+// Timeline
+router.get('/app/cases/:id/divorce/timeline', (req, res) => {
+
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
+		caseActions: helpers.getCaseActions(_case),
+		events: helpers.getEvents(_case)
+	};
+
+	res.render('app/case/divorce/timeline', pageObject);
+
+});
+
+
 // Parties
 router.get('/app/cases/:id/divorce/parties', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -52,6 +71,7 @@ router.get('/app/cases/:id/divorce/parties', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'parties'),
+		_case: _case
 	};
 
 	pageObject.petitionerRows = [];

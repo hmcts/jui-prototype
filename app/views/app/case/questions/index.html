@@ -1,15 +1,12 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Questions - Continous Online Resolution{% endblock %}
+{% block page_title %}Questions to appellant{% endblock %}
 
 {% block content %}
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 	<div class="jui-width-container">
@@ -23,20 +20,39 @@
       {% if success %}
         {{ juiAlert(
           {
-            "icon": true,
-            "iconClasses": "jui-alert__icon--success",
-            "iconText": "Success!",
-            "alertText": success,
-            "alertClasses": "jui-alert--success"
+            icon: true,
+            iconClasses: 'jui-alert__icon--success',
+            iconText: 'Success!',
+            alertText: success,
+            alertClasses: 'jui-alert--success'
           })
         }}
       {% endif %}
 
+      <div class="hmcts-page-heading">
+
+        <div class="hmcts-page-heading__title-wrapper">      
+          <h1 class="hmcts-page-heading__title govuk-heading-xl">Questions to appellant</h1>      
+        </div>
+
+        <div class="hmcts-page-heading__actions-wrapper">
+          {{govukButton({
+            classes: 'hmcts-page-heading__button',
+            href: '/app/cases/'+_case.id+'/pip/make-decision',
+            text: 'Make a decision'
+          })}}
+          {{govukButton({
+            classes: 'hmcts-page-heading__button hmcts-button--secondary',
+            href: '/app/cases/'+_case.id+'/pip/list-for-hearing',
+            text: 'List for hearing'
+          })}}
+        </div>
+
+      </div>
+
       <div class="govuk-grid-row">
 
         <div class="govuk-grid-column-two-thirds">
-
-          <h1 class="govuk-heading-l">Questions to appellant</h1>
 
           {% if draftRound %}
 
@@ -45,8 +61,6 @@
               <h2 class="govuk-heading-m">Round {{draftRound.number}}</h2>
 
               <p>You have not sent these questions to the appellant.</p>
-              <!--<p>You have written {{draftRound.questions.length}} question(s).</p>
-              <p>You can add more questions, edit the existing questions or send all questions to the appellant.</p>-->
 
               <div class="jui-questions govuk-!-margin-bottom-6">
                 {% for question in draftRound.questions %}

@@ -26,7 +26,7 @@
 
         <form method="post">
 
-          {% set legendText %}Are you satisfied that {{ petitioner }} is entitled to a decree nisi on the grounds of adultery?{% endset %}
+          {% set legendText %}Are you satisfied that <b>{{ petitioner }}</b> is entitled to a decree nisi on the grounds of adultery?{% endset %}
 
           {{ govukRadios({
             idPrefix: 'satisfied',
@@ -52,7 +52,7 @@
           }) }}
 
           {{ govukButton({
-            "text": "Continue"
+            text: 'Continue'
           }) }}
 
         </form>

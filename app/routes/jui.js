@@ -49,6 +49,8 @@ router.get('/app/cases', (req, res) => {
 	res.redirect('/app/dashboard');
 });
 
+
+
 router.get('/app/dashboard', (req, res) => {
 	var caseList = req.session.cases;
 
@@ -64,7 +66,7 @@ router.get('/app/dashboard', (req, res) => {
 			html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' + (c.urgent ? ' <span class="jui-status  jui-status--urgent  govuk-!-margin-left-1">Urgent</span> ' : '')
 		});
 
-		cells.push({ html: helpers.getPartiesLine(c)	});
+		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
 		cells.push({ html: helpers.getCaseTypeLabel(c) });
 		cells.push({ html: c.status });
 		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
@@ -87,7 +89,7 @@ router.get('/app/dashboard', (req, res) => {
 				html : '<a href="/app/cases/' + c.id + '">'+ c.id +'</a>' + ' <span class="jui-status  jui-status--new  govuk-!-margin-left-1">New</span>'
 			});
 
-			cells.push({ html: helpers.getPartiesLine(c)
+			cells.push({ html: helpers.getPartiesLineDashboard(c)
 			});
 
 			cells.push({ html: c.type });
@@ -156,22 +158,6 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
 
 	res.render(templatePath, pageObject);
-
-});
-
-router.get('/app/cases/:id/timeline', (req, res) => {
-
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-
-	var pageObject = {
-		_case: _case,
-		casebar: helpers.getCaseBarObject(_case),
-		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
-		caseActions: helpers.getCaseActions(_case),
-		events: helpers.getEvents(_case)
-	};
-
-	res.render('app/case/timeline', pageObject);
 
 });
 

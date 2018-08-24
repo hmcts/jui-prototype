@@ -6,10 +6,7 @@
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
 <div class="jui-width-container">
@@ -22,19 +19,24 @@
     }) }}
 
     <div class="hmcts-page-heading">
-      <h1 class="govuk-heading-xl hmcts-page-heading__title">Timeline</h1>
-      {{govukButton({
-        href: '/app/cases/'+_case.id+'/fr/decision',
-        text: 'Make a decision',
-        classes: 'hmcts-page-heading__button'
-      })}}
+
+      <div class="hmcts-page-heading__title-wrapper">      
+        <h1 class="hmcts-page-heading__title govuk-heading-xl">Timeline</h1>      
+      </div>
+
+      <div class="hmcts-page-heading__actions-wrapper">
+        {{govukButton({
+          classes: 'hmcts-page-heading__button',
+          href: '/app/cases/'+_case.id+'/fr/decision',
+          text: 'Make a decision'
+        })}}
+      </div>
+
     </div>
 
     <div class="govuk-grid-row">
 
       <div class="govuk-grid-column-two-thirds">
-
-
 
         {% if events.length %}
 

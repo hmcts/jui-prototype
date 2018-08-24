@@ -21,19 +21,25 @@
     }) }}
 
     <div class="hmcts-page-heading">
-        <h1 class="govuk-heading-xl hmcts-page-heading__title">Summary</h1>
+
+      <div class="hmcts-page-heading__title-wrapper">      
+        <h1 class="hmcts-page-heading__title govuk-heading-xl">Summary</h1>      
+      </div>
+
+      <div class="hmcts-page-heading__actions-wrapper">
         {{govukButton({
+          classes: 'hmcts-page-heading__button',
           href: '/app/cases/'+_case.id+'/pip/make-decision',
-          text: 'Make a decision',
-          classes: 'hmcts-page-heading__button'
+          text: 'Make a decision'
         })}}
         {{govukButton({
+          classes: 'hmcts-page-heading__button hmcts-button--secondary',
           href: '/app/cases/'+_case.id+'/pip/list-for-hearing',
-          text: 'List for hearing',
-          classes: 'hmcts-button--secondary hmcts-page-heading__button'
+          text: 'List for hearing'
         })}}
       </div>
 
+    </div>
 
     <div class="govuk-grid-row">
 

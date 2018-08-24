@@ -1,0 +1,69 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Timeline{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties,
+  caseActions: {
+    actions: caseActions
+  }
+}) }}
+
+<div class="jui-width-container">
+
+  <main class="govuk-main-wrapper" role="main">
+
+    {{ hmctsSubNavigation({
+      label: 'Case navigation',
+      items: caseNavItems
+    }) }}
+
+    <div class="hmcts-page-heading">
+
+      <div class="hmcts-page-heading__title-wrapper">      
+        <h1 class="hmcts-page-heading__title govuk-heading-xl">Timeline</h1>      
+      </div>
+
+      <div class="hmcts-page-heading__actions-wrapper">
+        {{govukButton({
+          classes: 'hmcts-page-heading__button',
+          href: '/app/cases/'+_case.id+'/pip/make-decision',
+          text: 'Make a decision'
+        })}}
+        {{govukButton({
+          classes: 'hmcts-page-heading__button hmcts-button--secondary',
+          href: '/app/cases/'+_case.id+'/pip/list-for-hearing',
+          text: 'List for hearing'
+        })}}
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {% if events.length %}
+
+          {{hmctsTimeline({
+            events: events
+          })}}
+
+        {% else %}
+
+          <p>No events.</p>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+{% endblock %}

@@ -21,14 +21,20 @@
         items: caseNavItems
       }) }}
 
-      <h1 class="govuk-heading-xl">Case file</h1>
+      <div class="hmcts-page-heading">
 
-      <div class="jui-casefile-actions">
-        <ul class="jui-casefile-actions__list">
-          <li class="jui-casefile-actions__list-item"><a href="#">Add comments</a></li>
-          <li class="jui-casefile-actions__list-item"><a href="/app/cases/{{_case.id}}/fr/history">View history</a></li>
-          <!--li class="jui-casefile-actions__list-item"><a download href="/public/downloads/ConsentOrder.docx">Download</a></li-->
-        </ul>
+        <div class="hmcts-page-heading__title-wrapper">      
+          <h1 class="hmcts-page-heading__title govuk-heading-xl">Case file</h1>      
+        </div>
+
+        <div class="hmcts-page-heading__actions-wrapper">
+          {{govukButton({
+						classes: 'hmcts-page-heading__button',
+						href: '/app/cases/'+_case.id+'/divorce/decision',
+						text: 'Make a decision'
+					})}}
+        </div>
+
       </div>
 
       <div class="jui-casefile govuk-!-margin-bottom-6">
@@ -43,6 +49,7 @@
           </ul>
         </div>
         <div class="jui-casefile-document-wrapper">
+          {% block file_actions %}{% endblock %}
           <div class="jui-casefile-page editable">
             {% block file_content %}{% endblock %}
           </div>

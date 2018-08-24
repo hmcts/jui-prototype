@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Check your answers - Continous Online Resolution{% endblock %}
+{% block page_title %}Check your questions before sending{% endblock %}
 
 {% block content %}
 
@@ -15,8 +15,8 @@
   <div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -42,11 +42,12 @@
 
               </div>
             {% endfor %}
+
           </dl>
 
           <form method="post" action="/app/cases/{{_case.id}}/questions/send">
             {{ govukButton({
-              "text": "Send questions"
+              text: 'Send questions'
             }) }}
           </form>
 

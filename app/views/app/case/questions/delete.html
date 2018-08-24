@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Check your answers - Continous Online Resolution{% endblock %}
+{% block page_title %}Are you sure you want to delete this question?{% endblock %}
 
 {% block content %}
 
@@ -15,8 +15,8 @@
   <div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -25,9 +25,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-l">Are you sure you want to delete this question?</h1>
-
-
+          <h1 class="govuk-heading-xl">Are you sure you want to delete this question?</h1>
 
           <form method="post" action="/app/cases/{{_case.id}}/questions/{{question.id}}/delete">
             {{ govukButton({

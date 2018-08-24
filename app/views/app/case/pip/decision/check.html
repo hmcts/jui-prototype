@@ -1,22 +1,19 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block page_title %}Check decision{% endblock %}
+{% block page_title %}Check your decision{% endblock %}
 
 {% block content %}
 
 {{ juiCasebar({
   caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
-  }
+  parties: casebar.parties
 }) }}
 
   <div class="jui-width-container">
 
     {{ govukBackLink({
-      "text": "Back",
-      "href": backLink.href
+      text: 'Back',
+      href: backLink.href
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -28,6 +25,7 @@
           <h1 class="govuk-heading-xl">Check your decision</h1>
 
           <dl class="app-check-your-answers  app-check-your-answers--short  govuk-!-margin-bottom-6">
+            
             <div class="app-check-your-answers__contents">
 
               <dt class="app-check-your-answers__question">Decision</dt>
@@ -39,11 +37,12 @@
               </dd>
 
             </div>
+
           </dl>
 
           <form method="post" action="/app/cases/{{_case.id}}/pip/submit-decision">
             {{ govukButton({
-              "text": "Submit decision"
+              text: 'Submit decision'
             }) }}
           </form>
 

@@ -5,18 +5,9 @@
   <div class="jui-width-container">
 
     <div class="jui-casebar__details">
-      {{params.caseId}}<span class="jui-casebar__title"> {{params.parties}}</span>
+      {{params.caseId}}<span class="jui-casebar__title"> {{params.parties | safe}}</span>
     </div>
 
-    {% if params.caseActions.actions %}
-      <div class="jui-casebar__options">
-
-        {# {{juiCaseActions({
-          actions: params.caseActions.actions
-        })}} #}
-
-      </div>
-    {% endif %}
   </div>
 
 </div>

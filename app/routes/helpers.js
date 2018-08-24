@@ -1,7 +1,35 @@
 var types = require('../data/types');
 var moment = require('moment');
 
-function getPartiesLine(_case) {
+
+// Parties on casebar
+function getPartiesLineCasebar(_case) {
+	return _case.parties.map(function(party) {
+		if(party.org) {
+			return party.org;
+		} else {
+			return '<b>' + party.firstName + ' ' + party.lastName + '</b>';
+		}
+
+	}).join(' v ');
+}
+
+
+// Parties on dashboard
+function getPartiesLineDashboard(_case) {
+	return _case.parties.map(function(party) {
+		if(party.org) {
+			return party.org;
+		} else {
+			return party.firstName + ' ' + party.lastName + '<br>';
+		}
+
+	}).join(' v ');
+}
+
+
+// Parties on summary
+function getPartiesLineSummary(_case) {
 	return _case.parties.map(function(party) {
 		if(party.org) {
 			return party.org;
@@ -11,6 +39,7 @@ function getPartiesLine(_case) {
 
 	}).join(' v ');
 }
+
 
 function getAppellantName(_case) {
 	return _case.parties.map(function(party) {
@@ -104,7 +133,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/timeline`,
+					href: `/app/cases/${_case.id}/pip/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},
@@ -127,7 +156,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/timeline`,
+					href: `/app/cases/${_case.id}/fr/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				}
@@ -150,7 +179,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/timeline`,
+					href: `/app/cases/${_case.id}/divorce/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				}
@@ -162,7 +191,7 @@ function getCaseNavItems(_case, id) {
 
 function getCaseBarObject(_case) {
 	return {
-		parties: getPartiesLine(_case),
+		parties: getPartiesLineCasebar(_case),
 		id: _case.id
 	};
 }
@@ -262,7 +291,11 @@ function getEvents(_case) {
 
 
 exports.getCaseBarObject = getCaseBarObject;
-exports.getPartiesLine = getPartiesLine;
+
+exports.getPartiesLineCasebar = getPartiesLineCasebar;
+exports.getPartiesLineDashboard = getPartiesLineDashboard;
+exports.getPartiesLineSummary = getPartiesLineSummary;
+
 exports.getCase = getCase;
 exports.getCaseType = getCaseType;
 exports.getCaseTypeLabel = getCaseTypeLabel;
@@ -278,5 +311,4 @@ exports.getFormattedShortDate = getFormattedShortDate;
 exports.getFormattedTime = getFormattedTime;
 exports.getRecentEvents = getRecentEvents;
 exports.getEvents = getEvents;
-exports.getCaseNavItems = getCaseNavItems;
 exports.getCaseNavItems = getCaseNavItems;

@@ -21,7 +21,21 @@
         items: caseNavItems
       }) }}
 
-      <h1 class="govuk-heading-xl">Case file</h1>
+      <div class="hmcts-page-heading">
+
+        <div class="hmcts-page-heading__title-wrapper">      
+          <h1 class="hmcts-page-heading__title govuk-heading-xl">Case file</h1>      
+        </div>
+
+        <div class="hmcts-page-heading__actions-wrapper">
+          {{govukButton({
+            classes: 'hmcts-page-heading__button',
+            href: '/app/cases/'+_case.id+'/fr/decision',
+            text: 'Make a decision'
+          })}}
+        </div>
+
+      </div>
 
       <div class="jui-casefile-2 govuk-!-margin-bottom-6">
 
