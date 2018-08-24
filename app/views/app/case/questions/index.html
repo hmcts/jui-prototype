@@ -105,9 +105,17 @@
                 <p>The appellant has until {{round.dateDue | govTime }} on {{round.dateDue | govDate }} to reply.</p>
               {% else %}
                 {% if round.areAllQuestionsAnswered %}
-                  <p><b>The appellant has answered all the questions in time.</b></p>
+
+                  {{ govukInsetText({
+                    text: 'The appellant has answered all the questions in time.'
+                  }) }}
+
                 {% else %}
-                  <p><b>The appellant has not answered all the question in time.</b></p>
+
+                   {{ govukInsetText({
+                    text: 'The appellant has not answered all the question in time.'
+                  }) }}
+
                 {% endif %}
               {% endif %}
               <div class="jui-questions govuk-!-margin-bottom-6">
