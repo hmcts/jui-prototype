@@ -20,7 +20,20 @@
       items: caseNavItems
     }) }}
 
-    <h1 class="govuk-heading-l">Summary</h1>
+    <div class="hmcts-page-heading">
+        <h1 class="govuk-heading-xl hmcts-page-heading__title">Summary</h1>
+        {{govukButton({
+          href: '/app/cases/'+_case.id+'/pip/make-decision',
+          text: 'Make a decision',
+          classes: 'hmcts-page-heading__button'
+        })}}
+        {{govukButton({
+          href: '/app/cases/'+_case.id+'/pip/list-for-hearing',
+          text: 'List for hearing',
+          classes: 'hmcts-button--secondary hmcts-page-heading__button'
+        })}}
+      </div>
+
 
     <div class="govuk-grid-row">
 

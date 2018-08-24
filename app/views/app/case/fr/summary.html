@@ -21,7 +21,14 @@
       items: caseNavItems
     }) }}
 
-    <h1 class="govuk-heading-xl">Summary</h1>
+    <div class="hmcts-page-heading">
+      <h1 class="govuk-heading-xl hmcts-page-heading__title">Summary</h1>
+      {{govukButton({
+        href: '/app/cases/'+_case.id+'/fr/decision',
+        text: 'Make a decision',
+        classes: 'hmcts-page-heading__button'
+      })}}
+    </div>
 
     <div class="govuk-grid-row">
 

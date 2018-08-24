@@ -155,7 +155,7 @@ mark.comment {
 
 .jui-case-action-alert__heading {
   @include govuk-font(
-    $size: 24, 
+    $size: 24,
     $weight: bold
   );
   color: inherit;
@@ -176,3 +176,17 @@ mark.comment {
   color: govuk-colour("white");
 }
 // END CASE ACTION ALERT
+
+
+.hmcts-page-heading {
+  overflow: hidden;
+}
+
+.hmcts-page-heading__title {
+  float: left;
+}
+
+.hmcts-page-heading__button {
+  float: right;
+  margin-left: 20px;
+}

@@ -164,6 +164,7 @@ router.get('/app/cases/:id/timeline', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
 	var pageObject = {
+		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
 		caseActions: helpers.getCaseActions(_case),

@@ -21,11 +21,20 @@
       items: caseNavItems
     }) }}
 
+    <div class="hmcts-page-heading">
+      <h1 class="govuk-heading-xl hmcts-page-heading__title">Timeline</h1>
+      {{govukButton({
+        href: '/app/cases/'+_case.id+'/fr/decision',
+        text: 'Make a decision',
+        classes: 'hmcts-page-heading__button'
+      })}}
+    </div>
+
     <div class="govuk-grid-row">
 
       <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">Timeline</h1>
+
 
         {% if events.length %}
 
@@ -38,7 +47,7 @@
           <p>No events.</p>
 
         {% endif %}
-        
+
       </div>
 
     </div>
