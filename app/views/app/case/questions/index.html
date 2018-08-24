@@ -18,16 +18,12 @@
       }) }}
 
       {% if success %}
-        {{ juiAlert(
-          {
-            icon: true,
-            iconClasses: 'jui-alert__icon--success',
-            iconText: 'Success!',
-            alertText: success,
-            alertClasses: 'jui-alert--success'
-          })
-        }}
-      {% endif %}
+        {{ hmctsAlert({
+          type: 'success',
+          text: success,
+          iconFallbackText: 'Success'
+        }) }} 
+      {% endif %}      
 
       <div class="hmcts-page-heading">
 

@@ -29,7 +29,7 @@ router.get('/app/cases/:id/pip', (req, res) => {
 
 
 // Timeline
-router.get('/app/cases/:id/timeline', (req, res) => {
+router.get('/app/cases/:id/pip/timeline', (req, res) => {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
