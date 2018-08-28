@@ -6,7 +6,7 @@ var moment = require('moment');
 function getPartiesLineCasebar(_case) {
 	return _case.parties.map(function(party) {
 		if(party.org) {
-			return party.org;
+			return '<b>' + party.org + '</b>';
 		} else {
 			return '<b>' + party.firstName + ' ' + party.lastName + '</b>';
 		}
@@ -19,7 +19,7 @@ function getPartiesLineCasebar(_case) {
 function getPartiesLineDashboard(_case) {
 	return _case.parties.map(function(party) {
 		if(party.org) {
-			return party.org;
+			return party.org + '<br>';
 		} else {
 			return party.firstName + ' ' + party.lastName + '<br>';
 		}

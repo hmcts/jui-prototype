@@ -1,0 +1,66 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Reasons for the panel’s decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">Reasons for the panel’s decision</h1>
+
+          <h2 class="govuk-heading-m">Changes to the descriptors</h2>
+
+          <h2 class="govuk-heading-s">Preparing food</h2>
+          <p>Nunc sit amet metus quis massa tempor egestas sed quis dolor. Pellentesque euismod metus at viverra iaculis. Curabitur venenatis porta dui in fermentum.</p>
+
+          <h2 class="govuk-heading-s">Washing and bathing</h2>
+          <p>Curabitur venenatis porta dui in fermentum. Pellentesque euismod metus at viverra iaculis.</p>
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          <form method="post">
+
+            {{ govukTextarea({
+              name: 'additionalReasons',
+              id: 'additionalReasons',
+              rows: '5',
+              label: {
+                text: 'Additional reasons (optional)',
+                classes: 'govuk-label--m'
+              },
+              hint: {
+                text: 'Provide any additional reasons that supports the panel’s decision.'
+              }
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}

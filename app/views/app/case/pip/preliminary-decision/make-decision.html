@@ -1,0 +1,115 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Make a preliminary decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-xl">Make a preliminary decision</h1>
+
+      <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-two-thirds">
+
+          <form method="post">
+
+            {{ govukRadios({
+              idPrefix: 'what-award-should-the-appellant-be-given-for-daily-living',
+              name: 'what-award-should-the-appellant-be-given-for-daily-living',
+              fieldset: {
+                legend: {
+                  text: 'What award should the appellant be given for daily living?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  html: 'No award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  value: 'None'
+                },
+                {
+                  html: 'Standard award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  value: 'Standard award'
+                },
+                {
+                  html: 'Enhanced award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  value: 'Enhanced award'
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: 'what-award-should-the-appellant-be-given-for-mobility',
+              name: 'what-award-should-the-appellant-be-given-for-mobility',
+              fieldset: {
+                legend: {
+                  text: 'What award should the appellant be given for mobility?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  html: 'No award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  value: 'None'
+                },
+                {
+                  html: 'Standard award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  value: 'Standard award'
+                },
+                {
+                  html: 'Enhanced award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  value: 'Enhanced award'
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              classes: 'govuk-radios--inline',
+              idPrefix: 'panelsDecision',
+              name: 'panelsDecision',
+              fieldset: {
+                legend: {
+                  text: 'Is the panel’s decision different to DWP’s original decision?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  html: 'Yes<span class="govuk-visually-hidden"> the panel’s decision is different</span>',
+                  value: 'Yes'
+                },
+                {
+                  html: 'No<span class="govuk-visually-hidden"> the panel’s decision is not different</span>',
+                  value: 'No'
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}

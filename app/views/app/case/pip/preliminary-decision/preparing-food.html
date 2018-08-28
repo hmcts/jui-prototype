@@ -1,0 +1,118 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Preparing food{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">Preparing food</h1>
+
+          <form method="post">
+
+            {{ govukRadios({
+              idPrefix: 'preparing-food',
+              name: 'preparing-food',
+              fieldset: {
+                legend: {
+                  text: 'Enter the panel’s new scores',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                text: 'Select the new score for this descriptor'
+              },
+              items: [
+                {
+                  text: 'Can prepare and cook a simple meal unaided',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Can prepare and cook a simple meal unaided',
+                  checked: checked('preparing-food', 'Can prepare and cook a simple meal unaided') == 'checked'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal',
+                  checked: checked('preparing-food', 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal') == 'checked'
+                },
+                {
+                  text: 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave',
+                  checked: checked('preparing-food', 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave') == 'checked'
+                },
+                {
+                  text: 'Needs prompting to be able to either prepare or cook a simple meal',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Needs prompting to be able to either prepare or cook a simple meal',
+                  checked: checked('preparing-food', 'Needs prompting to be able to either prepare or cook a simple meal') == 'checked'
+                },
+                {
+                  text: 'Needs supervisipon or assistance to either prepare or cook a simple meal',
+                  hint: {
+                    text: '4 points'
+                  },
+                  value: 'Needs supervisipon or assistance to either prepare or cook a simple meal',
+                  checked: checked('preparing-food', 'Needs supervisipon or assistance to either prepare or cook a simple meal') == 'checked'
+                },
+                {
+                  text: 'Cannot prepare and cook food',
+                  hint: {
+                    text: '8 points'
+                  },
+                  value: 'Cannot prepare and cook food',
+                  checked: checked('preparing-food', 'Cannot prepare and cook food') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukTextarea({
+              name: 'preparing-food-change',
+              id: 'preparing-food-change',
+              rows: '5',
+              label: {
+                text: 'Indicate the reasons for the change to this descriptor',
+                classes: 'govuk-label--m'
+              },
+              value: data['preparing-food-change']
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
