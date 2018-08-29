@@ -1,0 +1,35 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Decision submitted{% endblock %}
+
+{% block content %}
+
+  <div class="jui-width-container">
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+      
+        <div class="govuk-grid-column-two-thirds">
+
+          {{ govukPanel({
+            headingLevel: 1,
+            titleText: 'Decision submitted',
+            html: _case.id
+          }) }}
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+            
+          <p>Content required...</p>
+
+          <p><a href="/app/dashboard">Go to your dashboard</a></p>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+{% endblock %}

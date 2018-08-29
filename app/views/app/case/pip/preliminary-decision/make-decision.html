@@ -27,8 +27,8 @@
           <form method="post">
 
             {{ govukRadios({
-              idPrefix: 'what-award-should-the-appellant-be-given-for-daily-living',
-              name: 'what-award-should-the-appellant-be-given-for-daily-living',
+              idPrefix: 'awardliving',
+              name: 'awardliving',
               fieldset: {
                 legend: {
                   text: 'What award should the appellant be given for daily living?',
@@ -38,22 +38,25 @@
               items: [
                 {
                   html: 'No award<span class="govuk-visually-hidden"> is given for daily living</span>',
-                  value: 'None'
+                  value: 'none',
+                  checked: checked('awardliving', 'none') == 'checked'
                 },
                 {
                   html: 'Standard award<span class="govuk-visually-hidden"> is given for daily living</span>',
-                  value: 'Standard award'
+                  value: 'standard',
+                  checked: checked('awardliving', 'standard') == 'checked'
                 },
                 {
                   html: 'Enhanced award<span class="govuk-visually-hidden"> is given for daily living</span>',
-                  value: 'Enhanced award'
+                  value: 'enhanced',
+                  checked: checked('awardliving', 'enhanceed') == 'checked'
                 }
               ]
             }) }}
 
             {{ govukRadios({
-              idPrefix: 'what-award-should-the-appellant-be-given-for-mobility',
-              name: 'what-award-should-the-appellant-be-given-for-mobility',
+              idPrefix: 'awardmobility',
+              name: 'awardmobility',
               fieldset: {
                 legend: {
                   text: 'What award should the appellant be given for mobility?',
@@ -63,23 +66,26 @@
               items: [
                 {
                   html: 'No award<span class="govuk-visually-hidden"> is given for mobility</span>',
-                  value: 'None'
+                  value: 'none',
+                  checked: checked('awardmobility', 'none') == 'checked'
                 },
                 {
                   html: 'Standard award<span class="govuk-visually-hidden"> is given for mobility</span>',
-                  value: 'Standard award'
+                  value: 'standard',
+                  checked: checked('awardmobility', 'standard') == 'checked'
                 },
                 {
                   html: 'Enhanced award<span class="govuk-visually-hidden"> is given for mobility</span>',
-                  value: 'Enhanced award'
+                  value: 'enhanced',
+                  checked: checked('awardmobility', 'enhanced') == 'checked'
                 }
               ]
             }) }}
 
             {{ govukRadios({
               classes: 'govuk-radios--inline',
-              idPrefix: 'panelsDecision',
-              name: 'panelsDecision',
+              idPrefix: 'panelsdecision',
+              name: 'panelsdecision',
               fieldset: {
                 legend: {
                   text: 'Is the panel’s decision different to DWP’s original decision?',
@@ -89,11 +95,13 @@
               items: [
                 {
                   html: 'Yes<span class="govuk-visually-hidden"> the panel’s decision is different</span>',
-                  value: 'Yes'
+                  value: 'yes',
+                  checked: checked('panelsdecision', 'yes') == 'checked'
                 },
                 {
                   html: 'No<span class="govuk-visually-hidden"> the panel’s decision is not different</span>',
-                  value: 'No'
+                  value: 'no',
+                  checked: checked('panelsdecision', 'no') == 'checked'
                 }
               ]
             }) }}
