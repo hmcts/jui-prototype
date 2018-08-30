@@ -11,6 +11,66 @@ function isChecked(req, name, value) {
 }
 
 
+// Check and continue
+function checkAndContinue(req, res, config) {
+		
+	// DAILY LIVING
+
+	// 1. Preparing food
+	if(config.preparingFood && isChecked(req, 'dailyliving', 'Preparing food')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
+
+	// 2. Taking nutrition
+	} else if (config.takingNutrition && isChecked(req, 'dailyliving', 'Taking nutrition')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
+
+	// 3. Managing therapy or monitoring a health condition
+	} else if (config.managingTherapy && isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
+
+	// 4. Washing and bathing
+	} else if (config.washingAndBathing && isChecked(req, 'dailyliving', 'Washing and bathing')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
+
+	// 5. Managing toilet needs or incontinence
+	} else if (config.managingToilet && isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
+
+	// 6. Dressing and undressing
+	} else if (config.dressingAndUndressing && isChecked(req, 'dailyliving', 'Dressing and undressing')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
+	
+	// 7. Communicating verbally
+	} else if (config.communicatingVerbally && isChecked(req, 'dailyliving', 'Communicating verbally')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
+
+	// 8. Reading and understanding signs, symbols and words
+	} else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
+
+	// 9. Making budgeting decision
+	} else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting decision')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
+	
+	
+	// MOBILITY
+
+	// 1. Planning and following journeys
+	} else if (config.planningJourneys && isChecked(req, 'mobility', 'Planning and following journeys')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/planning-and-following-journeys`);
+
+	// 2. Moving around
+	} else if (config.movingAround && isChecked(req, 'mobility', 'Moving around')) {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/moving-around`);
+
+	// Redirect to next step
+	} else {
+		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/panel-reasons`);
+	}
+
+}
+
+
 // Summary
 router.get('/app/cases/:id/pip', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -69,14 +129,13 @@ router.get('/app/cases/:id/pip/preliminary-decision', (req, res) => {
 
 router.post('/app/cases/:id/pip/preliminary-decision', (req, res) => {
 
-	if(req.body.panelsDecision === 'Yes') {
+	if(req.body.panelsdecision === 'yes') {
 		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/scores`);
 	} else {
 		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preview-decision`);
 	}
 
 });
-
 
 
 // Scores
@@ -95,42 +154,21 @@ router.get('/app/cases/:id/pip/preliminary-decision/scores', (req, res) => {
 
 router.post('/app/cases/:id/pip/preliminary-decision/scores', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-	
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+		checkAndContinue(req, res, {
+			// DAILY LIVING
+			preparingFood: true,
+			takingNutrition: true,
+			managingTherapy: true,
+			washingAndBathing: true,
+			managingToilet: true,
+			dressingAndUndressing: true,
+			communicatingVerbally: true,
+			readingAndUnderstanding: true,
+			makingDecisions: true,
+			// MOBILITY
+			planningJourneys: true,
+			movingAround: true
+		});
 
 });
 
@@ -151,38 +189,21 @@ router.get('/app/cases/:id/pip/preliminary-decision/preparing-food', (req, res) 
 
 router.post('/app/cases/:id/pip/preliminary-decision/preparing-food', (req, res) => {
 
-	// 2. Taking nutrition
-	if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+			// DAILY LIVING
+			preparingFood: false,
+			takingNutrition: true,
+			managingTherapy: true,
+			washingAndBathing: true,
+			managingToilet: true,
+			dressingAndUndressing: true,
+			communicatingVerbally: true,
+			readingAndUnderstanding: true,
+			makingDecisions: true,
+			// MOBILITY
+			planningJourneys: true,
+			movingAround: true
+	});
 
 });
 
@@ -202,38 +223,20 @@ router.get('/app/cases/:id/pip/preliminary-decision/taking-nutrition', (req, res
 
 router.post('/app/cases/:id/pip/preliminary-decision/taking-nutrition', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		// DAILY LIVING
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: true,
+		washingAndBathing: true,
+		managingToilet: true,
+		dressingAndUndressing: true,
+		communicatingVerbally: true,
+		readingAndUnderstanding: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -253,38 +256,21 @@ router.get('/app/cases/:id/pip/preliminary-decision/managing-therapy-or-monitori
 
 router.post('/app/cases/:id/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		// DAILY LIVING
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: true,
+		managingToilet: true,
+		dressingAndUndressing: true,
+		communicatingVerbally: true,
+		readingAndUnderstanding: true,
+		makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -304,38 +290,20 @@ router.get('/app/cases/:id/pip/preliminary-decision/washing-and-bathing', (req, 
 
 router.post('/app/cases/:id/pip/preliminary-decision/washing-and-bathing', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: true,
+		dressingAndUndressing: true,
+		communicatingVerbally: true,
+		readingAndUnderstanding: true,
+		makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -355,38 +323,20 @@ router.get('/app/cases/:id/pip/preliminary-decision/managing-toilet-needs-or-inc
 
 router.post('/app/cases/:id/pip/preliminary-decision/managing-toilet-needs-or-incontinence', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: true,
+		communicatingVerbally: true,
+		readingAndUnderstanding: true,
+		makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -406,38 +356,20 @@ router.get('/app/cases/:id/pip/preliminary-decision/dressing-and-undressing', (r
 
 router.post('/app/cases/:id/pip/preliminary-decision/dressing-and-undressing', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-	
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: true,
+		readingAndUnderstanding: true,
+		makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -457,38 +389,20 @@ router.get('/app/cases/:id/pip/preliminary-decision/communicating-verbally', (re
 
 router.post('/app/cases/:id/pip/preliminary-decision/communicating-verbally', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+		readingAndUnderstanding: true,
+		makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -508,38 +422,20 @@ router.get('/app/cases/:id/pip/preliminary-decision/reading-and-understanding-si
 
 router.post('/app/cases/:id/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
-
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
-
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
-
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
-
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
-
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
-	
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
-
-	// 9. Making budgeting decision
-	} else if (isChecked(req, 'dailyliving', 'Making budgeting decision')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/making-budgeting-decision`);
-	}
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+		readingAndUnderstanding: false,
+		makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
 });
 
@@ -559,39 +455,86 @@ router.get('/app/cases/:id/pip/preliminary-decision/making-budgeting-decision', 
 
 router.post('/app/cases/:id/pip/preliminary-decision/making-budgeting-decision', (req, res) => {
 
-	// 1. Preparing food
-	if(isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/preparing-food`);
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+		readingAndUnderstanding: false,
+		makingDecisions: false,
+		// MOBILITY
+		planningJourneys: true,
+		movingAround: true
+	});
 
-	// 2. Taking nutrition
-	} else if (isChecked(req, 'dailyliving', 'Taking nutrition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/taking-nutrition`);
+});
 
-	// 3. Managing therapy or monitoring a health condition
-	} else if (isChecked(req, 'dailyliving', 'Managing therapy or monitoring a health condition')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-therapy-or-monitoring-a-health-condition`);
 
-	// 4. Washing and bathing
-	} else if (isChecked(req, 'dailyliving', 'Washing and bathing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/washing-and-bathing`);
+// 1. Planning and following journeys
+router.get('/app/cases/:id/pip/preliminary-decision/planning-and-following-journeys', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/pip/preliminary-decision`
+		}
+	};
+	res.render('app/case/pip/preliminary-decision/planning-and-following-journeys', pageObject);
+});
 
-	// 5. Managing toilet needs or incontinence
-	} else if (isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/managing-toilet-needs-or-incontinence`);
+router.post('/app/cases/:id/pip/preliminary-decision/planning-and-following-journeys', (req, res) => {
 
-	// 6. Dressing and undressing
-	} else if (isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/dressing-and-undressing`);
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+		readingAndUnderstanding: false,
+		makingDecisions: false,
+		// MOBILITY
+		planningJourneys: false,
+		movingAround: true
+	});
 
-	// 7. Communicating verbally
-	} else if (isChecked(req, 'dailyliving', 'Communicating verbally')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/communicating-verbally`);
+});
 
-	// 8. Reading and understanding signs, symbols and words
-	} else if (isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/preliminary-decision/reading-and-understanding-signs-symbols-and-words`);
 
-	}
+// 2. Moving around
+router.get('/app/cases/:id/pip/preliminary-decision/moving-around', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/pip/preliminary-decision`
+		}
+	};
+	res.render('app/case/pip/preliminary-decision/moving-around', pageObject);
+});
+
+router.post('/app/cases/:id/pip/preliminary-decision/movong-around', (req, res) => {
+
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+		readingAndUnderstanding: false,
+		makingDecisions: false,
+		// MOBILITY
+		planningJourneys: false,
+		movingAround: false
+	});
 
 });
 
