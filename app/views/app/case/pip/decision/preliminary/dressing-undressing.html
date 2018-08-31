@@ -1,0 +1,113 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Dressing and undressing{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">
+            <span class="govuk-caption-xl">Daily living</span>
+            Dressing and undressing
+          </h1>
+
+          <form method="post">
+
+            {{ govukRadios({
+              idPrefix: 'dressing-undressing',
+              name: 'dressing-undressing',
+              fieldset: {
+                legend: {
+                  text: 'Enter the panel’s new scores',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                text: 'Select the new score for this descriptor'
+              },
+              items: [
+                {
+                  text: 'Can dress and undress unaided',
+                  hint: {
+                    text: '0 points'
+                  },
+                  value: 'Can dress and undress unaided',
+                  checked: checked('dressing-undressing', 'Can dress and undress unaided') == 'checked'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to dress or undress',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Needs to use an aid or appliance to be able to dress or undress',
+                  checked: checked('dressing-undressing', 'Needs to use an aid or appliance to be able to dress or undress') == 'checked'
+                },
+                {
+                  text: 'Needs assistance to be able to dress or undress their lower body',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Needs assistance to be able to dress or undress their lower body',
+                  checked: checked('dressing-undressing', 'Needs assistance to be able to dress or undress their lower body') == 'checked'
+                },
+                {
+                  text: 'Needs assistance to be able to dress or undress their upper body',
+                  hint: {
+                    text: '4 points'
+                  },
+                  value: 'Needs assistance to be able to dress or undress their upper body',
+                  checked: checked('dressing-undressing', 'Needs assistance to be able to dress or undress their upper body') == 'checked'
+                },
+                {
+                  text: 'Cannot dress or undress at all',
+                  hint: {
+                    text: '8 points'
+                  },
+                  value: 'Cannot dress or undress at all',
+                  checked: checked('dressing-undressing', 'Cannot dress or undress at all') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukTextarea({
+              name: 'dressing-undressing-change',
+              id: 'dressing-undressing-change',
+              rows: '5',
+              label: {
+                text: 'Indicate the reasons for the change to this descriptor',
+                classes: 'govuk-label--m'
+              },
+              value: data['dressing-undressing-change']
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}

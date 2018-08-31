@@ -1,0 +1,127 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Make a preliminary view{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-xl">Make a preliminary view</h1>
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <form method="post">
+
+            {{ govukRadios({
+              idPrefix: 'awardliving',
+              name: 'awardliving',
+              fieldset: {
+                legend: {
+                  text: 'What award should the appellant be given for daily living?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  html: 'No award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  value: 'none',
+                  checked: checked('awardliving', 'none') == 'checked'
+                },
+                {
+                  html: 'Standard award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  value: 'standard',
+                  checked: checked('awardliving', 'standard') == 'checked'
+                },
+                {
+                  html: 'Enhanced award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  value: 'enhanced',
+                  checked: checked('awardliving', 'enhanceed') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: 'awardmobility',
+              name: 'awardmobility',
+              fieldset: {
+                legend: {
+                  text: 'What award should the appellant be given for mobility?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  html: 'No award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  value: 'none',
+                  checked: checked('awardmobility', 'none') == 'checked'
+                },
+                {
+                  html: 'Standard award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  value: 'standard',
+                  checked: checked('awardmobility', 'standard') == 'checked'
+                },
+                {
+                  html: 'Enhanced award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  value: 'enhanced',
+                  checked: checked('awardmobility', 'enhanced') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: 'panelsdecision',
+              name: 'panelsdecision',
+              fieldset: {
+                legend: {
+                  text: 'How does this award compare to the original DWP decision?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  html: 'Higher<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  value: 'higher',
+                  checked: checked('panelsdecision', 'higher') == 'checked'
+                },
+                {
+                  html: 'The same<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  value: 'same',
+                  checked: checked('panelsdecision', 'same') == 'checked'
+                },
+                {
+                  html: 'Lower<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  value: 'lower',
+                  checked: checked('panelsdecision', 'lower') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}

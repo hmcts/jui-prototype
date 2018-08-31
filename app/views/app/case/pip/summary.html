@@ -22,14 +22,14 @@
 
     <div class="hmcts-page-heading">
 
-      <div class="hmcts-page-heading__title-wrapper">      
-        <h1 class="hmcts-page-heading__title govuk-heading-xl">Summary</h1>      
+      <div class="hmcts-page-heading__title-wrapper">
+        <h1 class="hmcts-page-heading__title govuk-heading-xl">Summary</h1>
       </div>
 
       <div class="hmcts-page-heading__actions-wrapper">
         {{govukButton({
           classes: 'hmcts-page-heading__button',
-          href: '/app/cases/'+_case.id+'/pip/make-decision',
+          href: '/app/cases/'+_case.id+'/pip/decision',
           text: 'Make a decision'
         })}}
         {{govukButton({
@@ -48,35 +48,35 @@
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Case details</h2>
 
         {{ govukTable({
-          "classes": "jui-table  jui-table--fixed  govuk-!-margin-bottom-7",
-          "firstCellIsHeader": true,
-          "rows": detailsRows
+          classes: 'jui-table  jui-table--fixed  govuk-!-margin-bottom-7',
+          firstCellIsHeader: true,
+          rows: detailsRows
         }) }}
 
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Panel members</h2>
 
         {{ govukTable({
-          "classes": "jui-table  jui-table--fixed  govuk-!-margin-bottom-7",
-          "firstCellIsHeader": true,
-          "rows": [
+          classes: 'jui-table  jui-table--fixed  govuk-!-margin-bottom-7',
+          firstCellIsHeader: true,
+          rows: [
             [
-              {"text": "Judge"},
-              {"text": "Prita Shah"}
+              {text: 'Judge'},
+              {text: 'Prita Shah'}
             ],
             [
-              {"text": "Medical member"},
-              {"text": "Veronica George"}
+              {text: 'Medical member'},
+              {text: 'Veronica George'}
             ],
             [
-              {"text": "Disability qualified member"},
-              {"text": "Mike Parsens"}
+              {text: 'Disability qualified member'},
+              {text: 'Mike Parsens'}
             ]
           ]
         })}}
 
       </div>
 
-       <div class="govuk-grid-column-one-third">
+      <div class="govuk-grid-column-one-third">
 
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-4">Recent events</h2>
 

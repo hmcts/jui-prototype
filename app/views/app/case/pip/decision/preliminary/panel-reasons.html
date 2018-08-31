@@ -1,0 +1,105 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Reasons for the panel’s decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">Reasons for the panel’s decision</h1>
+
+          <h2 class="govuk-heading-m">Changes to the descriptors</h2>
+
+          {% if data['preparing-food-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Preparing food</h2>
+            <p>{{data['preparing-food-change']}}</p>
+          {% endif %}
+
+          {% if data['taking-nutrition-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Taking nutrition</h2>
+            <p>{{data['taking-nutrition-change']}}</p>
+          {% endif %}
+
+          {% if data['managing-therapy-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Managing therapy or monitoring a health condition</h2>
+            <p>{{data['managing-therapy-change']}}</p>
+          {% endif %}
+
+          {% if data['washing-bathing-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Washing and bathing</h2>
+            <p>{{data['washing-bathing-change']}}</p>
+          {% endif %}
+
+          {% if data['managing-toilet-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Managing toilet needs or incontinence</h2>
+            <p>{{data['managing-toilet-change']}}</p>
+          {% endif %}
+
+          {% if data['dressing-undressing-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Dressing and undressing</h2>
+            <p>{{data['dressing-undressing-change']}}</p>
+          {% endif %}
+
+          {% if data['communicating-verbally-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Communicating verbally</h2>
+            <p>{{data['communicating-verbally-change']}}</p>
+          {% endif %}
+
+          {% if data['reading-signs-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Reading and understanding signs, symbols and words</h2>
+            <p>{{data['reading-signs-change']}}</p>
+          {% endif %}
+
+          {% if data['budgeting-decision-change'] %}
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Making budgeting decision</h2>
+            <p>{{data['budgeting-decision-change']}}</p>
+          {% endif %}
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          <form method="post">
+
+            {{ govukTextarea({
+              name: 'additionalReasons',
+              id: 'additionalReasons',
+              rows: '5',
+              label: {
+                text: 'Additional reasons (optional)',
+                classes: 'govuk-label--m'
+              },
+              hint: {
+                text: 'Provide any additional reasons that supports the panel’s decision.'
+              }
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}

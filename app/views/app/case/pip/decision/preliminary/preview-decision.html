@@ -1,0 +1,160 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Preview decision{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: backLink.href
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">Preview decision</h1>
+
+          {{ govukInsetText({
+            text: 'This will be sent to DWP and the appellant.'
+          }) }}
+
+          <h2 class="govuk-heading-l">Your appeal has not been successful</h2>
+
+          <p>The tribunal’s decision is that you are not entitled to PIP at any rate.</p>
+
+          {{ govukTable({
+            firstCellIsHeader: true,
+            caption: 'Decision',
+            captionClasses: 'govuk-heading-m',
+            rows: [
+              [
+                {
+                  text: 'Daily living'
+                },
+                {
+                  text: 'No award'
+                },
+                {
+                  html: '<a href="#">Change</a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {
+                  text: 'Mobility'},
+                {
+                  text: 'No award'
+                },
+                {
+                  html: '<a href="#">Change</a>',
+                  format: 'numeric'
+                }
+              ]
+            ]
+          }) }}
+
+          <p>This is the same rate as Department for Work and Pensions (DWP) considered you were eligible for.</p>
+
+          <p>The decision has been communicated to DWP.</p>
+
+          <h2 class="govuk-heading-l">Reasons for the tribunal’s decision</h2>
+
+          <p>We reached the decision by considering all the evidence you and DWP submitted in relation to your appeal. This includes any additional evidence you submitted.</p>
+
+          <p>After considering this evidence we acknowledge that you experience pain in your lower back when doing some tasks around the house. Specifically washing yourself and preparing food. We consider that this pain does not hinder you enough to be awarded the daily living component of PIP at any rate.</p>
+
+          <p>You claim that you suffer pain while walking and you find it hard to plan a route, but in your written submission you also said you were going regularly to your GP at the time of DWP’s decision. You also stated that you made your own way there without the assistance of aids. It is, therefore, our view that you are not eligible for the Mobility aspect of PIP at any rate.</p>
+
+          <h2 class="govuk-heading-l">PIP activities and descriptors the tribunal considers to apply</h2>
+
+          {{ govukTable({
+            firstCellIsHeader: true,
+            caption: 'Activities and descriptors',
+            captionClasses: 'govuk-heading-m',
+            rows: [
+              [
+                {
+                  text: 'Preparing food'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to prepare or cook a simple meal'
+                },
+                {
+                  text: '2'
+                },
+                {
+                  html: '<a href="#">Change</a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {
+                  text: 'Washing and bathing'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to wash or bathe'
+                },
+                {
+                  text: '2'
+                },
+                {
+                  html: '<a href="#">Change</a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {
+                  text: 'Managing toilet needs or incontinence'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to manage my toilet needs or incontinence'
+                },
+                {
+                  text: '2'
+                },
+                {
+                  html: '<a href="#">Change</a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {
+                  text: 'Dressing and undressing'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to dress or undress'
+                },
+                {
+                  text: '2'
+                },
+                {
+                  html: '<a href="#">Change</a>',
+                  format: 'numeric'
+                }
+              ]
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: 'Submit'
+          }) }}
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
