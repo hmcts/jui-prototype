@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Reading and understanding signs, symbols and words{% endblock %}
+{% block pageTitle %}Taking nutrition{% endblock %}
 
 {% block content %}
 
@@ -19,12 +19,12 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-xl">
             <span class="govuk-caption-xl">Daily living</span>
-            Reading and understanding signs, symbols and words
+            Taking nutrition
           </h1>
 
           <form method="post">
@@ -32,14 +32,14 @@
             <p>Add radios...</p>
 
             {{ govukTextarea({
-              name: 'reading-and-understanding-signs-symbols-and-words-change',
-              id: 'reading-and-understanding-signs-symbols-and-words-change',
+              name: 'taking-nutrition-change',
+              id: 'taking-nutrition-change',
               rows: '5',
               label: {
                 text: 'Indicate the reasons for the change to this descriptor',
                 classes: 'govuk-label--m'
               },
-              value: data['reading-and-understanding-signs-symbols-and-words-change']
+              value: data['taking-nutrition-change']
             }) }}
 
             {{ govukButton({

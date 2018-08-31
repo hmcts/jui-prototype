@@ -19,7 +19,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-xl">
@@ -30,8 +30,8 @@
           <form method="post">
 
             {{ govukRadios({
-              idPrefix: 'washing-and-bathing',
-              name: 'washing-and-bathing',
+              idPrefix: 'washing-bathing',
+              name: 'washing-bathing',
               fieldset: {
                 legend: {
                   text: 'Enter the panel’s new scores',
@@ -48,7 +48,7 @@
                     text: '0 points'
                   },
                   value: 'Can wash and bath unaided',
-                  checked: checked('washing-and-bathing', 'Can wash and bath unaided') == 'checked'
+                  checked: checked('washing-bathing', 'Can wash and bath unaided') == 'checked'
                 },
                 {
                   text: 'Needs to use an aid or appliance to be able to wash or bath',
@@ -56,7 +56,7 @@
                     text: '2 points'
                   },
                   value: 'Needs to use an aid or appliance to be able to wash or bath',
-                  checked: checked('washing-and-bathing', 'Needs to use an aid or appliance to be able to wash or bath') == 'checked'
+                  checked: checked('washing-bathing', 'Needs to use an aid or appliance to be able to wash or bath') == 'checked'
                 },
                 {
                   text: 'Needs supervision or prompting to be able to wash or bath',
@@ -64,7 +64,7 @@
                     text: '2 points'
                   },
                   value: 'Needs supervision or prompting to be able to wash or bath',
-                  checked: checked('washing-and-bathing', 'Needs supervision or prompting to be able to wash or bath') == 'checked'
+                  checked: checked('washing-bathing', 'Needs supervision or prompting to be able to wash or bath') == 'checked'
                 },
                 {
                   text: 'Needs assistance to be able to wash either their hair or body below the waist',
@@ -72,7 +72,7 @@
                     text: '2 points'
                   },
                   value: 'Needs assistance to be able to wash either their hair or body below the waist',
-                  checked: checked('washing-and-bathing', 'Needs assistance to be able to wash either their hair or body below the waist') == 'checked'
+                  checked: checked('washing-bathing', 'Needs assistance to be able to wash either their hair or body below the waist') == 'checked'
                 },
                 {
                   text: 'Needs assistance to be able to get in or out of a bath or shower',
@@ -80,7 +80,7 @@
                     text: '3 points'
                   },
                   value: 'Needs assistance to be able to get in or out of a bath or shower',
-                  checked: checked('washing-and-bathing', 'Needs assistance to be able to get in or out of a bath or shower') == 'checked'
+                  checked: checked('washing-bathing', 'Needs assistance to be able to get in or out of a bath or shower') == 'checked'
                 },
                 {
                   text: 'Needs assistance to be able to wash their body between the shoulders and waist',
@@ -88,7 +88,7 @@
                     text: '4 points'
                   },
                   value: 'Needs assistance to be able to wash their body between the shoulders and waist',
-                  checked: checked('washing-and-bathing', 'Needs assistance to be able to wash their body between the shoulders and waist') == 'checked'
+                  checked: checked('washing-bathing', 'Needs assistance to be able to wash their body between the shoulders and waist') == 'checked'
                 },
                 {
                   text: 'Cannot wash and bathe at all and needs another person to wash their entire body',
@@ -96,20 +96,20 @@
                     text: '8 points'
                   },
                   value: 'Cannot wash and bathe at all and needs another person to wash their entire body',
-                  checked: checked('washing-and-bathing', 'Cannot wash and bathe at all and needs another person to wash their entire body') == 'checked'
+                  checked: checked('washing-bathing', 'Cannot wash and bathe at all and needs another person to wash their entire body') == 'checked'
                 }
               ]
             }) }}
 
             {{ govukTextarea({
-              name: 'washing-and-bathing-change',
-              id: 'washing-and-bathing-change',
+              name: 'washing-bathing-change',
+              id: 'washing-bathing-change',
               rows: '5',
               label: {
                 text: 'Indicate the reasons for the change to this descriptor',
                 classes: 'govuk-label--m'
               },
-              value: data['washing-and-bathing-change']
+              value: data['washing-bathing-change']
             }) }}
 
             {{ govukButton({

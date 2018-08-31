@@ -19,7 +19,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-xl">
@@ -30,8 +30,8 @@
           <form method="post">
 
             {{ govukRadios({
-              idPrefix: 'managing-toilet-needs-or-incontinence',
-              name: 'managing-toilet-needs-or-incontinence',
+              idPrefix: 'managing-toilet',
+              name: 'managing-toilet',
               fieldset: {
                 legend: {
                   text: 'Enter the panel’s new scores',
@@ -48,7 +48,7 @@
                     text: '0 points'
                   },
                   value: 'Can manage toilet needs or incontinence unaided',
-                  checked: checked('managing-toilet-needs-or-incontinence', 'Can manage toilet needs or incontinence unaided') == 'checked'
+                  checked: checked('managing-toilet', 'Can manage toilet needs or incontinence unaided') == 'checked'
                 },
                 {
                   text: 'Needs to use an aid or appliance to be able to manage toilet needs or incontinence',
@@ -56,7 +56,7 @@
                     text: '2 points'
                   },
                   value: 'Needs to use an aid or appliance to be able to manage toilet needs or incontinence',
-                  checked: checked('managing-toilet-needs-or-incontinence', 'Needs to use an aid or appliance to be able to manage toilet needs or incontinence') == 'checked'
+                  checked: checked('managing-toilet', 'Needs to use an aid or appliance to be able to manage toilet needs or incontinence') == 'checked'
                 },
                 {
                   text: 'Needs supervision or prompting to be able to manage toilet needs',
@@ -64,7 +64,7 @@
                     text: '2 points'
                   },
                   value: 'Needs supervision or prompting to be able to manage toilet needs',
-                  checked: checked('managing-toilet-needs-or-incontinence', 'Needs supervision or prompting to be able to manage toilet needs') == 'checked'
+                  checked: checked('managing-toilet', 'Needs supervision or prompting to be able to manage toilet needs') == 'checked'
                 },
                 {
                   text: 'Needs assitance to be able to manage toilet needs',
@@ -72,7 +72,7 @@
                     text: '4 points'
                   },
                   value: 'Needs assitance to be able to manage toilet needs',
-                  checked: checked('managing-toilet-needs-or-incontinence', 'Needs assitance to be able to manage toilet needs') == 'checked'
+                  checked: checked('managing-toilet', 'Needs assitance to be able to manage toilet needs') == 'checked'
                 },
                 {
                   text: 'Needs assistance to be able to manage incontinence of both bladder and bowel',
@@ -80,7 +80,7 @@
                     text: '6 points'
                   },
                   value: 'Needs assistance to be able to manage incontinence of both bladder and bowel',
-                  checked: checked('managing-toilet-needs-or-incontinence', 'Needs assistance to be able to manage incontinence of both bladder and bowel') == 'checked'
+                  checked: checked('managing-toilet', 'Needs assistance to be able to manage incontinence of both bladder and bowel') == 'checked'
                 },
                 {
                   text: 'Needs assistance to be able to manage incontinence of both bladder and bowel',
@@ -88,20 +88,20 @@
                     text: '8 points'
                   },
                   value: 'Needs assistance to be able to manage incontinence of both bladder and bowel',
-                  checked: checked('managing-toilet-needs-or-incontinence', 'Needs assistance to be able to manage incontinence of both bladder and bowel') == 'checked'
+                  checked: checked('managing-toilet', 'Needs assistance to be able to manage incontinence of both bladder and bowel') == 'checked'
                 }
               ]
             }) }}
 
             {{ govukTextarea({
-              name: 'managing-toilet-needs-or-incontinence-change',
-              id: 'managing-toilet-needs-or-incontinence-change',
+              name: 'managing-toilet-change',
+              id: 'managing-toilet-change',
               rows: '5',
               label: {
                 text: 'Indicate the reasons for the change to this descriptor',
                 classes: 'govuk-label--m'
               },
-              value: data['managing-toilet-needs-or-incontinence-change']
+              value: data['managing-toilet-change']
             }) }}
 
             {{ govukButton({

@@ -1,6 +1,8 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Preparing food{% endblock %}
+{% block pageTitle %}
+{% if errors %}({{errors.length}}) errors —{% endif %} Preparing food
+{% endblock %}
 
 {% block content %}
 
@@ -19,7 +21,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-xl">
@@ -27,19 +29,24 @@
             Preparing food
           </h1>
 
+          {% if errorSummary.items.length %}
+            {{ govukErrorSummary({
+              titleText: 'There is a problem',
+              errorList: errorSummary.items
+            }) }}
+          {% endif %}
+
           <form method="post">
 
             {{ govukRadios({
-              idPrefix: 'preparing-food',
-              name: 'preparing-food',
+              idPrefix: 'preparingfood',
+              name: 'preparingfood',
+              errorMessage: inlineErrors.preparingfood,
               fieldset: {
                 legend: {
-                  text: 'Enter the panel’s new scores',
+                  text: 'Select the new score for this descriptor',
                   classes: 'govuk-fieldset__legend--m'
                 }
-              },
-              hint: {
-                text: 'Select the new score for this descriptor'
               },
               items: [
                 {
@@ -48,7 +55,7 @@
                     text: '2 points'
                   },
                   value: 'Can prepare and cook a simple meal unaided',
-                  checked: checked('preparing-food', 'Can prepare and cook a simple meal unaided') == 'checked'
+                  checked: checked('preparingfood', 'Can prepare and cook a simple meal unaided') == 'checked'
                 },
                 {
                   text: 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal',
@@ -56,7 +63,7 @@
                     text: '2 points'
                   },
                   value: 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal',
-                  checked: checked('preparing-food', 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal') == 'checked'
+                  checked: checked('preparingfood', 'Needs to use an aid or appliance to be able to either prepare or cook a simple meal') == 'checked'
                 },
                 {
                   text: 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave',
@@ -64,7 +71,7 @@
                     text: '2 points'
                   },
                   value: 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave',
-                  checked: checked('preparing-food', 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave') == 'checked'
+                  checked: checked('preparingfood', 'Cannot cook a simple meal using a conventianal cooker but is able to do so using a microwave') == 'checked'
                 },
                 {
                   text: 'Needs prompting to be able to either prepare or cook a simple meal',
@@ -72,7 +79,7 @@
                     text: '2 points'
                   },
                   value: 'Needs prompting to be able to either prepare or cook a simple meal',
-                  checked: checked('preparing-food', 'Needs prompting to be able to either prepare or cook a simple meal') == 'checked'
+                  checked: checked('preparingfood', 'Needs prompting to be able to either prepare or cook a simple meal') == 'checked'
                 },
                 {
                   text: 'Needs supervisipon or assistance to either prepare or cook a simple meal',
@@ -80,7 +87,7 @@
                     text: '4 points'
                   },
                   value: 'Needs supervisipon or assistance to either prepare or cook a simple meal',
-                  checked: checked('preparing-food', 'Needs supervisipon or assistance to either prepare or cook a simple meal') == 'checked'
+                  checked: checked('preparingfood', 'Needs supervisipon or assistance to either prepare or cook a simple meal') == 'checked'
                 },
                 {
                   text: 'Cannot prepare and cook food',
@@ -88,20 +95,20 @@
                     text: '8 points'
                   },
                   value: 'Cannot prepare and cook food',
-                  checked: checked('preparing-food', 'Cannot prepare and cook food') == 'checked'
+                  checked: checked('preparingfood', 'Cannot prepare and cook food') == 'checked'
                 }
               ]
             }) }}
 
             {{ govukTextarea({
-              name: 'preparing-food-change',
-              id: 'preparing-food-change',
+              name: 'preparingfood-change',
+              id: 'preparingfood-change',
               rows: '5',
               label: {
                 text: 'Indicate the reasons for the change to this descriptor',
                 classes: 'govuk-label--m'
               },
-              value: data['preparing-food-change']
+              value: data['preparingfood-change']
             }) }}
 
             {{ govukButton({

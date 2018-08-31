@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Planning and following journeys{% endblock %}
+{% block pageTitle %}Making budgeting decisions{% endblock %}
 
 {% block content %}
 
@@ -19,12 +19,12 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">Mobility</span>
-            Planning and following journeys
+            <span class="govuk-caption-xl">Daily living</span>
+            Making budgeting decisions
           </h1>
 
           <form method="post">
@@ -32,14 +32,14 @@
             <p>Add radios...</p>
 
             {{ govukTextarea({
-              name: 'planning-and-following-journeys-change',
-              id: 'planning-and-following-journeys-change',
+              name: 'budgeting-decision-change',
+              id: 'budgeting-decision-change',
               rows: '5',
               label: {
                 text: 'Indicate the reasons for the change to this descriptor',
                 classes: 'govuk-label--m'
               },
-              value: data['planning-and-following-journeys-change']
+              value: data['budgeting-decision-change']
             }) }}
 
             {{ govukButton({

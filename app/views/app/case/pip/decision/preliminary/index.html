@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Make a preliminary decision{% endblock %}
+{% block pageTitle %}Make a preliminary view{% endblock %}
 
 {% block content %}
 
@@ -18,10 +18,10 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-xl">Make a preliminary decision</h1>
+      <h1 class="govuk-heading-xl">Make a preliminary view</h1>
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           <form method="post">
@@ -83,25 +83,29 @@
             }) }}
 
             {{ govukRadios({
-              classes: 'govuk-radios--inline',
               idPrefix: 'panelsdecision',
               name: 'panelsdecision',
               fieldset: {
                 legend: {
-                  text: 'Is the panel’s decision different to DWP’s original decision?',
+                  text: 'How does this award compare to the original DWP decision?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
               items: [
                 {
-                  html: 'Yes<span class="govuk-visually-hidden"> the panel’s decision is different</span>',
-                  value: 'yes',
-                  checked: checked('panelsdecision', 'yes') == 'checked'
+                  html: 'Higher<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  value: 'higher',
+                  checked: checked('panelsdecision', 'higher') == 'checked'
                 },
                 {
-                  html: 'No<span class="govuk-visually-hidden"> the panel’s decision is not different</span>',
-                  value: 'no',
-                  checked: checked('panelsdecision', 'no') == 'checked'
+                  html: 'The same<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  value: 'same',
+                  checked: checked('panelsdecision', 'same') == 'checked'
+                },
+                {
+                  html: 'Lower<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  value: 'lower',
+                  checked: checked('panelsdecision', 'lower') == 'checked'
                 }
               ]
             }) }}
