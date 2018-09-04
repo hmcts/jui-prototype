@@ -2,6 +2,8 @@
 
 {% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Notes {{'- ' + serviceName}}{% endblock %}
 
+{% block content %}
+
 	<div class="jui-width-container">
 
     {{ govukBackLink({
