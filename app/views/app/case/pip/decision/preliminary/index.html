@@ -31,7 +31,7 @@
               name: 'awardliving',
               fieldset: {
                 legend: {
-                  text: 'What award should the appellant be given for daily living?',
+                  text: 'What should the appellant be awarded for daily living?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
@@ -59,7 +59,7 @@
               name: 'awardmobility',
               fieldset: {
                 legend: {
-                  text: 'What award should the appellant be given for mobility?',
+                  text: 'What should the appellant be awarded for mobility?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
@@ -137,23 +137,23 @@
               name: 'panelsdecision',
               fieldset: {
                 legend: {
-                  text: 'How does this award compare to the original DWP decision?',
+                  text: 'How does your award compare to the original DWP award?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
               items: [
                 {
-                  html: 'Higher<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  html: 'Higher<span class="govuk-visually-hidden"> than Department for Work and Pensions orignal decision</span>',
                   value: 'higher',
                   checked: checked('panelsdecision', 'higher') == 'checked'
                 },
                 {
-                  html: 'The same<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  html: 'Same<span class="govuk-visually-hidden"> as Department for Work and Pensions orignal decision</span>',
                   value: 'same',
                   checked: checked('panelsdecision', 'same') == 'checked'
                 },
                 {
-                  html: 'Lower<span class="govuk-visually-hidden"> than DWP’s orignal decision</span>',
+                  html: 'Lower<span class="govuk-visually-hidden"> than Department for Work and Pensions orignal decision</span>',
                   value: 'lower',
                   checked: checked('panelsdecision', 'lower') == 'checked'
                 }

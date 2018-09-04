@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Which descriptors are considered relevant? {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Which descriptors were relevant to your decision? {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -22,7 +22,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-xl">Which descriptors are considered relevant?</h1>
+          <h1 class="govuk-heading-xl">Which descriptors were relevant to your decision?</h1>
 
           <form method="post">
 
@@ -36,7 +36,7 @@
                 }
               },
               hint: {
-                text: 'Select if you gave a different score to DWP.'
+                text: 'Select all that apply.'
               },
               items: [
                 {
@@ -97,7 +97,7 @@
                 }
               },
               hint: {
-                text: 'Select if you gave a different score to DWP.'
+                text: 'Select all that apply.'
               },
               items: [
                 {

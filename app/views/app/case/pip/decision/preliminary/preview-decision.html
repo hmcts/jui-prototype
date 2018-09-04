@@ -22,13 +22,15 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-xl">Preview decision</h1>
+          <h1 class="govuk-heading-xl">Check notice before sending</h1>
 
-          {{ govukInsetText({
-            text: 'This will be sent to DWP and the appellant.'
-          }) }}
+          <p>This will be sent to both the appellant and DWP.</p>
 
-          <h2 class="govuk-heading-l">Your appeal has not been successful</h2>
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          <h2 class="govuk-heading-l">Notice to appellant</h2>
+
+          <h2 class="govuk-heading-m">Your appeal has not been successful</h2>
 
           <p>The tribunal’s decision is that you are not entitled to PIP at any rate.</p>
 
@@ -67,7 +69,7 @@
 
           <p>The decision has been communicated to DWP.</p>
 
-          <h2 class="govuk-heading-l">Reasons for the tribunal’s decision</h2>
+          <h2 class="govuk-heading-m">Reasons for the tribunal’s decision</h2>
 
           <p>We reached the decision by considering all the evidence you and DWP submitted in relation to your appeal. This includes any additional evidence you submitted.</p>
 
@@ -75,11 +77,10 @@
 
           <p>You claim that you suffer pain while walking and you find it hard to plan a route, but in your written submission you also said you were going regularly to your GP at the time of DWP’s decision. You also stated that you made your own way there without the assistance of aids. It is, therefore, our view that you are not eligible for the Mobility aspect of PIP at any rate.</p>
 
-          <h2 class="govuk-heading-l">PIP activities and descriptors the tribunal considers to apply</h2>
+          <h2 class="govuk-heading-m">PIP activities and descriptors the tribunal considers to apply</h2>
 
           {{ govukTable({
             firstCellIsHeader: true,
-            caption: 'Activities and descriptors',
             captionClasses: 'govuk-heading-m',
             rows: [
               [
