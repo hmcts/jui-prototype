@@ -34,29 +34,26 @@
               name: 'washing-bathing',
               fieldset: {
                 legend: {
-                  text: 'Enter the panel’s new scores',
+                  text: 'Select your new score',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
-              hint: {
-                text: 'Select the new score for this descriptor'
-              },
               items: [
                 {
-                  text: 'Can wash and bath unaided',
+                  text: 'Can wash and bathe unaided',
                   hint: {
                     text: '0 points'
                   },
-                  value: 'Can wash and bath unaided',
-                  checked: checked('washing-bathing', 'Can wash and bath unaided') == 'checked'
+                  value: 'Can wash and bathe unaided',
+                  checked: checked('washing-bathing', 'Can wash and bathe unaided') == 'checked'
                 },
                 {
-                  text: 'Needs to use an aid or appliance to be able to wash or bath',
+                  text: 'Needs to use an aid or appliance to be able to wash or bathe',
                   hint: {
                     text: '2 points'
                   },
-                  value: 'Needs to use an aid or appliance to be able to wash or bath',
-                  checked: checked('washing-bathing', 'Needs to use an aid or appliance to be able to wash or bath') == 'checked'
+                  value: 'Needs to use an aid or appliance to be able to wash or bathe',
+                  checked: checked('washing-bathing', 'Needs to use an aid or appliance to be able to wash or bathe') == 'checked'
                 },
                 {
                   text: 'Needs supervision or prompting to be able to wash or bath',
@@ -106,7 +103,7 @@
               id: 'washing-bathing-change',
               rows: '5',
               label: {
-                text: 'Indicate the reasons for the change to this descriptor',
+                text: 'Enter reasons for your new score',
                 classes: 'govuk-label--m'
               },
               value: data['washing-bathing-change']

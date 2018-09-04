@@ -31,7 +31,7 @@ function checkAndContinue(req, res, config) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/washing-bathing`);
 
   // 5. Managing toilet needs or incontinence
-  } else if (config.managingToilet && isChecked(req, 'dailyliving', 'Managing toilet needs or incontinence')) {
+  } else if (config.managingToilet && isChecked(req, 'dailyliving', 'Managing toilet')) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-toilet`);
 
   // 6. Dressing and undressing
@@ -43,11 +43,11 @@ function checkAndContinue(req, res, config) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/communicating-verbally`);
 
   // 8. Reading and understanding signs, symbols and words
-  } else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading and understanding signs, symbols and words')) {
+  } else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading signs')) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/reading-signs`);
 
   // 9. Making budgeting decision
-  } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting decision')) {
+  } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting')) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decision`);
 
   // Redirect
@@ -85,11 +85,11 @@ router.get('/app/cases/:id/pip', (req, res) => {
 router.get('/app/cases/:id/pip/timeline', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
-		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
 		caseActions: helpers.getCaseActions(_case),
-		events: helpers.getEvents(_case)
+    events: helpers.getEvents(_case),
+    _case: _case
 	};
 	res.render('app/case/pip/timeline', pageObject);
 });
@@ -98,7 +98,7 @@ router.get('/app/cases/:id/pip/timeline', (req, res) => {
 // DECISION: What do you want to issue?
 router.get('/app/cases/:id/pip/decision', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
-	var pageObject = {
+  var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		backLink: {
@@ -182,7 +182,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res) 
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
 			href: ''
-		},
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/preparing-food', pageObject);
 });
@@ -216,7 +217,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/taking-nutrition', (req, res
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
 			href: ''
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/taking-nutrition', pageObject);
 });
@@ -249,7 +251,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/managing-therapy', (req, res
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/managing-therapy', pageObject);
 });
@@ -283,7 +286,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/washing-bathing', (req, res)
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/washing-bathing', pageObject);
 });
@@ -316,7 +320,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/managing-toilet', (req, res)
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/managing-toilet', pageObject);
 });
@@ -349,7 +354,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/dressing-undressing', (req, 
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/dressing-undressing', pageObject);
 });
@@ -382,7 +388,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/communicating-verbally', (re
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/communicating-verbally', pageObject);
 });
@@ -415,7 +422,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/reading-signs', (req, res) =
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/reading-signs', pageObject);
 });
@@ -448,7 +456,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decision', (req, r
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		}
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/budgeting-decision', pageObject);
 });
@@ -481,7 +490,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/panel-reasons', (req, res) =
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    }
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/panel-reasons', pageObject);
 });
@@ -499,7 +509,8 @@ router.get('/app/cases/:id/pip/decision/preliminary/preview-decision', (req, res
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    }
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/preview-decision', pageObject);
 });
@@ -529,7 +540,8 @@ router.get('/app/cases/:id/pip/decision/final', (req, res) => {
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/decision`
-    }
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/decision/final/index', pageObject);
 });
@@ -601,7 +613,8 @@ router.get('/app/cases/:id/pip/list-for-hearing', (req, res) => {
 		caseActions: helpers.getCaseActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}`
-    }
+    },
+    _case: _case
 	};
 	res.render('app/case/pip/list-for-hearing/notes', pageObject);
 });

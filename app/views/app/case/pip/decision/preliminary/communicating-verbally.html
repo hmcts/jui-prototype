@@ -29,14 +29,66 @@
 
           <form method="post">
 
-            <p>Add radios...</p>
+            {{ govukRadios({
+              idPrefix: 'communicating-verbally',
+              name: 'communicating-verbally',
+              errorMessage: inlineErrors.communicating-verbally,
+              fieldset: {
+                legend: {
+                  text: 'Select your new score',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  text: 'Can express and understand verbal information unaided',
+                  hint: {
+                    text: '0 points'
+                  },
+                  value: 'Can express and understand verbal information unaided',
+                  checked: checked('communicating-verbally', 'Can express and understand verbal information unaided') == 'checked'
+                },
+                {
+                  text: 'Needs to use an aid or appliance to be able to speak or hear',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Needs to use an aid or appliance to be able to speak or hear',
+                  checked: checked('communicating-verbally', 'Needs to use an aid or appliance to be able to speak or hear') == 'checked'
+                },
+                {
+                  text: 'Needs communication support to be able to express or understand complex verbal information',
+                  hint: {
+                    text: '4 points'
+                  },
+                  value: 'Needs communication support to be able to express or understand complex verbal information',
+                  checked: checked('communicating-verbally', 'Needs communication support to be able to express or understand complex verbal information') == 'checked'
+                },
+                {
+                  text: 'Needs communication support to be able to express or understand basic verbal information',
+                  hint: {
+                    text: '8 points'
+                  },
+                  value: 'Needs communication support to be able to express or understand basic verbal information',
+                  checked: checked('communicating-verbally', 'Needs communication support to be able to express or understand basic verbal information') == 'checked'
+                },
+                {
+                  text: 'Cannot express or understand verbal information at all even with communication support',
+                  hint: {
+                    text: '12 points'
+                  },
+                  value: 'Cannot express or understand verbal information at all even with communication support',
+                  checked: checked('communicating-verbally', 'Cannot express or understand verbal information at all even with communication support') == 'checked'
+                }
+              ]
+            }) }}
 
             {{ govukTextarea({
               name: 'communicating-verbally-change',
               id: 'communicating-verbally-change',
               rows: '5',
               label: {
-                text: 'Indicate the reasons for the change to this descriptor',
+                text: 'Enter reasons for your new score',
                 classes: 'govuk-label--m'
               },
               value: data['communicating-verbally-change']

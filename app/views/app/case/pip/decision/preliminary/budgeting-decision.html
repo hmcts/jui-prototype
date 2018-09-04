@@ -29,14 +29,58 @@
 
           <form method="post">
 
-            <p>Add radios...</p>
+            {{ govukRadios({
+              idPrefix: 'budgeting-decisions',
+              name: 'budgeting-decisions',
+              errorMessage: inlineErrors.budgeting-decisions,
+              fieldset: {
+                legend: {
+                  text: 'Select your new score',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  text: 'Can manage complex budgeting decisions unaided',
+                  hint: {
+                    text: '0 points'
+                  },
+                  value: 'Can manage complex budgeting decisions unaided',
+                  checked: checked('budgeting-decisions', 'Can manage complex budgeting decisions unaided') == 'checked'
+                },
+                {
+                  text: 'Needs prompting or assistance to be able to make complex budgeting decisions',
+                  hint: {
+                    text: '2 points'
+                  },
+                  value: 'Needs prompting or assistance to be able to make complex budgeting decisions',
+                  checked: checked('budgeting-decisions', 'Needs prompting or assistance to be able to make complex budgeting decisions') == 'checked'
+                },
+                {
+                  text: 'Needs prompting or assistance to be able to make simple budgeting decisions',
+                  hint: {
+                    text: '4 points'
+                  },
+                  value: 'Needs prompting or assistance to be able to make simple budgeting decisionsn',
+                  checked: checked('budgeting-decisions', 'Needs prompting or assistance to be able to make simple budgeting decisionsn') == 'checked'
+                },
+                {
+                  text: 'Cannot make any budgeting decisions at all',
+                  hint: {
+                    text: '6 points'
+                  },
+                  value: 'Cannot make any budgeting decisions at all',
+                  checked: checked('budgeting-decisions', 'Cannot make any budgeting decisions at all') == 'checked'
+                }
+              ]
+            }) }}
 
             {{ govukTextarea({
               name: 'budgeting-decision-change',
               id: 'budgeting-decision-change',
               rows: '5',
               label: {
-                text: 'Indicate the reasons for the change to this descriptor',
+                text: 'Enter reasons for your new score',
                 classes: 'govuk-label--m'
               },
               value: data['budgeting-decision-change']
