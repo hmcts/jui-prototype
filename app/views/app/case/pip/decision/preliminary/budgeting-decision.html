@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Making budgeting decisions{% endblock %}
+{% block pageTitle %}Making budgeting decisions {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -13,7 +13,7 @@
 
     {{ govukBackLink({
       text: 'Back',
-      href: backLink.href
+      href: 'javascript:history.back()'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">

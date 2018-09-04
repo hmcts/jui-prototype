@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Check decision{% endblock %}
+{% block pageTitle %}Check your decisiony {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -24,9 +24,9 @@
 
           <h1 class="govuk-heading-xl">Check your decision</h1>
 
-          
+
           <dl class="app-check-your-answers  app-check-your-answers--short  govuk-!-margin-bottom-6">
-            
+
             <div class="app-check-your-answers__contents">
 
               <dt class="app-check-your-answers__question">Decision</dt>
@@ -162,7 +162,7 @@
               </div>
             {% endif %} #}
 
-            {# 
+            {#
             {% if data['listed-for-you'] %}
               <div class="app-check-your-answers__contents">
 
@@ -239,7 +239,7 @@
 
               </div>
             {% endif %}
-            
+
 
             {% if data['decision'] === 'Reject consent order' and data['reject-notes'] %}
               <div class="app-check-your-answers__contents">

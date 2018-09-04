@@ -2,46 +2,46 @@
 
 {% set pageID = "Casefile" %}
 
-{% block page_title %}Get new case - Judicial UI prototype{% endblock %}
+{% block pageTitle %}Get new case {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
 <div class="jui-width-container">
 
   {{ govukBackLink({
-    "text": "Back",
-    "href": "./dashboard"
+    text: 'Back',
+    href: './dashboard'
   }) }}
 
-  <main role="main" class="govuk-main-wrapper">
+  <main class="govuk-main-wrapper" role="main">
 
     <form method="post">
 
       {{ govukRadios({
-        "idPrefix": "get-next-case",
-        "name": "getNextCase",
-        "fieldset": {
-          "legend": {
-            "text": "Get new case",
-            "isPageHeading": true,
-            "classes": "govuk-fieldset__legend--xl"
+        idPrefix: 'get-next-case',
+        name: 'getNextCase',
+        fieldset: {
+          legend: {
+            text: 'Get new case',
+            isPageHeading: true,
+            classes: 'govuk-fieldset__legend--xl'
           }
         },
-        "hint": {
-          "text": "You’re ticketed for the following case types"
+        hint: {
+          text: 'You’re ticketed for the following case types'
         },
-        "items": [
+        items: [
           {
-            "value": "1",
-            "text": "Divorce"
+            value: '1',
+            text: 'Divorce'
           },
           {
-            "value": "2",
-            "text": "Financial remedy"
+            value: '2',
+            text: 'Financial remedy'
           },
           {
-            "value": "3",
-            "text": "Civil money claims"
+            value: '3',
+            text: 'Civil money claims'
           }
         ]
       }) }}

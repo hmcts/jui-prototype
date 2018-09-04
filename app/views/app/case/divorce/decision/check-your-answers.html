@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Check your answers{% endblock %}
+{% block pageTitle %}Check your decision {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -42,8 +42,8 @@
           {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] === 'Respondent to pay petitioner’s costs' %}
           <div class="app-check-your-answers__contents">
             <dt class="app-check-your-answers__question">How should costs be handled?</dt>
-            
-            <dd class="app-check-your-answers__answer">            
+
+            <dd class="app-check-your-answers__answer">
               {{data.costsOrderDecision}}<br><br>
               {{data.respondentPay}}
             </dd>

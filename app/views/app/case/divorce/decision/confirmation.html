@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTtitle %}Decision submitted{% endblock %}
+{% block pageTitle %}Decision submitted {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -9,7 +9,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-      
+
         <div class="govuk-grid-column-two-thirds">
 
           {{ govukPanel({
@@ -21,7 +21,7 @@
           <h2 class="govuk-heading-m">What happens next</h2>
 
           {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] == 'Respondent to pay petitioner’s costs' %}
-            
+
             <p>Respondent to pay petitioner’s costs [message goes here]</p>
 
           {% elif data['satisfied'] === 'Yes' and data['costsOrderDecision'] == 'Terms have been agreed between the parties and approved by the court' %}

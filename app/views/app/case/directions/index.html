@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Directions{% endblock %}
+{% block pageTitle %}Directions {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
   {{ juiCasebar({
@@ -15,7 +15,7 @@
     <main role="main" class="govuk-main-wrapper">
 
 
-      <h1 class="govuk-heading-l"> Directions </h1>
+      <h1 class="govuk-heading-l">Directions</h1>
 
       <h2 class="govuk-heading-m">Draft orders</h2>
 

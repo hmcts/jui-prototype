@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Make a preliminary view{% endblock %}
+{% block pageTitle %}Make a preliminary view {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -78,6 +78,56 @@
                   html: 'Enhanced award<span class="govuk-visually-hidden"> is given for mobility</span>',
                   value: 'enhanced',
                   checked: checked('awardmobility', 'enhanced') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukDateInput({
+              id: 'award-start-date',
+              name: 'award-start-date',
+              fieldset: {
+                legend: {
+                  text: 'Start date of award',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                text: 'For example, 4 9 2018'
+              },
+              items: [
+                {
+                  name: 'day'
+                },
+                {
+                  name: 'month'
+                },
+                {
+                  name: 'year'
+                }
+              ]
+            }) }}
+
+            {{ govukDateInput({
+              id: 'award-end-date',
+              name: 'award-end-date',
+              fieldset: {
+                legend: {
+                  text: 'End date of award',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                text: 'For example, 4 9 2018'
+              },
+              items: [
+                {
+                  name: 'day'
+                },
+                {
+                  name: 'month'
+                },
+                {
+                  name: 'year'
                 }
               ]
             }) }}

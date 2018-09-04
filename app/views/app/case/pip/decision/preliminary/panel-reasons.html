@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Reasons for the panel’s decision{% endblock %}
+{% block pageTitle %}Reasons for the panel’s decision {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -23,6 +23,18 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-xl">Reasons for the panel’s decision</h1>
+
+          {% if
+            (data['preparing-food-change']) or
+            (data['taking-nutrition-change']) or
+            (data['managing-therapy-change']) or
+            (data['washing-bathing-change']) or
+            (data['managing-toilet-change']) or
+            (data['dressing-undressing-change']) or
+            (data['communicating-verbally-change']) or
+            (data['reading-signs-change']) or
+            (data['budgeting-decision-change'])
+          %}
 
           <h2 class="govuk-heading-m">Changes to the descriptors</h2>
 
@@ -72,6 +84,8 @@
           {% endif %}
 
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          {% endif %}
 
           <form method="post">
 

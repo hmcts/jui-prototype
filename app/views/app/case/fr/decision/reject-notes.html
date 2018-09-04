@@ -1,9 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}
-{% if errors %}({{errors.length}}) errors —{% endif %} Decision{% endblock %}
-
-{% block content %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors —{% endif %} Notes {{'- ' + serviceName}}{% endblock %}
 
 	<div class="jui-width-container">
 
@@ -15,7 +12,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-        
+
         <div class="govuk-grid-column-two-thirds">
 
           {% if errors %}

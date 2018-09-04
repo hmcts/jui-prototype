@@ -1,8 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}
-{% if errors %}({{errors.length}}) errors —{% endif %} Make a decision
-{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors — Make a decision {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -21,7 +19,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-      
+
         <div class="govuk-grid-column-two-thirds">
 
           {% if errorSummary.items.length %}

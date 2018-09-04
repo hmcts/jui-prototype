@@ -1,10 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}
-{% if errors %}({{errors.length}}) errors —{% endif %} Reject consent order reason
-{% endblock %}
-
-{% block content %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors —{% endif %} Reject consent order reason {{'- ' + serviceName}}{% endblock %}
 
   {{ juiCasebar({
     caseId: casebar.id,
@@ -21,7 +17,7 @@
     <main class="govuk-main-wrapper" role="main">
 
       <div class="govuk-grid-row">
-      
+
         <div class="govuk-grid-column-two-thirds">
 
           {% if errors %}
