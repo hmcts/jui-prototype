@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}{% if errors %}({{errors.length}}) errors —{% endif %} Reject consent order reason {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Reject consent order reason {{'- ' + serviceName}}{% endblock %}
 
   {{ juiCasebar({
     caseId: casebar.id,

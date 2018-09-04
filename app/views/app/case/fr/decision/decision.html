@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}{% if errors %}({{errors.length}}) errors{% endif %} — Make a decision {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Make a decision {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
