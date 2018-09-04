@@ -2,6 +2,8 @@
 
 {% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Reject consent order reason {{'- ' + serviceName}}{% endblock %}
 
+{% block content %}
+
   {{ juiCasebar({
     caseId: casebar.id,
     parties: casebar.parties
