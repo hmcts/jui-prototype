@@ -44,7 +44,7 @@
                   text: 'Daily living'
                 },
                 {
-                  text: 'No award'
+                  text: data['awardliving']
                 },
                 {
                   html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary">Change<span class="govuk-visually-hidden"> daily living award for appellant</span></a>',
@@ -53,9 +53,10 @@
               ],
               [
                 {
-                  text: 'Mobility'},
+                  text: 'Mobility'
+                },
                 {
-                  text: 'No award'
+                  text: data['awardmobility']
                 },
                 {
                   html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary">Change<span class="govuk-visually-hidden"> mobility award for appellant</span></a>',
