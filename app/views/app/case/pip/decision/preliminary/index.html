@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Make a preliminary view {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Select awards {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -18,7 +18,7 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-xl">Make a preliminary view</h1>
+      <h1 class="govuk-heading-xl">Select awards</h1>
 
       <div class="govuk-grid-row">
 
@@ -31,7 +31,7 @@
               name: 'awardliving',
               fieldset: {
                 legend: {
-                  text: 'What should the appellant be awarded for daily living?',
+                  text: 'What are you awarding for daily living?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
@@ -59,7 +59,7 @@
               name: 'awardmobility',
               fieldset: {
                 legend: {
-                  text: 'What should the appellant be awarded for mobility?',
+                  text: 'What are you awarding for mobility?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
@@ -82,7 +82,7 @@
               ]
             }) }}
 
-            {{ govukDateInput({
+            {# {{ govukDateInput({
               id: 'award-start-date',
               name: 'award-start-date',
               fieldset: {
@@ -130,14 +130,14 @@
                   name: 'year'
                 }
               ]
-            }) }}
+            }) }} #}
 
             {{ govukRadios({
               idPrefix: 'panelsdecision',
               name: 'panelsdecision',
               fieldset: {
                 legend: {
-                  text: 'How does your award compare to the original DWP award?',
+                  text: 'How does the new award compare to the original DWP award?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },

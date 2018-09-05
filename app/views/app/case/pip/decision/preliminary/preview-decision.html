@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Preview decision {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Check notice before sending {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -24,7 +24,9 @@
 
           <h1 class="govuk-heading-xl">Check notice before sending</h1>
 
-          <p>This will be sent to both the appellant and DWP.</p>
+          {{ govukInsetText({
+            text: 'This will be sent to both the appellant and DWP.'
+          }) }}
 
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 

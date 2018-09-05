@@ -82,7 +82,7 @@ module.exports = [
   {
     id: 'SC1231612322',
     typeId: types.pip.id,
-    status: '<a href="#">Appellant’s reply</a>',
+    status: '<a href="/app/cases/SC1231612322/questions/">Appellant’s reply</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     urgent: true,
@@ -342,7 +342,7 @@ module.exports = [
       email: 'david.francis@gmail.com',
       representative: ''
     }],
-    
+
     parties: [
       {
         type: 'Petitioner',
@@ -486,7 +486,7 @@ module.exports = [
   {
     id: 'BV18D00156',
     typeId: types.divorce.id,
-    
+
     linkedCases: [{
       type: 'Financial remedy',
       id: 'FR1231612322'

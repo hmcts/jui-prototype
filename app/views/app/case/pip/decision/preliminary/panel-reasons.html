@@ -13,7 +13,7 @@
 
     {{ govukBackLink({
       text: 'Back',
-      href: backLink.href
+      href: 'javascript:history.back()'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -22,7 +22,12 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-xl">Prepare decision notes for appellant</h1>
+          <h1 class="govuk-heading-xl">Explain the tribunal’s decision</h1>
+
+          {{ govukInsetText({
+            text: 'This will be sent to the appellant.',
+            classes: 'govuk-!-margin-bottom-8'
+          }) }}
 
           <form method="post">
 
@@ -31,71 +36,176 @@
               id: 'additionalReasons',
               rows: '5',
               label: {
-                text: 'Overview of your decision',
-                classes: 'govuk-label--m'
+                text: 'Overview',
+                classes: 'govuk-label--l'
               }
             }) }}
 
-            {# {% if
-              (data['preparing-food-change']) or
-              (data['taking-nutrition-change']) or
-              (data['managing-therapy-change']) or
-              (data['washing-bathing-change']) or
-              (data['managing-toilet-change']) or
-              (data['dressing-undressing-change']) or
-              (data['communicating-verbally-change']) or
-              (data['reading-signs-change']) or
-              (data['budgeting-decision-change'])
-            %}
+            <hr class="govuk-section-break govuk-section-break--xl">
 
-              <h2 class="govuk-heading-m">Specific reasons on descriptors</h2>
+            <h2 class="govuk-heading-l">Reasons for each descriptor</h2>
 
-              {% if data['preparing-food-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Preparing food</h2>
-                <p>{{data['preparing-food-change']}}</p>
-              {% endif %}
+            {% if checked('dailyliving', 'Preparing food') == 'checked' %}
 
-              {% if data['taking-nutrition-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Taking nutrition</h2>
-                <p>{{data['taking-nutrition-change']}}</p>
-              {% endif %}
+              {{ govukTextarea({
+                name: 'preparing-food-change',
+                id: 'preparing-food-change',
+                rows: '5',
+                label: {
+                  text: 'Preparing food',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['preparing-food'] + '.’'
+                },
+                value: data['preparing-food-change']
+              }) }}
 
-              {% if data['managing-therapy-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Managing therapy or monitoring a health condition</h2>
-                <p>{{data['managing-therapy-change']}}</p>
-              {% endif %}
+            {% endif %}
 
-              {% if data['washing-bathing-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Washing and bathing</h2>
-                <p>{{data['washing-bathing-change']}}</p>
-              {% endif %}
+            {% if checked('dailyliving', 'Taking nutrition') == 'checked' %}
 
-              {% if data['managing-toilet-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Managing toilet needs or incontinence</h2>
-                <p>{{data['managing-toilet-change']}}</p>
-              {% endif %}
+              {{ govukTextarea({
+                name: 'taking-nutrition-change',
+                id: 'taking-nutrition-change',
+                rows: '5',
+                label: {
+                  text: 'Taking nutrition',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['taking-nutrition'] + '.’'
+                },
+                value: data['taking-nutrition-change']
+              }) }}
 
-              {% if data['dressing-undressing-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Dressing and undressing</h2>
-                <p>{{data['dressing-undressing-change']}}</p>
-              {% endif %}
+            {% endif %}
 
-              {% if data['communicating-verbally-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Communicating verbally</h2>
-                <p>{{data['communicating-verbally-change']}}</p>
-              {% endif %}
+            {% if checked('dailyliving', 'Managing therapy') == 'checked' %}
 
-              {% if data['reading-signs-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Reading and understanding signs, symbols and words</h2>
-                <p>{{data['reading-signs-change']}}</p>
-              {% endif %}
+              {{ govukTextarea({
+                name: 'managing-therapy-change',
+                id: 'managing-therapy-change',
+                rows: '5',
+                label: {
+                  text: 'Managing therapy or monitoring a health condition',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['managing-therapy'] + '.’'
+                },
+                value: data['managing-therapy-change']
+              }) }}
 
-              {% if data['budgeting-decision-change'] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Making budgeting decision</h2>
-                <p>{{data['budgeting-decision-change']}}</p>
-              {% endif %}
+            {% endif %}
 
-            {% endif %} #}
+            {% if checked('dailyliving', 'Washing and bathing') == 'checked' %}
+
+              {{ govukTextarea({
+                name: 'washing-bathing-change',
+                id: 'washing-bathing-change',
+                rows: '5',
+                label: {
+                  text: 'Washing and bathing ',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['washing-bathing'] + '.’'
+                },
+                value: data['washing-bathing-change']
+              }) }}
+
+            {% endif %}
+
+            {% if checked('dailyliving', 'Managing toilet') == 'checked' %}
+
+              {{ govukTextarea({
+                name: 'managing-toilet-change',
+                id: 'managing-toilet-change',
+                rows: '5',
+                label: {
+                  text: 'Managing toilet needs or incontinence ',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['managing-toilet'] + '.’'
+                },
+                value: data['managing-toilet-change']
+              }) }}
+
+            {% endif %}
+
+            {% if checked('dailyliving', 'Dressing and undressing') == 'checked' %}
+
+              {{ govukTextarea({
+                name: 'dressing-undressing-change',
+                id: 'dressing-undressing-change',
+                rows: '5',
+                label: {
+                  text: 'Dressing and undressing',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['dressing-undressing'] + '.’'
+                },
+                value: data['dressing-undressing-change']
+              }) }}
+
+            {% endif %}
+
+            {% if checked('dailyliving', 'Communicating verbally') == 'checked' %}
+
+              {{ govukTextarea({
+                name: 'communicating-verbally-change',
+                id: 'communicating-verbally-change',
+                rows: '5',
+                label: {
+                  text: 'Communicating verbally',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['communicating-verbally'] + '.’'
+                },
+                value: data['communicating-verbally-change']
+              }) }}
+
+            {% endif %}
+
+            {% if checked('dailyliving', 'Reading signs') == 'checked' %}
+
+              {{ govukTextarea({
+                name: 'reading-signs-change',
+                id: 'reading-signs-change',
+                rows: '5',
+                label: {
+                  text: 'Reading and understanding signs, symbols and words',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['reading-signs'] + '.’'
+                },
+                value: data['reading-signs-change']
+              }) }}
+
+            {% endif %}
+
+            {% if checked('dailyliving', 'Making budgeting') == 'checked' %}
+
+              {{ govukTextarea({
+                name: 'budgeting-decision-change',
+                id: 'budgeting-decision-change',
+                rows: '5',
+                label: {
+                  text: 'Making budgeting decision',
+                  classes: 'govuk-label--m'
+                },
+                hint: {
+                  text: 'You selected ‘' + data['budgeting-decisions'] + '.’'
+                },
+                value: data['budgeting-decision-change']
+              }) }}
+
+            {% endif %}
 
             {{ govukButton({
               text: 'Continue'

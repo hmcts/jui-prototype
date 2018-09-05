@@ -135,6 +135,31 @@ router.get('/app/cases/:id/pip/decision/preliminary', (req, res) => {
 });
 
 router.post('/app/cases/:id/pip/decision/preliminary', (req, res) => {
+
+  if(req.body.awardliving === 'No award' && req.body.awardmobility === 'No award') {
+		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/scores`);
+	} else {
+		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/set-award-dates`);
+	}
+
+});
+
+
+// PRELIMINARY: Set award dates
+router.get('/app/cases/:id/pip/decision/preliminary/set-award-dates', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+		backLink: {
+      href: `/app/cases/${_case.id}/pip/decision`
+		},
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary/set-award-dates', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary/set-award-dates', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/scores`);
 });
 
@@ -515,6 +540,10 @@ router.get('/app/cases/:id/pip/decision/preliminary/preview-decision', (req, res
 	res.render('app/case/pip/decision/preliminary/preview-decision', pageObject);
 });
 
+router.post('/app/case/:id/pip/decision/preliminary/preview-decision', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/decision-submitted`);
+});
+
 
 // PRELIMINARY: Decision submitted
 router.get('/app/cases/:id/pip/decision/preliminary/decision-submitted', (req, res) => {
@@ -532,7 +561,7 @@ router.get('/app/cases/:id/pip/decision/preliminary/decision-submitted', (req, r
 
 
 
-// FINAL: decision
+// FINAL: Decision
 router.get('/app/cases/:id/pip/decision/final', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
@@ -576,7 +605,7 @@ router.post('/app/cases/:id/pip/decision/final', (req, res) => {
 });
 
 
-// FINAL: decision: check
+// FINAL: Check
 router.get('/app/cases/:id/pip/decision/final/check', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
@@ -594,7 +623,7 @@ router.post('/app/cases/:id/pip/decision/final/submit', (req, res) => {
 });
 
 
-// FINAL: decsion: confirmation
+// FINAL: Confirmation
 router.get('/app/cases/:id/pip/decision/final/confirmation', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {

@@ -1,0 +1,81 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Set award dates {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+{{ juiCasebar({
+  caseId: casebar.id,
+  parties: casebar.parties
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'javascript:history.back()'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-xl">Set award dates</h1>
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <form method="post">
+
+            {{ govukDateInput({
+              id: 'award-start-date',
+              name: 'award-start-date',
+              fieldset: {
+                legend: {
+                  text: 'Start date',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                text: 'For example, 4 9 2018'
+              },
+              items: [
+                {name: 'day'},
+                {name: 'month'},
+                {name: 'year'}
+              ]
+            }) }}
+
+            {{ govukDateInput({
+              id: 'award-end-date',
+              name: 'award-end-date',
+              fieldset: {
+                legend: {
+                  text: 'End date',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                text: 'For example, 12 4 2019'
+              },
+              items: [
+                {name: 'day'},
+                {name: 'month'},
+                {name: 'year'}
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+		</main>
+
+	</div>
+
+{% endblock %}
