@@ -277,7 +277,7 @@ module.exports = [
         }
       }
     ],
-    status: '<a href="#">Appellant’s reply</a>',
+    status: '<a href="/app/cases/SC1231612323/questions/">Appellant’s reply</a>',
     applicationDate: moment('2018-05-09'),
     lastAction: moment('2018-05-09'),
     urgent: false,
