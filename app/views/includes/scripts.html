@@ -4,6 +4,45 @@
 <script src="/node_modules/govuk-frontend/all.js"></script>
 <script src="/public/javascripts/application.js"></script>
 
+<script>
+
+  {# $('.jui-editor__toolbar-button').click(function(e) {
+
+    var command = $(this).data('command');
+
+    document.execCommand($(this).data('command'), false, null);
+
+  }); #}
+
+
+  // Check for contenteditable support
+  //var isContentEditableSupported = 'contentEditable' in document.documentElement;
+
+  //if(isContentEditableSupported == true) {
+
+    /*
+      If supported we need to replace textarea with the div
+    */
+
+
+    // Do something
+
+
+  //} else {
+
+    /*
+      If not supported leave as textarea
+    */
+
+
+    // Do something
+
+
+  //}
+
+
+</script>
+
 {% if useAutoStoreData %}
   <script src="/public/javascripts/auto-store-data.js"></script>
 {% endif %}
