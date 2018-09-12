@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Prepare decision notes for appellant {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Explain the tribunal’s view {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -22,11 +22,61 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-xl">Explain the tribunal’s decision</h1>
+          <h1 class="govuk-heading-xl">Explain the tribunal’s view</h1>
 
           {{ govukInsetText({
-            text: 'This will be sent to the appellant.',
+            text: 'This will be sent to both the appellant and DWP.',
             classes: 'govuk-!-margin-bottom-8'
+          }) }}
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-bottom-8',
+            caption: 'Activities and descriptors you consider relevant to the appeal',
+            captionClasses: 'govuk-heading-l',
+            head: [
+              {text: 'Activity'},
+              {text: 'Descriptor'},
+              {text: 'Points'},
+              {text: ''}
+            ],
+            rows: [
+              [
+                {text: 'Preparing food'},
+                {text: 'Needs to use an aid or appliance to be able to prepare or cook a simple meal'},
+                {text: '2'},
+                {
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/preparing-food">Change<span class="govuk-visually-hidden"> new score for daily living: preparing food</span></a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {text: 'Washing and bathing'},
+                {text: 'Needs to use an aid or appliance to be able to wash or bathe'},
+                {text: '2'},
+                {
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/washing-bathing">Change<span class="govuk-visually-hidden"> new score for daily living: washng and bathing</span></a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {text: 'Managing toilet needs or incontinence'},
+                {text: 'Needs to use an aid or appliance to be able to manage my toilet needs or incontinence'},
+                {text: '2'},
+                {
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/managing-toilet">Change<span class="govuk-visually-hidden"> new score for daily living: managing toilet needs or incontinence</span></a>',
+                  format: 'numeric'
+                }
+              ],
+              [
+                {text: 'Dressing and undressing'},
+                {text: 'Needs to use an aid or appliance to be able to dress or undress'},
+                {text: '2'},
+                {
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/dressing-undressing">Change<span class="govuk-visually-hidden"> new score for daily living: dressing and undressing</span></a>',
+                  format: 'numeric'
+                }
+              ]
+            ]
           }) }}
 
           <form method="post">
@@ -34,18 +84,21 @@
             {{ govukTextarea({
               name: 'additionalReasons',
               id: 'additionalReasons',
-              rows: '5',
+              rows: '10',
+              attributes: {
+                wrap: 'hard'
+              },
               label: {
-                text: 'Overview',
+                text: 'Reasons for the tribunal’s view',
                 classes: 'govuk-label--l'
               }
             }) }}
 
-            <hr class="govuk-section-break govuk-section-break--xl">
+            {# <hr class="govuk-section-break govuk-section-break--xl">
 
-            <h2 class="govuk-heading-l">Reasons for each descriptor</h2>
+            <h2 class="govuk-heading-l">Reasons for each descriptor</h2> #}
 
-            {% if checked('dailyliving', 'Preparing food') == 'checked' %}
+            {# {% if checked('dailyliving', 'Preparing food') == 'checked' %}
 
               {{ govukTextarea({
                 name: 'preparing-food-change',
@@ -205,7 +258,7 @@
                 value: data['budgeting-decision-change']
               }) }}
 
-            {% endif %}
+            {% endif %} #}
 
             {{ govukButton({
               text: 'Continue'

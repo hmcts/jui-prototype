@@ -26,6 +26,27 @@
 
           <form method="post">
 
+             {% set endAwardDate %}
+              {{ govukDateInput({
+                id: 'award-end-date',
+                name: 'award-end-date',
+                fieldset: {
+                  legend: {
+                    text: 'End date',
+                    classes: 'govuk-fieldset__legend--m govuk-visually-hidden'
+                  }
+                },
+                hint: {
+                  text: 'For example, 12 4 2019'
+                },
+                items: [
+                  {name: 'day'},
+                  {name: 'month'},
+                  {name: 'year'}
+                ]
+              }) }}
+            {% endset -%}
+
             {{ govukDateInput({
               id: 'award-start-date',
               name: 'award-start-date',
@@ -45,22 +66,27 @@
               ]
             }) }}
 
-            {{ govukDateInput({
-              id: 'award-end-date',
-              name: 'award-end-date',
+            {{ govukRadios({
+              idPrefix: 'end-date-required',
+              name: 'end-date-required',
               fieldset: {
                 legend: {
-                  text: 'End date',
+                  text: 'What do you want to do about the end date?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
-              hint: {
-                text: 'For example, 12 4 2019'
-              },
               items: [
-                {name: 'day'},
-                {name: 'month'},
-                {name: 'year'}
+                {
+                  text: 'Set a date',
+                  value: 'set-a-date',
+                  conditional: {
+                    html: endAwardDate
+                  }
+                },
+                {
+                  text: 'Indefinite award',
+                  value: 'indefinite-award'
+                }
               ]
             }) }}
 

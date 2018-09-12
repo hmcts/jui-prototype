@@ -89,14 +89,12 @@ router.get('/app/dashboard', (req, res) => {
 				html : '<a href="/app/cases/' + c.id + '">'+ c.id +'</a>' + ' <span class="jui-status  jui-status--new  govuk-!-margin-left-1">New</span>'
 			});
 
-			cells.push({ html: helpers.getPartiesLineDashboard(c)
-			});
 
-			cells.push({ html: c.type });
-			cells.push({ html: c.status });
-			cells.push({ html: c.applicationDate });
-			cells.push({ html: c.documents });
-			cells.push({ html: c.lastAction });
+      cells.push({ html: helpers.getPartiesLineDashboard(c)	});
+      cells.push({ html: helpers.getCaseTypeLabel(c) });
+      cells.push({ html: c.status });
+      cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
+      cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 
 			return cells;
 
@@ -119,7 +117,7 @@ router.get('/app/dashboard', (req, res) => {
 			pageObject.success = 'Prototype setup';
 			break;
 		case 'cases added':
-			pageObject.success = 'Cases added';
+			pageObject.success = '1 new case added.';
 			break;
 	}
 

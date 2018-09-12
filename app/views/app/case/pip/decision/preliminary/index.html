@@ -31,25 +31,25 @@
               name: 'awardliving',
               fieldset: {
                 legend: {
-                  text: 'What are you awarding for daily living?',
+                  text: 'What are you considering awarding for daily living?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
               items: [
                 {
-                  html: 'No award<span class="govuk-visually-hidden"> is given for daily living</span>',
+                  html: 'No award<span class="govuk-visually-hidden"> for daily living</span>',
                   value: 'No award',
                   checked: checked('awardliving', 'No award') == 'checked'
                 },
                 {
-                  html: 'Standard award<span class="govuk-visually-hidden"> is given for daily living</span>',
-                  value: 'Standard award',
-                  checked: checked('awardliving', 'Standard award') == 'checked'
+                  html: 'Standard rate<span class="govuk-visually-hidden"> is awarded for daily living</span>',
+                  value: 'Standard rate',
+                  checked: checked('awardliving', 'Standard rate') == 'checked'
                 },
                 {
-                  html: 'Enhanced award<span class="govuk-visually-hidden"> is given for daily living</span>',
-                  value: 'Enhanced award',
-                  checked: checked('awardliving', 'Enhanced award') == 'checked'
+                  html: 'Enhanced rate<span class="govuk-visually-hidden"> is awarded for daily living</span>',
+                  value: 'Enhanced rate',
+                  checked: checked('awardliving', 'Enhanced rate') == 'checked'
                 }
               ]
             }) }}
@@ -59,85 +59,35 @@
               name: 'awardmobility',
               fieldset: {
                 legend: {
-                  text: 'What are you awarding for mobility?',
+                  text: 'What are you considering awarding for mobility?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
               items: [
                 {
-                  html: 'No award<span class="govuk-visually-hidden"> is given for mobility</span>',
+                  html: 'No award<span class="govuk-visually-hidden"> for mobility</span>',
                   value: 'No award',
                   checked: checked('awardmobility', 'No award') == 'checked'
                 },
                 {
-                  html: 'Standard award<span class="govuk-visually-hidden"> is given for mobility</span>',
-                  value: 'Standard award',
-                  checked: checked('awardmobility', 'Standard award') == 'checked'
+                  html: 'Standard rate<span class="govuk-visually-hidden"> is awarded for mobility</span>',
+                  value: 'Standard rate',
+                  checked: checked('awardmobility', 'Standard rate') == 'checked'
                 },
                 {
-                  html: 'Enhanced award<span class="govuk-visually-hidden"> is given for mobility</span>',
-                  value: 'Enhanced award',
-                  checked: checked('awardmobility', 'Enhanced award') == 'checked'
+                  html: 'Enhanced rate<span class="govuk-visually-hidden"> is awarded for mobility</span>',
+                  value: 'Enhanced rate',
+                  checked: checked('awardmobility', 'Enhanced rate') == 'checked'
                 }
               ]
             }) }}
-
-            {# {{ govukDateInput({
-              id: 'award-start-date',
-              name: 'award-start-date',
-              fieldset: {
-                legend: {
-                  text: 'Start date of award',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              hint: {
-                text: 'For example, 4 9 2018'
-              },
-              items: [
-                {
-                  name: 'day'
-                },
-                {
-                  name: 'month'
-                },
-                {
-                  name: 'year'
-                }
-              ]
-            }) }}
-
-            {{ govukDateInput({
-              id: 'award-end-date',
-              name: 'award-end-date',
-              fieldset: {
-                legend: {
-                  text: 'End date of award',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              hint: {
-                text: 'For example, 4 9 2018'
-              },
-              items: [
-                {
-                  name: 'day'
-                },
-                {
-                  name: 'month'
-                },
-                {
-                  name: 'year'
-                }
-              ]
-            }) }} #}
 
             {{ govukRadios({
               idPrefix: 'panelsdecision',
               name: 'panelsdecision',
               fieldset: {
                 legend: {
-                  text: 'How does the new award compare to the original DWP award?',
+                  text: 'How would this new award compare to the original DWP award?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },

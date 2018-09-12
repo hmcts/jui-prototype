@@ -139,3 +139,21 @@ html {
   }
 
 }
+
+
+
+
+// Panel (temp)
+
+.panel {
+  padding: govuk-spacing(6);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+.panel--information {
+  background-color: rgb(238, 247, 255);
+}

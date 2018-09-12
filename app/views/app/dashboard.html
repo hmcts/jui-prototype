@@ -11,15 +11,11 @@
   <main class="govuk-main-wrapper" role="main">
 
     {% if success %}
-      {{ juiAlert(
-        {
-          icon: true,
-          iconClasses: 'jui-alert__icon--success',
-          iconText: 'Success!',
-          alertText: success,
-          alertClasses: 'jui-alert--success'
-        })
-      }}
+      {{ hmctsAlert({
+          type: 'success',
+          text: success,
+          iconFallbackText: 'Success'
+        }) }}
     {% endif %}
 
     <h1 class="govuk-heading-xl">Dashboard</h1>
