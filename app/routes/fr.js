@@ -109,7 +109,7 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 		if(req.body.decision === 'Approve as drafted') {
 			res.redirect(`/app/cases/${req.params.id}/fr/decision-notes`);
 		// Don’t approve
-		} else if(req.body.decision === 'Dont’t approve') {
+		} else if(req.body.decision === 'Don’t approve') {
 			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 		}
 
