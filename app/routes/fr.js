@@ -106,10 +106,10 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 	if(v.validate()) {
 
 		// Approve
-		if(req.body.decision === 'Approve as drafted') {
+		if(req.body.decision === 'Approve consent order') {
 			res.redirect(`/app/cases/${req.params.id}/fr/decision-notes`);
-		// Don’t approve
-		} else if(req.body.decision === 'Don’t approve') {
+		// Consent order not approved
+		} else if(req.body.decision === 'Consent order not approved') {
 			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
 		}
 

@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Make a decision {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Do you want to approve the draft consent order? {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -32,26 +32,27 @@
           <form method="post">
 
             {{ govukRadios({
+              classes: "govuk-radios--inline",
               idPrefix: 'decision',
               name: 'decision',
               errorMessage: inlineErrors.decision,
               fieldset: {
                 legend: {
                   classes: 'govuk-fieldset__legend--xl',
-                  text: 'Make a decision on the draft consent order',
+                  text: 'Do you want to approve the draft consent order?',
                   isPageHeading: true
                 }
               },
               items: [
                 {
-                  value: 'Approve as drafted',
-                  html: 'Approve as drafted',
-                  checked: checked('decision', 'Approve as drafted') == 'checked'
+                  value: 'Approve consent order',
+                  html: 'Yes<span class="govuk-visually-hidden">, consent order approved</span>',
+                  checked: checked('decision', 'Approve consent order') == 'checked'
                 },
                 {
-                  value: 'Don’t approve',
-                  html: 'Don’t approve',
-                  checked: checked('decision', 'Don’t approve') == 'checked'
+                  value: 'Consent order not approved',
+                  html: 'No<span class="govuk-visually-hidden">, consent order not approved</span>',
+                  checked: checked('decision', 'Consent order not approved') == 'checked'
                 }
               ]
             }) }}
