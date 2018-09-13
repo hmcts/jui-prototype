@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Send a copy of the draft consent order with your comments? {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Send a copy of the draft consent order? {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -37,13 +37,13 @@
               name: 'copyconsentorder',
               fieldset: {
                 legend: {
-                  text: 'Send an annotated copy of the draft consent order?',
+                  text: 'Send a copy of the draft consent order?',
                   isPageHeading: true,
                   classes: 'govuk-fieldset__legend--xl'
                 }
               },
               hint: {
-                html: 'You can use this to illustrate any detailed points or questions you have for the parties.<br>It would be sent as an attachment to the financial remedy order.'
+                html: 'You’ll be able to change comments you’ve already made or add new ones. It will be sent as an attachment to the financial remedy order.'
               },
               items: [
                 {

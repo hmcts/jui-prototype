@@ -29,18 +29,7 @@
             }) }}
           {% endif %}
 
-          <h1 class="govuk-heading-xl">Give reasons and directions</h1>
-
-          {{ govukInsetText({
-            text: 'The text you select will be put into a financial remedy order.',
-            classes: 'govuk-!-margin-bottom-6'
-          }) }}
-
-          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-          <h2 class="govuk-heading-l">Financial remedy order</h2>
-
-          <p>It is ordered that the draft consent order could not be approved.</p>
+          <h1 class="govuk-heading-xl">What should appear in the financial remedy order?</h1>
 
           <form method="post">
 
@@ -132,7 +121,7 @@
               name: 'reject',
               fieldset: {
                 legend: {
-                  text: 'Reasons',
+                  text: 'Reasons the consent order was not approved',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },

@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Make comments on draft consent order {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Add or change comments {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -18,9 +18,7 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      <h1 class="govuk-heading-xl">Make comments on draft consent order</h1>
-
-      <h2 class="govuk-heading-m">Draft consent order</h2>
+      <h1 class="govuk-heading-xl">Add or change comments</h1>
 
       <div class="govuk-grid-row">
 
@@ -39,9 +37,6 @@
               label: {
                 text: 'Comments',
                 classes: 'govuk-label--m'
-              },
-              hint: {
-                text: 'If you’ve already added in comments earlier, they will display here.'
               },
               value: data['document-notes']
             }) }}
