@@ -31,61 +31,27 @@
 
           <form method="post">
 
-            {% set confirmUploadedHtml %}
-            {{ govukRadios({
-              classes: 'govuk-radios--inline',
-              idPrefix: 'reason',
-              name: 'reason',
-              fieldset: {
-                legend: {
-                  text: 'Have you upload a new version of the consent order?',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              items: [
-                {
-                  value: 'yes',
-                  html: 'Yes'
-                },
-                {
-                  value: 'no',
-                  html: 'No'
-                }
-              ]
-            }) }}
-            {% endset %}
-
             {{ govukRadios({
               idPrefix: 'decision',
               name: 'decision',
               errorMessage: inlineErrors.decision,
               fieldset: {
                 legend: {
-                  text: 'Make a decision',
-                  isPageHeading: true,
-                  classes: 'govuk-fieldset__legend--xl'
+                  classes: 'govuk-fieldset__legend--xl',
+                  text: 'Make a decision on the draft consent order',
+                  isPageHeading: true
                 }
               },
               items: [
                 {
-                  value: 'Approve consent order as drafted',
-                  html: 'Approve consent order as drafted',
-                  checked: checked('decision', 'Approve consent order as drafted') == 'checked'
+                  value: 'Approve as drafted',
+                  html: 'Approve as drafted',
+                  checked: checked('decision', 'Approve as drafted') == 'checked'
                 },
                 {
-                  value: 'Request changes or ask for more information from parties',
-                  html: 'Request changes or ask for more information from parties',
-                  checked: checked('decision', 'Request changes or ask for more information from parties') == 'checked'
-                },
-                {
-                  value: 'Ask parties to attend hearing',
-                  html: 'Ask parties to attend hearing',
-                  checked: checked('decision', 'Ask parties to attend hearing') == 'checked'
-                },
-                {
-                  value: 'Reject consent order',
-                  html: 'Reject consent order',
-                  checked: checked('decision', 'Reject consent order') == 'checked'
+                  value: 'Dont’t approve',
+                  html: 'Dont’t approve',
+                  checked: checked('decision', 'Dont’t approve') == 'checked'
                 }
               ]
             }) }}

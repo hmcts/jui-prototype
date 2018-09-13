@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Reject consent order reason {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}{% if errors %}({{errors.length}}) errors — {% endif %}Give reasons and directions {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -29,47 +29,20 @@
             }) }}
           {% endif %}
 
-          <form method="post">
+          <h1 class="govuk-heading-xl">Give reasons and directions</h1>
 
-            {% set subReasonsHtml %}
-              {{ govukCheckboxes({
-                idPrefix: 'rejectsub',
-                name: 'rejectsub',
-                fieldset: {
-                  legend: {
-                    text: 'Type of information missing',
-                    classes: 'govuk-fieldset__legend--m'
-                  }
-                },
-                items: [
-                  {
-                    html: 'Parties’ capital positions if the order were to take effect',
-                    value: 'parties’ capital position',
-                    checked: checked('rejectsub', 'parties’ capital position') == 'checked'
-                  },
-                  {
-                    html: 'Parties’ housing needs and whether they are met by the order',
-                    value: 'parties’ housing',
-                    checked: checked('rejectsub', 'parties’ housing') == 'checked'
-                  },
-                  {
-                    html: 'Justification for departure from equality of capital',
-                    value: 'parties’ pension',
-                    checked: checked('rejectsub', 'parties’ pension') == 'checked'
-                  },
-                  {
-                    html: 'Parties’ pension provision if the order were to take effect',
-                    value: 'children’s housing',
-                    checked: checked('rejectsub', 'children’s housing') == 'checked'
-                  },
-                  {
-                    html: 'Children’s housing needs and whether they are met by the order',
-                    value: 'children’s housing',
-                    checked: checked('rejectsub', 'children’s housing') == 'checked'
-                  }
-                ]
-            }) }}
-            {% endset %}
+          {{ govukInsetText({
+            text: 'The text you select will be put into a financial remedy order.',
+            classes: 'govuk-!-margin-bottom-6'
+          }) }}
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          <h2 class="govuk-heading-l">Financial remedy order</h2>
+
+          <p>It is ordered that the draft consent order could not be approved.</p>
+
+          <form method="post">
 
             {% set otherReasonHtml %}
 
@@ -77,10 +50,79 @@
                 name: 'otherReason',
                 id: 'otherReason',
                 label: {
-                  text: 'Other reason',
+                  text: 'Reason',
                   classes: 'govuk-label--m'
                 },
                 value: data.otherReason
+              }) }}
+
+            {% endset %}
+
+            {% set otherTypeOfInformationHtml %}
+
+              {{ govukTextarea({
+                name: 'otherTypeOfInformation',
+                id: 'otherTypeOfInformation',
+                label: {
+                  text: 'Reason',
+                  classes: 'govuk-label--m'
+                },
+                value: data.otherTypeOfInformation
+              }) }}
+
+            {% endset %}
+
+            {% set subReasonsHtml %}
+
+              {{ govukCheckboxes({
+                idPrefix: 'rejectsub',
+                name: 'rejectsub',
+                fieldset: {
+                  legend: {
+                    text: 'Information required',
+                    classes: 'govuk-fieldset__legend--m'
+                  }
+                },
+                items: [
+                  {
+                    html: 'The parties’ capital positions if the order were to take effect',
+                    value: 'the parties’ capital positions if the order were to take effect',
+                    checked: (checked('rejectsub', 'the parties’ capital positions if the order were to take effect') == 'checked')
+                  },
+                  {
+                    html: 'The parties’ housing needs and whether they are met by the order',
+                    value: 'the parties’ housing needs and whether they are met by the order',
+                    checked: (checked('rejectsub', 'the parties’ housing needs and whether they are met by the order') == 'checked')
+                  },
+                  {
+                    html: 'The justification for departure from equality of capital',
+                    value: 'the justification for departure from equality of capital',
+                    checked: (checked('rejectsub', 'the justification for departure from equality of capital') == 'checked')
+                  },
+                  {
+                    html: 'The parties’ pension provision if the order were to take effect',
+                    value: 'the parties’ pension provision if the order were to take effect',
+                    checked: (checked('rejectsub', 'the parties’ pension provision if the order were to take effect') == 'checked')
+                  },
+                  {
+                    html: 'The children’s housing needs and whether they are met by the order',
+                    value: 'the children’s housing needs and whether they are met by the order',
+                    checked: (checked('rejectsub', 'the children’s housing needs and whether they are met by the order') == 'checked')
+                  },
+                  {
+                    html: 'The net effect of the order',
+                    value: 'the net effect of the order',
+                    checked: (checked('rejectsub', 'the net effect of the order') == 'checked')
+                  },
+                  {
+                    html: 'Other',
+                    value: 'other',
+                    checked: (checked('rejectsub', 'other') == 'checked'),
+                    conditional: {
+                      html: otherTypeOfInformationHtml
+                    }
+                  }
+                ]
               }) }}
 
             {% endset %}
@@ -90,61 +132,67 @@
               name: 'reject',
               fieldset: {
                 legend: {
-                  text: 'Why couldn’t you approve the consent order?',
-                  isPageHeading: true,
-                  classes: 'govuk-fieldset__legend--xl'
+                  text: 'Reasons',
+                  classes: 'govuk-fieldset__legend--m'
                 }
               },
               hint: {
-                text: 'Select all that apply. This information will be sent to the parties in an order.'
+                text: 'Select all that apply.'
               },
               items: [
-              {
-                html: 'Not enough information given',
-                value: 'Not enough information given',
-                checked: (checked('reject','Not enough information given') == 'checked'),
-                conditional: {
-                  html: subReasonsHtml
+                {
+                  html: 'The parties need to attend a hearing',
+                  value: 'The parties need to attend a hearing',
+                  checked: (checked('reject','The parties need to attend a hearing') == 'checked')
+                },
+                {
+                  html: 'Not enough information was supplied to decide if the order is fair',
+                  value: 'Not enough information was supplied to decide if the order is fair',
+                  checked: (checked('reject','Not enough information was supplied to decide if the order is fair') == 'checked'),
+                  conditional: {
+                    html: subReasonsHtml
+                  }
+                },
+                {
+                  html: 'The D81 form is incomplete',
+                  value: 'The D81 form is incomplete',
+                  checked: (checked('reject','The D81 form is incomplete') == 'checked')
+                },
+                {
+                  html: 'The pension annex was not attached',
+                  value: 'The pension annex was not attached',
+                  checked: (checked('reject','The pension annex was not attached') == 'checked')
+                },
+                {
+                  html: 'It’s not clear if the applicant has taken independent legal advice',
+                  value: 'It’s not clear if the applicant has taken independent legal advice',
+                  checked: (checked('reject','It’s not clear if the applicant has taken independent legal advice') == 'checked')
+                },
+                {
+                  html: 'It’s not clear if the respondent has taken independent legal advice',
+                  value: 'It’s not clear if the respondent has taken independent legal advice',
+                  checked: (checked('reject','It’s not clear if the respondent has taken independent legal advice') == 'checked')
+                },
+                {
+                  html: 'Other',
+                  value: 'Other',
+                  checked: (checked('reject','Other') == 'checked'),
+                  conditional: {
+                    html: otherReasonHtml
+                  }
                 }
-              },
-              {
-                html: 'Pension annex not uploaded',
-                value: 'Pension annex not uploaded',
-                checked: (checked('reject','Pension annex not uploaded') == 'checked')
-              },
-              {
-                html: 'Not clear if respondent has taken independent legal advice',
-                value: 'Not clear if respondent has taken independent legal advice',
-                checked: (checked('reject','Not clear if respondent has taken independent legal advice') == 'checked')
-              },
-              {
-                html: 'D81 form is incomplete',
-                value: 'D81 form is incomplete',
-                checked: (checked('reject','D81 form is incomplete') == 'checked')
-              },
-              {
-                html: 'Other',
-                value: 'Other',
-                checked: (checked('reject','Other') == 'checked'),
-                conditional: {
-                  html: otherReasonHtml
-                }
-              }
-            ],
+              ],
               value: data['reject-notes']
             }) }}
 
             {{ govukTextarea({
-              name: 'furtherInformation',
-              id: 'furtherInformation',
+              name: 'directions',
+              id: 'directions',
               label: {
-                text: 'Further information needed from parties (optional)',
+                text: 'Directions',
                 classes: 'govuk-label--m'
               },
-              hint: {
-                text: 'This will be sent to the parties in an order.'
-              },
-              value: data.furtherInformation
+              value: data['directions']
             }) }}
 
             {{ govukButton({

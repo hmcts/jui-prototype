@@ -36,10 +36,6 @@ router.get('/app/cases/:id/fr', (req, res) => {
 });
 
 
-
-
-
-
 // Timeline
 router.get('/app/cases/:id/fr/timeline', (req, res) => {
 
@@ -58,9 +54,6 @@ router.get('/app/cases/:id/fr/timeline', (req, res) => {
 });
 
 
-
-
-
 router.get('/app/cases/:id/fr/consent-orders', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 
@@ -76,20 +69,17 @@ router.get('/app/cases/:id/fr/consent-orders', (req, res) => {
 
 router.get('/app/cases/:id/fr/history', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile')
 	};
-
 	res.render('app/case/fr/history', pageObject);
 });
 
 router.get('/app/cases/:id/fr/decision', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
@@ -97,7 +87,6 @@ router.get('/app/cases/:id/fr/decision', (req, res) => {
       href: `/app/cases/${_case.id}`
     }
 	};
-
 	res.render('app/case/fr/decision/decision', pageObject);
 });
 
@@ -115,49 +104,30 @@ router.post('/app/cases/:id/fr/decision', (req, res) => {
 	}]);
 
 	if(v.validate()) {
-		
-		// Approve consent order as drafted
-		if(req.body.decision === 'Approve consent order as drafted') {
 
+		// Approve
+		if(req.body.decision === 'Approve as drafted') {
 			res.redirect(`/app/cases/${req.params.id}/fr/decision-notes`);
-
-		
-		} else if(req.body.decision === 'Ask for more information') {
-
-			res.redirect(`/app/cases/${req.params.id}/fr/more-information`);
-
-		} else if(req.body.decision === 'Request changes or ask for more information from parties') {
-
+		// Don’t approve
+		} else if(req.body.decision === 'Dont’t approve') {
 			res.redirect(`/app/cases/${req.params.id}/fr/reject-reasons`);
-
-		// Ask parties to attend hearing
-		} else if(req.body.decision === 'Ask parties to attend hearing') {
-
-			res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
-
-		// Reject consent order
-		} else if(req.body.decision === 'Reject consent order') {
-
-			res.redirect(`/app/cases/${req.params.id}/fr/reject-reason`);
-
 		}
 
 	} else {
-			var _case = helpers.getCase(req.session.cases, req.params.id);
-			var pageObject = {
-				casebar: helpers.getCaseBarObject(_case),
-				caseActions: helpers.getCaseActions(_case),
-				backLink: {
-					href: `/app/cases/${_case.id}`
-				}
-			};
-			res.render('app/case/fr/decision/decision', pageObject);
-		}
+		var _case = helpers.getCase(req.session.cases, req.params.id);
+		var pageObject = {
+      casebar: helpers.getCaseBarObject(_case),
+      caseActions: helpers.getCaseActions(_case),
+      backLink: {
+        href: `/app/cases/${_case.id}`
+      }
+    };
+    res.render('app/case/fr/decision/decision', pageObject);
+  }
 });
 
 router.get('/app/cases/:id/fr/upload-1', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
@@ -166,7 +136,6 @@ router.get('/app/cases/:id/fr/upload-1', (req, res) => {
 		},
 		_case: _case
 	};
-
 	res.render('app/case/fr/decision/upload-1', pageObject);
 });
 
@@ -188,7 +157,6 @@ router.post('/app/cases/:id/fr/upload-1', (req, res) => {
 
 router.get('/app/cases/:id/fr/upload-2', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
@@ -197,7 +165,6 @@ router.get('/app/cases/:id/fr/upload-2', (req, res) => {
 		},
 		_case: _case
 	};
-
 	res.render('app/case/fr/decision/upload-2', pageObject);
 });
 
@@ -210,10 +177,8 @@ router.post('/app/cases/:id/fr/upload-2', (req, res) => {
 });
 
 
-
 router.get('/app/cases/:id/fr/more-information', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
@@ -222,7 +187,6 @@ router.get('/app/cases/:id/fr/more-information', (req, res) => {
 		},
 		_case: _case
 	};
-
 	res.render('app/case/fr/decision/more-information', pageObject);
 });
 
@@ -318,9 +282,32 @@ router.get('/app/cases/:id/fr/reject-reasons', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/reject-reasons', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order`);
+	res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order-question`);
 });
 
+
+// Draft consent order question
+router.get('/app/cases/:id/fr/draft-consent-order-question', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}`
+    }
+	};
+	res.render('app/case/fr/decision/draft-consent-order-question', pageObject);
+});
+
+router.post('/app/cases/:id/fr/draft-consent-order-question', (req, res) => {
+
+  if(req.body.copyconsentorder === 'Yes') {
+		res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order`);
+	} else if (req.body.copyconsentorder === 'No') {
+		res.redirect(`/app/cases/${req.params.id}/fr/notes-for-court-administrator`);
+  }
+
+});
 
 
 // Reject reason
@@ -341,7 +328,6 @@ router.post('/app/cases/:id/fr/reject-reason', (req, res) => {
 });
 
 
-
 // Reject reasons
 router.get('/app/cases/:id/fr/reject-notes', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -358,7 +344,6 @@ router.get('/app/cases/:id/fr/reject-notes', (req, res) => {
 router.post('/app/cases/:id/fr/reject-notes', (req, res) => {
   res.redirect(`/app/cases/${req.params.id}/fr/check`);
 });
-
 
 
 router.get('/app/cases/:id/fr/check', (req, res) => {
@@ -378,14 +363,14 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 	}
 
 	if(req.session.data.reject) {
-		req.session.data.reject.forEach((item) => {
-			if(item == 'Not enough information given') {
-				// loop through sub reasons and attach as sub reasons
+
+    req.session.data.reject.forEach((item) => {
+			if(item == 'Not enough information was supplied to decide if the order is fair') {
+				// Loop through sub reasons and attach as sub reasons
 				var r = {
-					text: 'Not enough information given',
+					text: 'Not enough information was supplied to decide if the order is fair',
 					sub: []
 				};
-
 				req.session.data.rejectsub.forEach((item) => {
 					r.sub.push({
 						text: item
@@ -393,7 +378,7 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 				});
 				pageObject.reasons.push(r);
 			} else if (item == 'Other') {
-				// grab other text input and add as reason
+				// Grab other text input and add as reason
 				pageObject.reasons.push({
 					text: `Other: ${req.session.data.otherReason}`
 				});
@@ -403,15 +388,15 @@ router.get('/app/cases/:id/fr/check', (req, res) => {
 				});
 			}
 		});
-	}
+  }
 
-	res.render('app/case/fr/decision/check', pageObject);
+  res.render('app/case/fr/decision/check', pageObject);
+
 });
 
 router.post('/app/cases/:id/fr/submit-decision', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/fr/decision-confirmation`);
 });
-
 
 
 router.get('/app/cases/:id/fr/draft-consent-order', (req, res) => {
@@ -431,7 +416,6 @@ router.post('/app/cases/:id/fr/draft-consent-order', (req, res) => {
 });
 
 
-
 router.get('/app/cases/:id/fr/decision-confirmation', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
@@ -439,7 +423,6 @@ router.get('/app/cases/:id/fr/decision-confirmation', (req, res) => {
 	};
 	res.render('app/case/fr/decision/confirmation', pageObject);
 });
-
 
 
 module.exports = router;

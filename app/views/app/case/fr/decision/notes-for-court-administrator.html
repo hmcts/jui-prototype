@@ -32,8 +32,8 @@
           <form method="post">
 
             {{ govukTextarea({
-              id: 'notesForCourtAdministrator',
-              name: 'notesForCourtAdministrator',
+              id: 'notes-for-court-administrator',
+              name: 'notes-for-court-administrator',
               label: {
                 text: 'Notes for court administrator',
                 isPageHeading: true,
@@ -42,7 +42,7 @@
               hint: {
                 text: 'This won’t be seen by the parties.'
               },
-              value: data['notesForCourtAdministrator']
+              value: data['notes-for-court-administrator']
             }) }}
 
             {{ govukButton({
