@@ -25,11 +25,11 @@
 
       <div class="govuk-grid-column-two-thirds">
 
-        <div class="panel panel--information">
+        <div class="panel panel--information govuk-!-margin-bottom-6">
 
          {{ govukTable({
             firstCellIsHeader: false,
-            caption: '1. Petitioner details',
+            caption: 'Petitioner details',
             captionClasses: 'govuk-heading-m',
             classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
             rows: [
@@ -51,7 +51,7 @@
           {{ govukTable({
             classes: '',
             firstCellIsHeader: false,
-            caption: '2. Respondent details',
+            caption: 'Respondent details',
             captionClasses: 'govuk-heading-m',
             classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
             rows: [
@@ -72,7 +72,7 @@
 
           {{ govukTable({
             firstCellIsHeader: false,
-            caption: '3. Facts relied upon',
+            caption: 'Facts relied upon',
             captionClasses: 'govuk-heading-m',
             classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
             rows: [
@@ -101,7 +101,7 @@
 
           {{ govukTable({
             firstCellIsHeader: false,
-            caption: '4. Service and respondent’s response',
+            caption: 'Service and respondent’s response',
             captionClasses: 'govuk-heading-m',
             classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
             rows: [
@@ -126,7 +126,7 @@
 
           {{ govukTable({
             firstCellIsHeader: false,
-            caption: '5. Other details',
+            caption: 'Other details',
             captionClasses: 'govuk-heading-m',
             classes: 'jui-table  jui-table--fixed',
             rows: [
@@ -151,7 +151,7 @@
 
       <div class="govuk-grid-column-one-third">
 
-        <h1 class="govuk-heading-l">Make a decision</h1>
+        <h1 class="govuk-heading-m govuk-!-margin-top-6">Make a decision</h1>
 
         {% set legendText %}Are you satisfied that <b>{{ petitioner }}</b> is entitled to a decree nisi for reason of adultery?{% endset %}
 
