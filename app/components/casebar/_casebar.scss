@@ -27,15 +27,24 @@
 }
 
 
-.jui-casebar__link:link {
-  color: govuk-colour("white");
+.jui-casebar__link {
+  display: inline-block;
+  overflow: hidden;
   text-decoration: none;
+}
+
+
+.jui-casebar__link:link,
+.jui-casebar__link:visited,
+.jui-casebar__link:active {
+  color: govuk-colour("white");
 
   .jui-casebar__title {
     text-decoration: underline;
   }
 
   &:focus {
+    background-color: $govuk-focus-colour;
     color: govuk-colour("black");
   }
 
