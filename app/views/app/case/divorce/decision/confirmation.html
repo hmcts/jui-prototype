@@ -4,6 +4,11 @@
 
 {% block content %}
 
+  {{ juiCasebar({
+    caseId: casebar.id,
+    parties: casebar.parties
+  }) }}
+
   <div class="jui-width-container">
 
     <main class="govuk-main-wrapper" role="main">
@@ -22,21 +27,28 @@
 
           {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] == 'Respondent to pay petitioner’s costs' %}
 
-            <p>Respondent to pay petitioner’s costs [message goes here]</p>
+            <p>Content to be agreed.</p>
 
           {% elif data['satisfied'] === 'Yes' and data['costsOrderDecision'] == 'Terms have been agreed between the parties and approved by the court' %}
 
-            <p>Terms have been agreed between the parties and approved by the court [message goes here]</p>
+            <p>Content to be agreed.</p>
 
           {% elif data['satisfied'] === 'Yes' and data['costsOrderDecision'] == 'Other' %}
 
-            <p>Other [message goes here]</p>
+            <p>Content to be agreed.</p>
 
           {% elif data['satisfied'] === 'Yes' and data['costsOrderDecision'] == 'No order for costs' %}
 
-            <p>No order for costs [message goes here]</p>
+            <p>Content to be agreed.</p>
 
           {% endif %}
+
+          <form method="post">
+            {{ govukButton({
+              classes: 'govuk-!-margin-bottom-4 govuk-!-margin-top-4',
+              text: 'Continue to next case'
+            }) }}
+          </form>
 
           <p><a href="/app/dashboard">Go to your dashboard</a></p>
 

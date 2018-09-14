@@ -328,7 +328,7 @@ module.exports = [
     petitioner: [{
       fullname: 'Susan Francis',
       dateOfBirth: moment('1979-04-16'),
-      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
       email: 'susan.francis@gmail.com',
       representative: ''
@@ -337,7 +337,7 @@ module.exports = [
     respondent: [{
       fullname: 'David Francis',
       dateOfBirth: moment('1981-06-07'),
-      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
       phone: '07787 557 967',
       email: 'david.francis@gmail.com',
       representative: ''
@@ -366,7 +366,7 @@ module.exports = [
       }
     ],
 
-    status: '<a href="#">Decree nisi application</a>',
+    status: '<a href="/app/cases/BV18D00150/divorce/decision">Decree nisi application</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
@@ -410,7 +410,7 @@ module.exports = [
     petitioner: [{
       fullname: 'John Smith',
       dateOfBirth: moment('1981-06-07'),
-      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
       phone: '07787 557 967',
       email: 'john.smith@gmail.com',
       representative: ''
@@ -419,7 +419,7 @@ module.exports = [
     respondent: [{
       fullname: 'Jane Smith',
       dateOfBirth: moment('1979-04-16'),
-      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
       email: 'jane.smith@gmail.com',
       representative: ''
@@ -495,7 +495,7 @@ module.exports = [
     petitioner: [{
       fullname: 'Margaret Blake',
       dateOfBirth: moment('1981-06-07'),
-      address: '24 Park Road<br>Lewisham<br>London<br>E11 4PR',
+      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
       phone: '07787 557 967',
       email: 'margaret.blake@gmail.com',
       representative: ''
@@ -504,7 +504,7 @@ module.exports = [
     respondent: [{
       fullname: 'William Blake',
       dateOfBirth: moment('1979-04-16'),
-      address: '89 London Road<br>Hinckley<br>London<br>LE10 1HH',
+      address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
       email: 'william.blake@gmail.com',
       representative: ''

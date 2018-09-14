@@ -13,7 +13,7 @@
 
   {{ govukBackLink({
     text: 'Back',
-    href: backLink.href
+    href: 'javascript:history.back()'
   }) }}
 
   <main role="main" class="govuk-main-wrapper">
@@ -24,7 +24,23 @@
 
         <h1 class="govuk-heading-xl">Make a decision on costs</h1>
 
-        {{ juiInformationPanel({
+        <!-- Information panel -->
+        <div class="panel panel--information govuk-!-margin-bottom-8">
+
+          <h2 class="govuk-heading-l">Key facts to consider</h2>
+
+          <h3 class="govuk-heading-m">Divorce petition</h3>
+          <p>The applicant is also applying to the court to claim the costs of the divorce from the respondent.</p>
+
+          <h3 class="govuk-heading-m">Acknowledgement of service</h3>
+          <p>“I think we should pay equal amounts for the divorce as we both want it to happen.”</p>
+
+          <h3 class="govuk-heading-m">Application for Decree nisi</h3>
+          <p>“I will accept the amount my wife has suggested.”</p>
+
+        </div>
+
+        {# {{ juiInformationPanel({
           classes: 'jui-panel--information',
           heading: '<h2 class="govuk-heading-m">Key facts to consider</h2>',
           details: [
@@ -41,8 +57,7 @@
               description: '“I will accept the amount my wife has suggested.”'
             }
           ]
-        }) }}
-
+        }) }} #}
 
         <form method="post">
 

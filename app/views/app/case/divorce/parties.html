@@ -42,6 +42,7 @@
 					<div class="govuk-grid-column-one-half">
 						<h2 class="govuk-heading-l">Petitioner</h2>
 						{{ govukTable({
+              classes: 'jui-table  jui-table--fixed',
 							firstCellIsHeader: true,
 							rows: petitionerRows
 						}) }}
@@ -54,6 +55,7 @@
 					<div class="govuk-grid-column-one-half">
 						<h2 class="govuk-heading-l">Respondent</h2>
 						{{ govukTable({
+              classes: 'jui-table  jui-table--fixed',
 							firstCellIsHeader: true,
 							rows: respondentRows
 						}) }}

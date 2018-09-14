@@ -3,6 +3,7 @@ var router  = express.Router();
 var helpers = require('./helpers');
 
 
+// Summary
 router.get('/app/cases/:id/divorce', (req, res) => {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -17,13 +18,11 @@ router.get('/app/cases/:id/divorce', (req, res) => {
 		recentEvents: helpers.getRecentEvents(_case)
 	};
 
-	// Case details
 	pageObject.detailsRows.push([{ html: 'Case number' },	{ html: _case.id + (_case.urgent ? ' <span class="jui-status  jui-status--urgent  govuk-!-margin-left-1">Urgent</span> ' : '') }]);
 	pageObject.detailsRows.push([{ html: 'Case type' },	{ html: helpers.getCaseTypeLabel(_case) }]);
 	pageObject.detailsRows.push([{ html: 'Case status' }, { html: _case.summaryStatus ? _case.summaryStatus : _case.status }]);
 	pageObject.detailsRows.push([{ html: 'Reason for divorce' }, { html: _case.reason }]);
 
-	// Representatives
 	pageObject.representativesRows.push([{ html: 'Petitioner' }, { html: _case.petitionerRepresentativer ? _case.petitionerRepresentative : 'Unrepresented' }]);
 	pageObject.representativesRows.push([{ html: 'Respondent' }, { html: _case.respondentRepresentative ? _case.respondentRepresentative : 'Unrepresented' }]);
 
@@ -42,7 +41,6 @@ router.get('/app/cases/:id/divorce', (req, res) => {
 	res.render('app/case/divorce/summary', pageObject);
 
 });
-
 
 
 // Timeline
@@ -66,7 +64,7 @@ router.get('/app/cases/:id/divorce/timeline', (req, res) => {
 // Parties
 router.get('/app/cases/:id/divorce/parties', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
-	
+
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
@@ -104,12 +102,11 @@ router.get('/app/cases/:id/divorce/parties', (req, res) => {
 });
 
 
-
-// Make decision
+// Make a decision
 router.get('/app/cases/:id/divorce/decision', (req, res) => {
-	
+
 	var _case = helpers.getCase(req.session.cases, req.params.id);
-	
+
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
@@ -123,11 +120,10 @@ router.get('/app/cases/:id/divorce/decision', (req, res) => {
 router.post('/app/cases/:id/divorce/decision', (req, res) => {
 	if (req.body.satisfied === 'No') {
 		res.redirect('provide-reason');
-	} else {
+	} else if (req.body.satisfied === 'Yes') {
 		res.redirect('costs-order');
 	}
 });
-
 
 
 // Provide reason
@@ -147,7 +143,6 @@ router.post('/app/cases/:id/divorce/provide-reason', (req, res) => {
 });
 
 
-
 // Generate order
 router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -160,7 +155,6 @@ router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
 router.post('/app/cases/:id/divorce/generate-order', (req, res) => {
 	res.redirect('confirmation');
 });
-
 
 
 // Costs order
@@ -180,7 +174,6 @@ router.get('/app/cases/:id/divorce/costs-order', (req, res) => {
 router.post('/app/cases/:id/divorce/costs-order', (req, res) => {
 	res.redirect('check-your-answers');
 });
-
 
 
 // Check your answers
@@ -207,11 +200,20 @@ router.post('/app/cases/:id/divorce/submit-decision', (req, res) => {
 router.get('/app/cases/:id/divorce/confirmation', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
+    casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    petitioner: helpers.getPetitionerName(_case),
+    backLink: {
+			href: ''
+		},
 		_case: _case
 	};
 	res.render('app/case/divorce/decision/confirmation', pageObject);
 });
 
+router.post('/app/cases/:id/divorce/confirmation', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/divorce/decision`);
+});
 
 
 module.exports = router;
