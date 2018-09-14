@@ -45,6 +45,8 @@
           rows: detailsRows
         }) }}
 
+        {% if linkedCaseRows.length %}
+
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Linked cases</h2>
 
         {{ govukTable({
@@ -52,6 +54,8 @@
           firstCellIsHeader: true,
           rows: linkedCaseRows
         }) }}
+
+        {% endif %}
 
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Representatives</h2>
 
