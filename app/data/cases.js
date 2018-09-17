@@ -465,19 +465,19 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (D. Francis)'
+        by: 'Petitioner (John Smith)'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (S. Francis)'
+        by: 'Respondent (Jane Smith)'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (D . Francis)'
+        by: 'Petitioner (John Smith)'
       }
     ]
   },
