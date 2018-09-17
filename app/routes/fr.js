@@ -3,6 +3,13 @@ var router  = express.Router();
 var helpers = require('./helpers');
 var Validator = require('./validator');
 
+
+// Is checked
+function isChecked(req, name, value) {
+	return req.session.data[name].indexOf(value) >= 0;
+}
+
+
 router.get('/app/cases/:id/fr', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 
@@ -38,9 +45,7 @@ router.get('/app/cases/:id/fr', (req, res) => {
 
 // Timeline
 router.get('/app/cases/:id/fr/timeline', (req, res) => {
-
 	var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
@@ -48,22 +53,18 @@ router.get('/app/cases/:id/fr/timeline', (req, res) => {
 		caseActions: helpers.getCaseActions(_case),
 		events: helpers.getEvents(_case)
 	};
-
 	res.render('app/case/fr/timeline', pageObject);
-
 });
 
 
 router.get('/app/cases/:id/fr/consent-orders', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
-
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'consentorders')
 	};
-
 	res.render('app/case/fr/consent-orders', pageObject);
 });
 
@@ -228,7 +229,7 @@ router.get('/app/cases/:id/fr/hearing-details', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/hearing-details', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/fr/check`);
+  res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order-question`);
 });
 
 
@@ -282,7 +283,13 @@ router.get('/app/cases/:id/fr/reject-reasons', (req, res) => {
 });
 
 router.post('/app/cases/:id/fr/reject-reasons', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order-question`);
+
+  if(isChecked(req, 'reject', 'The parties need to attend a hearing')) {
+    res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
+  } else {
+    res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order-question`);
+  }
+
 });
 
 

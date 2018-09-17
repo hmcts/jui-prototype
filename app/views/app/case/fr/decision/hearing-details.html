@@ -81,7 +81,7 @@
 
             {{ govukInput({
               label: {
-                text: 'Estimate length of hearing (minutes)',
+                text: 'Estimate length of hearing in minutes',
                 classes: 'govuk-label--m'
               },
               classes: 'govuk-input--width-3',
@@ -89,7 +89,16 @@
               name: 'estimateLengthOfHearing'
             }) }}
 
-            {{ govukDateInput({
+            {{ govukInput({
+              label: {
+                text: 'When should the hearing take place?',
+                classes: 'govuk-label--m'
+              },
+              id: 'estimateLengthOfHearing',
+              name: 'estimateLengthOfHearing'
+            }) }}
+
+            {# {{ govukDateInput({
               id: 'dateOfHearing',
               name: 'dateOfHearing',
               fieldset: {
@@ -112,7 +121,7 @@
                   name: 'year'
                 }
               ]
-            }) }}
+            }) }} #}
 
             {{ govukRadios({
               idPrefix: 'doYouNeedToHearTheCase',
