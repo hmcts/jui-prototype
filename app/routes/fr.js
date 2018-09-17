@@ -25,8 +25,8 @@ router.get('/app/cases/:id/fr', (req, res) => {
 	pageObject.linkedCaseRows = [];
 
 	_case.linkedCases.forEach((item) => {
-		pageObject.linkedCaseRows.push([{
-			html: item.type
+		pageObject.detailsRows.push([{
+			html: 'Full divorce case'
 		}, {
 			html: `<a href="/app/cases/${item.id}">${item.id}</a>`
 		}]);
