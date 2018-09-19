@@ -23,8 +23,8 @@ Validator.prototype.getFormattedErrors = function() {
 Validator.prototype.exposeInlineErrors = function() {
   this.res.locals.inlineErrors = {};
   this.errors.forEach(error => {
-    const { name, message } = error;
-    this.res.locals.inlineErrors[name] = { text: message };
+    const { name, inline } = error;
+    this.res.locals.inlineErrors[name] = { text: inline };
   });
 };
 
@@ -36,9 +36,9 @@ Validator.prototype.exposeErrorSummaryItems = function() {
 
 Validator.prototype.formatError = function(error) {
 	return {
-		text: error.message,
+    text: error.message,
 		href: '#' + error.name
-	}
+	};
 };
 
 Validator.prototype.getError = function(name) {
@@ -56,11 +56,11 @@ Validator.prototype.validate = function() {
 
     for( let rule of rules ){
 
-      const { fn, params, message } = rule;
+      const { fn, params, message, inline } = rule;
       const isValid = fn( value, params );
 
       if( !isValid ){
-        errors.push( { name, message } );
+        errors.push( { name, message, inline } );
         break;
       }
     }
@@ -72,9 +72,7 @@ Validator.prototype.validate = function() {
   this.res.locals.hasValidationErrors = true;
 
   return errors.length == 0;
-}
-
-
+};
 
 
 module.exports = Validator;

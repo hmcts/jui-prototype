@@ -108,8 +108,11 @@ router.route('/app/cases/:id/fr/decision')
   })
 
   .post((req, res) => {
+
     var v = new Validator(req, res);
+
     v.add('decision', [{
+
       fn: (value) => {
         var valid = true;
         if(!value || value.trim().length ==  0) {
@@ -117,8 +120,10 @@ router.route('/app/cases/:id/fr/decision')
         }
         return valid;
       },
-      message: 'Select if you want to approve the draft consent order'
-      // Do you want to approve the draft consent order?
+
+      message: 'Do you want to approve the draft consent order?',
+      inline: 'Select if you want to approve the draft consent order'
+
     }]);
 
     if(v.validate()) {
