@@ -13,7 +13,7 @@
 
     {{ govukBackLink({
       text: 'Back',
-      href: backLink.href
+      href: 'javascript:history.back()'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -22,29 +22,61 @@
 
         <div class="govuk-grid-column-two-thirds">
 
+
           <h1 class="govuk-heading-xl">Check your decision</h1>
 
-          <dl class="app-check-your-answers  app-check-your-answers--short  govuk-!-margin-bottom-6">
 
-            <div class="app-check-your-answers__contents">
+          <!-- APPROVE -->
+          {% if data['decision'] === 'Approve consent order' %}
 
-              <dt class="app-check-your-answers__question">Decision</dt>
+            <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+              <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Decision</dt>
+                <dd class="app-check-your-answers__answer">{{data['decision']}}</dd>
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/decision">Change <span class="govuk-visually-hidden">decision</span></a>
+                </dd>
+              </div>
 
-              <dd class="app-check-your-answers__answer">{{data['decision']}}</dd>
+              {% if data['notes-for-court-administrator'] %}
+              <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Notes for court administrator</dt>
+                <dd class="app-check-your-answers__answer">{{data['notes-for-court-administrator']}}</dd>
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/notes-for-court-administrator">Change <span class="govuk-visually-hidden">notes for court administrator</span></a>
+                </dd>
+              </div>
+              {% endif %}
 
-              <dd class="app-check-your-answers__change">
-                <a href="/app/cases/{{_case.id}}/fr/decision">Change <span class="govuk-visually-hidden">decision</span></a>
-              </dd>
+            </dl>
 
-            </div>
+          {% endif %}
 
 
-            {% if data['decision'] === 'Consent order not approved' and data['reject'] %}
+
+          <!-- NOT APPROVED -->
+          {% if data['decision'] === 'Consent order not approved' %}
+
+            <h2 class="govuk-heading-m">Approve the draft consent order?</h2>
+
+            <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+              <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Decision</dt>
+                <dd class="app-check-your-answers__answer">{{data['decision']}}</dd>
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/decision">Change <span class="govuk-visually-hidden">decision</span></a>
+                </dd>
+              </div>
+            </dl>
+
+
+            <!-- What should appear in the directions order? -->
+            <h2 class="govuk-heading-m">What should appear in the directions order?</h2>
+
+            <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
 
               <div class="app-check-your-answers__contents">
-
                 <dt class="app-check-your-answers__question">Reasons</dt>
-
                 <dd class="app-check-your-answers__answer">
                   {% for reason in reasons %}
                     {% if reason.sub %}
@@ -58,90 +90,76 @@
                       <p>{{reason.text}}</p>
                     {% endif %}
                   {% endfor %}
-
                   {{reason.text}}
-
                 </dd>
-
                 <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/reject-reasons">Change <span class="govuk-visually-hidden">Why couldn’t you approve the consent order</span></a>
+                  <a href="/app/cases/{{_case.id}}/fr/reject-reasons">Change <span class="govuk-visually-hidden">reasons</span></a>
                 </dd>
-
               </div>
 
+              <!-- Directions -->
               {% if data['directions'] %}
               <div class="app-check-your-answers__contents">
-
                 <dt class="app-check-your-answers__question">Directions</dt>
-
                 <dd class="app-check-your-answers__answer">{{data['directions']}}</dd>
-
                 <dd class="app-check-your-answers__change">
                   <a href="/app/cases/{{_case.id}}/fr/reject-reasons">Change <span class="govuk-visually-hidden">directions</span></a>
                 </dd>
-
               </div>
               {% endif %}
 
-              {% if data['document-notes'] %}
+              <!-- Include an annotated version of the draft consent order? -->
+              {% if data['copyconsentorder'] %}
               <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Include an annotated version of the draft consent order?</dt>
+                <dd class="app-check-your-answers__answer">{{data['copyconsentorder']}}</dd>
+                <dd class="app-check-your-answers__change">
+                  <a href="/app/cases/{{_case.id}}/fr/reject-reasons">Change <span class="govuk-visually-hidden">include an annotated version of the draft consent order</span></a>
+                </dd>
+              </div>
+              {% endif %}
 
-                <dt class="app-check-your-answers__question">Comments on draft consent order</dt>
+            </dl>
 
+
+            <!-- Comments on draft consent order -->
+            {% if data['document-notes'] %}
+
+            <h2 class="govuk-heading-m">Comments on draft consent order</h2>
+
+            <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+              <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Comments</dt>
                 <dd class="app-check-your-answers__answer">{{data['document-notes']}}</dd>
-
                 <dd class="app-check-your-answers__change">
                   <a href="/app/cases/{{_case.id}}/fr/draft-consent-order">Change <span class="govuk-visually-hidden">comments on draft consent order</span></a>
                 </dd>
-
               </div>
-              {% endif %}
-
-              {% if data['notes-for-court-administrator'] %}
-              <div class="app-check-your-answers__contents">
-
-                <dt class="app-check-your-answers__question">Notes for court administrator</dt>
-
-                <dd class="app-check-your-answers__answer">{{data['notes-for-court-administrator']}}</dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/notes-for-court-administrator">Change <span class="govuk-visually-hidden">notes for court administrator</span></a>
-                </dd>
-
-              </div>
-              {% endif %}
+            </dl>
 
             {% endif %}
 
-            {% if data['decision'] === 'Approve as drafted' and data['decision-notes'] %}
-              <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Notes</dt>
+            <!-- Notes for court administrator -->
+            {% if data['notes-for-court-administrator'] %}
 
-                <dd class="app-check-your-answers__answer">{{data['decision-notes']}}</dd>
+              <h2 class="govuk-heading-m">Notes for court administrator</h2>
 
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/decision-notes">Change <span class="govuk-visually-hidden">decision notes</span></a>
-                </dd>
+              <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+                <div class="app-check-your-answers__contents">
+                  <dt class="app-check-your-answers__question">Notes</dt>
+                  <dd class="app-check-your-answers__answer">{{data['notes-for-court-administrator']}}</dd>
+                  <dd class="app-check-your-answers__change">
+                    <a href="/app/cases/{{_case.id}}/fr/notes-for-court-administrator">Change <span class="govuk-visually-hidden">notes for court administrator</span></a>
+                  </dd>
+                </div>
+              </dl>
 
-              </div>
             {% endif %}
 
-            {% if data['decision'] === 'Ask parties to attend hearing' and data['reason'] %}
-              <div class="app-check-your-answers__contents">
 
-                <dt class="app-check-your-answers__question">Notes</dt>
+          {% endif %}
 
-                <dd class="app-check-your-answers__answer">{{data.reason}}</dd>
-
-                <dd class="app-check-your-answers__change">
-                  <a href="/app/cases/{{_case.id}}/fr/hearing-details">Change <span class="govuk-visually-hidden">hearing details</span></a>
-                </dd>
-
-              </div>
-            {% endif %}
-
-          </dl>
 
           <form method="post" action="/app/cases/{{_case.id}}/fr/submit-decision">
             {{ govukButton({

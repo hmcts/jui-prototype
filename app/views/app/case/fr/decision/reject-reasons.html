@@ -13,7 +13,7 @@
 
     {{ govukBackLink({
       text: 'Back',
-      href: backLink.href
+      href: 'javascript:history.back()'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -53,7 +53,7 @@
                 name: 'otherTypeOfInformation',
                 id: 'otherTypeOfInformation',
                 label: {
-                  text: 'Reason',
+                  text: 'What information is needed?',
                   classes: 'govuk-label--m'
                 },
                 value: data.otherTypeOfInformation
@@ -182,6 +182,33 @@
                 classes: 'govuk-label--m'
               },
               value: data['directions']
+            }) }}
+
+            {{ govukRadios({
+              classes: 'govuk-radios--inline',
+              idPrefix: 'copyconsentorder',
+              name: 'copyconsentorder',
+              fieldset: {
+                legend: {
+                  text: 'Do you want to include an annotated version of the draft consent order?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              hint: {
+                html: 'You can use this to illustrate any detailed points or feedback for the parties.'
+              },
+              items: [
+                {
+                  html: 'Yes<span class="govuk-visually-hidden">, send an annotated version of the draft consent order to the parties</span>',
+                  value: 'Yes',
+                  checked: (checked('copyconsentorder', 'Yes') == 'checked')
+                },
+                {
+                  html: 'No<span class="govuk-visually-hidden">, I don’t want to send an annotated version of the draft consent order to the parties</span>',
+                  value: 'No',
+                  checked: (checked('copyconsentorder', 'No') == 'checked')
+                }
+              ]
             }) }}
 
             {{ govukButton({

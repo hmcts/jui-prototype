@@ -13,7 +13,7 @@
 
     {{ govukBackLink({
       text: 'Back',
-      href: backLink.href
+      href: 'javascript:history.back()'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -33,6 +33,7 @@
 
           <form method="post">
 
+
             {% set transferCourtYes %}
 
               {{ govukRadios({
@@ -46,8 +47,8 @@
                 },
                 items: [
                   {
-                    value: 'Petitioner',
-                    text: 'Petitioner'
+                    value: 'Applicant',
+                    text: 'Applicant'
                   },
                   {
                     value: 'Respondent',
@@ -71,13 +72,43 @@
                     text: 'Financial remedy case only'
                   },
                   {
-                    value: 'Entire case including divorce and remedy',
-                    text: 'Entire case including divorce and remedy'
+                    value: 'Entire case including divorce and financial remedy',
+                    text: 'Entire case including divorce and financial remedy'
                   }
                 ]
               }) }}
 
             {% endset -%}
+
+
+            {% set caseReservedForYouYes %}
+
+              {{ govukRadios({
+                idPrefix: 'transferCourt',
+                name: 'transferCourt',
+                fieldset: {
+                  legend: {
+                    text: 'Do you need to transfer to another court for listings and directions?',
+                    classes: 'govuk-fieldset__legend--m'
+                  }
+                },
+                items: [
+                  {
+                    value: 'Yes, I need to transfer to another court for listings and directions',
+                    html: 'Yes<span class="govuk-visually-hidden">, I need to transfer to another court for listings and directions</span>',
+                    conditional: {
+                      html: transferCourtYes
+                    }
+                  },
+                  {
+                    value: 'No, I don’t need to transfer to another court for listings and directions',
+                    html: 'No<span class="govuk-visually-hidden">, I don’t need to transfer to another court for listings and directions</span>'
+                  }
+                ]
+              }) }}
+
+            {% endset %}
+
 
             {{ govukInput({
               label: {
@@ -89,6 +120,7 @@
               name: 'estimateLengthOfHearing'
             }) }}
 
+
             {{ govukInput({
               label: {
                 text: 'When should the hearing take place?',
@@ -98,37 +130,13 @@
               name: 'estimateLengthOfHearing'
             }) }}
 
-            {# {{ govukDateInput({
-              id: 'dateOfHearing',
-              name: 'dateOfHearing',
-              fieldset: {
-                legend: {
-                  text: 'Date of hearing',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              hint: {
-                text: 'For example, 22 8 2018'
-              },
-              items: [
-                {
-                  name: 'day'
-                },
-                {
-                  name: 'month'
-                },
-                {
-                  name: 'year'
-                }
-              ]
-            }) }} #}
 
             {{ govukRadios({
               idPrefix: 'doYouNeedToHearTheCase',
               name: 'doYouNeedToHearTheCase',
               fieldset: {
                 legend: {
-                  text: 'Do you need to hear the case?',
+                  text: 'Should this case be reserved for you?',
                   classes: 'govuk-fieldset__legend--m'
                 }
               },
@@ -139,34 +147,14 @@
                 },
                 {
                   value: 'No, any judge can hear the case',
-                  html: 'No<span class="govuk-visually-hidden">, any judge can hear the case</span>'
+                  html: 'No<span class="govuk-visually-hidden">, any judge can hear the case</span>',
+                  conditional: {
+                    html: caseReservedForYouYes
+                  }
                 }
               ]
             }) }}
 
-            {{ govukRadios({
-              idPrefix: 'transferCourt',
-              name: 'transferCourt',
-              fieldset: {
-                legend: {
-                  text: 'Do you need to transfer to another court for listings and directions?',
-                  classes: 'govuk-fieldset__legend--m'
-                }
-              },
-              items: [
-                {
-                  value: 'Yes, I need to transfer to another court for listings and directions',
-                  html: 'Yes<span class="govuk-visually-hidden">, I need to transfer to another court for listings and directions</span>',
-                  conditional: {
-                    html: transferCourtYes
-                  }
-                },
-                {
-                  value: 'No, I don’t need to transfer to another court for listings and directions',
-                  html: 'No<span class="govuk-visually-hidden">, I don’t need to transfer to another court for listings and directions</span>'
-                }
-              ]
-            }) }}
 
             {{ govukTextarea({
               id: 'reason',
@@ -177,6 +165,7 @@
               },
               value: data['reason']
             }) }}
+
 
             {{ govukButton({
               text: 'Continue'
