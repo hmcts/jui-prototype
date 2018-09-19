@@ -122,7 +122,7 @@ router.route('/app/cases/:id/fr/decision')
       },
 
       message: 'Do you want to approve the draft consent order?',
-      inline: 'Select if you want to approve the draft consent order'
+      inline: 'Select yes if you want to approve the draft consent order'
 
     }]);
 
