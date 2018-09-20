@@ -121,8 +121,7 @@ router.route('/app/cases/:id/fr/decision')
         return valid;
       },
 
-      message: 'Do you want to approve the draft consent order?',
-      inline: 'Select yes if you want to approve the draft consent order'
+      message: 'Select yes if you want to approve the draft consent order'
 
     }]);
 
@@ -353,8 +352,7 @@ router.route('/app/cases/:id/fr/reject-reasons')
         return valid;
       },
 
-      message: 'Reasons the consent order was not approved',
-      inline: 'Select reasons the consent order was not approved'
+      message: 'Select reasons the consent order was not approved'
 
     }]);
 
@@ -368,8 +366,7 @@ router.route('/app/cases/:id/fr/reject-reasons')
         return valid;
       },
 
-      message: 'Directions',
-      inline: 'Enter more detail'
+      message: 'Enter directions'
 
     }]);
 
@@ -383,8 +380,7 @@ router.route('/app/cases/:id/fr/reject-reasons')
         return valid;
       },
 
-      message: 'Do you want to include an annotated version of the draft consent order?',
-      inline: 'Select yes if you want to include an annotated version of the draft consent order'
+      message: 'Select yes if you want to include an annotated version of the draft consent order'
 
     }]);
 
