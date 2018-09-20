@@ -148,6 +148,7 @@ router.route('/app/cases/:id/fr/decision')
       };
       res.render('app/case/fr/decision/decision', pageObject);
     }
+
   });
 
 
@@ -340,19 +341,81 @@ router.route('/app/cases/:id/fr/reject-reasons')
 
   .post((req, res) => {
 
-    if(req.body.copyconsentorder === 'Yes') {
+    var v = new Validator(req, res);
 
-      res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order`);
+    v.add('reject', [{
 
-    } else if (req.body.copyconsentorder === 'No') {
+      fn: (value) => {
+        var valid = true;
+        if(value.indexOf(value) >= 0) {
+          valid = false;
+        }
+        return valid;
+      },
 
-      if(isChecked(req, 'reject', 'The parties need to attend a hearing')) {
-        res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
-      } else {
-        res.redirect(`/app/cases/${req.params.id}/fr/notes-for-court-administrator`);
+      message: 'Reasons the consent order was not approved',
+      inline: 'Select reasons the consent order was not approved'
+
+    }]);
+
+    v.add('directions', [{
+
+      fn: (value) => {
+        var valid = true;
+        if(!value || value.trim().length ==  0) {
+          valid = false;
+        }
+        return valid;
+      },
+
+      message: 'Directions',
+      inline: 'Enter more detail'
+
+    }]);
+
+    v.add('copyconsentorder', [{
+
+      fn: (value) => {
+        var valid = true;
+        if(!value || value.trim().length ==  0) {
+          valid = false;
+        }
+        return valid;
+      },
+
+      message: 'Do you want to include an annotated version of the draft consent order?',
+      inline: 'Select yes if you want to include an annotated version of the draft consent order'
+
+    }]);
+
+    if(v.validate()) {
+
+      if(req.body.copyconsentorder === 'Yes') {
+
+        res.redirect(`/app/cases/${req.params.id}/fr/draft-consent-order`);
+
+      } else if (req.body.copyconsentorder === 'No') {
+
+        if(isChecked(req, 'reject', 'The parties need to attend a hearing')) {
+          res.redirect(`/app/cases/${req.params.id}/fr/hearing-details`);
+        } else {
+          res.redirect(`/app/cases/${req.params.id}/fr/notes-for-court-administrator`);
+        }
+
       }
 
+    } else {
+      var _case = helpers.getCase(req.session.cases, req.params.id);
+      var pageObject = {
+        casebar: helpers.getCaseBarObject(_case),
+        caseActions: helpers.getCaseActions(_case),
+        backLink: {
+          href: `/app/cases/${_case.id}`
+        }
+      };
+      res.render('app/case/fr/decision/reject-reasons', pageObject);
     }
+
 
   });
 

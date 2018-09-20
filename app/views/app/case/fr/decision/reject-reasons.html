@@ -22,10 +22,10 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          {% if errors %}
+          {% if errorSummary.items.length %}
             {{ govukErrorSummary({
               titleText: 'There is a problem',
-              errorList: errors
+              errorList: errorSummary.items
             }) }}
           {% endif %}
 
@@ -119,6 +119,7 @@
             {{ govukCheckboxes({
               idPrefix: 'reject',
               name: 'reject',
+              errorMessage: inlineErrors['reject'],
               fieldset: {
                 legend: {
                   text: 'Reasons the consent order was not approved',
@@ -181,6 +182,7 @@
                 text: 'Directions',
                 classes: 'govuk-label--m'
               },
+              errorMessage: inlineErrors['directions'],
               value: data['directions']
             }) }}
 
@@ -188,6 +190,7 @@
               classes: 'govuk-radios--inline',
               idPrefix: 'copyconsentorder',
               name: 'copyconsentorder',
+              errorMessage: inlineErrors['copyconsentorder'],
               fieldset: {
                 legend: {
                   text: 'Do you want to include an annotated version of the draft consent order?',

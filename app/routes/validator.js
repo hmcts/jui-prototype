@@ -49,14 +49,14 @@ Validator.prototype.validate = function() {
   const body = this.req.body;
   const errors = [];
 
-  for( let validator of this.validators ){
+  for( let validator of this.validators ) {
 
     const { name, rules } = validator;
     const value = body[ name ];
 
     for( let rule of rules ){
 
-      const { fn, params, message, inline } = rule;
+      const { fn, params, message, inline} = rule;
       const isValid = fn( value, params );
 
       if( !isValid ){
