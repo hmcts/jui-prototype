@@ -128,7 +128,7 @@ router.route('/app/cases/:id/fr/decision')
     if(v.validate()) {
 
       // Approve
-      if(req.body.decision === 'Approve consent order') {
+      if(req.body.decision === 'Consent order approved') {
         res.redirect(`/app/cases/${req.params.id}/fr/decision-notes`);
 
       // Consent order not approved
