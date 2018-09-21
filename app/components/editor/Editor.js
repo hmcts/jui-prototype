@@ -5,33 +5,61 @@ var isContentEditableSupported = 'contentEditable' in document.documentElement;
 // If supported replace with enhanced textarea
 if(isContentEditableSupported == true) {
 
-  var Editor = function(container) {
-    this.container = $(container).parent();
+  var Editor = function(textarea) {
+    this.textarea = textarea;
+    this.container = $(textarea).parent();
     this.createToolbar();
     this.hideDefault();
     this.configureToolbar();
+          this.keys = {
+            left: 37,
+            right: 39,
+            up: 38,
+            down: 40
+          };
     this.container.on('click', '.jui-editor__toolbar-button', $.proxy(this, 'onButtonClick'));
     this.container.on('input', '.jui-editor__content', $.proxy(this, 'updateTextarea'));
-
-    this.keys = {
-      left: 37,
-      right: 39,
-      up: 38,
-      down: 40
-    };
+    this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'));
 
   };
 
+  Editor.prototype.onToolbarKeydown = function(e) {
+    var focusableButton;
+    switch(e.keyCode) {
+      case this.keys.right:
+        focusableButton = this.toolbar.find('button[tabindex=0]');
+        var nextButton = focusableButton.next('button');
+        if(nextButton[0]) {
+          nextButton.focus();
+          focusableButton.attr('tabindex', '-1');
+          nextButton.attr('tabindex', '0');
+        }
+        break;
+      case this.keys.left:
+        focusableButton = this.toolbar.find('button[tabindex=0]');
+        var previousButton = focusableButton.prev('button');
+        if(previousButton[0]) {
+          previousButton.focus();
+          focusableButton.attr('tabindex', '-1');
+          previousButton.attr('tabindex', '0');
+        }
+        break;
+    }
+  };
 
-  var html = `<div class="jui-editor__toolbar" role="toolbar">
-                <button class="jui-editor__toolbar-button jui-editor__toolbar-button--bold" data-command="bold"><span class="govuk-visually-hidden">Bold</span></button>
-                <button class="jui-editor__toolbar-button jui-editor__toolbar-button--italic" data-command="italic"><span class="govuk-visually-hidden">Italic</span></button>
-                <button class="jui-editor__toolbar-button jui-editor__toolbar-button--underline" data-command="underline"><span class="govuk-visually-hidden">Underline</span></button>
-                <span class="jui-editor__toolbar-seperator"></span>
-                <button class="jui-editor__toolbar-button jui-editor__toolbar-button--unordered-list" data-command="insertUnorderedList"><span class="govuk-visually-hidden">Unordered list</span></button>
-                <button class="jui-editor__toolbar-button jui-editor__toolbar-button--ordered-list" data-command="insertOrderedList"><span class="govuk-visually-hidden">Ordered list</span></button>
-              </div>
-              <div class="jui-editor__content govuk-textarea" contenteditable="true" spellcheck="false"></div>`;
+
+ Editor.prototype.getEnhancedHtml = function(val) {
+
+   return `<div class="jui-editor__toolbar" role="toolbar">
+    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--bold" data-command="bold"><span class="govuk-visually-hidden">Bold</span></button>
+    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--italic" data-command="italic"><span class="govuk-visually-hidden">Italic</span></button>
+    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--underline" data-command="underline"><span class="govuk-visually-hidden">Underline</span></button>
+
+    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--unordered-list" data-command="insertUnorderedList"><span class="govuk-visually-hidden">Unordered list</span></button>
+    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--ordered-list" data-command="insertOrderedList"><span class="govuk-visually-hidden">Ordered list</span></button>
+  </div>
+  <div class="jui-editor__content govuk-textarea" contenteditable="true" spellcheck="false"></div>`;
+ };
 
   Editor.prototype.hideDefault = function() {
 
@@ -50,39 +78,19 @@ if(isContentEditableSupported == true) {
   Editor.prototype.createToolbar = function() {
     this.toolbar = document.createElement('div');
     this.toolbar.className = 'jui-editor';
-    this.toolbar.innerHTML = html;
+    this.toolbar.innerHTML = this.getEnhancedHtml();
     this.container.append(this.toolbar);
+    this.toolbar = this.container.find('.jui-editor__toolbar');
+    this.container.find('.jui-editor__content').html(this.textarea.val());
   };
 
 
   Editor.prototype.configureToolbar = function() {
     this.buttons = this.container.find('.jui-editor__toolbar-button');
-    this.buttons.prop('type', 'button');
     this.buttons.prop('tabindex', '-1');
-
     var firstTab = this.buttons.first();
     firstTab.prop('tabindex', '0');
-
   };
-
-
-
-  Editor.prototype.onTabKeydown = function(e) {
-    switch(e.keyCode) {
-      case this.keys.left:
-      case this.keys.up:
-        alert('Previous button');
-        break;
-      case this.keys.right:
-      case this.keys.down:
-        alert('Next button');
-        break;
-    }
-  };
-
-
-
-
 
   Editor.prototype.onButtonClick = function(e) {
     document.execCommand($(e.currentTarget).data('command'), false, null);
