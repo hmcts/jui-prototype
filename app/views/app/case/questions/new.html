@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Create questions {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Create question {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
 
           <div class="hmcts-add-another">
 
-            <h1 class="govuk-heading-xl hmcts-add-another__heading" tabindex="-1">Create questions</h1>
+            <h1 class="govuk-heading-xl hmcts-add-another__heading" tabindex="-1">Create question</h1>
 
             <form method="post" action="/app/cases/{{_case.id}}/questions/new">
 
@@ -50,6 +50,7 @@
               }) }}
 
               {{ govukTextarea({
+                classes: 'js-editor',
                 name: 'questions[0][question]',
                 id: 'questions[0][question]',
                 attributes: {
@@ -58,24 +59,14 @@
                 },
                 label: {
                   html: 'Question'
-                },
-                classes: 'js-editor'
+                }
               }) }}
 
               {% endcall %}
 
-              <div class="hmcts-button-action">
-                {{ govukButton({
-                  text: 'Add another question',
-                  classes: 'hmcts-button--secondary  hmcts-add-another__add-button  govuk-!-margin-bottom-4'
-                }) }}
-              </div>
-
-              <div class="hmcts-button-action">
-                {{ govukButton({
-                  text: 'Save questions'
-                }) }}
-              </div>
+              {{ govukButton({
+                text: 'Save question'
+              }) }}
 
             </form>
 
@@ -92,7 +83,6 @@
 
 {% block page_scripts %}
   <script>
-    new HMCTSFrontend.AddAnother($('.hmcts-add-another'));
     new Editor($('.js-editor'))
   </script>
 {% endblock %}
