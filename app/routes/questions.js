@@ -137,15 +137,25 @@ router.post('/app/cases/:id/questions/new', (req, res) => {
 		_case.rounds.push(draftRound);
 	}
 
-	req.body.questions.forEach(question => {
-		draftRound.questions.push({
-			subject: question.subject,
-			body: question.question,
-			id: uuid(),
-			author: 'Judge Prita Shah',
-			dateCreated: new Date()
-		});
-	});
+	// req.body.questions.forEach(question => {
+	// 	draftRound.questions.push({
+	// 		subject: question.subject,
+	// 		body: question.question,
+	// 		id: uuid(),
+	// 		author: 'Judge Prita Shah',
+	// 		dateCreated: new Date()
+	// 	});
+  // });
+
+
+  draftRound.questions.push({
+    id: uuid(),
+    subject: req.body.subject,
+    body: req.body.body,
+    author: 'Judge Prita Shah',
+    dateChanged: new Date()
+  });
+
 
 	req.flash('success', 'question added');
 
