@@ -116,23 +116,6 @@ module.exports = [
         title: 'Response submitted',
         by: 'DWP Appeals Officer'
       }
-
-      // {
-      //   id: uuid(),
-      //   date: moment('2018-04-27 09:34'),
-      //   title: 'Directions issued to appellant',
-      //   by: 'Judge Prita Shah',
-      //   documents: [
-      //     {
-      //       id: uuid(),
-      //       name: 'Decision notice'
-      //     },
-      //     {
-      //       id: uuid(),
-      //       name: 'Application for decree nisi'
-      //     }
-      //   ]
-      // }
     ],
     rounds: [{
       id: uuid(),
@@ -144,7 +127,7 @@ module.exports = [
       questions: [{
         id: uuid(),
         subject: 'How do you do your shopping?',
-        body: 'Explain how you do your shopping. Include information about how often you go to the shops, how you get there and how you get your food from the shops to your home.',
+        body: '<p>Explain how you do your shopping. Include information about how often you go to the shops, how you get there and how you get your food from the shops to your home.</p>',
         author: 'Judge Prita Shah',
         dateChanged: moment('2018-05-28').toDate(),
         dateCreated: moment('2018-05-28').toDate(),
@@ -158,7 +141,7 @@ module.exports = [
       {
         id: uuid(),
         subject: 'How do you prepare your meals?',
-        body: 'Explain how you prepare your meals. Include information about the types of meals you eat, how you prepare them and whether there are any tasks in the kitchen you need assistance with.',
+        body: '<p>Explain how you prepare your meals. Include information about the types of meals you eat, how you prepare them and whether there are any tasks in the kitchen you need assistance with.</p>',
         author: 'Judge Prita Shah',
         dateChanged: new Date(),
         attachments: [],
@@ -171,7 +154,7 @@ module.exports = [
       {
         id: uuid(),
         subject: 'How you wash yourself?',
-        body: 'Explain how you wash yourself. Include information about whether you usually bath or shower.',
+        body: '<p>Explain how you wash yourself. Include information about whether you usually bath or shower.</p>',
         author: 'Judge Prita Shah',
         dateChanged: moment('2018-05-28').toDate(),
         dateCreated: moment('2018-05-28').toDate(),
