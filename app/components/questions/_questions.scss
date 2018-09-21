@@ -83,22 +83,3 @@
 .jui-question__author {
   font-weight: bold;
 }
-
-
-/* Question editor output
-========================================================================== */
-
-.jui-question ul,
-.jui-question ol {
-  @extend %govuk-list;
-}
-
-
-.jui-question ul {
-  @extend %govuk-list--bullet;
-}
-
-
-.jui-question ol {
-  @extend %govuk-list--number;
-}

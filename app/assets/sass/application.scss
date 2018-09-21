@@ -157,3 +157,22 @@ html {
 .panel--information {
   background-color: rgb(238, 247, 255);
 }
+
+
+
+// Prose scope
+
+.jui-prose-scope ul,
+.jui-prose-scope ol {
+  @extend %govuk-list;
+}
+
+
+.jui-prose-scope ul {
+  @extend %govuk-list--bullet;
+}
+
+
+.jui-prose-scope ol {
+  @extend %govuk-list--number;
+}

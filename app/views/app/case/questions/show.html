@@ -27,7 +27,7 @@
 
           <h1 class="govuk-heading-xl">{{question.subject}}</h1>
 
-          <div class="jui-question">
+          <div class="jui-question jui-prose-scope">
 
             <p class="jui-question__meta">From <span class="jui-question__author">{{question.author}}</span>, added on <time datetime="{{question.dateAdded | date('YYYY-MM-DDTHH:mm')}}">{{question.dateAdded | date('D MMMM YYYY')}}</time></p>
 
@@ -64,7 +64,7 @@
 
             <h2 class="govuk-heading-m">Response</h2>
 
-            <div class="jui-response">
+            <div class="jui-response jui-prose-scope">
 
               <p class="jui-question__meta">From <span class="jui-question__author">{{response.author}}</span>, received on <time datetime="{{response.date | date('YYYY-MM-DDTHH:mm')}}">{{response.date | date('D MMMM YYYY')}}</time></p>
 

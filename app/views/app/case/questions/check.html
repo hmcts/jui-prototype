@@ -34,7 +34,7 @@
 
                 <dt class="app-check-your-answers__question">{{question.subject}}</dt>
 
-                <dd class="app-check-your-answers__answer">{{question.body}}</dd>
+                <dd class="app-check-your-answers__answer jui-prose-scope">{{question.body | safe}}</dd>
 
                 <dd class="app-check-your-answers__change">
                   <a href="/app/cases/{{_case.id}}/questions/{{question.id}}/edit">Change <span class="govuk-visually-hidden">{{question.subject}}</span></a>
