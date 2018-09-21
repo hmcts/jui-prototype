@@ -72,6 +72,7 @@ router.get('/app/cases/:id/questions', (req, res) => {
 
 });
 
+
 router.get('/app/cases/:id/questions/check', (req, res) => {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -227,28 +228,26 @@ router.post('/app/cases/:case_id/questions/:question_id/edit', (req, res) => {
 	var question = helpers.getQuestion(_case, req.params.question_id);
 
 	if(v.validate()) {
-
-
 		question.subject = req.body.subject;
 		question.body = req.body.body;
 		question.dateChanged = new Date();
 
-		req.flash('success', 'question updated')
+		req.flash('success', 'question updated');
+    res.redirect(`/app/cases/${_case.id}/questions`);
 
-		res.redirect(`/app/cases/${_case.id}/questions`);
 	} else {
+
 		var pageObject = {
 			casebar: helpers.getCaseBarObject(_case),
 			caseActions: helpers.getCaseActions(_case)
-		};
+    };
+
 		pageObject.backLink = {
 			href: `/app/cases/${_case.id}/questions/${question.id}`
 		};
 
 		res.render('app/case/questions/edit', pageObject);
 	}
-
-
 
 
 });

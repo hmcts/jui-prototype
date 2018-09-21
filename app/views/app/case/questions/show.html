@@ -94,6 +94,7 @@
               }) }}
 
               {{ govukTextarea({
+                classes: 'js-editor',
                 label: {
                   text: 'Question'
                 },
@@ -119,4 +120,10 @@
 
 	</div>
 
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    new Editor($('.js-editor'))
+  </script>
 {% endblock %}

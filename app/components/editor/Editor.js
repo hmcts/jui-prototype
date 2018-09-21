@@ -2,7 +2,6 @@
 var isContentEditableSupported = 'contentEditable' in document.documentElement;
 
 
-// If supported replace with enhanced textarea
 if(isContentEditableSupported == true) {
 
   var Editor = function(textarea) {
@@ -11,17 +10,17 @@ if(isContentEditableSupported == true) {
     this.createToolbar();
     this.hideDefault();
     this.configureToolbar();
-          this.keys = {
-            left: 37,
-            right: 39,
-            up: 38,
-            down: 40
-          };
+    this.keys = {
+      left: 37,
+      right: 39,
+      up: 38,
+      down: 40
+    };
     this.container.on('click', '.jui-editor__toolbar-button', $.proxy(this, 'onButtonClick'));
     this.container.on('input', '.jui-editor__content', $.proxy(this, 'updateTextarea'));
     this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'));
-
   };
+
 
   Editor.prototype.onToolbarKeydown = function(e) {
     var focusableButton;
@@ -48,30 +47,28 @@ if(isContentEditableSupported == true) {
   };
 
 
- Editor.prototype.getEnhancedHtml = function(val) {
+  Editor.prototype.getEnhancedHtml = function(val) {
 
-   return `<div class="jui-editor__toolbar" role="toolbar">
-    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--bold" data-command="bold"><span class="govuk-visually-hidden">Bold</span></button>
-    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--italic" data-command="italic"><span class="govuk-visually-hidden">Italic</span></button>
-    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--underline" data-command="underline"><span class="govuk-visually-hidden">Underline</span></button>
+    return `<div class="jui-editor__toolbar" role="toolbar">
+              <button class="jui-editor__toolbar-button jui-editor__toolbar-button--bold" type="button" data-command="bold"><span class="govuk-visually-hidden">Bold</span></button>
+              <button class="jui-editor__toolbar-button jui-editor__toolbar-button--italic" type="button" data-command="italic"><span class="govuk-visually-hidden">Italic</span></button>
+              <button class="jui-editor__toolbar-button jui-editor__toolbar-button--underline" type="button" data-command="underline"><span class="govuk-visually-hidden">Underline</span></button>
+              <button class="jui-editor__toolbar-button jui-editor__toolbar-button--unordered-list" type="button" data-command="insertUnorderedList"><span class="govuk-visually-hidden">Unordered list</span></button>
+              <button class="jui-editor__toolbar-button jui-editor__toolbar-button--ordered-list" type="button" data-command="insertOrderedList"><span class="govuk-visually-hidden">Ordered list</span></button>
+            </div>
 
-    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--unordered-list" data-command="insertUnorderedList"><span class="govuk-visually-hidden">Unordered list</span></button>
-    <button type="button" class="jui-editor__toolbar-button jui-editor__toolbar-button--ordered-list" data-command="insertOrderedList"><span class="govuk-visually-hidden">Ordered list</span></button>
-  </div>
-  <div class="jui-editor__content govuk-textarea" contenteditable="true" spellcheck="false"></div>`;
- };
+            <div class="jui-editor__content" contenteditable="true" spellcheck="false"></div>`;
+  };
+
 
   Editor.prototype.hideDefault = function() {
-
     this.label = this.container.find('label')[0];
     this.label.classList.add('govuk-visually-hidden');
     this.label.setAttribute('aria-hidden', true);
-
     this.textarea = this.container.find('textarea')[0];
     this.textarea.classList.add('govuk-visually-hidden');
     this.textarea.setAttribute('aria-hidden', true);
     this.textarea.setAttribute('tabindex', '-1');
-
   };
 
 
@@ -91,6 +88,7 @@ if(isContentEditableSupported == true) {
     var firstTab = this.buttons.first();
     firstTab.prop('tabindex', '0');
   };
+
 
   Editor.prototype.onButtonClick = function(e) {
     document.execCommand($(e.currentTarget).data('command'), false, null);

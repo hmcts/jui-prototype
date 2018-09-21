@@ -52,6 +52,7 @@
 
 .jui-editor__toolbar-button--underline {
   background-image: url(#{$jui-assets-path}icon-wysiwyg-underline.svg);
+  margin-right: govuk-spacing(2);
 }
 
 .jui-editor__toolbar-button--unordered-list {
@@ -63,14 +64,8 @@
 }
 
 
-.jui-editor__toolbar-seperator {
-  float: left;
-  height: 40px;
-  width: 10px;
-}
-
-
 .jui-editor__content {
+  @extend .govuk-textarea;
   min-height: 130px;
   outline: none;
   overflow: auto;
