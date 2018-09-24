@@ -52,7 +52,7 @@ function checkAndContinue(req, res, config) {
 
   // 10. Making budgeting decision
   } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decision`);
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decisions`);
 
 
   // 1. Planning and following journeys
@@ -532,7 +532,7 @@ router.post('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) 
 
 
 // 10. PRELIMINARY: Making budgeting decision
-router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decision', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decisions', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
@@ -542,10 +542,10 @@ router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decision', (req, r
     },
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/budgeting-decision', pageObject);
+	res.render('app/case/pip/decision/preliminary/budgeting-decisions', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/budgeting-decision', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary/budgeting-decisions', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
