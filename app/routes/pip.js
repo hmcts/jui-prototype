@@ -46,16 +46,30 @@ function checkAndContinue(req, res, config) {
   } else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading signs')) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/reading-signs`);
 
-  // 9. Making budgeting decision
+  // 9. Engaging with other people face to face
+  } else if (config.engagingFace && isChecked(req, 'dailyliving', 'Engaging face')) {
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/engaging-face`);
+
+  // 10. Making budgeting decision
   } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting')) {
     res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decision`);
 
-  // Redirect
-  } else {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/panel-reasons`);
-  }
 
-}
+  // 1. Planning and following journeys
+  } else if (config.planningJourneys && isChecked(req, 'mobility', 'Planning journeys')) {
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/planning-journeys`);
+
+  // 2. Moving around
+  } else if (config.movingAround && isChecked(req, 'mobility', 'Moving around')) {
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/moving-around`);
+
+
+    // Redirect
+    } else {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/panel-reasons`);
+    }
+
+  }
 
 
 
@@ -190,6 +204,7 @@ router.post('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
     dressingAndUndressing: true,
     communicatingVerbally: true,
     readingAndUnderstanding: true,
+    engagingFace: true,
     makingDecisions: true,
     // MOBILITY
     planningJourneys: true,
@@ -225,6 +240,7 @@ router.post('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res)
     dressingAndUndressing: true,
     communicatingVerbally: true,
     readingAndUnderstanding: true,
+    engagingFace: true,
     makingDecisions: true,
     // MOBILITY
     planningJourneys: true,
@@ -259,10 +275,11 @@ router.post('/app/cases/:id/pip/decision/preliminary/taking-nutrition', (req, re
 		managingToilet: true,
 		dressingAndUndressing: true,
 		communicatingVerbally: true,
-		readingAndUnderstanding: true,
+    readingAndUnderstanding: true,
+    engagingFace: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
@@ -293,11 +310,12 @@ router.post('/app/cases/:id/pip/decision/preliminary/managing-therapy', (req, re
 		managingToilet: true,
 		dressingAndUndressing: true,
 		communicatingVerbally: true,
-		readingAndUnderstanding: true,
+    readingAndUnderstanding: true,
+    engagingFace: true,
 		makingDecisions: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
@@ -327,11 +345,12 @@ router.post('/app/cases/:id/pip/decision/preliminary/washing-bathing', (req, res
 		managingToilet: true,
 		dressingAndUndressing: true,
 		communicatingVerbally: true,
-		readingAndUnderstanding: true,
+    readingAndUnderstanding: true,
+    engagingFace: true,
 		makingDecisions: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
@@ -361,11 +380,12 @@ router.post('/app/cases/:id/pip/decision/preliminary/managing-toilet', (req, res
 		managingToilet: false,
 		dressingAndUndressing: true,
 		communicatingVerbally: true,
-		readingAndUnderstanding: true,
+    readingAndUnderstanding: true,
+    engagingFace: true,
 		makingDecisions: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
@@ -395,11 +415,12 @@ router.post('/app/cases/:id/pip/decision/preliminary/dressing-undressing', (req,
 		managingToilet: false,
 		dressingAndUndressing: false,
 		communicatingVerbally: true,
-		readingAndUnderstanding: true,
+    readingAndUnderstanding: true,
+    engagingFace: true,
 		makingDecisions: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
@@ -429,11 +450,12 @@ router.post('/app/cases/:id/pip/decision/preliminary/communicating-verbally', (r
 		managingToilet: false,
 		dressingAndUndressing: false,
 		communicatingVerbally: false,
-		readingAndUnderstanding: true,
+    readingAndUnderstanding: true,
+    engagingFace: true,
 		makingDecisions: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
@@ -463,17 +485,53 @@ router.post('/app/cases/:id/pip/decision/preliminary/reading-signs', (req, res) 
 		managingToilet: false,
 		dressingAndUndressing: false,
 		communicatingVerbally: false,
-		readingAndUnderstanding: false,
+    readingAndUnderstanding: false,
+    engagingFace: true,
 		makingDecisions: true,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
 
 
-// 9. PRELIMINARY: Making budgeting decision
+// 9. PRELIMINARY: Engaging with other people face to face
+router.get('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/pip/preliminary-decision`
+    },
+    _case: _case
+	};
+	res.render('app/case/pip/decision/preliminary/engaging-face', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) => {
+
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+		readingAndUnderstanding: false,
+    engagingFace: false,
+    makingDecisions: true,
+		// MOBILITY
+		planningJourneys: true,
+    movingAround: true
+	});
+
+});
+
+
+// 10. PRELIMINARY: Making budgeting decision
 router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decision', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
@@ -497,14 +555,89 @@ router.post('/app/cases/:id/pip/decision/preliminary/budgeting-decision', (req, 
 		managingToilet: false,
 		dressingAndUndressing: false,
 		communicatingVerbally: false,
-		readingAndUnderstanding: false,
+    readingAndUnderstanding: false,
+    engagingFace: false,
 		makingDecisions: false,
 		// MOBILITY
 		planningJourneys: true,
-		movingAround: true
+    movingAround: true
 	});
 
 });
+
+
+// 1. PRELIMINARY: Planning and following journeys
+router.get('/app/cases/:id/pip/decision/preliminary/planning-journeys', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/pip/preliminary-decision`
+    },
+    _case: _case
+	};
+	res.render('app/case/pip/decision/preliminary/planning-journeys', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary/planning-journeys', (req, res) => {
+
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+    readingAndUnderstanding: false,
+    engagingFace: false,
+		makingDecisions: false,
+		// MOBILITY
+		planningJourneys: false,
+    movingAround: true
+	});
+
+});
+
+
+// 2. PRELIMINARY: Moving around
+router.get('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/pip/preliminary-decision`
+    },
+    _case: _case
+	};
+	res.render('app/case/pip/decision/preliminary/moving-around', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) => {
+
+	checkAndContinue(req, res, {
+		preparingFood: false,
+		takingNutrition: false,
+		managingTherapy: false,
+		washingAndBathing: false,
+		managingToilet: false,
+		dressingAndUndressing: false,
+		communicatingVerbally: false,
+    readingAndUnderstanding: false,
+    engagingFace: false,
+		makingDecisions: false,
+		// MOBILITY
+		planningJourneys: false,
+    movingAround: false
+	});
+
+});
+
+
+
+
 
 
 // PRELIMINARY: Panel reasons
