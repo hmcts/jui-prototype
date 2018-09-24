@@ -129,7 +129,7 @@ router.route('/app/cases/:id/fr/decision')
 
       // Approve
       if(req.body.decision === 'Consent order approved') {
-        res.redirect(`/app/cases/${req.params.id}/fr/decision-notes`);
+        res.redirect(`/app/cases/${req.params.id}/fr/notes-for-court-administrator`);
 
       // Consent order not approved
       } else if(req.body.decision === 'Consent order not approved') {
@@ -226,27 +226,6 @@ router.route('/app/cases/:id/fr/more-information')
       _case: _case
     };
     res.render('app/case/fr/decision/more-information', pageObject);
-  })
-
-  .post((req, res) => {
-    res.redirect(`/app/cases/${req.params.id}/fr/check`);
-  });
-
-
-
-// Decision notes
-router.route('/app/cases/:id/fr/decision-notes')
-
-  .get((req, res) => {
-    var _case = helpers.getCase(req.session.cases, req.params.id);
-    var pageObject = {
-      casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
-      backLink: {
-        href: `/app/cases/${_case.id}/fr/decision`
-      }
-    };
-    res.render('app/case/fr/decision/decision-notes', pageObject);
   })
 
   .post((req, res) => {
