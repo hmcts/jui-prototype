@@ -7,70 +7,71 @@ var Validator = require('./validator');
 
 // Is checked
 function isChecked(req, name, value) {
-	return req.session.data[name].indexOf(value) >= 0;
+
+  if (req.session.data[name]) {
+    return req.session.data[name].indexOf(value) >= 0;
+  }
+
 }
 
 
 // Check and continue
 function checkAndContinue(req, res, config) {
 
-	// 1. Preparing food
-	if(config.preparingFood && isChecked(req, 'dailyliving', 'Preparing food')) {
-		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/preparing-food`);
+  // 1. Preparing food
+  if(config.preparingFood && isChecked(req, 'dailyliving', 'Preparing food')) {
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/preparing-food`);
 
-  // 2. Taking nutrition
-  } else if (config.takingNutrition && isChecked(req, 'dailyliving', 'Taking nutrition')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/taking-nutrition`);
+    // 2. Taking nutrition
+    } else if (config.takingNutrition && isChecked(req, 'dailyliving', 'Taking nutrition')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/taking-nutrition`);
 
-  // 3. Managing therapy or monitoring a health condition
-  } else if (config.managingTherapy && isChecked(req, 'dailyliving', 'Managing therapy')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-therapy`);
+    // 3. Managing therapy or monitoring a health condition
+    } else if (config.managingTherapy && isChecked(req, 'dailyliving', 'Managing therapy')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-therapy`);
 
-  // 4. Washing and bathing
-  } else if (config.washingAndBathing && isChecked(req, 'dailyliving', 'Washing and bathing')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/washing-bathing`);
+    // 4. Washing and bathing
+    } else if (config.washingAndBathing && isChecked(req, 'dailyliving', 'Washing and bathing')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/washing-bathing`);
 
-  // 5. Managing toilet needs or incontinence
-  } else if (config.managingToilet && isChecked(req, 'dailyliving', 'Managing toilet')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-toilet`);
+    // 5. Managing toilet needs or incontinence
+    } else if (config.managingToilet && isChecked(req, 'dailyliving', 'Managing toilet')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-toilet`);
 
-  // 6. Dressing and undressing
-  } else if (config.dressingAndUndressing && isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/dressing-undressing`);
+    // 6. Dressing and undressing
+    } else if (config.dressingAndUndressing && isChecked(req, 'dailyliving', 'Dressing and undressing')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/dressing-undressing`);
 
-  // 7. Communicating verbally
-  } else if (config.communicatingVerbally && isChecked(req, 'dailyliving', 'Communicating verbally')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/communicating-verbally`);
+    // 7. Communicating verbally
+    } else if (config.communicatingVerbally && isChecked(req, 'dailyliving', 'Communicating verbally')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/communicating-verbally`);
 
-  // 8. Reading and understanding signs, symbols and words
-  } else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading signs')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/reading-signs`);
+    // 8. Reading and understanding signs, symbols and words
+    } else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading signs')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/reading-signs`);
 
-  // 9. Engaging with other people face to face
-  } else if (config.engagingFace && isChecked(req, 'dailyliving', 'Engaging face')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/engaging-face`);
+    // 9. Engaging with other people face to face
+    } else if (config.engagingFace && isChecked(req, 'dailyliving', 'Engaging face')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/engaging-face`);
 
-  // 10. Making budgeting decision
-  } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decisions`);
+    // 10. Making budgeting decision
+    } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decisions`);
 
+    // 1. Planning and following journeys
+    } else if (config.planningJourneys && isChecked(req, 'mobility', 'Planning journeys')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/planning-journeys`);
 
-  // 1. Planning and following journeys
-  } else if (config.planningJourneys && isChecked(req, 'mobility', 'Planning journeys')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/planning-journeys`);
+    // 2. Moving around
+    } else if (config.movingAround && isChecked(req, 'mobility', 'Moving around')) {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/moving-around`);
 
-  // 2. Moving around
-  } else if (config.movingAround && isChecked(req, 'mobility', 'Moving around')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/moving-around`);
-
-
-    // Redirect
+      // Redirect
     } else {
       res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/panel-reasons`);
-    }
-
   }
 
+}
 
 
 // Summary
@@ -140,9 +141,6 @@ router.get('/app/cases/:id/pip/decision/preliminary', (req, res) => {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-		backLink: {
-      href: `/app/cases/${_case.id}/pip/decision`
-		},
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/index', pageObject);
@@ -165,9 +163,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/set-award-dates', (req, res)
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-		backLink: {
-      href: `/app/cases/${_case.id}/pip/decision`
-		},
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/set-award-dates', pageObject);
@@ -184,9 +179,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/decision/preliminary`
-		},
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/scores', pageObject);
@@ -195,6 +187,7 @@ router.get('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
 router.post('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
 
   checkAndContinue(req, res, {
+
     // DAILY LIVING
     preparingFood: true,
     takingNutrition: true,
@@ -220,12 +213,9 @@ router.get('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res) 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-			href: ''
-    },
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/preparing-food', pageObject);
+  res.render('app/case/pip/decision/preliminary/preparing-food', pageObject);
 });
 
 router.post('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res) => {
@@ -256,9 +246,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/taking-nutrition', (req, res
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-			href: ''
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/taking-nutrition', pageObject);
@@ -291,9 +278,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/managing-therapy', (req, res
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/managing-therapy', pageObject);
@@ -327,9 +311,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/washing-bathing', (req, res)
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/washing-bathing', pageObject);
@@ -362,9 +343,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/managing-toilet', (req, res)
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/managing-toilet', pageObject);
@@ -397,9 +375,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/dressing-undressing', (req, 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/dressing-undressing', pageObject);
@@ -432,9 +407,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/communicating-verbally', (re
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/communicating-verbally', pageObject);
@@ -467,9 +439,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/reading-signs', (req, res) =
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/reading-signs', pageObject);
@@ -502,9 +471,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) =
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/engaging-face', pageObject);
@@ -537,9 +503,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decisions', (req, 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/budgeting-decisions', pageObject);
@@ -572,9 +535,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/planning-journeys', (req, re
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/planning-journeys', pageObject);
@@ -607,9 +567,6 @@ router.get('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) =
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/moving-around', pageObject);
@@ -636,19 +593,12 @@ router.post('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) 
 });
 
 
-
-
-
-
 // PRELIMINARY: Panel reasons
 router.get('/app/cases/:id/pip/decision/preliminary/panel-reasons', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/panel-reasons', pageObject);
@@ -665,16 +615,13 @@ router.get('/app/cases/:id/pip/decision/preliminary/preview-decision', (req, res
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-    },
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/preview-decision', pageObject);
 });
 
-router.post('/app/case/:id/pip/decision/preliminary/preview-decision', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/decision-submitted`);
+router.post('/app/cases/:id/pip/decision/preliminary/preview-decision', (req, res) => {
+  res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/decision-submitted`);
 });
 
 
@@ -684,14 +631,10 @@ router.get('/app/cases/:id/pip/decision/preliminary/decision-submitted', (req, r
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
-    backLink: {
-      href: `/app/cases/${_case.id}/pip/preliminary-decision`
-		},
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/decision-submitted', pageObject);
 });
-
 
 
 // FINAL: Decision
