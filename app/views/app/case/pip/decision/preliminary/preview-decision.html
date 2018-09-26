@@ -71,7 +71,7 @@
           {% set additionalReasons = data['additionalReasons'] %}
           <p>{{ additionalReasons | replace('\n', '<br>') | trim | safe }}</p>
 
-          <p><a href="#">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s view</span></a></p>
+          <p><a href="/app/cases/{{_case.id}}/pip/decision/preliminary/panel-reasons">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s view</span></a></p>
 
           <h2 class="govuk-heading-m govuk-!-margin-top-6">PIP activities and the descriptors we consider apply to your appeal</h2>
 
