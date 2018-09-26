@@ -34,7 +34,7 @@
           <form method="post">
 
 
-            {% set transferCourtYes %}
+            {# {% set transferCourtYes %}
 
               {{ govukRadios({
                 idPrefix: 'whoseCourt',
@@ -78,10 +78,10 @@
                 ]
               }) }}
 
-            {% endset -%}
+            {% endset -%} #}
 
 
-            {% set caseReservedForYouYes %}
+            {# {% set caseReservedForYouYes %}
 
               {{ govukRadios({
                 idPrefix: 'transferCourt',
@@ -107,7 +107,7 @@
                 ]
               }) }}
 
-            {% endset %}
+            {% endset %} #}
 
 
             {{ govukInput({
@@ -126,12 +126,15 @@
                 text: 'When should the hearing take place?',
                 classes: 'govuk-label--m'
               },
+              hint: {
+                text: 'For example, the first available date after 14 days.'
+              },
               id: 'estimateLengthOfHearing',
               name: 'estimateLengthOfHearing'
             }) }}
 
 
-            {{ govukRadios({
+            {# {{ govukRadios({
               idPrefix: 'doYouNeedToHearTheCase',
               name: 'doYouNeedToHearTheCase',
               fieldset: {
@@ -153,7 +156,7 @@
                   }
                 }
               ]
-            }) }}
+            }) }} #}
 
 
             {{ govukTextarea({
@@ -162,6 +165,9 @@
               label: {
                 text: 'Any other hearing details',
                 classes: 'govuk-label--m'
+              },
+              hint: {
+                text: 'For example, if you need to hear the case. Or if you need to transfer the financial remedy or entire divorce case to another court.'
               },
               value: data['reason']
             }) }}
