@@ -127,10 +127,20 @@
                 classes: 'govuk-label--m'
               },
               hint: {
-                text: 'For example, the first available date after 14 days.'
+                text: 'For example, ‘fix hearing for first available date’'
               },
               id: 'estimateLengthOfHearing',
               name: 'estimateLengthOfHearing'
+            }) }}
+
+
+            {{ govukInput({
+              label: {
+                text: 'Which court?',
+                classes: 'govuk-label--m'
+              },
+              id: 'whichCourt',
+              name: 'whichCourt'
             }) }}
 
 
@@ -163,11 +173,11 @@
               id: 'reason',
               name: 'reason',
               label: {
-                text: 'Any other hearing details',
+                text: 'Any other hearing details (optional)',
                 classes: 'govuk-label--m'
               },
               hint: {
-                text: 'For example, if you need to hear the case. Or if you need to transfer the financial remedy or entire divorce case to another court.'
+                text: 'For example, if you need to hear the case. Or if you need to transfer either the financial remedy or entire divorce case to another court.'
               },
               value: data['reason']
             }) }}
