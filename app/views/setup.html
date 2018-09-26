@@ -4,42 +4,41 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-    "text": "Back",
-    "href": "/"
+    text: 'Back',
+    href: '/'
   }) }}
 {% endblock %}
 
 {% block content %}
 
+  <div class="govuk-grid">
 
-    <div class="govuk-grid">
+    <div class="govuk-grid__item  govuk-grid__item--two-thirds">
 
-      <div class="govuk-grid__item  govuk-grid__item--two-thirds">
+      <h1 class="govuk-heading-xl">Prototype settings</h1>
 
-        <h1 class="govuk-heading-xl">Prototype settings</h1>
+      <form method="post" action="/setup">
 
-        <form method="post" action="/setup">
+        {{ govukCheckboxes({
+          idPrefix: 'types',
+          name: 'types',
+          fieldset: {
+            legend: {
+              text: 'Case type',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          items: types
+        }) }}
 
-          {{ govukCheckboxes({
-            "idPrefix": "types",
-            "name": "types",
-            "fieldset": {
-              "legend": {
-                "text": "Case type",
-                "isPageHeading": true,
-                "classes": "govuk-fieldset__legend--m"
-              }
-            },
-            "items": types
-          }) }}
+        {{ govukButton({
+          text: 'Start prototype'
+        }) }}
 
-          {{ govukButton({
-            "text": "Start prototype"
-          }) }}
+      </form>
 
-        </form>
-
-      </div>
+    </div>
 
 </div>
 

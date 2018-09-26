@@ -149,6 +149,11 @@ function getCaseNavItems(_case, id) {
 					href: `/app/cases/${_case.id}/fr`,
 					text: 'Summary',
 					active: id === 'summary'
+        },
+        {
+					href: `/app/cases/${_case.id}/fr/parties`,
+					text: 'Parties',
+					active: id === 'parties'
 				},
 				{
 					href: `/app/cases/${_case.id}/documents`,

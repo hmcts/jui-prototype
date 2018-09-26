@@ -60,6 +60,48 @@ router.route('/app/cases/:id/fr/timeline')
 
 
 
+// Parties
+router.get('/app/cases/:id/fr/parties', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'parties'),
+		_case: _case
+	};
+
+	pageObject.applicantRows = [];
+	pageObject.respondentRows = [];
+
+	if(_case.applicant) {
+		_case.applicant.forEach((item) => {
+			pageObject.applicantRows.push([{ html: 'Full name' }, { html: item.fullname }]);
+			pageObject.applicantRows.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(item.dateOfBirth) }]);
+			pageObject.applicantRows.push([{ html: 'Address' }, { html: item.address }]);
+			pageObject.applicantRows.push([{ html: 'Phone' }, { html: item.phone }]);
+			pageObject.applicantRows.push([{ html: 'Email' }, { html: item.email }]);
+			pageObject.applicantRows.push([{ html: 'Representative' }, { html: item.representative ? _case.representative : 'Unrepresented' }]);
+		});
+	}
+
+	if(_case.respondent) {
+		_case.respondent.forEach((item) => {
+			pageObject.respondentRows.push([{ html: 'Full name' }, { html: item.fullname }]);
+			pageObject.respondentRows.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(item.dateOfBirth) }]);
+			pageObject.respondentRows.push([{ html: 'Address' }, { html: item.address }]);
+			pageObject.respondentRows.push([{ html: 'Phone' }, { html: item.phone }]);
+			pageObject.respondentRows.push([{ html: 'Email' }, { html: item.email }]);
+			pageObject.respondentRows.push([{ html: 'Representative' }, { html: item.representative ? _case.representative : 'Unrepresented' }]);
+		});
+	}
+
+	res.render('app/case/fr/parties', pageObject);
+
+});
+
+
+
 // Consent orders
 router.route('/app/cases/:id/fr/consent-orders')
 

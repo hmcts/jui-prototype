@@ -9,7 +9,7 @@ module.exports = [
     status: '<a href="/app/cases/FR1231612322/documents/1">Draft consent order</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
-    tribunalCentre: 'Fox Court',
+    tribunalCentre: 'East Midlands Regional Divorce Centre',
     requirements: 'Assisted Digital support requested',
     decreeDate: moment('2018-05-01 13:01'),
     events: [
@@ -38,9 +38,28 @@ module.exports = [
         by: 'John Smith'
       }
     ],
+
+    applicant: [{
+      fullname: 'John Smith',
+      dateOfBirth: moment('1987-02-20'),
+      address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
+      phone: '07700 900 772',
+      email: 'john.smith@gmail.com',
+      representative: ''
+    }],
+
+    respondent: [{
+      fullname: 'Jane Smith',
+      dateOfBirth: moment('1985-03-15'),
+      address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
+      phone: '07787 557 967',
+      email: 'jane.smith@gmail.com',
+      representative: ''
+    }],
+
     parties: [
       {
-        type: 'Petitioner',
+        type: 'Applicant',
         firstName: 'John',
         lastName: 'Smith',
         representative: {
