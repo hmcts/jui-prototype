@@ -27,7 +27,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         }
         e.preventDefault();
       } else {
-        e.stopPropagation();
+        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
       }
       break;
     case this.keys.right:
@@ -35,7 +35,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         item.addClass('jui-tree__item--open');
       }
       e.preventDefault();
-      e.stopPropagation();
+      e.stopPropagation(); // we don't want clicking on a child to fire on the parent
       break;
     case this.keys.left:
       if(item.hasClass('jui-tree__item')) {
@@ -45,7 +45,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         parent.attr('tabindex', '0');
         parent.focus();
         item.attr('tabindex', '-1');
-        e.stopPropagation();
+        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
       }
       e.preventDefault();
       break;
@@ -55,7 +55,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         item.attr('tabindex', '-1');
         newItem.attr('tabindex', '0');
         newItem.focus();
-        e.stopPropagation();
+        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
       }
       e.preventDefault();
       break;
@@ -65,7 +65,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         item.attr('tabindex', '-1');
         newItem.attr('tabindex', '0');
         newItem.focus();
-        e.stopPropagation();
+        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
       }
       e.preventDefault();
       break;
@@ -83,7 +83,7 @@ Tree.prototype.onTreeItemClick = function(e) {
       this.show(item);
     }
   } else {
-    e.stopPropagation();
+    e.stopPropagation(); // we don't want clicking on a child to fire on the parent
   }
   current.attr('tabindex', '-1');
   item.attr('tabindex', '0');
