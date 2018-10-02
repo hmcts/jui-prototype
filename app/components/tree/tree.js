@@ -4,15 +4,25 @@ var Tree = function(container) {
   this.links = container.find('.jui-tree__doc-link');
   this.container.attr('role', 'tree');
   this.items.attr('role', 'treeitem');
+  this.items.attr('aria-expanded', 'false');
   this.items.attr('tabindex', '-1');
   this.links.attr('role', 'treeitem');
   this.links.attr('tabindex', '-1');
   this.treeItems = this.container.find('[role=treeitem]');
-  this.treeItems.first().attr('tabindex', '0');
+
+  var openItem = this.container.find('.jui-tree__item--open');
+  if(openItem[0]) {
+    openItem.attr('tabindex', '0');
+    openItem.attr('aria-expanded', 'true');
+  } else {
+    this.treeItems.first().attr('tabindex', '0');
+  }
+
   this.keys = {left: 37, right: 39, up: 38, down: 40, enter: 13, space: 32};
   this.container.on('keydown', '[role=treeitem]', $.proxy(this, 'onTreeItemKeydown'));
   this.container.on('click', '[role=treeitem]', $.proxy(this, 'onTreeItemClick'));
 };
+
 
 Tree.prototype.onTreeItemKeydown = function(e) {
   var item = $(e.currentTarget);
@@ -137,8 +147,10 @@ Tree.prototype.getPreviousItem = function() {
 
 Tree.prototype.show = function(item) {
   item.addClass('jui-tree__item--open');
+  item.attr('aria-expanded', 'true');
 };
 
 Tree.prototype.hide = function(item) {
   item.removeClass('jui-tree__item--open');
+  item.attr('aria-expanded', 'false');
 };

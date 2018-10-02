@@ -153,17 +153,12 @@
 
 
 .jui-cf__files {
-  // height: 300px;
   max-width: 417px;
   float: left;
   width: 100%;
 
   box-sizing: border-box;
   padding-right: 30px;
-}
-
-.jui-cf__document {
-  height: 300px;
 }
 
 
@@ -186,7 +181,6 @@
     margin-top: 0;
   }
 
-
   &[data-page]::after {
     @include govuk-font(16);
     color: $govuk-secondary-text-colour;
@@ -194,6 +188,10 @@
     line-height: 1;
     position: absolute; right: govuk-spacing(4);
     bottom: govuk-spacing(4);
+  }
+
+  img {
+    max-width: 100%;
   }
 
 }
