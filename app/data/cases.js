@@ -6,7 +6,7 @@ module.exports = [
   {
     id: 'FR1231612322',
     typeId: types.fr.id,
-    status: '<a href="/app/cases/FR1231612322/documents/1">Draft consent order</a>',
+    status: '<a href="/app/cases/FR1231612322/documents/draft-consent-order">Draft consent order</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'East Midlands Regional Divorce Centre',
