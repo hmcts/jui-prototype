@@ -80,7 +80,7 @@ module.exports = [
       }
     ],
     documents: [{
-      id: '1',
+      id: 'draft-consent-order',
       label: 'Draft consent order'
     }, {
       id: '3',
