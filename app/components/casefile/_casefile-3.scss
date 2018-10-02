@@ -1,0 +1,210 @@
+.jui-cf__toolbar {
+  @include govuk-clearfix;
+  height: 50px;
+  position: sticky;
+  top: -1px;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+
+  border-bottom: 1px solid #DDDDDD;
+  border-top: 1px solid #DDDDDD;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    margin-top: 0;
+    margin-left: -50%;
+    display: block;
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    -webkit-box-shadow: 0px 0px 3px 2px #BEBEBE;
+      -moz-box-shadow: 0px 0px 3px 2px #BEBEBE;
+            box-shadow: 0px 0px 3px 2px #BEBEBE;
+  }
+
+
+  &::before {
+    content: "";
+    background:white;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    z-index: 0;
+  }
+
+
+}
+
+
+.jui-cf__toolbar-container {
+  @include jui-width-container;
+
+  z-index: 1;
+  position: relative;
+  left: 0; top: 0;
+  border-left:1px solid #DEE0E2;
+  border-right: 1px solid #DEE0E2;
+  height: 100%;
+}
+
+
+.jui-cf__toolbar-button {
+  @include govuk-font($size: 19);
+  background-color: white;
+  float: left;
+  border: 0 none;
+  color: govuk-colour("black");
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 50px;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: block;
+    background-color: #DEE0E2;
+  }
+
+  // Fix unwanted button padding in Firefox
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  &:focus {
+    outline: 3px solid $govuk-focus-colour;
+    position: relative;
+    z-index: 2;
+    outline-offset: -1px;
+  }
+
+
+  &:focus::after {
+    content: none;
+  }
+
+
+  &:hover {
+    background-color: govuk-colour("grey-4");
+  }
+
+
+  &[aria-pressed=true] {
+    background-color: govuk-colour("grey-4");
+    cursor: default;
+  }
+
+
+}
+
+
+
+.jui-cf__toolbar-button--documents {
+  background-image: url(#{$jui-assets-path}icon-casefile-documents.svg);
+  background-repeat: no-repeat;
+  background-size: 18px 14px;
+  background-position: 15px 50%;
+  padding-left: 45px
+}
+
+
+.jui-cf__toolbar-button--comments {
+  background-image: url(#{$jui-assets-path}icon-casefile-comments.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 15px 50%;
+  padding-left: 45px
+}
+
+
+
+.jui-cf__toolbar-icon {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+.jui-cf__window {
+  background:#F8F8F8;
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+
+.jui-cf__window-container {
+  @include jui-width-container;
+  @include govuk-clearfix;
+}
+
+
+.jui-cf__files {
+  max-width: 417px;
+  float: left;
+  width: 100%;
+
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+
+
+.jui-cf__document-pages {
+  max-width: 803px;
+  width: 100%;
+  float: left;
+}
+
+
+
+.jui-cf__document-page {
+  @include aspect-ratio(1,1.414); // True A4 aspect ratio
+  background: govuk-colour(white);
+  box-sizing: border-box;
+  box-shadow: 0 0 1px 0 #D1D1D1, 0 0 3px 0 #CCCCCC;
+  margin-top: govuk-spacing(4);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &[data-page]::after {
+    @include govuk-font(16);
+    color: $govuk-secondary-text-colour;
+    content: attr(data-page);
+    line-height: 1;
+    position: absolute; right: govuk-spacing(4);
+    bottom: govuk-spacing(4);
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+}
+
+
+.jui-cf__document-comments {
+  height: 300px;
+  overflow: hidden;
+  padding-left: 30px;
+}
+
+
+.jui-cf__files {
+  position: sticky;
+  top: 75px; left: 0;
+}
