@@ -26,6 +26,7 @@ if(isContentEditableSupported == true) {
     var focusableButton;
     switch(e.keyCode) {
       case this.keys.right:
+      case this.keys.down:
         focusableButton = this.toolbar.find('button[tabindex=0]');
         var nextButton = focusableButton.next('button');
         if(nextButton[0]) {
@@ -35,6 +36,7 @@ if(isContentEditableSupported == true) {
         }
         break;
       case this.keys.left:
+      case this.keys.up:
         focusableButton = this.toolbar.find('button[tabindex=0]');
         var previousButton = focusableButton.prev('button');
         if(previousButton[0]) {
