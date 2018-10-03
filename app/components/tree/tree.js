@@ -19,6 +19,7 @@ var Tree = function(container) {
   }
 
   this.keys = {left: 37, right: 39, up: 38, down: 40, enter: 13, space: 32};
+
   this.container.on('keydown', '[role=treeitem]', $.proxy(this, 'onTreeItemKeydown'));
   this.container.on('click', '[role=treeitem]', $.proxy(this, 'onTreeItemClick'));
 };
@@ -37,7 +38,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         }
         e.preventDefault();
       } else {
-        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
+        e.stopPropagation(); // We don’t want clicking on a child to fire on the parent
       }
       break;
     case this.keys.right:
@@ -45,7 +46,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         item.addClass('jui-tree__item--open');
       }
       e.preventDefault();
-      e.stopPropagation(); // we don't want clicking on a child to fire on the parent
+      e.stopPropagation(); // We don’t want clicking on a child to fire on the parent
       break;
     case this.keys.left:
       if(item.hasClass('jui-tree__item')) {
@@ -55,7 +56,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         parent.attr('tabindex', '0');
         parent.focus();
         item.attr('tabindex', '-1');
-        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
+        e.stopPropagation(); // We don’t want clicking on a child to fire on the parent
       }
       e.preventDefault();
       break;
@@ -65,7 +66,7 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         item.attr('tabindex', '-1');
         newItem.attr('tabindex', '0');
         newItem.focus();
-        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
+        e.stopPropagation(); // We don’t want clicking on a child to fire on the parent
       }
       e.preventDefault();
       break;
@@ -75,12 +76,13 @@ Tree.prototype.onTreeItemKeydown = function(e) {
         item.attr('tabindex', '-1');
         newItem.attr('tabindex', '0');
         newItem.focus();
-        e.stopPropagation(); // we don't want clicking on a child to fire on the parent
+        e.stopPropagation(); // We don’t want clicking on a child to fire on the parent
       }
       e.preventDefault();
       break;
   }
 };
+
 
 Tree.prototype.onTreeItemClick = function(e) {
   var current = this.container.find('[tabindex="0"]');
@@ -93,21 +95,24 @@ Tree.prototype.onTreeItemClick = function(e) {
       this.show(item);
     }
   } else {
-    e.stopPropagation(); // we don't want clicking on a child to fire on the parent
+    e.stopPropagation(); // We don’t want clicking on a child to fire on the parent
   }
   current.attr('tabindex', '-1');
   item.attr('tabindex', '0');
 };
+
 
 Tree.prototype.getNextItem = function() {
   var current = this.container.find('[tabindex="0"]');
   var next = null;
   if(current.hasClass('jui-tree__item')) {
     if(current.hasClass('jui-tree__item--open')) {
-      // grab first child
+
+      // Grab first child
       next = current.find('[role=treeitem]').first();
     } else {
-      // grab next folder
+
+      // Grab next folder
       next = current.next('[role=treeitem]');
     }
   } else {
@@ -120,13 +125,14 @@ Tree.prototype.getNextItem = function() {
   return next;
 };
 
+
 Tree.prototype.getPreviousItem = function() {
   var current = this.container.find('[tabindex="0"]');
   var prev = null;
 
-  // folder
+  // Folder
   if(current.hasClass('jui-tree__item')) {
-    // previous folder
+    // Previous folder
     var previousFolder = current.prev('[role=treeitem]');
     if(previousFolder) {
       if(previousFolder.hasClass('jui-tree__item--open')) {
@@ -135,7 +141,7 @@ Tree.prototype.getPreviousItem = function() {
         prev = previousFolder;
       }
     }
-  // child
+  // Child
   } else {
     prev = current.parent('.jui-tree__doc').prev('.jui-tree__doc').find('[role=treeitem]');
     if(!prev[0]) {
@@ -145,10 +151,12 @@ Tree.prototype.getPreviousItem = function() {
   return prev;
 };
 
+
 Tree.prototype.show = function(item) {
   item.addClass('jui-tree__item--open');
   item.attr('aria-expanded', 'true');
 };
+
 
 Tree.prototype.hide = function(item) {
   item.removeClass('jui-tree__item--open');
