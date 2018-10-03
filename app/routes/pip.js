@@ -148,11 +148,15 @@ router.get('/app/cases/:id/pip/decision/preliminary', (req, res) => {
 
 router.post('/app/cases/:id/pip/decision/preliminary', (req, res) => {
 
-  if(req.body.awardliving === 'No award' && req.body.awardmobility === 'No award') {
-		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/scores`);
-	} else {
-		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/set-award-dates`);
-	}
+  // REMOVED THIS (NO LONGER MVP)
+
+  // if(req.body.awardliving === 'No award' && req.body.awardmobility === 'No award') {
+	// 	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/scores`);
+	// } else {
+	// 	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/set-award-dates`);
+  // }
+
+  res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/check`);
 
 });
 
@@ -654,7 +658,7 @@ router.get('/app/cases/:id/pip/decision/final', (req, res) => {
 router.post('/app/cases/:id/pip/decision/final', (req, res) => {
 
 	var v = new Validator(req, res);
-	v.add('decision-notes', [{
+	v.add('final-decision-notes', [{
 		fn: (value) => {
 			return value.trim().length > 0;
 		},
@@ -679,6 +683,7 @@ router.post('/app/cases/:id/pip/decision/final', (req, res) => {
   }
 
 });
+
 
 
 // FINAL: Check
@@ -706,6 +711,32 @@ router.get('/app/cases/:id/pip/decision/final/confirmation', (req, res) => {
 		_case: _case
 	};
 	res.render('app/case/pip/decision/final/confirmation', pageObject);
+});
+
+
+
+// PRELIMINARY: Check
+router.get('/app/cases/:id/pip/decision/preliminary/check', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary/check', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary/submit', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/confirmation`);
+});
+
+
+// PRELIMINARY: Confirmation
+router.get('/app/cases/:id/pip/decision/preliminary/confirmation', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary/confirmation', pageObject);
 });
 
 

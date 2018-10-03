@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Decision submitted {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Preliminary view submitted {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
 
           <div class="govuk-panel govuk-panel--confirmation">
 
-            <h2 class="govuk-panel__title">Decision submitted</h2>
+            <h2 class="govuk-panel__title">Preliminary view submitted</h2>
 
             <div class="govuk-panel__body">
               {{_case.id}}
@@ -24,9 +24,9 @@
 
           <h2 class="govuk-heading-m">What happens next</h2>
 
-          <p>Your decision has been sent to a court administrator.</p>
+          <p>This view has been sent to a court administrator.</p>
 
-          <p>You still need to enter the decision details into GAPS2.</p>
+          <p>You still need to enter the view into GAPS2.</p>
 
           <p><a href="/app/dashboard">Go to your dashboard</a></p>
 

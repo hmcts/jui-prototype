@@ -33,14 +33,14 @@
 
         <form method="post">
           {{ govukTextarea({
-            id: 'decision-notes',
-            name: 'decision-notes',
+            id: 'final-decision-notes',
+            name: 'final-decision-notes',
             label: {
-              text: 'Decision notes',
+              text: 'Enter decision notes',
               classes: 'govuk-label--m'
             },
-            value: data['decision-notes'],
-            errorMessage: inlineErrors['decision-notes']
+            value: data['final-decision-notes'],
+            errorMessage: inlineErrors['final-decision-notes']
           }) }}
 
           {{ govukButton({
