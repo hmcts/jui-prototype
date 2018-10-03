@@ -13,7 +13,7 @@
 
     {{ govukBackLink({
       text: 'Back',
-      href: backLink.href
+      href: 'javascript:history.back()'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -28,12 +28,24 @@
 
             <div class="app-check-your-answers__contents">
 
-              <dt class="app-check-your-answers__question">Decision</dt>
+              <dt class="app-check-your-answers__question">What do you want to send to the parties?</dt>
+
+              <dd class="app-check-your-answers__answer">{{data['whatissue']}}</dd>
+
+              <dd class="app-check-your-answers__change">
+                <a href="/app/cases/{{_case.id}}/pip/decision/">Change <span class="govuk-visually-hidden">decision</span></a>
+              </dd>
+
+            </div>
+
+            <div class="app-check-your-answers__contents">
+
+              <dt class="app-check-your-answers__question">Decision notes</dt>
 
               <dd class="app-check-your-answers__answer">{{data['final-decision-notes']}}</dd>
 
               <dd class="app-check-your-answers__change">
-                <a href="/app/cases/{{_case.id}}/pip/decision/">Change <span class="govuk-visually-hidden">decision</span></a>
+                <a href="/app/cases/{{_case.id}}/pip/decision/final/">Change <span class="govuk-visually-hidden">decision</span></a>
               </dd>
 
             </div>

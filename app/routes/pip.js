@@ -126,7 +126,7 @@ router.get('/app/cases/:id/pip/decision', (req, res) => {
 
 router.post('/app/cases/:id/pip/decision', (req, res) => {
 
-	if(req.body.whatissue === 'preliminary') {
+	if(req.body.whatissue === 'Preliminary view') {
 		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary`);
 	} else {
 		res.redirect(`/app/cases/${req.params.id}/pip/decision/final`);
