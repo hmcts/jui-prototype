@@ -74,6 +74,11 @@
                 },
                 items: [
                   {
+                    html: 'The parties’ income positions if the order were to take effect',
+                    value: 'the parties’ income positions if the order were to take effect',
+                    checked: (checked('rejectsub', 'the parties’ income positions if the order were to take effect') == 'checked')
+                  },
+                  {
                     html: 'The parties’ capital positions if the order were to take effect',
                     value: 'the parties’ capital positions if the order were to take effect',
                     checked: (checked('rejectsub', 'the parties’ capital positions if the order were to take effect') == 'checked')
@@ -142,6 +147,14 @@
                   conditional: {
                     html: subReasonsHtml
                   }
+                },
+                {
+                  html: 'The order doesn’t appear fair taking account of S25 Matrimonial Causes Act 1973',
+                  value: 'The order doesn’t appear fair taking account of S25 Matrimonial Causes Act 1973',
+                  hint: {
+                    text: 'Please explain more fully the thinking behind the order and why it is fair.'
+                  },
+                  checked: (checked('reject','The D81 form is incomplete') == 'checked')
                 },
                 {
                   html: 'The D81 form is incomplete',
