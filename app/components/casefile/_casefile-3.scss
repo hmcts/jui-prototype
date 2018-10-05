@@ -1,78 +1,75 @@
 .jui-cf__toolbar {
   @include govuk-clearfix;
-  height: 50px;
-  position: sticky;
-  top: -1px;
-  z-index: 1;
-  background-color: white;
-  width: 100%;
-
+  background-color: govuk-colour("white");
   border-bottom: 1px solid #DDDDDD;
   border-top: 1px solid #DDDDDD;
+  height: 50px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: -1px;
+  width: 100%;
+  z-index: 1;
 
   &::after {
     content: "";
-    width: 100%;
+    display: block;
     height: 1px;
+    left: 50%;
     margin-top: 0;
     margin-left: -50%;
-    display: block;
     position: absolute;
-    left: 50%;
+    width: 100%;
     z-index: -1;
     -webkit-box-shadow: 0px 0px 3px 2px #BEBEBE;
       -moz-box-shadow: 0px 0px 3px 2px #BEBEBE;
             box-shadow: 0px 0px 3px 2px #BEBEBE;
   }
 
-
   &::before {
     content: "";
-    background:white;
+    background-color: govuk-colour("white");
     height: 100%;
-    width: 100%;
-
     position: absolute;
+    width: 100%;
     z-index: 0;
   }
-
 
 }
 
 
 .jui-cf__toolbar-container {
   @include jui-width-container;
-
-  z-index: 1;
+  border-left:1px solid govuk-colour("grey-3");
+  border-right: 1px solid govuk-colour("grey-3");
+  height: 100%;
   position: relative;
   left: 0; top: 0;
-  border-left:1px solid #DEE0E2;
-  border-right: 1px solid #DEE0E2;
-  height: 100%;
+  z-index: 1;
 }
 
 
 .jui-cf__toolbar-button {
   @include govuk-font($size: 19);
-  background-color: white;
-  float: left;
+  background-color: govuk-colour("white");
   border: 0 none;
   color: govuk-colour("black");
   cursor: pointer;
+  float: left;
+  height: 50px;
+  margin: 0;
   padding-left: 15px;
   padding-right: 15px;
-  height: 50px;
   position: relative;
 
   &::after {
+    background-color: #DEE0E2;
     content: "";
-    width: 1px;
+    display: block;
+    height: 100%;
     position: absolute;
     right: 0;
     top: 0;
-    height: 100%;
-    display: block;
-    background-color: #DEE0E2;
+    width: 1px;
   }
 
   // Fix unwanted button padding in Firefox
@@ -83,9 +80,9 @@
 
   &:focus {
     outline: 3px solid $govuk-focus-colour;
+    outline-offset: -1px;
     position: relative;
     z-index: 2;
-    outline-offset: -1px;
   }
 
 
@@ -108,7 +105,6 @@
 }
 
 
-
 .jui-cf__toolbar-button--documents {
   background-image: url(#{$jui-assets-path}icon-casefile-documents.svg);
   background-repeat: no-repeat;
@@ -127,22 +123,18 @@
 }
 
 
-
 .jui-cf__toolbar-icon {
-  margin-right: 10px;
   display: inline-block;
+  margin-right: 10px;
   vertical-align: middle;
 }
 
 
-
-
-
-
 .jui-cf__window {
-  background:#F8F8F8;
+  background-color: govuk-colour("grey-4");
   padding-bottom: 25px;
   padding-top: 25px;
+  position: relative;
 }
 
 
@@ -153,19 +145,18 @@
 
 
 .jui-cf__files {
-  max-width: 417px;
-  float: left;
-  width: 100%;
-
   box-sizing: border-box;
+  float: left;
+  max-width: 417px;
   padding-right: 30px;
+  width: 100%;
 }
 
 
 .jui-cf__document-pages {
+  float: left;
   max-width: 803px;
   width: 100%;
-  float: left;
 }
 
 
@@ -206,5 +197,6 @@
 
 .jui-cf__files {
   position: sticky;
+  position: -webkit-sticky;
   top: 75px; left: 0;
 }
