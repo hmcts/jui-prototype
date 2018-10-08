@@ -1,23 +1,30 @@
-<footer class="jui-footer" role="contentinfo">
+{{ hmctsGlobalFooter({
 
-  <div class="jui-width-container">
+  help: {
+    heading: 'Help',
+    email: {
+      address: 'service-desk@hmcts.gov.uk',
+      text: 'service-desk@hmcts.gov.uk'
+    },
+    phone: {
+      text: '0207 633 4140'
+    },
+    opening: {
+      text: 'Monday to Friday, 8am to 6pm (excluding public holidays)'
+    }
+  },
 
-    <h2 class="jui-footer__heading">Help</h2>
+  navigation: {
+    items: [{
+      text: 'Terms and conditions',
+      href: '#'
+    }, {
+      text: 'Cookies',
+      href: '#'
+    }, {
+      text: 'Privacy policy',
+      href: '#'
+    }]
+  }
 
-    <ul class="jui-footer__list">
-      <li>Email: <a href="#">service-desk@hmcts.gov.uk</a></li>
-      <li>Phone: 0207 633 4140</li>
-      <li><span class="visually-hidden">Opening times: </span>Monday to Friday, 8am to 6pm (excluding public holidays)</li>
-    </ul>
-
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-    <ul class="jui-footer__list  jui-footer__list--inline">
-      <li><a href="#">Terms and conditions</a></li>
-      <li><a href="#">Cookies</a></li>
-      <li><a href="#">Privacy policy</a></li>
-    </ul>
-
-  </div>
-
-</footer>
+}) }}
