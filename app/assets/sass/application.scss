@@ -65,13 +65,15 @@ html {
 }
 
 
-// CASE ACTION ALERT
+// Case action alert
+
 .jui-case-action-alert {
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(4);
 }
+
 
 .jui-case-action-alert__heading {
   @include govuk-font(
@@ -83,6 +85,7 @@ html {
   margin-top: 0;
 }
 
+
 .jui-case-action-alert__content {
   color: inherit;
 
@@ -92,10 +95,16 @@ html {
 
 }
 
+
 .jui-case-action-alert__link:link {
   color: govuk-colour("white");
 }
-// END CASE ACTION ALERT
+
+
+.jui-case-action-alert__link:focus {
+  color: govuk-colour("black");
+}
+
 
 
 @include govuk-media-query($from: tablet) {
@@ -139,7 +148,6 @@ html {
   }
 
 }
-
 
 
 
