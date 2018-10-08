@@ -111,17 +111,20 @@
 
 
             {{ govukInput({
+              id: 'estimateLengthOfHearing',
+              name: 'estimateLengthOfHearing',
               label: {
                 text: 'Estimate length of hearing in minutes',
                 classes: 'govuk-label--m'
               },
               classes: 'govuk-input--width-3',
-              id: 'estimateLengthOfHearing',
-              name: 'estimateLengthOfHearing'
+              value: data.estimateLengthOfHearing
             }) }}
 
 
             {{ govukInput({
+              id: 'whenShouldTheHearingTakePlace',
+              name: 'whenShouldTheHearingTakePlace',
               label: {
                 text: 'When should the hearing take place?',
                 classes: 'govuk-label--m'
@@ -129,18 +132,61 @@
               hint: {
                 text: 'For example, ‘fix hearing for first available date’'
               },
-              id: 'estimateLengthOfHearing',
-              name: 'estimateLengthOfHearing'
+              value: data.whenShouldTheHearingTakePlace
             }) }}
 
 
-            {{ govukInput({
+            {# {{ govukInput({
               label: {
                 text: 'Which court?',
                 classes: 'govuk-label--m'
               },
               id: 'whichCourt',
               name: 'whichCourt'
+            }) }} #}
+
+            {{ govukRadios({
+              idPrefix: 'whichCourt',
+              name: 'whichCourt',
+              fieldset: {
+                legend: {
+                  text: 'Which court?',
+                  classes: 'govuk-fieldset__legend--m'
+                }
+              },
+              items: [
+                {
+                  text: 'South West Divorce Centre',
+                  hint: {
+                    text: 'Southampton'
+                  },
+                  checked: (checked('whichCourt', 'South West Divorce Centre') == 'checked')
+                },
+                {
+                  value: 'East Midlands Divorce Centre',
+                  text: 'East Midlands Divorce Centre',
+                  hint: {
+                    text: 'Nottingham'
+                  },
+                  checked: (checked('whichCourt', 'East Midlands Divorce Centre') == 'checked')
+                },
+                {
+                  value: 'West Midlands Divorce Centre',
+                  text: 'West Midlands Divorce Centre',
+                  hint: {
+                    text: 'Stoke'
+                  },
+                  checked: (checked('whichCourt', 'West Midlands Divorce Centre') == 'checked')
+                },
+                {
+                  value: 'North West Divorce Centre',
+                  text: 'North West Divorce Centre',
+                  hint: {
+                    text: 'Liverpool'
+                  },
+                  checked: (checked('whichCourt', 'North West Divorce Centre') == 'checked')
+                }
+              ]
             }) }}
 
 
