@@ -101,7 +101,7 @@ module.exports = [
   {
     id: 'SC1231612322',
     typeId: types.pip.id,
-    status: '<a href="/app/cases/SC1231612322/questions/">Appellant’s reply</a>',
+    status: '<a href="/app/cases/SC1231612322/questions/">Appellant’s answers</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     urgent: true,
@@ -279,7 +279,7 @@ module.exports = [
         }
       }
     ],
-    status: '<a href="/app/cases/SC1231612323/questions/">Appellant’s reply</a>',
+    status: '<a href="/app/cases/SC1231612323/questions/">Appellant’s answers</a>',
     applicationDate: moment('2018-05-09'),
     lastAction: moment('2018-05-09'),
     urgent: false,
