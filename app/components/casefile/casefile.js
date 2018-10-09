@@ -1,12 +1,12 @@
 var Casefile = function(container) {
   this.container = container;
-  this.documents = container.find('.jui-cf__files');
+  this.items = container.find('.jui-cf__files');
   this.comments = container.find('.jui-cf__document-comments');
-  this.documentsButton = container.find('.jui-cf__toolbar-button--documents');
+  this.itemsButton = container.find('.jui-cf__toolbar-button--items');
   this.commentsButton = container.find('.jui-cf__toolbar-button--comments');
-  this.documentsButton.on('click', $.proxy(this, 'onButtonDocumentsClick'));
+  this.itemsButton.on('click', $.proxy(this, 'onButtonItemsClick'));
   this.commentsButton.on('click', $.proxy(this, 'onButtonCommentsClick'));
-  this.showDocuments();
+  this.showItems();
   this.hideComments();
 };
 
@@ -17,9 +17,9 @@ Casefile.prototype.hideComments = function() {
 };
 
 
-Casefile.prototype.hideDocuments = function() {
-  this.documents.hide();
-  this.documentsButton.attr('aria-pressed', 'false');
+Casefile.prototype.hideitems = function() {
+  this.items.hide();
+  this.itemsButton.attr('aria-pressed', 'false');
 };
 
 
@@ -29,19 +29,19 @@ Casefile.prototype.showComments = function() {
 };
 
 
-Casefile.prototype.showDocuments = function() {
-  this.documents.show();
-  this.documentsButton.attr('aria-pressed', 'true');
+Casefile.prototype.showitems = function() {
+  this.items.show();
+  this.itemsButton.attr('aria-pressed', 'true');
 };
 
 
-Casefile.prototype.onButtonDocumentsClick = function(e) {
-  this.showDocuments();
+Casefile.prototype.onButtonItemsClick = function(e) {
+  this.showitems();
   this.hideComments();
 };
 
 
 Casefile.prototype.onButtonCommentsClick = function(e) {
   this.showComments();
-  this.hideDocuments();
+  this.hideitems();
 };
