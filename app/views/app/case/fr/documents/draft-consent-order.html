@@ -207,11 +207,6 @@
 
           <div class="jui-cf__document">
 
-            <div class="jui-cf__document-pages">
-              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p1.jpg" alt="Draft consent order page 1"></div>
-              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p2.jpg" alt="Draft consent order page 2"></div>
-            </div>
-
             <div class="jui-cf__document-comments" id="comments">
 
               {{ hmctsAlert({
@@ -220,10 +215,27 @@
                 iconFallbackText: 'Success'
               }) }}
 
-              <div class="jui-cf__comment">
+              <div class="jui-comment">
+
+                <div class="jui-comment__header">
+                  <span class="jui-comment__author">Judge Prita Shah</span>
+                  <time class="jui-comment__meta" datetime="2018-08-23T016:48">23 August 2018 at 4:48pm</time>
+                </div>
+
+                <div class="jui-comment__content"><p>Please provide more details on the contents of family home.</p></div>
+
+                <div class="jui-comment__footer">
+                  <button class="govuk-button" type="submit">Edit</button>
+                  <button class="govuk-button hmcts-button--secondary" type="submit">Delete</button>
+                </div>
 
               </div>
 
+            </div>
+
+            <div class="jui-cf__document-pages">
+              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p1.jpg" alt="Draft consent order page 1"></div>
+              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p2.jpg" alt="Draft consent order page 2"></div>
             </div>
 
           </div>

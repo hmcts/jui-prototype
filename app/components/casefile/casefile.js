@@ -12,6 +12,7 @@ var Casefile = function(container) {
 
 
 Casefile.prototype.hideComments = function() {
+  this.container.removeClass('jui-cf--show-comments');
   this.comments.hide();
   this.commentsButton.attr('aria-pressed', 'false');
 };
@@ -24,6 +25,7 @@ Casefile.prototype.hideItems = function() {
 
 
 Casefile.prototype.showComments = function() {
+  this.container.addClass('jui-cf--show-comments');
   this.comments.show();
   this.commentsButton.attr('aria-pressed', 'true');
 };
