@@ -17,7 +17,7 @@ Casefile.prototype.hideComments = function() {
 };
 
 
-Casefile.prototype.hideitems = function() {
+Casefile.prototype.hideItems = function() {
   this.items.hide();
   this.itemsButton.attr('aria-pressed', 'false');
 };
@@ -29,19 +29,19 @@ Casefile.prototype.showComments = function() {
 };
 
 
-Casefile.prototype.showitems = function() {
+Casefile.prototype.showItems = function() {
   this.items.show();
   this.itemsButton.attr('aria-pressed', 'true');
 };
 
 
 Casefile.prototype.onButtonItemsClick = function(e) {
-  this.showitems();
+  this.showItems();
   this.hideComments();
 };
 
 
 Casefile.prototype.onButtonCommentsClick = function(e) {
   this.showComments();
-  this.hideitems();
+  this.hideItems();
 };
