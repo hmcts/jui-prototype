@@ -207,6 +207,16 @@
 
           <div class="jui-cf__document">
 
+            <div class="jui-cf__document-comments" id="comments">
+
+              {{ hmctsAlert({
+                type: 'information',
+                text: 'Select text to add a comment.',
+                iconFallbackText: 'Success'
+              }) }}
+
+            </div>
+
             <div class="jui-cf__document-pages">
                 <div class="jui-cf__document-page"><img src="/public/images/casefile/form-a-p1.jpg" alt="Form A page 1"></div>
                 <div class="jui-cf__document-page"><img src="/public/images/casefile/form-a-p2.jpg" alt="Form A page 2"></div>
@@ -221,16 +231,6 @@
                 <div class="jui-cf__document-page"><img src="/public/images/casefile/form-a-p11.jpg" alt="Form A page 11"></div>
                 <div class="jui-cf__document-page"><img src="/public/images/casefile/form-a-p12.jpg" alt="Form A page 12"></div>
                 <div class="jui-cf__document-page"><img src="/public/images/casefile/form-a-p13.jpg" alt="Form A page 13"></div>
-            </div>
-
-            <div class="jui-cf__document-comments" id="comments">
-
-              {{ hmctsAlert({
-                type: 'information',
-                text: 'Select text to add a comment.',
-                iconFallbackText: 'Success'
-              }) }}
-
             </div>
 
           </div>
