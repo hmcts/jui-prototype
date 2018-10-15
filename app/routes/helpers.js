@@ -279,15 +279,17 @@ function getEvents(_case) {
 			return o;
 		});
 
-		events = events.sort((a, b) => {
-			if(a.date < b.date) {
-				return -1;
-			}
-			if(a.date > b.date) {
-				return 1;
-			}
-			return 0;
-		});
+		// console.log(caseEvents);
+
+		// events = events.sort((a, b) => {
+		// 	if(a.date < b.date) {
+		// 		return -1;
+		// 	}
+		// 	if(a.date > b.date) {
+		// 		return 1;
+		// 	}
+		// 	return 0;
+		// });
 		events = events.reverse();
 	}
 

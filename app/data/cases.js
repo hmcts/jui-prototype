@@ -441,13 +441,13 @@ module.exports = [
       },
       {
         id: uuid(),
-        date: moment('2018-04-24 15:22'),
+        date: moment('2018-04-16 15:22'),
         title: 'Acknowledgement of service by the court',
         by: 'David Francis, respondent'
       },
       {
         id: uuid(),
-        date: moment('2018-04-16 14:10'),
+        date: moment('2018-04-24 14:10'),
         title: 'Application for divorce submitted',
         by: 'Susan Francis, petitioner'
       }
@@ -530,7 +530,7 @@ module.exports = [
       },
       {
         id: uuid(),
-        date: moment('2018-04-16 14:10'),
+        date: moment('2018-04-25 14:10'),
         title: 'Application for divorce submitted',
         by: 'John Smith, petitioner'
       }
