@@ -4,38 +4,29 @@
 
 {% block content %}
 
-  {{ juiCasebar({
-    caseId: casebar.id,
-    parties: casebar.parties,
-    caseActions: {
-      actions: caseActions
-    }
+  {{ hmctsDetailsBar({
+    reference: casebar.id,
+    title: {
+      html: casebar.parties
+      },
+    items: [
+      {
+        text: 'Make a decision',
+        href: '/app/cases/'+_case.id+'/fr/decision'
+      }
+    ]
   }) }}
 
   <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">
 
     <div class="jui-width-container">
 
-    {{ hmctsSubNavigation({
-      label: 'Case navigation',
-      items: caseNavItems
-    }) }}
+      {{ hmctsSubNavigation({
+        label: 'Case navigation',
+        items: caseNavItems
+      }) }}
 
-    <div class="hmcts-page-heading">
-
-        <div class="hmcts-page-heading__title-wrapper">
-          <h1 class="hmcts-page-heading__title govuk-heading-xl govuk-!-margin-bottom-5">Case file</h1>
-        </div>
-
-        <div class="hmcts-page-heading__actions-wrapper">
-          {{govukButton({
-            classes: 'hmcts-page-heading__button',
-            href: '/app/cases/'+_case.id+'/fr/decision',
-            text: 'Make a decision'
-          })}}
-        </div>
-
-      </div>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Case file</h1>
 
     </div>
 

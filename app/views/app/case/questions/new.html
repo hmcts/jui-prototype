@@ -4,9 +4,22 @@
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties
+{{ hmctsDetailsBar({
+  reference: casebar.id,
+  title: {
+    html: casebar.parties
+    },
+  items: [
+    {
+      text: 'Send view or dicision',
+      href: '/app/cases/'+_case.id+'/pip/decision'
+    },
+    {
+      classes: 'hmcts-button--secondary',
+      text: 'List for hearing',
+      href: '/app/cases/'+_case.id+'/pip/list-for-hearing'
+    }
+  ]
 }) }}
 
 	<div class="jui-width-container">

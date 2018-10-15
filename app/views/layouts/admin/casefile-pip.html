@@ -4,13 +4,23 @@
 
 {% block content %}
 
-  {{ juiCasebar({
-    caseId: casebar.id,
-    parties: casebar.parties,
-    caseActions: {
-      actions: caseActions
+{{ hmctsDetailsBar({
+  reference: casebar.id,
+  title: {
+    html: casebar.parties
+    },
+  items: [
+    {
+      text: 'Send view or dicision',
+      href: '/app/cases/'+_case.id+'/pip/decision'
+    },
+    {
+      classes: 'hmcts-button--secondary',
+      text: 'List for hearing',
+      href: '/app/cases/'+_case.id+'/pip/list-for-hearing'
     }
-  }) }}
+  ]
+}) }}
 
   <div class="jui-width-container">
 
@@ -21,26 +31,7 @@
         items: caseNavItems
       }) }}
 
-      <div class="hmcts-page-heading">
-
-        <div class="hmcts-page-heading__title-wrapper">
-          <h1 class="hmcts-page-heading__title govuk-heading-xl">Case file</h1>
-        </div>
-
-        <div class="hmcts-page-heading__actions-wrapper">
-          {{govukButton({
-            classes: 'hmcts-page-heading__button',
-            href: '/app/cases/'+_case.id+'/pip/decision',
-            text: 'Send view or decision'
-          })}}
-          {{govukButton({
-            classes: 'hmcts-page-heading__button hmcts-button--secondary',
-            href: '/app/cases/'+_case.id+'/pip/list-for-hearing',
-            text: 'List for hearing'
-          })}}
-        </div>
-
-      </div>
+      <h1 class="govuk-heading-xl">Case file</h1>
 
       <div class="jui-casefile govuk-!-margin-bottom-6">
 
