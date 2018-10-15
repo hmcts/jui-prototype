@@ -4,11 +4,10 @@
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties,
-  caseActions: {
-    actions: caseActions
+{{ hmctsDetailsBar({
+  reference: casebar.id,
+  title: {
+    html: casebar.parties
   }
 }) }}
 

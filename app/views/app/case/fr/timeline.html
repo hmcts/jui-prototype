@@ -4,9 +4,17 @@
 
 {% block content %}
 
-{{ juiCasebar({
-  caseId: casebar.id,
-  parties: casebar.parties
+{{ hmctsDetailsBar({
+  reference: casebar.id,
+  title: {
+    html: casebar.parties
+    },
+  items: [
+    {
+      text: 'Make a decision',
+      href: '/app/cases/'+_case.id+'/fr/decision'
+    }
+  ]
 }) }}
 
 <div class="jui-width-container">
@@ -18,21 +26,7 @@
       items: caseNavItems
     }) }}
 
-    <div class="hmcts-page-heading">
-
-      <div class="hmcts-page-heading__title-wrapper">
-        <h1 class="hmcts-page-heading__title govuk-heading-xl">Timeline</h1>
-      </div>
-
-      <div class="hmcts-page-heading__actions-wrapper">
-        {{govukButton({
-          classes: 'hmcts-page-heading__button',
-          href: '/app/cases/'+_case.id+'/fr/decision',
-          text: 'Make a decision'
-        })}}
-      </div>
-
-    </div>
+    <h1 class="hmcts-page-heading__title govuk-heading-xl">Timeline</h1>
 
     <div class="govuk-grid-row">
 

@@ -4,9 +4,11 @@
 
 {% block content %}
 
-  {{ juiCasebar({
-    caseId: casebar.id,
-    parties: casebar.parties
+  {{ hmctsDetailsBar({
+    reference: casebar.id,
+    title: {
+      html: casebar.parties
+    }
   }) }}
 
   <div class="jui-width-container">
