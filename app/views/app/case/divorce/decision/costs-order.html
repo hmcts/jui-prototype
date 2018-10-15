@@ -156,13 +156,13 @@
             name: 'costsOrderDecision',
             fieldset: {
               legend: {
-                text: 'How should costs be handled?',
+                text: 'What type of costs order?',
                 classes: 'govuk-fieldset__legend--m'
               }
             },
             items: [
               {
-                text: 'Respondent to pay petitioner’s costs',
+                text: 'An order that respondent will pay the petitioner’s costs',
                 value: 'Respondent to pay petitioner’s costs',
                 checked: checked('costsOrderDecision', 'Respondent to pay petitioner’s costs') == 'checked',
                 conditional: {
@@ -170,7 +170,7 @@
                 }
               },
               {
-                text: 'Terms have been agreed between the parties and approved by the court',
+                text: 'A financial order in terms agreed by the parties and approved by the court',
                 value: 'Terms have been agreed between the parties and approved by the court',
                 checked: checked('costsOrderDecision', 'Terms have been agreed between the parties and approved by the court') == 'checked',
                 conditional: {
