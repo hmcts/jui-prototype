@@ -12,32 +12,85 @@ module.exports = [
     tribunalCentre: 'East Midlands Regional Divorce Centre',
     requirements: 'Assisted Digital support requested',
     decreeDate: moment('2018-05-01 13:01'),
+
+
+
     events: [
       {
         id: uuid(),
-        date: moment('2018-05-20 13:01'),
-        title: 'D8 submitted',
-        by: 'John Smith'
+        date: moment('2018-09-04 13:37'),
+        title: 'Consent order application submitted',
+        by: 'Bernadette Jones, applicant’s solicitor'
       },
       {
         id: uuid(),
-        date: moment('2018-05-20 13:02'),
-        title: 'Statement of information (D81) submitted',
-        by: 'John Smith'
+        date: moment('2018-09-04 15:33'),
+        title: 'Draft consent order uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
       },
       {
         id: uuid(),
-        date: moment('2018-05-20 13:03'),
-        title: 'Form A submitted',
-        by: 'John Smith'
+        date: moment('2018-09-04 15:34'),
+        title: 'Joint statement of information uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
       },
       {
         id: uuid(),
-        date: moment('2018-05-20 13:04'),
-        title: 'Draft consent order submitted',
-        by: 'John Smith'
+        date: moment('2018-09-04 15:35'),
+        title: 'Form A uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-06 09:21'),
+        title: 'Case checked and ready for judge',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-06 11:44'),
+        title: 'Case referred to judge',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-06 14:01'),
+        title: 'Consent order not approved',
+        by: 'DJ Nightingale'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-07 09:15'),
+        title: 'Directions order uploaded',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-10 16:54'),
+        title: 'Redrafted consent order uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-11 10:56'),
+        title: 'Case referred to judge for 2nd time',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-11 16:15'),
+        title: 'Consent order approved',
+        by: 'DJ Nightingale'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-12 09:38'),
+        title: 'Sealed consent order uploaded',
+        by: 'Simon Saint, court administrator'
       }
     ],
+
+
 
     applicant: [{
       fullname: 'John Smith',
@@ -119,21 +172,21 @@ module.exports = [
         id: uuid(),
         date: moment('2017-11-20 13:01'),
         title: 'New Direct Lodgement Registration',
-        by: 'DLC Admin'
+        by: 'DLC admin'
       },
 
       {
         id: uuid(),
         date: moment('2017-12-05 09:10'),
         title: 'Appeal marked as compliant',
-        by: 'Tribunal Case Worker – Emily Oliver'
+        by: 'Emily Oliver, tribunal case worker'
       },
 
       {
         id: uuid(),
         date: moment('2018-01-25 16:48'),
         title: 'Response submitted',
-        by: 'DWP Appeals Officer'
+        by: 'DWP appeals officer'
       }
     ],
     rounds: [{
@@ -290,21 +343,21 @@ module.exports = [
         id: uuid(),
         date: moment('2017-11-20 13:01'),
         title: 'New Direct Lodgement Registration',
-        by: 'DLC Admin'
+        by: 'DLC admin'
       },
 
       {
         id: uuid(),
         date: moment('2017-11-20 14:21'),
         title: 'Complex appeal – requires further guidance',
-        by: 'DLC Admin'
+        by: 'DLC admin'
       },
 
       {
         id: uuid(),
         date: moment('2017-11-20 14:27'),
         title: 'Interlocutory referral to DJ DeVere',
-        by: 'DLC Admin'
+        by: 'DLC admin'
       },
 
       {
@@ -318,7 +371,7 @@ module.exports = [
         id: uuid(),
         date: moment('2018-01-25 16:48'),
         title: 'Response submitted',
-        by: 'DWP Appeals Officer'
+        by: 'DWP appeals officer'
       }
     ],
   },
@@ -384,19 +437,19 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (S. Francis)'
+        by: 'Susan Francis, petitioner'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (D. Francis)'
+        by: 'David Francis, respondent'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (S . Francis)'
+        by: 'Susan Francis, petitioner'
       }
     ]
   },
@@ -467,19 +520,19 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (John Smith)'
+        by: 'John Smith, petitioner'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (Jane Smith)'
+        by: 'Jane Smith, respondent'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (John Smith)'
+        by: 'John Smith, petitioner'
       }
     ]
   },
@@ -553,19 +606,19 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'Petitioner (M. Blake)'
+        by: 'Margaret Blake, petitioner'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Respondent (W. Blake)'
+        by: 'William Blake, respondent'
       },
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Application for divorce submitted',
-        by: 'Petitioner (M. Blake)'
+        by: 'Magaret Blake, petitioner'
       }
     ]
   }
