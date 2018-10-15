@@ -256,6 +256,11 @@ function getFormattedShortDate(m) {
 	return date.format('D MMM YYYY');
 }
 
+function getFormattedShortDateDay(m) {
+	var date = moment(m);
+	return date.format('ddd D MMM YYYY');
+}
+
 function getFormattedTime(m) {
 	var date = moment(m);
 	return date.minutes() > 0 ? date.format('h:mma') : date.format('ha');
@@ -274,7 +279,7 @@ function getEvents(_case) {
 		events = caseEvents.map(originalEvent => {
 			var o = Object.create(originalEvent);
 			o.dateUtc = originalEvent.date;
-			o.date = getFormattedDate(originalEvent.date);
+			o.date = getFormattedShortDateDay(originalEvent.date);
 			o.time = getFormattedTime(originalEvent.date);
 			return o;
 		});
