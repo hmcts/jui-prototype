@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Check your decision {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Check the tribunal’s view {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-xl">Check your decision</h1>
+          <h1 class="govuk-heading-xl">Check the tribunal’s view</h1>
 
           <dl class="app-check-your-answers  app-check-your-answers--short  govuk-!-margin-bottom-6">
 
@@ -42,19 +42,19 @@
 
             <div class="app-check-your-answers__contents">
 
-              <dt class="app-check-your-answers__question">Decision notes</dt>
+              <dt class="app-check-your-answers__question">Preliminary view</dt>
 
               <dd class="app-check-your-answers__answer">{{data['preliminary-decision-notes']}}</dd>
 
               <dd class="app-check-your-answers__change">
-                <a href="/app/cases/{{_case.id}}/pip/decision/preliminary/">Change <span class="govuk-visually-hidden">decision</span></a>
+                <a href="/app/cases/{{_case.id}}/pip/decision/preliminary-advanced/">Change <span class="govuk-visually-hidden">decision</span></a>
               </dd>
 
             </div>
 
           </dl>
 
-          <form method="post" action="/app/cases/{{_case.id}}/pip/decision/preliminary/submit">
+          <form method="post" action="/app/cases/{{_case.id}}/pip/decision/preliminary-advanced/submit">
             {{ govukButton({
               text: 'Submit'
             }) }}

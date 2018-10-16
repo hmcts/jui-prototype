@@ -24,51 +24,51 @@ function checkAndContinue(req, res, config) {
 
     // 2. Taking nutrition
     } else if (config.takingNutrition && isChecked(req, 'dailyliving', 'Taking nutrition')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/taking-nutrition`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/taking-nutrition`);
 
     // 3. Managing therapy or monitoring a health condition
     } else if (config.managingTherapy && isChecked(req, 'dailyliving', 'Managing therapy')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-therapy`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/managing-therapy`);
 
     // 4. Washing and bathing
     } else if (config.washingAndBathing && isChecked(req, 'dailyliving', 'Washing and bathing')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/washing-bathing`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/washing-bathing`);
 
     // 5. Managing toilet needs or incontinence
     } else if (config.managingToilet && isChecked(req, 'dailyliving', 'Managing toilet')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/managing-toilet`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/managing-toilet`);
 
     // 6. Dressing and undressing
     } else if (config.dressingAndUndressing && isChecked(req, 'dailyliving', 'Dressing and undressing')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/dressing-undressing`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/dressing-undressing`);
 
     // 7. Communicating verbally
     } else if (config.communicatingVerbally && isChecked(req, 'dailyliving', 'Communicating verbally')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/communicating-verbally`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/communicating-verbally`);
 
     // 8. Reading and understanding signs, symbols and words
     } else if (config.readingAndUnderstanding && isChecked(req, 'dailyliving', 'Reading signs')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/reading-signs`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/reading-signs`);
 
     // 9. Engaging with other people face to face
     } else if (config.engagingFace && isChecked(req, 'dailyliving', 'Engaging face')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/engaging-face`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/engaging-face`);
 
     // 10. Making budgeting decision
     } else if (config.makingDecisions && isChecked(req, 'dailyliving', 'Making budgeting')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/budgeting-decisions`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/budgeting-decisions`);
 
     // 1. Planning and following journeys
     } else if (config.planningJourneys && isChecked(req, 'mobility', 'Planning journeys')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/planning-journeys`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/planning-journeys`);
 
     // 2. Moving around
     } else if (config.movingAround && isChecked(req, 'mobility', 'Moving around')) {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/moving-around`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/moving-around`);
 
       // Redirect
     } else {
-      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/panel-reasons`);
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/panel-reasons`);
   }
 
 }
@@ -126,11 +126,19 @@ router.get('/app/cases/:id/pip/decision', (req, res) => {
 
 router.post('/app/cases/:id/pip/decision', (req, res) => {
 
-	if(req.body.whatissue === 'Preliminary view') {
-		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary`);
+  if(req.body.whatissue === 'Preliminary view') {
+
+    if(req.params.id == 'SC1231612324') {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced`);
+    } else {
+      res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary`);
+    }
+
 	} else {
-		res.redirect(`/app/cases/${req.params.id}/pip/decision/final`);
-	}
+
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/final`);
+
+  }
 
 });
 
@@ -147,48 +155,66 @@ router.get('/app/cases/:id/pip/decision/preliminary', (req, res) => {
 });
 
 router.post('/app/cases/:id/pip/decision/preliminary', (req, res) => {
-
-  // REMOVED THIS (NO LONGER MVP)
-
-  // if(req.body.awardliving === 'No award' && req.body.awardmobility === 'No award') {
-	// 	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/scores`);
-	// } else {
-	// 	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/set-award-dates`);
-  // }
-
   res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/check`);
-
 });
 
 
-// PRELIMINARY: Set award dates
-router.get('/app/cases/:id/pip/decision/preliminary/set-award-dates', (req, res) => {
+
+
+
+// PRELIMINARY: Preliminary view (advanced)
+router.get('/app/cases/:id/pip/decision/preliminary-advanced', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		_case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/set-award-dates', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/index', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/set-award-dates', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/scores`);
+router.post('/app/cases/:id/pip/decision/preliminary-advanced', (req, res) => {
+
+  if(req.body.awardliving === 'No award' && req.body.awardmobility === 'No award') {
+		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/scores`);
+	} else {
+		res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/set-award-dates`);
+  }
+
+});
+
+
+
+
+
+// PRELIMINARY: Set award dates
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/set-award-dates', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary-advanced/set-award-dates', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/set-award-dates', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/scores`);
 });
 
 
 // PRELIMINARY: Scores
-router.get('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/scores', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
 		_case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/scores', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/scores', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/scores', (req, res) => {
 
   checkAndContinue(req, res, {
 
@@ -212,17 +238,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/scores', (req, res) => {
 
 
 // 1. PRELIMINARY: Preparing food
-router.get('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/preparing-food', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-  res.render('app/case/pip/decision/preliminary/preparing-food', pageObject);
+  res.render('app/case/pip/decision/preliminary-advanced/preparing-food', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/preparing-food', (req, res) => {
 
   checkAndContinue(req, res, {
     // DAILY LIVING
@@ -245,17 +271,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/preparing-food', (req, res)
 
 
 // 2. PRELIMINARY: Taking nutrition
-router.get('/app/cases/:id/pip/decision/preliminary/taking-nutrition', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/taking-nutrition', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/taking-nutrition', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/taking-nutrition', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/taking-nutrition', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/taking-nutrition', (req, res) => {
 
 	checkAndContinue(req, res, {
 		// DAILY LIVING
@@ -277,17 +303,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/taking-nutrition', (req, re
 
 
 // 3. PRELIMINARY: Managing therapy or monitoring a health condition
-router.get('/app/cases/:id/pip/decision/preliminary/managing-therapy', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/managing-therapy', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/managing-therapy', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/managing-therapy', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/managing-therapy', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/managing-therapy', (req, res) => {
 
 	checkAndContinue(req, res, {
 		// DAILY LIVING
@@ -310,17 +336,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/managing-therapy', (req, re
 
 
 // 4. PRELIMINARY: Washing and bathing
-router.get('/app/cases/:id/pip/decision/preliminary/washing-bathing', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/washing-bathing', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/washing-bathing', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/washing-bathing', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/washing-bathing', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/washing-bathing', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -342,17 +368,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/washing-bathing', (req, res
 
 
 // 5. PRELIMINARY: Managing toilet needs or incontinence
-router.get('/app/cases/:id/pip/decision/preliminary/managing-toilet', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/managing-toilet', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/managing-toilet', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/managing-toilet', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/managing-toilet', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/managing-toilet', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -374,17 +400,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/managing-toilet', (req, res
 
 
 // 6. PRELIMINARY: Dressing and undressing
-router.get('/app/cases/:id/pip/decision/preliminary/dressing-undressing', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/dressing-undressing', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/dressing-undressing', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/dressing-undressing', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/dressing-undressing', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/dressing-undressing', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -406,17 +432,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/dressing-undressing', (req,
 
 
 // 7. PRELIMINARY: Communicating verbally
-router.get('/app/cases/:id/pip/decision/preliminary/communicating-verbally', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/communicating-verbally', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/communicating-verbally', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/communicating-verbally', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/communicating-verbally', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/communicating-verbally', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -438,17 +464,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/communicating-verbally', (r
 
 
 // 8. PRELIMINARY: Reading and understanding signs, symbols and words
-router.get('/app/cases/:id/pip/decision/preliminary/reading-signs', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/reading-signs', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/reading-signs', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/reading-signs', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/reading-signs', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/reading-signs', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -470,17 +496,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/reading-signs', (req, res) 
 
 
 // 9. PRELIMINARY: Engaging with other people face to face
-router.get('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/engaging-face', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/engaging-face', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/engaging-face', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/engaging-face', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -502,17 +528,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/engaging-face', (req, res) 
 
 
 // 10. PRELIMINARY: Making budgeting decision
-router.get('/app/cases/:id/pip/decision/preliminary/budgeting-decisions', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/budgeting-decisions', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/budgeting-decisions', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/budgeting-decisions', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/budgeting-decisions', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/budgeting-decisions', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -534,17 +560,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/budgeting-decisions', (req,
 
 
 // 1. PRELIMINARY: Planning and following journeys
-router.get('/app/cases/:id/pip/decision/preliminary/planning-journeys', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/planning-journeys', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/planning-journeys', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/planning-journeys', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/planning-journeys', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/planning-journeys', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -566,17 +592,17 @@ router.post('/app/cases/:id/pip/decision/preliminary/planning-journeys', (req, r
 
 
 // 2. PRELIMINARY: Moving around
-router.get('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/moving-around', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/moving-around', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/moving-around', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) => {
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/moving-around', (req, res) => {
 
 	checkAndContinue(req, res, {
 		preparingFood: false,
@@ -598,34 +624,34 @@ router.post('/app/cases/:id/pip/decision/preliminary/moving-around', (req, res) 
 
 
 // PRELIMINARY: Panel reasons
-router.get('/app/cases/:id/pip/decision/preliminary/panel-reasons', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/panel-reasons', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/panel-reasons', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/panel-reasons', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/panel-reasons', (req, res) => {
-	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/preview-decision`);
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/panel-reasons', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/preview-decision`);
 });
 
 
 // PRELIMINARY: Preview decision
-router.get('/app/cases/:id/pip/decision/preliminary/preview-decision', (req, res) => {
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/preview-decision', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseActions: helpers.getCaseActions(_case),
     _case: _case
 	};
-	res.render('app/case/pip/decision/preliminary/preview-decision', pageObject);
+	res.render('app/case/pip/decision/preliminary-advanced/preview-decision', pageObject);
 });
 
-router.post('/app/cases/:id/pip/decision/preliminary/preview-decision', (req, res) => {
-  res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/decision-submitted`);
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/preview-decision', (req, res) => {
+  res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/decision-submitted`);
 });
 
 
@@ -638,6 +664,18 @@ router.get('/app/cases/:id/pip/decision/preliminary/decision-submitted', (req, r
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/decision-submitted', pageObject);
+});
+
+
+// PRELIMINARY: Decision submitted (advanced)
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/decision-submitted', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseActions: helpers.getCaseActions(_case),
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary-advanced/decision-submitted', pageObject);
 });
 
 
@@ -685,7 +723,6 @@ router.post('/app/cases/:id/pip/decision/final', (req, res) => {
 });
 
 
-
 // FINAL: Check
 router.get('/app/cases/:id/pip/decision/final/check', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -714,7 +751,6 @@ router.get('/app/cases/:id/pip/decision/final/confirmation', (req, res) => {
 });
 
 
-
 // PRELIMINARY: Check
 router.get('/app/cases/:id/pip/decision/preliminary/check', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -730,6 +766,21 @@ router.post('/app/cases/:id/pip/decision/preliminary/submit', (req, res) => {
 });
 
 
+// PRELIMINARY: Check (advanced)
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/check', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary-advanced/check', pageObject);
+});
+
+router.post('/app/cases/:id/pip/decision/preliminary-advanced/submit', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/confirmation`);
+});
+
+
 // PRELIMINARY: Confirmation
 router.get('/app/cases/:id/pip/decision/preliminary/confirmation', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
@@ -737,6 +788,16 @@ router.get('/app/cases/:id/pip/decision/preliminary/confirmation', (req, res) =>
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/confirmation', pageObject);
+});
+
+
+// PRELIMINARY: Confirmation (advanced)
+router.get('/app/cases/:id/pip/decision/preliminary-advanced/confirmation', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		_case: _case
+	};
+	res.render('app/case/pip/decision/preliminary-advanced/confirmation', pageObject);
 });
 
 
