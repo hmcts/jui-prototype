@@ -47,7 +47,7 @@
                   {text: 'Daily living'},
                   {text: data['awardliving']},
                   {
-                    html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary">Change<span class="govuk-visually-hidden"> daily living award for appellant</span></a>',
+                    html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced">Change<span class="govuk-visually-hidden"> daily living award for appellant</span></a>',
                     format: 'numeric'
                   }
                 ],
@@ -55,7 +55,7 @@
                   {text: 'Mobility'},
                   {text: data['awardmobility']},
                   {
-                    html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary">Change<span class="govuk-visually-hidden"> mobility award for appellant</span></a>',
+                    html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced">Change<span class="govuk-visually-hidden"> mobility award for appellant</span></a>',
                     format: 'numeric'
                   }
                 ]
@@ -73,7 +73,7 @@
           {% set additionalReasons = data['additionalReasons'] %}
           <p>{{ additionalReasons | replace('\n', '<br>') | trim | safe }}</p>
 
-          <p><a href="/app/cases/{{_case.id}}/pip/decision/preliminary/panel-reasons">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s view</span></a></p>
+          <p><a href="/app/cases/{{_case.id}}/pip/decision/preliminary-advanced/panel-reasons">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s view</span></a></p>
 
           <h2 class="govuk-heading-m govuk-!-margin-top-6">PIP activities and the descriptors we consider apply to your appeal</h2>
 
@@ -90,7 +90,7 @@
                 {text: 'Needs to use an aid or appliance to be able to prepare or cook a simple meal'},
                 {text: '2'},
                 {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/preparing-food">Change<span class="govuk-visually-hidden"> new score for daily living: preparing food</span></a>',
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/preparing-food">Change<span class="govuk-visually-hidden"> new score for daily living: preparing food</span></a>',
                   format: 'numeric'
                 }
               ],
@@ -99,7 +99,7 @@
                 {text: 'Needs to use an aid or appliance to be able to wash or bathe'},
                 {text: '2'},
                 {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/washing-bathing">Change<span class="govuk-visually-hidden"> new score for daily living: washng and bathing</span></a>',
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/washing-bathing">Change<span class="govuk-visually-hidden"> new score for daily living: washng and bathing</span></a>',
                   format: 'numeric'
                 }
               ],
@@ -108,7 +108,7 @@
                 {text: 'Needs to use an aid or appliance to be able to manage my toilet needs or incontinence'},
                 {text: '2'},
                 {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/managing-toilet">Change<span class="govuk-visually-hidden"> new score for daily living: managing toilet needs or incontinence</span></a>',
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/managing-toilet">Change<span class="govuk-visually-hidden"> new score for daily living: managing toilet needs or incontinence</span></a>',
                   format: 'numeric'
                 }
               ],
@@ -117,7 +117,7 @@
                 {text: 'Needs to use an aid or appliance to be able to dress or undress'},
                 {text: '2'},
                 {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary/dressing-undressing">Change<span class="govuk-visually-hidden"> new score for daily living: dressing and undressing</span></a>',
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/dressing-undressing">Change<span class="govuk-visually-hidden"> new score for daily living: dressing and undressing</span></a>',
                   format: 'numeric'
                 }
               ]

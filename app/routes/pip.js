@@ -20,7 +20,7 @@ function checkAndContinue(req, res, config) {
 
   // 1. Preparing food
   if(config.preparingFood && isChecked(req, 'dailyliving', 'Preparing food')) {
-    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary/preparing-food`);
+    res.redirect(`/app/cases/${req.params.id}/pip/decision/preliminary-advanced/preparing-food`);
 
     // 2. Taking nutrition
     } else if (config.takingNutrition && isChecked(req, 'dailyliving', 'Taking nutrition')) {
