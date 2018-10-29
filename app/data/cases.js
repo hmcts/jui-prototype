@@ -165,21 +165,21 @@ module.exports = [
     events: [
       {
         id: uuid(),
-        date: moment('2017-11-20 13:01'),
-        title: 'New Direct Lodgement Registration',
-        by: 'DLC admin'
+        date: moment('2018-07-30 14:48'),
+        title: 'Appeal created',
+        by: 'David Jones, court administrator'
       },
 
       {
         id: uuid(),
-        date: moment('2017-12-05 09:10'),
-        title: 'Appeal marked as compliant',
-        by: 'Emily Oliver, tribunal case worker'
+        date: moment('2018-07-31 09:15'),
+        title: 'Evidence received',
+        by: 'Susan Nolan, court administrator'
       },
 
       {
         id: uuid(),
-        date: moment('2018-01-25 16:48'),
+        date: moment('2018-08-24 16:48'),
         title: 'Response submitted',
         by: 'DWP appeals officer'
       }
@@ -297,35 +297,21 @@ module.exports = [
     events: [
       {
         id: uuid(),
-        date: moment('2017-11-20 13:01'),
-        title: 'New Direct Lodgement Registration',
-        by: 'DLC admin'
+        date: moment('2018-07-30 14:48'),
+        title: 'Appeal created',
+        by: 'David Jones, court administrator'
       },
 
       {
         id: uuid(),
-        date: moment('2017-11-20 14:21'),
-        title: 'Complex appeal – requires further guidance',
-        by: 'DLC admin'
+        date: moment('2018-07-31 09:15'),
+        title: 'Evidence received',
+        by: 'Susan Nolan, court administrator'
       },
 
       {
         id: uuid(),
-        date: moment('2017-11-20 14:27'),
-        title: 'Interlocutory referral to DJ DeVere',
-        by: 'DLC admin'
-      },
-
-      {
-        id: uuid(),
-        date: moment('2017-12-05 09:10'),
-        title: 'Appeal marked as compliant',
-        by: 'DJ DeVere'
-      },
-
-      {
-        id: uuid(),
-        date: moment('2018-01-25 16:48'),
+        date: moment('2018-08-24 16:48'),
         title: 'Response submitted',
         by: 'DWP appeals officer'
       }
@@ -375,35 +361,21 @@ module.exports = [
     events: [
       {
         id: uuid(),
-        date: moment('2017-11-20 13:01'),
-        title: 'New Direct Lodgement Registration',
-        by: 'DLC admin'
+        date: moment('2018-07-30 14:48'),
+        title: 'Appeal created',
+        by: 'David Jones, court administrator'
       },
 
       {
         id: uuid(),
-        date: moment('2017-11-20 14:21'),
-        title: 'Complex appeal – requires further guidance',
-        by: 'DLC admin'
+        date: moment('2018-07-31 09:15'),
+        title: 'Evidence received',
+        by: 'Susan Nolan, court administrator'
       },
 
       {
         id: uuid(),
-        date: moment('2017-11-20 14:27'),
-        title: 'Interlocutory referral to DJ DeVere',
-        by: 'DLC admin'
-      },
-
-      {
-        id: uuid(),
-        date: moment('2017-12-05 09:10'),
-        title: 'Appeal marked as compliant',
-        by: 'DJ DeVere'
-      },
-
-      {
-        id: uuid(),
-        date: moment('2018-01-25 16:48'),
+        date: moment('2018-08-24 16:48'),
         title: 'Response submitted',
         by: 'DWP appeals officer'
       }
