@@ -68,16 +68,21 @@
 
           </div>
 
-          <h2 class="govuk-heading-m govuk-!-margin-top-8">The reasons for the tribunal’s view</h2>
+          <h2 class="govuk-heading-l govuk-!-margin-top-8">Reasons for the tribunal’s view</h2>
 
           {% set additionalReasons = data['additionalReasons'] %}
-          <p>{{ additionalReasons | replace('\n', '<br>') | trim | safe }}</p>
+          <!--p>{{ additionalReasons | replace('\n', '<br>') | trim | safe }}</p-->
+
+          <p>{{ additionalReasons | trim | safe }}</p>
 
           <p><a href="/app/cases/{{_case.id}}/pip/decision/preliminary-advanced/panel-reasons">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s view</span></a></p>
 
-          <h2 class="govuk-heading-m govuk-!-margin-top-6">PIP activities and the descriptors we consider apply to your appeal</h2>
+          <h2 class="govuk-heading-l govuk-!-margin-top-6">PIP activities and the descriptors we consider apply to your appeal</h2>
 
           {{ govukTable({
+            classes: 'govuk-!-margin-bottom-8 jui-table',
+            caption: 'Daily living',
+            captionClasses: 'govuk-heading-m',
             head: [
               {text: 'Activity'},
               {text: 'Descriptor'},
@@ -102,29 +107,34 @@
                   html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/washing-bathing">Change<span class="govuk-visually-hidden"> new score for daily living: washng and bathing</span></a>',
                   format: 'numeric'
                 }
-              ],
+              ]
+            ]
+          }) }}
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-bottom-8 jui-table',
+            caption: 'Mobility',
+            captionClasses: 'govuk-heading-m',
+            head: [
+              {text: 'Activity'},
+              {text: 'Descriptor'},
+              {text: 'Points'},
+              {text: ''}
+            ],
+            rows: [
               [
-                {text: 'Managing toilet needs or incontinence'},
-                {text: 'Needs to use an aid or appliance to be able to manage my toilet needs or incontinence'},
-                {text: '2'},
+                {text: 'Planning and following journeys'},
+                {text: 'For reasons other than psychological distress, cannot plan the route of a journey'},
+                {text: '8'},
                 {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/managing-toilet">Change<span class="govuk-visually-hidden"> new score for daily living: managing toilet needs or incontinence</span></a>',
-                  format: 'numeric'
-                }
-              ],
-              [
-                {text: 'Dressing and undressing'},
-                {text: 'Needs to use an aid or appliance to be able to dress or undress'},
-                {text: '2'},
-                {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/dressing-undressing">Change<span class="govuk-visually-hidden"> new score for daily living: dressing and undressing</span></a>',
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/planning-journeys">Change<span class="govuk-visually-hidden"> new score for mobility: planning and following journeys</span></a>',
                   format: 'numeric'
                 }
               ]
             ]
           }) }}
 
-          <h2 class="govuk-heading-m govuk-!-margin-top-7">What happens next</h2>
+          <h2 class="govuk-heading-l govuk-!-margin-top-7">What happens next</h2>
 
           <p>You can accept the view or if you feel the view is wrong you can have a face to face hearing.</p>
 

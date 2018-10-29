@@ -31,10 +31,12 @@
             classes: 'govuk-!-margin-bottom-8'
           }) }}
 
+          <h2 class="govuk-heading-l">Activities and descriptors you consider relevant to the appeal</h2>
+
           {{ govukTable({
-            classes: 'govuk-!-margin-bottom-8',
-            caption: 'Activities and descriptors you consider relevant to the appeal',
-            captionClasses: 'govuk-heading-l',
+            classes: 'govuk-!-margin-bottom-8 jui-table',
+            caption: 'Daily living',
+            captionClasses: 'govuk-heading-m',
             head: [
               {text: 'Activity'},
               {text: 'Descriptor'},
@@ -59,22 +61,27 @@
                   html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/washing-bathing">Change<span class="govuk-visually-hidden"> new score for daily living: washng and bathing</span></a>',
                   format: 'numeric'
                 }
-              ],
+              ]
+            ]
+          }) }}
+
+          {{ govukTable({
+            classes: 'govuk-!-margin-bottom-8 jui-table',
+            caption: 'Mobility',
+            captionClasses: 'govuk-heading-m',
+            head: [
+              {text: 'Activity'},
+              {text: 'Descriptor'},
+              {text: 'Points'},
+              {text: ''}
+            ],
+            rows: [
               [
-                {text: 'Managing toilet needs or incontinence'},
-                {text: 'Needs to use an aid or appliance to be able to manage my toilet needs or incontinence'},
-                {text: '2'},
+                {text: 'Planning and following journeys'},
+                {text: 'For reasons other than psychological distress, cannot plan the route of a journey'},
+                {text: '8'},
                 {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/managing-toilet">Change<span class="govuk-visually-hidden"> new score for daily living: managing toilet needs or incontinence</span></a>',
-                  format: 'numeric'
-                }
-              ],
-              [
-                {text: 'Dressing and undressing'},
-                {text: 'Needs to use an aid or appliance to be able to dress or undress'},
-                {text: '2'},
-                {
-                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/dressing-undressing">Change<span class="govuk-visually-hidden"> new score for daily living: dressing and undressing</span></a>',
+                  html: '<a href="/app/cases/'+_case.id+'/pip/decision/preliminary-advanced/planning-journeys">Change<span class="govuk-visually-hidden"> new score for mobility: planning and following journeys</span></a>',
                   format: 'numeric'
                 }
               ]
@@ -86,7 +93,7 @@
             {{ govukTextarea({
               name: 'additionalReasons',
               id: 'additionalReasons',
-              rows: '10',
+              rows: '8',
               attributes: {
                 wrap: 'hard'
               },
