@@ -64,44 +64,50 @@ router.route('/app/cases/:id/fr/more-information')
 
 
 
+
+
 // Automated case type selection via url instead of user selection like in setup (For Bill's automated user testing)
 
-router.route('/divorce')
+router.get('/app/divorce/dashboard', (req, res) => {
 
-  .get((req, res) => {
-    req.session.types = 'divorce';
-    res.redirect('/app/dashboard');
-  })
+  var caseList = req.session.cases;
 
-  .post((req, res) => {
-    res.redirect('/app/dashboard');
-  });
+  req.session.types = 'divorce';
 
 
-router.route('/pip')
+	// Only filter by type if there are some.
+	if(req.session.types) {
+		caseList = caseList.filter(c => req.session.types.indexOf(c.typeId) > -1);
+	}
 
-  .get((req, res) => {
-    req.session.types = 'pip';
-    res.redirect('/app/dashboard');
-  })
+	caseList = caseList.map(function(c) {
 
-  .post((req, res) => {
-    res.redirect('/app/dashboard');
-  });
+    var cells = [];
 
+		cells.push({
+			html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' + (c.urgent ? ' <span class="jui-status  jui-status--urgent  govuk-!-margin-left-1">Urgent</span> ' : '')
+		});
 
-router.route('/fr')
+		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
+		cells.push({ html: helpers.getCaseTypeLabel(c) });
+		cells.push({ html: c.status });
+		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
+		cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 
-  .get((req, res) => {
-    req.session.types = 'fr';
-    res.redirect('/app/dashboard');
-  })
+		return cells;
 
-  .post((req, res) => {
-    res.redirect('/app/dashboard');
-  });
+	});
+
+	var pageObject = {
+		caseList: caseList
+	};
+
+  res.render('app/dashboard', pageObject);
+
+});
 
 // End automated case type
+
 
 
 
