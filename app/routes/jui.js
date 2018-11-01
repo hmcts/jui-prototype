@@ -41,6 +41,71 @@ router.post('/setup', (req, res) => {
 	res.redirect('/app/dashboard');
 });
 
+
+
+router.route('/app/cases/:id/fr/more-information')
+
+  .get((req, res) => {
+    var _case = helpers.getCase(req.session.cases, req.params.id);
+    var pageObject = {
+      casebar: helpers.getCaseBarObject(_case),
+      caseActions: helpers.getCaseActions(_case),
+      backLink: {
+        href: `/app/cases/${_case.id}/fr/decision`
+      },
+      _case: _case
+    };
+    res.render('app/case/fr/decision/more-information', pageObject);
+  })
+
+  .post((req, res) => {
+    res.redirect(`/app/cases/${req.params.id}/fr/check`);
+  });
+
+
+
+// Automated case type selection via url instead of user selection like in setup (For Bill's automated user testing)
+
+router.route('/divorce')
+
+  .get((req, res) => {
+    req.session.types = 'divorce';
+    res.redirect('/app/dashboard');
+  })
+
+  .post((req, res) => {
+    res.redirect('/app/dashboard');
+  });
+
+
+router.route('/pip')
+
+  .get((req, res) => {
+    req.session.types = 'pip';
+    res.redirect('/app/dashboard');
+  })
+
+  .post((req, res) => {
+    res.redirect('/app/dashboard');
+  });
+
+
+router.route('/fr')
+
+  .get((req, res) => {
+    req.session.types = 'fr';
+    res.redirect('/app/dashboard');
+  })
+
+  .post((req, res) => {
+    res.redirect('/app/dashboard');
+  });
+
+// End automated case type
+
+
+
+
 router.get('/app', (req, res) => {
 	res.redirect('/app/dashboard');
 });
