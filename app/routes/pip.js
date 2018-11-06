@@ -96,6 +96,20 @@ router.get('/app/cases/:id/pip', (req, res) => {
 });
 
 
+// Filters
+router.get('/app/cases/:id/pip/filters', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
+		caseActions: helpers.getCaseActions(_case),
+    events: helpers.getEvents(_case),
+    _case: _case
+	};
+	res.render('app/case/pip/filters', pageObject);
+});
+
+
 // Timeline
 router.get('/app/cases/:id/pip/timeline', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);

@@ -107,7 +107,7 @@ html {
 
 
 
-@include govuk-media-query($from: tablet) {
+@include govuk-media-query(tablet) {
 
   .hmcts-page-heading {
     text-align: justify;
@@ -183,4 +183,108 @@ html {
 
 .jui-prose-scope ol {
   @extend %govuk-list--number;
+}
+
+
+
+// Filter
+.filter-grid {
+  overflow: hidden;
+}
+
+.filter-grid__filter {
+
+  @include govuk-media-query(tablet) {
+    float: left;
+    margin-right: 40px;
+    max-width: 385px;
+    min-width: 260px;
+    width: 100%;
+  }
+
+}
+
+.filter-grid__content {
+
+  @include govuk-media-query(tablet) {
+    overflow: hidden;
+  }
+
+}
+
+
+.hmcts-filter {
+  background-color: govuk-colour("white"); // Remove later
+}
+
+
+// Javascript enabled
+
+@include govuk-media-query($until: tablet) {
+
+  .js-enabled .filter-grid__filter {
+    background-color: govuk-colour("white"); // Remove later
+    position: fixed; top: 0; right: 0; bottom: 0;
+    overflow-y: scroll;
+
+    .hmcts-filter {
+      height: 100%;
+    }
+
+  }
+
+}
+
+
+
+
+
+
+// Scrollable table
+.hmcts-table-scrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+
+&:after {
+  background-color: red;
+  content: "";
+  height: 100%;
+  width: 10px;
+  position: sticky;
+  right: 0;
+  display: block;
+}
+
+  .govuk-table__header {
+    white-space: nowrap;
+  }
+
+  .govuk-table__cell {
+    white-space: nowrap;
+  }
+
+}
+
+// Actions bar
+.hmcts-actions-bar {
+  font-size: .1px;
+}
+
+.hmcts-actions-bar__filter {
+  display: inline-block;
+  margin-right: govuk-spacing(4);
+  padding-right: govuk-spacing(4) + 2px; // Takes into account divider width
+  position: relative;
+
+  &::after {
+    content: "";
+    height: 40px;
+    width: 2px;
+    background-color: govuk-colour("grey-3");
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
 }
