@@ -11,9 +11,9 @@
   <main class="govuk-main-wrapper" role="main">
 
     {{ hmctsPageHeaderWithActions({
-      classes: 'govuk-!-margin-bottom-6',
+      classes: 'govuk-!-margin-bottom-7',
       title: {
-        text: 'Your cases'
+        html: '<h1 class="govuk-heading-xl">Your cases</h1>'
       },
       items: [{
         text: 'Get new case'
@@ -130,12 +130,7 @@
 
           <div class="hmcts-actions-bar">
 
-            <div class="hmcts-actions-bar__filter">
-              {{ govukButton({
-                classes: 'hmcts-button--secondary',
-                text: 'Hide filter (4 applied)'
-              }) }}
-            </div>
+            <div class="hmcts-actions-bar__filter"></div>
 
             {{ hmctsMenu({
               items: [{
@@ -345,4 +340,25 @@
 
 </div>
 
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    new FilterMenuButton({
+      mq: '(min-width: 40.0625em)', // this is big screens
+      toggleButton: {
+        container: $('.hmcts-actions-bar__filter'),
+        showText: 'Show filter (4 applied)',
+        hideText: 'Hide filter (4 applied)',
+        classes: 'hmcts-button--secondary'
+      },
+      closeButton: {
+        container: $('.hmcts-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.hmcts-filter')
+      }
+    });
+  </script>
 {% endblock %}

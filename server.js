@@ -93,10 +93,11 @@ utils.addNunjucksFilters(nunjucksAppEnv)
 app.set('view engine', 'html')
 
 // Middleware to serve static assets
-app.use('/public', express.static(path.join(__dirname, '/public')))
-app.use('/assets', express.static(path.join(__dirname, 'node_modules', 'govuk-frontend', 'assets')))
-app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
-app.use('/node_modules/hmcts-frontend', express.static(path.join(__dirname, '/node_modules/@hmcts/frontend')))
+app.use('/public', express.static(path.join(__dirname, '/public')));
+app.use('/assets', express.static(path.join(__dirname, 'node_modules', 'govuk-frontend', 'assets')));
+app.use('/assets', express.static(path.join(__dirname, 'node_modules', '@hmcts', 'frontend', 'assets')));
+app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')));
+app.use('/node_modules/hmcts-frontend', express.static(path.join(__dirname, '/node_modules/@hmcts/frontend')));
 
 // Set up documentation app
 if (useDocumentation) {

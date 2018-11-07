@@ -1,28 +1,43 @@
-function FilterMenu(options) {
-  this.container = $('.filter');
-  this.setupOptions(options);
+/*
+    new FilterMenuButton({
+        mq: '(min-width: 40.0625em)', // this is big screens
+        toggleButton: {
+            container: $('.hmcts-filter-menu'),
+            showText: 'Show filter',
+            hideText: 'Hide filter',
+            classes: 'hmcts-button--secondary'
+        },
+        closeButton: {
+            container: $('.hmcts-filter__header-action'),
+            text: 'Close'
+        },
+        filter: {
+            container: $('.hmcts-filter')
+        }
+    });
+*/
+
+function FilterMenuButton(options) {
+  this.options = options;
+  this.container = this.options.toggleButton.container;
   this.createToggleButton();
   this.setupResponsiveChecks();
+  this.options.filter.container.attr('tabindex', '-1');
 }
 
-FilterMenu.prototype.setupOptions = function(options) {
-  options = options || {};
-  options.mq = options.mq || '(min-width: 50em)';
-  this.options = options;
-};
-
-FilterMenu.prototype.setupResponsiveChecks = function() {
+FilterMenuButton.prototype.setupResponsiveChecks = function() {
   this.mq = window.matchMedia(this.options.mq);
   this.mq.addListener($.proxy(this, 'checkMode'));
   this.checkMode(this.mq);
 };
 
-FilterMenu.prototype.createToggleButton = function() {
-  this.menuButton = $('<button class="filter-button secondaryButton" type="button" aria-haspopup="true" aria-expanded="false">Filter...</button>');
+FilterMenuButton.prototype.createToggleButton = function() {
+  this.menuButton = $('<button class="govuk-button '+this.options.toggleButton.classes+'" type="button" aria-haspopup="true" aria-expanded="false">'+this.options.toggleButton.showText+'</button>');
   this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'));
+  this.options.toggleButton.container.append(this.menuButton);
 };
 
-FilterMenu.prototype.checkMode = function(mq) {
+FilterMenuButton.prototype.checkMode = function(mq) {
   if(mq.matches) {
       this.enableBigMode();
   } else {
@@ -30,48 +45,56 @@ FilterMenu.prototype.checkMode = function(mq) {
   }
 };
 
-FilterMenu.prototype.enableSmallMode = function() {
-  this.container.prepend(this.menuButton);
+FilterMenuButton.prototype.enableBigMode = function() {
+  this.showMenu();
+  this.removeCloseButton();
+};
+
+FilterMenuButton.prototype.enableSmallMode = function() {
   this.hideMenu();
   this.addCloseButton();
 };
 
-FilterMenu.prototype.addCloseButton = function() {
-  var wrapper = $('.filter-wrapper');
-  this.closeButton = $('<button class="filter-close" type="button" aria-label="close filters" aria-hidden="true" focusable="false"><svg viewBox="0 0 10 10"><path d="m7.1 1.4 1.4 1.4-5.6 5.6-1.4-1.4zm-4.2 0l5.6 5.6-1.4 1.4-5.6-5.6z"/></svg></button>');
-  this.closeButton.on('click', $.proxy(this, 'onCloseClick'));
-  wrapper.prepend(this.closeButton);
+FilterMenuButton.prototype.addCloseButton = function() {
+  if(this.options.closeButton) {
+      this.closeButton = $('<button class="hmcts-filter__close" type="button">'+this.options.closeButton.text+'</button>');
+      this.closeButton.on('click', $.proxy(this, 'onCloseClick'));
+      this.options.closeButton.container.append(this.closeButton);
+  }
 };
 
-FilterMenu.prototype.onCloseClick = function() {
+FilterMenuButton.prototype.onCloseClick = function() {
   this.hideMenu();
   this.menuButton.focus();
 };
 
-FilterMenu.prototype.enableBigMode = function() {
-  this.menuButton.detach();
-  this.showMenu();
+FilterMenuButton.prototype.removeCloseButton = function() {
   if(this.closeButton) {
       this.closeButton.remove();
+      this.closeButton = null;
   }
 };
 
-FilterMenu.prototype.hideMenu = function() {
+FilterMenuButton.prototype.hideMenu = function() {
   this.menuButton.attr('aria-expanded', 'false');
+  this.options.filter.container.hide();
+  this.menuButton.text(this.options.toggleButton.showText);
 };
 
-FilterMenu.prototype.showMenu = function() {
+FilterMenuButton.prototype.showMenu = function() {
   this.menuButton.attr('aria-expanded', 'true');
+  this.options.filter.container.show();
+  this.menuButton.text(this.options.toggleButton.hideText);
 };
 
-FilterMenu.prototype.onMenuButtonClick = function() {
+FilterMenuButton.prototype.onMenuButtonClick = function() {
   this.toggle();
-  this.closeButton.focus();
 };
 
-FilterMenu.prototype.toggle = function() {
+FilterMenuButton.prototype.toggle = function() {
   if(this.menuButton.attr('aria-expanded') == 'false') {
       this.showMenu();
+      this.options.filter.container.focus();
   } else {
       this.hideMenu();
   }
