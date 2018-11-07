@@ -156,7 +156,11 @@
 
         <h1 class="govuk-heading-m govuk-!-margin-top-6">Make a decision</h1>
 
-        {% set legendText %}Are you satisfied that <b>{{ petitioner }}</b> is entitled to a decree of divorce? <br><br> Reason: separated for 2 years and consent{% endset %}
+        {% set legendText %}
+          <p>Are you satisfied that <b>{{ petitioner }}</b> is entitled to a decree of divorce on the ground that the marriage has broken down irretrievably?</p>
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Reason</h2>
+          <p class="govuk-!-margin-bottom-0">The applicant and respondent have been separated for two years and both parties consent to a divorce.</p>
+        {% endset %}
 
         <form method="post">
 
