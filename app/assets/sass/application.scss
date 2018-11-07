@@ -66,7 +66,6 @@ html {
 
 
 // Case action alert
-
 .jui-case-action-alert {
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
@@ -152,7 +151,6 @@ html {
 
 
 // Panel (temp)
-
 .panel {
   padding: govuk-spacing(6);
 
@@ -163,13 +161,12 @@ html {
 }
 
 .panel--information {
-  background-color: rgb(238, 247, 255);
+  background-color: gov-colour("white");
 }
 
 
 
 // Prose scope
-
 .jui-prose-scope ul,
 .jui-prose-scope ol {
   @extend %govuk-list;
@@ -188,15 +185,16 @@ html {
 
 
 // Filter
-.filter-grid {
-  overflow: hidden;
+.hmcts-filter-grid {
+  @include govuk-clearfix;
 }
 
-.filter-grid__filter {
 
-  @include govuk-media-query(tablet) {
+.hmcts-filter-grid__filter {
+
+  @include govuk-media-query(desktop) {
     float: left;
-    margin-right: 40px;
+    margin-right: govuk-spacing(7);
     max-width: 385px;
     min-width: 260px;
     width: 100%;
@@ -204,87 +202,97 @@ html {
 
 }
 
-.filter-grid__content {
-
-  @include govuk-media-query(tablet) {
-    overflow: hidden;
-  }
-
-}
-
 
 .hmcts-filter {
+  @include govuk-focusable;
   background-color: govuk-colour("white"); // Remove later
 }
 
+.hmcts-filter__close {
+  @include govuk-focusable;
+}
 
-// Javascript enabled
+// Filters with javascript enabled
+@include govuk-media-query($until: desktop) {
 
-@include govuk-media-query($until: tablet) {
+  .js-enabled .hmcts-filter {
+    outline: 0 none; // Force no outline due to buggy rendering
+  }
 
-  .js-enabled .filter-grid__filter {
+  .js-enabled .hmcts-filter-grid__filter {
     background-color: govuk-colour("white"); // Remove later
     position: fixed; top: 0; right: 0; bottom: 0;
     overflow-y: scroll;
-
-    .hmcts-filter {
-      height: 100%;
-    }
-
+    z-index: 1;
   }
 
 }
-
-
-
-
 
 
 // Scrollable table
+.hmcts-table-scrollable-container {
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 50px;
+    height: 100%;
+    border-radius: 10px 0 0 10px / 50% 0 0 50%;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
+    content:"";
+  }
+
+}
+
+
 .hmcts-table-scrollable {
   overflow-x: auto;
-  overflow-y: hidden;
-  position: relative;
-
-&:after {
-  background-color: red;
-  content: "";
-  height: 100%;
-  width: 10px;
-  position: sticky;
-  right: 0;
-  display: block;
 }
 
-  .govuk-table__header {
-    white-space: nowrap;
-  }
 
-  .govuk-table__cell {
-    white-space: nowrap;
-  }
-
+.hmcts-table-scrollable .govuk-table__header,
+.hmcts-table-scrollable .govuk-table__cell {
+  white-space: nowrap;
 }
+
+
+.hmcts-table-scrollable-container > div::-webkit-scrollbar {
+  height: 10px; // Match GOVUK spacing units
+}
+
+.hmcts-table-scrollable-container > div::-webkit-scrollbar-track {
+  background: govuk-colour("grey-4");
+	box-shadow: 0 0 2px rgba(0,0,0,.15) inset; // Simulate scrollbar look and feel
+}
+
+.hmcts-table-scrollable-container > div::-webkit-scrollbar-thumb {
+  background: govuk-colour("grey-1");
+  border-radius: govuk-spacing(1);
+}
+
 
 // Actions bar
 .hmcts-actions-bar {
-  font-size: .1px;
+  font-size: .1px; // Removes white space
 }
 
 .hmcts-actions-bar__filter {
   display: inline-block;
-  margin-right: govuk-spacing(4);
-  padding-right: govuk-spacing(4) + 2px; // Takes into account divider width
+  margin-right: govuk-spacing(2);
+  padding-right: govuk-spacing(2) + 2px; // Takes into account divider width
   position: relative;
 
-  &::after {
+  &:after {
     content: "";
-    height: 40px;
-    width: 2px;
     background-color: govuk-colour("grey-3");
+    height: 40px;
     position: absolute;
     right: 0;
     top: 0;
+    width: 2px;
   }
 
 }

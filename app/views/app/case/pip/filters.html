@@ -79,9 +79,9 @@
       {% endset %}
 
 
-      <div class="filter-grid">
+      <div class="hmcts-filter-grid">
 
-        <div class="filter-grid__filter">
+        <div class="hmcts-filter-grid__filter">
 
           {{ hmctsFilters({
             heading: {
@@ -126,7 +126,7 @@
 
         </div>
 
-        <div class="filter-grid__content">
+        <div class="hmcts-filter-grid__content">
 
           <div class="hmcts-actions-bar">
 
@@ -144,191 +144,193 @@
 
           </div>
 
-          <div class="hmcts-table-scrollable">
+          <div class="hmcts-table-scrollable-container">
 
-            <div class="scroll"></div>
+            <div class="hmcts-table-scrollable">
 
-            {{ govukTable({
-              firstCellIsHeader: true,
-              head: [
-                {text: 'Case number'},
-                {text: 'Parties'},
-                {text: 'Type'},
-                {text: 'Decision needed on'},
-                {text: 'Case received'},
-                {text: 'Date of last event'}
-              ],
-              rows: [
-                [
-                  {html: '<a href="#">FR1231612322</a>'},
-                  {html: 'John Smith v Jane Smith'},
-                  {text: 'Financial remedy'},
-                  {html: '<a href="#">Draft consent order</a>'},
-                  {text: '20 Nov 2017'},
-                  {text: '25 Jan 2018'}
+              {{ govukTable({
+                firstCellIsHeader: true,
+                head: [
+                  {text: 'Case number'},
+                  {text: 'Parties'},
+                  {text: 'Type'},
+                  {text: 'Decision needed on'},
+                  {text: 'Case received'},
+                  {text: 'Date of last event'}
                 ],
-                [
-                  {html: '<a href="#">SC1231612322</a>'},
-                  {html: 'Warren Sutton v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '20 Nov 2017'},
-                  {text: '25 Jan 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612323</a>'},
-                  {html: 'Alan Jones v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612324</a>'},
-                  {html: 'Jennifer Langley v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00150</a>'},
-                  {html: 'Susan Francis v David Francis'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00153</a>'},
-                  {html: 'John Smith v Jane Smith'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00156</a>'},
-                  {html: 'Margaret Blake v William Blake'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">FR1231612322</a>'},
-                  {html: 'John Smith v Jane Smith'},
-                  {text: 'Financial remedy'},
-                  {html: '<a href="#">Draft consent order</a>'},
-                  {text: '20 Nov 2017'},
-                  {text: '25 Jan 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612322</a>'},
-                  {html: 'Warren Sutton v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '20 Nov 2017'},
-                  {text: '25 Jan 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612323</a>'},
-                  {html: 'Alan Jones v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612324</a>'},
-                  {html: 'Jennifer Langley v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00150</a>'},
-                  {html: 'Susan Francis v David Francis'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00153</a>'},
-                  {html: 'John Smith v Jane Smith'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00156</a>'},
-                  {html: 'Margaret Blake v William Blake'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">FR1231612322</a>'},
-                  {html: 'John Smith v Jane Smith'},
-                  {text: 'Financial remedy'},
-                  {html: '<a href="#">Draft consent order</a>'},
-                  {text: '20 Nov 2017'},
-                  {text: '25 Jan 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612322</a>'},
-                  {html: 'Warren Sutton v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '20 Nov 2017'},
-                  {text: '25 Jan 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612323</a>'},
-                  {html: 'Alan Jones v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">SC1231612324</a>'},
-                  {html: 'Jennifer Langley v DWP'},
-                  {text: 'PIP'},
-                  {html: '<a href="#">Appellant’s answers</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00150</a>'},
-                  {html: 'Susan Francis v David Francis'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00153</a>'},
-                  {html: 'John Smith v Jane Smith'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
-                ],
-                [
-                  {html: '<a href="#">BV18D00156</a>'},
-                  {html: 'Margaret Blake v William Blake'},
-                  {text: 'Divorce'},
-                  {html: '<a href="#">Decree nisi application</a>'},
-                  {text: '9 May 2018'},
-                  {text: '9 May 2018'}
+                rows: [
+                  [
+                    {html: '<a href="#">FR1231612322</a>'},
+                    {html: 'John Smith v Jane Smith'},
+                    {text: 'Financial remedy'},
+                    {html: '<a href="#">Draft consent order</a>'},
+                    {text: '20 Nov 2017'},
+                    {text: '25 Jan 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612322</a>'},
+                    {html: 'Warren Sutton v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '20 Nov 2017'},
+                    {text: '25 Jan 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612323</a>'},
+                    {html: 'Alan Jones v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612324</a>'},
+                    {html: 'Jennifer Langley v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00150</a>'},
+                    {html: 'Susan Francis v David Francis'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00153</a>'},
+                    {html: 'John Smith v Jane Smith'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00156</a>'},
+                    {html: 'Margaret Blake v William Blake'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">FR1231612322</a>'},
+                    {html: 'John Smith v Jane Smith'},
+                    {text: 'Financial remedy'},
+                    {html: '<a href="#">Draft consent order</a>'},
+                    {text: '20 Nov 2017'},
+                    {text: '25 Jan 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612322</a>'},
+                    {html: 'Warren Sutton v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '20 Nov 2017'},
+                    {text: '25 Jan 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612323</a>'},
+                    {html: 'Alan Jones v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612324</a>'},
+                    {html: 'Jennifer Langley v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00150</a>'},
+                    {html: 'Susan Francis v David Francis'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00153</a>'},
+                    {html: 'John Smith v Jane Smith'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00156</a>'},
+                    {html: 'Margaret Blake v William Blake'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">FR1231612322</a>'},
+                    {html: 'John Smith v Jane Smith'},
+                    {text: 'Financial remedy'},
+                    {html: '<a href="#">Draft consent order</a>'},
+                    {text: '20 Nov 2017'},
+                    {text: '25 Jan 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612322</a>'},
+                    {html: 'Warren Sutton v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '20 Nov 2017'},
+                    {text: '25 Jan 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612323</a>'},
+                    {html: 'Alan Jones v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">SC1231612324</a>'},
+                    {html: 'Jennifer Langley v DWP'},
+                    {text: 'PIP'},
+                    {html: '<a href="#">Appellant’s answers</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00150</a>'},
+                    {html: 'Susan Francis v David Francis'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00153</a>'},
+                    {html: 'John Smith v Jane Smith'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ],
+                  [
+                    {html: '<a href="#">BV18D00156</a>'},
+                    {html: 'Margaret Blake v William Blake'},
+                    {text: 'Divorce'},
+                    {html: '<a href="#">Decree nisi application</a>'},
+                    {text: '9 May 2018'},
+                    {text: '9 May 2018'}
+                  ]
                 ]
-              ]
-            }) }}
+              }) }}
+            </div>
+
           </div>
 
         </div>
