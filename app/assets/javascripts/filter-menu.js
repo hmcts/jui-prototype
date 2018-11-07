@@ -1,28 +1,12 @@
-/*
-    new FilterMenuButton({
-        mq: '(min-width: 40.0625em)', // this is big screens
-        toggleButton: {
-            container: $('.hmcts-filter-menu'),
-            showText: 'Show filter',
-            hideText: 'Hide filter',
-            classes: 'hmcts-button--secondary'
-        },
-        closeButton: {
-            container: $('.hmcts-filter__header-action'),
-            text: 'Close'
-        },
-        filter: {
-            container: $('.hmcts-filter')
-        }
-    });
-*/
-
 function FilterMenuButton(options) {
   this.options = options;
   this.container = this.options.toggleButton.container;
   this.createToggleButton();
   this.setupResponsiveChecks();
   this.options.filter.container.attr('tabindex', '-1');
+  if(this.options.startHidden) {
+    this.hideMenu();
+  }
 }
 
 FilterMenuButton.prototype.setupResponsiveChecks = function() {
