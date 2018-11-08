@@ -235,6 +235,7 @@ html {
 
   @include govuk-media-query($until: desktop) {
     clear: both; // Fixes render bug
+    // width: 100% // Fixes render bug
   }
 
   &:after {
@@ -252,8 +253,9 @@ html {
 
 
 .hmcts-filter-grid__content {
-  @include govuk-clearfix;
-  width: 100%;
+  // @include govuk-clearfix;
+  // width: 100%;
+  overflow: hidden;
 }
 
 
