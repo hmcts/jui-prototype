@@ -70,51 +70,56 @@
                 name: 'rejectsub',
                 fieldset: {
                   legend: {
-                    text: 'Please explain:',
+                    text: 'Information required',
                     classes: 'govuk-fieldset__legend--m'
                   }
                 },
                 items: [
                   {
-                    html: 'what each party’s income will be, if the order is approved',
-                    value: 'what each party’s income will be, if the order is approved',
-                    checked: (checked('rejectsub', 'what each party’s income will be, if the order is approved') == 'checked')
+                    html: 'The parties’ income positions if the order were to take effect',
+                    value: 'the parties’ income positions if the order were to take effect',
+                    checked: (checked('rejectsub', 'the parties’ income positions if the order were to take effect') == 'checked')
                   },
                   {
-                    html: 'what each party’s pension will be, if the order is approved',
-                    value: 'what each party’s pension will be, if the order is approved',
-                    checked: (checked('rejectsub', 'what each party’s pension will be, if the order is approved') == 'checked')
+                    html: 'The parties’ capital positions if the order were to take effect',
+                    value: 'the parties’ capital positions if the order were to take effect',
+                    checked: (checked('rejectsub', 'the parties’ capital positions if the order were to take effect') == 'checked')
                   },
                   {
-                    html: 'what each party’s capital position will be, if the order is approved',
-                    value: 'what each party’s capital position will be, if the order is approved',
+                    html: 'The parties’ housing needs and whether they are met by the order',
+                    value: 'the parties’ housing needs and whether they are met by the order',
+                    checked: (checked('rejectsub', 'the parties’ housing needs and whether they are met by the order') == 'checked')
+                  },
+                  {
+                    html: 'The justification for departure from equality of capital',
+                    value: 'the justification for departure from equality of capital',
+                    checked: (checked('rejectsub', 'the justification for departure from equality of capital') == 'checked')
+                  },
+                  {
+                    html: 'The parties’ pension provision if the order were to take effect',
+                    value: 'the parties’ pension provision if the order were to take effect',
+                    checked: (checked('rejectsub', 'the parties’ pension provision if the order were to take effect') == 'checked')
+                  },
+                  {
+                    html: 'The children’s housing needs and whether they are met by the order',
+                    value: 'the children’s housing needs and whether they are met by the order',
+                    checked: (checked('rejectsub', 'the children’s housing needs and whether they are met by the order') == 'checked')
+                  },
+                  {
+                    html: 'The net effect of the order',
+                    value: 'the net effect of the order',
+                    checked: (checked('rejectsub', 'the net effect of the order') == 'checked')
+                  },
+                  {
+                    html: 'A breakdown of the pension and property values',
+                    value: 'a breakdown of the pension and property values as it’s not possible to understand the values of what each party will receive',
                     hint: {
-                      text: 'In other words, the total of all assets, savings and investments minus all loans or overdrafts (but not mortgages)'
+                      text: '(as it’s not possible to understand the values of what each party will receive)'
                     },
-                    checked: (checked('rejectsub', 'what each party’s capital position will be, if the order is approved') == 'checked')
+                    checked: (checked('reject','a breakdown of the pension and property values as it’s not possible to understand the values of what each party will receive') == 'checked')
                   },
                   {
-                    html: 'the reasons why assets have not been split equally',
-                    value: 'the reasons why assets have not been split equally',
-                    checked: (checked('rejectsub', 'the reasons why assets have not been split equally') == 'checked')
-                  },
-                  {
-                    html: 'the parties and children’s housing needs, and whether they are met by the order',
-                    value: 'the parties and children’s housing needs, and whether they are met by the order',
-                    checked: (checked('rejectsub', 'the parties and children’s housing needs, and whether they are met by the order') == 'checked')
-                  },
-                  {
-                    html: 'what each property is currently worth',
-                    value: 'what each property is currently worth',
-                    checked: (checked('rejectsub', 'what each property is currently worth') == 'checked')
-                  },
-                  {
-                    html: 'what each pension fund is currently worth',
-                    value: 'what each pension fund is currently worth',
-                    checked: (checked('rejectsub', 'what each pension fund is currently worth') == 'checked')
-                  },
-                  {
-                    html: 'other',
+                    html: 'Other',
                     value: 'other',
                     checked: (checked('rejectsub', 'other') == 'checked'),
                     conditional: {
@@ -164,9 +169,9 @@
                   checked: (checked('reject','The D81 form is incomplete') == 'checked')
                 },
                 {
-                  html: 'The pension annex is not complete or not attached',
-                  value: 'The pension annex is not complete or not attached',
-                  checked: (checked('reject','The pension annex is not complete or not attached') == 'checked')
+                  html: 'The pension annex was not attached',
+                  value: 'The pension annex was not attached',
+                  checked: (checked('reject','The pension annex was not attached') == 'checked')
                 },
                 {
                   html: 'It’s not clear if the applicant has taken independent legal advice',
