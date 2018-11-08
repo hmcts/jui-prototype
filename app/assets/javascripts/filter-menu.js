@@ -10,7 +10,7 @@ function FilterMenuButton(options) {
 }
 
 FilterMenuButton.prototype.setupResponsiveChecks = function() {
-  this.mq = window.matchMedia(this.options.mq);
+  this.mq = window.matchMedia(this.options.bigModeMediaQuery);
   this.mq.addListener($.proxy(this, 'checkMode'));
   this.checkMode(this.mq);
 };
