@@ -79,11 +79,11 @@
       {% endset %}
 
 
-      <div class="hmcts-filter-grid">
+      <div class="hmcts-filter-layout">
 
-        <div class="hmcts-filter-grid__filter">
+        <div class="hmcts-filter-layout__filter">
 
-          {{ hmctsFilters({
+          {{ hmctsFilter({
             heading: {
             text: 'Filter'
             },
@@ -126,11 +126,11 @@
 
         </div>
 
-        <div class="hmcts-filter-grid__content">
+        <div class="hmcts-filter-layout__content">
 
-          <div class="hmcts-actions-bar">
+          <div class="hmcts-action-bar">
 
-            <div class="hmcts-actions-bar__filter"></div>
+            <div class="hmcts-action-bar__filter"></div>
 
             {{ hmctsMenu({
               items: [{
@@ -346,11 +346,11 @@
 
 {% block page_scripts %}
 <script>
-    new FilterMenuButton({
+    new HMCTSFrontend.FilterToggleButton({
       bigModeMediaQuery: '(min-width: 48.063em)',
       startHidden: true,
       toggleButton: {
-        container: $('.hmcts-actions-bar__filter'),
+        container: $('.hmcts-action-bar__filter'),
         showText: 'Show filter',
         hideText: 'Hide filter',
         classes: 'hmcts-button--secondary'
