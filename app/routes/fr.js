@@ -134,6 +134,21 @@ router.route('/app/cases/:id/fr/history')
 
 
 
+// Upload new item
+router.route('/app/cases/:id/fr/upload-new-item')
+
+  .get((req, res) => {
+    var _case = helpers.getCase(req.session.cases, req.params.id);
+    var pageObject = {
+      _case: _case,
+      casebar: helpers.getCaseBarObject(_case),
+      caseActions: helpers.getCaseActions(_case)
+    };
+    res.render('app/case/fr/upload-new-item', pageObject);
+  });
+
+
+
 // Decision
 router.route('/app/cases/:id/fr/decision')
 
