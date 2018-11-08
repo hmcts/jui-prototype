@@ -26,7 +26,17 @@
         items: caseNavItems
       }) }}
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Case file</h1>
+      {{ hmctsPageHeaderWithActions({
+        classes: 'govuk-!-margin-bottom-5',
+        title: {
+          html: '<h1 class="govuk-heading-xl">Case file</h1>'
+        },
+        items: [{
+          classes: 'hmcts-button--secondary',
+          text: 'Upload new item',
+          href: '/app/cases/'+_case.id+'/fr/upload-new-item'
+        }]
+      }) }}
 
     </div>
 
