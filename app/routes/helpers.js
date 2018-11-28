@@ -11,7 +11,7 @@ function getPartiesLineCasebar(_case) {
 			return '<b>' + party.firstName + ' ' + party.lastName + '</b>';
 		}
 
-	}).join(' v ');
+	}).join(' and ');
 }
 
 
