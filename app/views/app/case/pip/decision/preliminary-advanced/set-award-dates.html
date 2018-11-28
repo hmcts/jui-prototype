@@ -34,16 +34,25 @@
                 fieldset: {
                   legend: {
                     text: 'End date',
-                    classes: 'govuk-fieldset__legend--m govuk-visually-hidden'
+                    classes: 'govuk-fieldset__legend--m'
                   }
                 },
                 hint: {
                   text: 'For example, 12 4 2019'
                 },
                 items: [
-                  {name: 'day'},
-                  {name: 'month'},
-                  {name: 'year'}
+                {
+                  "name": "day",
+                  "classes": "govuk-input--width-2"
+                  },
+                  {
+                  "name": "month",
+                  "classes": "govuk-input--width-2"
+                  },
+                  {
+                  "name": "year",
+                  "classes": "govuk-input--width-4"
+                  }
                 ]
               }) }}
             {% endset -%}
@@ -61,9 +70,18 @@
                 text: 'For example, 4 9 2018'
               },
               items: [
-                {name: 'day'},
-                {name: 'month'},
-                {name: 'year'}
+              {
+                "name": "day",
+                "classes": "govuk-input--width-2"
+                },
+                {
+                "name": "month",
+                "classes": "govuk-input--width-2"
+                },
+                {
+                "name": "year",
+                "classes": "govuk-input--width-4"
+                }
               ]
             }) }}
 
