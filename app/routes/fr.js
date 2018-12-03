@@ -595,6 +595,24 @@ router.route('/app/cases/:id/fr/decision-confirmation')
     res.render('app/case/fr/decision/confirmation', pageObject);
   });
 
+router.route('/app/cases/:id/fr/reserve')
+  .get((req, res) => {
+    var _case = helpers.getCase(req.session.cases, req.params.id);
+    var pageObject = {
+      _case: _case,
+      casebar: helpers.getCaseBarObject(_case)
+    };
+    res.render('app/case/fr/reserve/index', pageObject);
+  });
 
+router.route('/app/cases/:id/fr/reserve/confirmation')
+  .get((req, res) => {
+    var _case = helpers.getCase(req.session.cases, req.params.id);
+    var pageObject = {
+      _case: _case,
+      casebar: helpers.getCaseBarObject(_case)
+    };
+    res.render('app/case/fr/reserve/confirmation', pageObject);
+  });
 
 module.exports = router;

@@ -40,70 +40,41 @@ html {
 
 
 .jui-case-action-alert {
-  background-color: govuk-colour("blue");
-  color: govuk-colour("white");
+  border: govuk-spacing(1) solid govuk-colour("blue");
+  font-size: 0;
   margin-bottom: govuk-spacing(6);
-  padding: govuk-spacing(4);
+  padding: govuk-spacing(2);
 }
 
 .jui-case-action-alert__heading {
-  color: inherit;
+
 }
 
 .jui-case-action-alert__content {
-  color: inherit;
+
 
   p:last-child {
     margin-bottom: 0;
   }
 
 }
-
-.jui-case-action-alert__link:link,
-.jui-case-action-alert__link:visited {
-  color: govuk-colour("white");
-}
-
-
-// Case action alert
-.jui-case-action-alert {
-  background-color: govuk-colour("blue");
-  color: govuk-colour("white");
-  margin-bottom: govuk-spacing(6);
-  padding: govuk-spacing(4);
-}
-
-
 .jui-case-action-alert__heading {
   @include govuk-font(
     $size: 24,
     $weight: bold
   );
-  color: inherit;
   margin-bottom: govuk-spacing(2);
   margin-top: 0;
 }
 
 
 .jui-case-action-alert__content {
-  color: inherit;
 
   p:last-child {
     margin-bottom: 0;
   }
 
 }
-
-
-.jui-case-action-alert__link:link {
-  color: govuk-colour("white");
-}
-
-
-.jui-case-action-alert__link:focus {
-  color: govuk-colour("black");
-}
-
 
 
 @include govuk-media-query(tablet) {
