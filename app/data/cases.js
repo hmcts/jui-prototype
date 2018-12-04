@@ -142,7 +142,8 @@ module.exports = [
     }],
     linkedCases: [{
       type: 'Divorce',
-      id: 'BV18D00153'
+      id: 'BV18D00153',
+      parties: 'John Smith and Jane Smith'
     }]
   },
 
@@ -465,7 +466,8 @@ module.exports = [
     typeId: types.divorce.id,
     linkedCases: [{
       type: 'Financial remedy',
-      id: 'FR1231612322'
+      id: 'FR1231612322',
+      parties: 'John Smith and Jane Smith'
     }],
 
     petitioner: [{
@@ -550,7 +552,8 @@ module.exports = [
 
     linkedCases: [{
       type: 'Financial remedy',
-      id: 'FR1231612322'
+      id: 'FR1231612322',
+      parties: 'John Smith and Jane Smith'
     }],
 
     petitioner: [{

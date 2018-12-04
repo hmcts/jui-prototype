@@ -164,6 +164,11 @@ function getCaseNavItems(_case, id) {
 					href: `/app/cases/${_case.id}/fr/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
+				},
+				{
+					href: `/app/cases/${_case.id}/linked-cases`,
+					text: 'Linked cases',
+					active: id === 'linked-cases'
 				}
 			];
 		case 'divorce':
@@ -301,6 +306,16 @@ function getEvents(_case) {
 	return events;
 }
 
+function getLinkedCases(_case) {
+	return _case.linkedCases.map(linkedCase => {
+		var o = {
+			id: linkedCase.id,
+			type: linkedCase.type,
+			parties: linkedCase.parties
+		};
+		return o;
+	});
+}
 
 exports.getCaseBarObject = getCaseBarObject;
 
@@ -324,3 +339,4 @@ exports.getFormattedTime = getFormattedTime;
 exports.getRecentEvents = getRecentEvents;
 exports.getEvents = getEvents;
 exports.getCaseNavItems = getCaseNavItems;
+exports.getLinkedCases = getLinkedCases;
