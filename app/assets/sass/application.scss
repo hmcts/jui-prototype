@@ -38,27 +38,14 @@ html {
   max-width: 833px;
 }
 
-
-.jui-case-action-alert {
+.jui-banner {
   border: govuk-spacing(1) solid govuk-colour("blue");
   font-size: 0;
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(2);
 }
 
-.jui-case-action-alert__heading {
-
-}
-
-.jui-case-action-alert__content {
-
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-}
-.jui-case-action-alert__heading {
+.jui-banner__heading {
   @include govuk-font(
     $size: 24,
     $weight: bold
@@ -67,15 +54,11 @@ html {
   margin-top: 0;
 }
 
-
-.jui-case-action-alert__content {
-
+.jui-banner {
   p:last-child {
     margin-bottom: 0;
   }
-
 }
-
 
 @include govuk-media-query(tablet) {
 

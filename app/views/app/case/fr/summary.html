@@ -30,11 +30,9 @@
 
   <main class="govuk-main-wrapper" role="main">
 
-    <div class="jui-case-action-alert">
-      <h2 class="jui-case-action-alert__heading">This case has been reassigned to you by Jane Doe</h2>
-      <div class="jui-case-action-alert__content">
-        <p><a class="jui-case-action-alert__link" href="/app/cases/{{_case.id}}/documents/">Dismiss</a></p>
-      </div>
+    <div class="jui-banner">
+      <h2 class="jui-banner__heading">This case has been reassigned to you by Jane Doe</h2>
+      <p><a href="/app/cases/{{_case.id}}/documents/">Dismiss</a></p>
     </div>
 
     {{ hmctsSubNavigation({
