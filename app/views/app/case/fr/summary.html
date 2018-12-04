@@ -30,10 +30,14 @@
 
   <main class="govuk-main-wrapper" role="main">
 
-    <div class="jui-banner">
-      <h2 class="jui-banner__heading">This case has been reassigned to you by Jane Doe</h2>
+    {% set bannerHtml %}
+      <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
       <p><a href="#">Dismiss</a></p>
-    </div>
+    {% endset %}
+
+    {{ hmctsBanner({
+      html: bannerHtml
+    }) }}
 
     {{ hmctsSubNavigation({
       label: 'Case navigation',
