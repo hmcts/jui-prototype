@@ -18,3 +18,15 @@
 
 <!-- Other -->
 {% if useAutoStoreData %}<script src="/public/javascripts/auto-store-data.js"></script>{% endif %}
+
+<script>
+  new HMCTSFrontend.SearchToggleButton({
+    toggleButton: {
+      container: $('.hmcts-search-toggle__toggle'),
+      text: 'Find case'
+    },
+    search: {
+      container: $('.hmcts-search')
+    }
+  });
+</script>

@@ -29,6 +29,8 @@
 {%- from "primary-navigation/macro.njk" import hmctsPrimaryNavigation %}
 {%- from "sub-navigation/macro.njk" import hmctsSubNavigation %}
 {%- from "banner/macro.njk" import hmctsBanner %}
+{%- from "search/macro.njk" import hmctsSearch %}
+{%- from "pagination/macro.njk" import hmctsPagination %}
 
 {%- from "status/macro.njk" import juiStatus %}
 {%- from "information-panel/macro.njk" import juiInformationPanel %}
@@ -82,7 +84,7 @@
     {% endblock -%}
 
     {%- block header %}
-    {% include "includes/header.html" %}
+      {% include "includes/header.html" %}
     {% endblock -%}
 
     {%- block content %}{% endblock -%}

@@ -1,3 +1,30 @@
+{% set toggleSearchHtml %}
+  <div class="hmcts-search-toggle">
+    <div class="hmcts-search-toggle__toggle"></div>
+    <div class="hmcts-search-toggle__search">
+      {{ hmctsSearch({
+        action: '/app/search-results',
+        classes: 'hmcts-search--ondark hmcts-search--toggle hmcts-hidden',
+        input: {
+          id: 'search2',
+          name: 'search2'
+        },
+        label: {
+          classes: 'govuk-visually-hidden',
+          text: 'Search'
+        },
+        hint: {
+          text: 'Enter case number or party name.'
+        },
+        button: {
+          text: 'Search'
+        }
+      }) }}
+    </div>
+  </div>
+{% endset %}
+
+
 {% if pageID == "Signin" %}
 
   {{ hmctsGlobalHeader({
@@ -9,11 +36,7 @@
 
   }) }}
 
-{% endif %}
-
-
-{% if pageID == "Your cases" %}
-
+{% else %}
   {{ hmctsGlobalHeader({
 
     service: {
@@ -37,39 +60,9 @@
     items: [{
       text: 'Your cases',
       href: '/app/dashboard',
-      active: true
-    }]
+      active: pageID == 'your-cases'
+    }],
+    searchHtml: toggleSearchHtml
   }) }}
-
 {% endif %}
 
-
-{% if (pageID != "Your cases") and (pageID != "Signin") %}
-
-  {{ hmctsGlobalHeader({
-
-    service: {
-      name: serviceName,
-      url: '/app/dashboard'
-    },
-
-    navigation: {
-      label: 'Account navigation',
-      items: [{
-        text: 'Sign out',
-        href: '/sign-out'
-      }]
-    }
-
-  }) }}
-
-  {{ hmctsPrimaryNavigation({
-    label: 'Primary navigation',
-    classes: 'govuk-!-margin-bottom-0',
-    items: [{
-      text: 'Your cases',
-      href: '/app/dashboard'
-    }]
-  }) }}
-
-{% endif %}
