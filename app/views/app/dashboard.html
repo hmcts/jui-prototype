@@ -18,7 +18,15 @@
         }) }}
     {% endif %}
 
-    <h1 class="govuk-heading-xl">Your cases</h1>
+    {{ hmctsPageHeaderWithActions({
+      title: {
+        html: '<h1 class="govuk-heading-xl">Your cases</h1>'
+      },
+      items: [{
+        text: 'Get new case',
+        href: './get-new-case'
+      }]
+    }) }}
 
     {{ govukTable({
         firstCellIsHeader: true,
@@ -31,11 +39,6 @@
           {text: 'Date of last event'}
         ],
         rows: caseList
-      }) }}
-
-      {{ govukButton({
-        text: 'Get new case',
-        href: './get-new-case'
       }) }}
 
   </main>
