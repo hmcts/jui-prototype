@@ -40,16 +40,37 @@
 
     </div>
 
+    <div class="jui-toolbar">
+      <div class="jui-toolbar__container">
+        <div class="jui-toolbar__section1">
+          <button class="jui-toolbar__button jui-toolbar__button--items">Files</button>
+          <div class="jui-toolbar__menu">
+            <button class="jui-toolbar__menu-button jui-toolbar__menu-button--view">View</button>
+            <div class="jui-toolbar__menu-content js-hidden">
+              <button class="jui-toolbar__menu-item">Show comments</button>
+              <button class="jui-toolbar__menu-item">Show rotate controls</button>
+              <button class="jui-toolbar__menu-item">Show document outline</button>
+            </div>
+          </div>
+        </div>
+        <div class="jui-toolbar__section2">
+          <button class="jui-toolbar__button">Upload</button>
+          <button class="jui-toolbar__button">Search</button>
+        </div>
+      </div>
+    </div>
+
+
     <div class="jui-cf">
 
-      <div class="jui-cf__toolbar" role="toolbar">
+      <!-- <div class="jui-cf__toolbar" role="toolbar">
 
         <div class="jui-cf__toolbar-container">
           <button class="jui-cf__toolbar-button jui-cf__toolbar-button--items" type="button" aria-controls="files">All items</button>
           <button class="jui-cf__toolbar-button jui-cf__toolbar-button--comments" type="button" aria-controls="comments">Comments</button>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="jui-cf__window">
 
@@ -255,5 +276,6 @@
   <script>
     new Casefile($('.jui-cf'));
     new Tree($('.jui-tree'));
+    new Toolbar();
   </script>
 {% endblock %}
