@@ -187,7 +187,9 @@
 
 
 .jui-cf__document-page {
-  @include aspect-ratio(1,1.414); // True A4 aspect ratio
+  // @include aspect-ratio(1,1.414); // True A4 aspect ratio
+  position: relative;
+  overflow: scroll;
   background: govuk-colour(white);
   box-sizing: border-box;
   box-shadow: 0 0 1px 0 #D1D1D1, 0 0 3px 0 #CCCCCC;
@@ -208,10 +210,112 @@
 
   img {
     max-width: 100%;
+    display: block;
+  }
+
+  .jui-cf__rotate-button {
+    @include govuk-font($size: 19, $line-height: 1);
+    background-color: govuk-colour("white");
+    border: 0 none;
+    color: govuk-colour("black");
+    cursor: pointer;
+
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+
+    padding-top: 16px;
+    padding-bottom: 15px;
+
+    margin: 0;
+    padding-right: 15px;
+    border-left: 1px solid #DEE0E2;
+    border-bottom: 1px solid #DEE0E2;
+
+
+    background-image: url(#{$jui-assets-path}icon-casefile-rotate.svg);
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+
+
+    // Fix unwanted button padding in Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+
+    &:focus {
+      outline: 3px solid $govuk-focus-colour;
+      outline-offset: -1px;
+    }
+
+
+    &:focus::after {
+      content: none;
+    }
+
+
+    &:hover {
+      background-color: govuk-colour("grey-4");
+    }
+
   }
 
 }
 
+
+.jui-cf--show-rotate-controls {
+  .jui-cf__document-page {
+    .jui-cf__rotate-button {
+      display: block;
+    }
+  }
+}
+
+
+
+.jui-cf__document-page--rotate-90,
+.jui-cf__document-page--rotate-270 {
+  .jui-cf__document-page-scroll {
+    overflow: scroll;
+  }
+
+  .jui-cf__document-page-inner {
+    height: 803px;
+    width: 1135px;
+  }
+}
+
+.jui-cf__document-page--rotate-90 img {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg) translate(-300px);
+  margin-right: 400px;
+  margin-left: 400px;
+}
+
+.jui-cf__document-page--rotate-180 img {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.jui-cf__document-page--rotate-270 img {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg) translate(300px);
+  margin-right: 400px;
+  margin-left: 400px;
+}
 
 .jui-cf__document-comments {
   margin-bottom: 30px;

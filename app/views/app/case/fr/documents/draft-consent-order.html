@@ -255,8 +255,22 @@
             </div>
 
             <div class="jui-cf__document-pages">
-              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p1.jpg" alt="Draft consent order page 1"></div>
-              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p2.jpg" alt="Draft consent order page 2"></div>
+              <div class="jui-cf__document-page">
+                <button class="jui-cf__rotate-button">Rotate</button>
+                <div class="jui-cf__document-page-scroll">
+                    <div class="jui-cf__document-page-inner">
+                        <img src="/public/images/casefile/draft-consent-order-p1.jpg" alt="Draft consent order page 1">
+                    </div>
+                </div>
+              </div>
+              <div class="jui-cf__document-page">
+                <button class="jui-cf__rotate-button">Rotate</button>
+                <div class="jui-cf__document-page-scroll">
+                  <div class="jui-cf__document-page-inner">
+                    <img src="/public/images/casefile/draft-consent-order-p2.jpg" alt="Draft consent order page 2">
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -276,5 +290,23 @@
     new Casefile($('.jui-cf'));
     new Tree($('.jui-tree'));
     new Toolbar();
+
+
+    $('.jui-cf__rotate-button').on('click', function(e) {
+      var page = $(e.target).parents('.jui-cf__document-page');
+
+      if(page.hasClass('jui-cf__document-page--rotate-90')) {
+        page.removeClass('jui-cf__document-page--rotate-90');
+        page.addClass('jui-cf__document-page--rotate-180');
+      } else if(page.hasClass('jui-cf__document-page--rotate-180')) {
+        page.removeClass('jui-cf__document-page--rotate-180');
+        page.addClass('jui-cf__document-page--rotate-270');
+      } else if(page.hasClass('jui-cf__document-page--rotate-270')) {
+        page.removeClass('jui-cf__document-page--rotate-270');
+      } else {
+        page.addClass('jui-cf__document-page--rotate-90');
+      }
+
+    });
   </script>
 {% endblock %}

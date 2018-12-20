@@ -21,10 +21,14 @@ var Toolbar = function() {
   this.setupMenus();
   this.items = $('.jui-cf__files');
   this.comments = $('.jui-cf__document-comments');
-  this.commentsButton = this.container.find('.jui-toolbar__menu-item--show-comments')
+  this.commentsButton = this.container.find('.jui-toolbar__menu-item--show-comments');
+  this.rotateButton = this.container.find('.jui-toolbar__menu-item--show-rotate-controls');
   this.itemsButton = this.container.find('.jui-toolbar__button--items');
   this.itemsButton.on('click', $.proxy(this, 'onButtonItemsClick'));
   this.commentsButton.on('click', $.proxy(this, 'onShowCommentsButtonClick'));
+  this.rotateButton.on('click', $.proxy(this, 'onShowRotateButtonClick'));
+  this.showComments();
+  this.hideItems();
 };
 
 Toolbar.prototype.setupMenus = function() {
@@ -89,4 +93,23 @@ Toolbar.prototype.onButtonItemsClick = function(e) {
 Toolbar.prototype.onButtonCommentsClick = function(e) {
   this.showComments();
   this.hideItems();
+};
+
+Toolbar.prototype.onShowRotateButtonClick = function(e) {
+  if(this.rotateButton.attr('aria-pressed') === 'true') {
+    this.hideRotateControls();
+  } else {
+    this.showRotateControls();
+  }
+  this.commentsButton.parents('.jui-toolbar__menu-content').addClass('js-hidden');
+};
+
+Toolbar.prototype.showRotateControls = function() {
+  this.rotateButton.attr('aria-pressed', 'true');
+  $('.jui-cf').addClass('jui-cf--show-rotate-controls');
+};
+
+Toolbar.prototype.hideRotateControls = function() {
+  this.rotateButton.attr('aria-pressed', 'false');
+  $('.jui-cf').removeClass('jui-cf--show-rotate-controls');
 };
