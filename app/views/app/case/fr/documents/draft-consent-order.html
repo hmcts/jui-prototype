@@ -40,16 +40,36 @@
 
     </div>
 
+    <div class="jui-toolbar">
+      <div class="jui-toolbar__container">
+        <div class="jui-toolbar__section1">
+          <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="true">Files</button>
+          <div class="jui-toolbar__menu">
+            <button class="jui-toolbar__menu-button jui-toolbar__menu-button--view">View</button>
+            <div class="jui-toolbar__menu-content js-hidden">
+              <button class="jui-toolbar__menu-item jui-toolbar__menu-item--show-comments" aria-pressed="false">Show comments</button>
+              <button class="jui-toolbar__menu-item jui-toolbar__menu-item--show-rotate-controls">Show rotate controls</button>
+            </div>
+          </div>
+        </div>
+        <div class="jui-toolbar__section2">
+          <!-- <button class="jui-toolbar__button">Upload</button> -->
+          <button class="jui-toolbar__button">Search</button>
+        </div>
+      </div>
+    </div>
+
+
     <div class="jui-cf">
 
-      <div class="jui-cf__toolbar" role="toolbar">
+      <!-- <div class="jui-cf__toolbar" role="toolbar">
 
         <div class="jui-cf__toolbar-container">
           <button class="jui-cf__toolbar-button jui-cf__toolbar-button--items" type="button" aria-controls="files">All items</button>
           <button class="jui-cf__toolbar-button jui-cf__toolbar-button--comments" type="button" aria-controls="comments">Comments</button>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="jui-cf__window">
 
@@ -235,8 +255,22 @@
             </div>
 
             <div class="jui-cf__document-pages">
-              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p1.jpg" alt="Draft consent order page 1"></div>
-              <div class="jui-cf__document-page"><img src="/public/images/casefile/draft-consent-order-p2.jpg" alt="Draft consent order page 2"></div>
+              <div class="jui-cf__document-page">
+                <button class="jui-cf__rotate-button">Rotate</button>
+                <div class="jui-cf__document-page-scroll">
+                    <div class="jui-cf__document-page-inner">
+                        <img src="/public/images/casefile/draft-consent-order-p1.jpg" alt="Draft consent order page 1">
+                    </div>
+                </div>
+              </div>
+              <div class="jui-cf__document-page">
+                <button class="jui-cf__rotate-button">Rotate</button>
+                <div class="jui-cf__document-page-scroll">
+                  <div class="jui-cf__document-page-inner">
+                    <img src="/public/images/casefile/draft-consent-order-p2.jpg" alt="Draft consent order page 2">
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -255,5 +289,24 @@
   <script>
     new Casefile($('.jui-cf'));
     new Tree($('.jui-tree'));
+    new Toolbar();
+
+
+    $('.jui-cf__rotate-button').on('click', function(e) {
+      var page = $(e.target).parents('.jui-cf__document-page');
+
+      if(page.hasClass('jui-cf__document-page--rotate-90')) {
+        page.removeClass('jui-cf__document-page--rotate-90');
+        page.addClass('jui-cf__document-page--rotate-180');
+      } else if(page.hasClass('jui-cf__document-page--rotate-180')) {
+        page.removeClass('jui-cf__document-page--rotate-180');
+        page.addClass('jui-cf__document-page--rotate-270');
+      } else if(page.hasClass('jui-cf__document-page--rotate-270')) {
+        page.removeClass('jui-cf__document-page--rotate-270');
+      } else {
+        page.addClass('jui-cf__document-page--rotate-90');
+      }
+
+    });
   </script>
 {% endblock %}
