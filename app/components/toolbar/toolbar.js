@@ -3,6 +3,14 @@ var ToolbarMenu = function(container) {
   this.button = container.find('.jui-toolbar__menu-button');
   this.menu = container.find('.jui-toolbar__menu-content');
   this.button.on('click', $.proxy(this, 'onButtonClick'));
+  $(document).on('click', $.proxy(this, 'onDocumentClick'));
+};
+
+ToolbarMenu.prototype.onDocumentClick = function(e) {
+	if(!$.contains(this.container[0], e.target)) {
+	  this.menu.addClass('js-hidden');
+    this.button.attr('aria-expanded', 'false');
+  }
 };
 
 ToolbarMenu.prototype.onButtonClick = function() {
@@ -46,6 +54,7 @@ Toolbar.prototype.onShowCommentsButtonClick = function(e) {
     this.hideItems();
   }
   this.commentsButton.parents('.jui-toolbar__menu-content').addClass('js-hidden');
+  this.commentsButton.parents('.jui-toolbar__menu').find('.jui-toolbar__menu-button').attr('aria-expanded', 'false');
 };
 
 Toolbar.prototype.onButtonItemsClick = function(e) {
@@ -101,7 +110,8 @@ Toolbar.prototype.onShowRotateButtonClick = function(e) {
   } else {
     this.showRotateControls();
   }
-  this.commentsButton.parents('.jui-toolbar__menu-content').addClass('js-hidden');
+  this.rotateButton.parents('.jui-toolbar__menu-content').addClass('js-hidden');
+  this.rotateButton.parents('.jui-toolbar__menu').find('.jui-toolbar__menu-button').attr('aria-expanded', 'false');
 };
 
 Toolbar.prototype.showRotateControls = function() {
