@@ -428,7 +428,7 @@ module.exports = [
       }
     ],
 
-    status: '<a href="/app/cases/BV18D00150/divorce/decision">Decree nisi application</a>',
+    status: '<a href="/app/cases/BV18D00150/divorce/">Decree nisi application</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
