@@ -19,144 +19,14 @@
 
   <main class="govuk-main-wrapper" role="main">
 
-    <h1 class="govuk-heading-xl">Key facts</h1>
-
-    <p><a href="/app/cases/BV18D00150/documents/key-facts">View full case file</a></p>
-
     <div class="govuk-grid-row">
 
       <div class="govuk-grid-column-two-thirds">
 
-        <div class="panel panel--information govuk-!-margin-bottom-6">
-
-         {{ govukTable({
-            firstCellIsHeader: false,
-            caption: 'Petitioner details',
-            captionClasses: 'govuk-heading-m',
-            classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
-            rows: [
-              [
-                {text: 'Full name'},
-                {text: 'Susan Francis'}
-              ],
-              [
-                {text: 'Date of birth'},
-                {text: '16 April 1979'}
-              ],
-              [
-                {text: 'Address'},
-                {html: '89 London Road<br>Hinckley<br>London<br>LE10 1HH'}
-              ]
-            ]
-          }) }}
-
-          {{ govukTable({
-            classes: '',
-            firstCellIsHeader: false,
-            caption: 'Respondent details',
-            captionClasses: 'govuk-heading-m',
-            classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
-            rows: [
-              [
-                {text: 'Full name'},
-                {text: 'David Francis'}
-              ],
-              [
-                {text: 'Date of birth'},
-                {text: '7 June 1981'}
-              ],
-              [
-                {text: 'Address'},
-                {html: '24 Park Road<br>Lewisham<br>London<br>E11 4PR'}
-              ]
-            ]
-          }) }}
-
-          {{ govukTable({
-            firstCellIsHeader: false,
-            caption: 'Facts relied upon',
-            captionClasses: 'govuk-heading-m',
-            classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
-            rows: [
-              [
-                {text: 'Reason for divorce'},
-                {text: 'Separated for 2 years and consent'}
-              ],
-              [
-                {text: 'Length of separation'},
-                {text: '2 years 3 months'}
-              ],
-              [
-                {text: 'Date of petition'},
-                {html: '3 April 2018<br>Changes since petition (none)'}
-              ],
-              [
-                {text: 'Date of marriage'},
-                {html: '1 January 2014<br>(4 years 3 months)'}
-              ],
-              [
-                {text: 'Place of marriage'},
-                {html: 'London, England, United Kingdom'}
-              ]
-            ]
-          }) }}
-
-          {{ govukTable({
-            firstCellIsHeader: false,
-            caption: 'Service and respondent’s response',
-            captionClasses: 'govuk-heading-m',
-            classes: 'govuk-!-margin-bottom-8  jui-table  jui-table--fixed',
-            rows: [
-              [
-                {text: 'Acknowledged by respondent'},
-                {text: 'Yes'}
-              ],
-              [
-                {text: 'Intention to defend'},
-                {text: 'No'}
-              ],
-              [
-                {text: 'Consent to divorce'},
-                {text: 'Yes'}
-              ],
-              [
-                {text: 'Jurisdiction response'},
-                {html: 'England and Wales (both habitually resident)<br>Respondent agrees (yes)'}
-              ]
-            ]
-          }) }}
-
-          {{ govukTable({
-            firstCellIsHeader: false,
-            caption: 'Other details',
-            captionClasses: 'govuk-heading-m',
-            classes: 'jui-table  jui-table--fixed',
-            rows: [
-              [
-                {text: 'Address last lived'},
-                {html: '24 Park Road<br>Lewisham<br>London<br>E11 4PR'}
-              ],
-              [
-                {text: 'Date of application for decree nisi'},
-                {html: '5 May 2018'}
-              ],
-              [
-                {text: 'Changes since petition'},
-                {html: 'None'}
-              ]
-            ]
-          }) }}
-
-        </div>
-
-      </div>
-
-      <div class="govuk-grid-column-one-third">
-
-        <h1 class="govuk-heading-m govuk-!-margin-top-6">Make a decision</h1>
+        <h1 class="govuk-heading-xl">Make a decision</h1>
 
         {% set legendText %}
-          <p>Are you satisfied that <b>{{ petitioner }}</b> is entitled to a decree of divorce on the ground that the marriage has broken down irretrievably?</p>
+          <p></p>
           <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Reason</h2>
           <p class="govuk-!-margin-bottom-0">The applicant and respondent have been separated for two years and both parties consent to a divorce.</p>
         {% endset %}
@@ -169,7 +39,8 @@
             classes: 'govuk-radios--inline',
             fieldset: {
               legend: {
-                html: legendText
+                classes: 'govuk-fieldset__legend--m',
+                html: 'Are you satisfied that '+ petitioner +' is entitled to a decree of divorce on the ground that the marriage has broken down irretrievably?'
               }
             },
             items: [
