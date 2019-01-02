@@ -153,9 +153,8 @@ router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
 });
 
 router.post('/app/cases/:id/divorce/generate-order', (req, res) => {
-	res.redirect('confirmation');
+	res.redirect('check-your-answers');
 });
-
 
 // Costs order
 router.get('/app/cases/:id/divorce/costs-order', (req, res) => {

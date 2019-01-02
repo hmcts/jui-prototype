@@ -26,15 +26,15 @@
         <form method="post">
 
           <!-- Pounds or percentages -->
-          {% set poundsOrPercentages %}
+          {% set agreedPoundsOrPercentages %}
 
             {{ govukInput({
               label: {
                 text: 'In pounds'
               },
               classes: 'govuk-input--width-10',
-              id: 'inPounds',
-              name: 'inPounds',
+              id: 'agreedInPounds',
+              name: 'agreedInPounds',
               value: ''
             }) }}
 
@@ -43,8 +43,32 @@
                 text: 'Or as a percentage'
               },
               classes: 'govuk-input--width-10',
-              id: 'inPercentages',
-              name: 'inPercentages',
+              id: 'agreedInPercentages',
+              name: 'agreedInPercentages',
+              value: ''
+            }) }}
+
+          {% endset %}
+
+          {% set limitedPoundsOrPercentages %}
+
+            {{ govukInput({
+              label: {
+                text: 'In pounds'
+              },
+              classes: 'govuk-input--width-10',
+              id: 'limitedInPounds',
+              name: 'limitedInPounds',
+              value: ''
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: 'Or as a percentage'
+              },
+              classes: 'govuk-input--width-10',
+              id: 'limitedInPercentages',
+              name: 'limitedInPercentages',
               value: ''
             }) }}
 
@@ -64,14 +88,14 @@
                   text: 'Agreed to',
                   value: 'Agreed to',
                   conditional: {
-                    html: poundsOrPercentages
+                    html: agreedPoundsOrPercentages
                   }
                 },
                 {
                   text: 'Limited to',
                   value: 'Limited to',
                   conditional: {
-                    html: poundsOrPercentages
+                    html: limitedPoundsOrPercentages
                   }
                 },
                 {

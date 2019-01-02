@@ -35,34 +35,47 @@
 
 
           {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] === 'Respondent to pay petitioner’s costs' %}
-          <div class="app-check-your-answers__contents">
-            <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
 
-            <dd class="app-check-your-answers__answer">
-              {{data.costsOrderDecision}}<br><br>
-              {{data.respondentPay}}
-            </dd>
+              <dd class="app-check-your-answers__answer">
+                {{data.costsOrderDecision}}<br><br>
 
-            <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
-          </div>
+                {% if data.respondentPay %}
+                  {{data.respondentPay}}
+
+                  {% if data.agreedInPounds %}
+                    £{{data.agreedInPounds}}
+                  {% endif %}
+
+                  {% if data.agreedInPercentage %}
+                    {{data.agreedInPercentage}}%
+                  {% endif %}
+
+
+                {% endif %}
+              </dd>
+
+              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
+            </div>
           {% endif %}
 
 
           {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] === 'Other' %}
-          <div class="app-check-your-answers__contents">
-            <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
-            <dd class="app-check-your-answers__answer">{{data.costsOrderDecision}}</dd>
-            <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
-          </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
+              <dd class="app-check-your-answers__answer">{{data.costsOrderDecision}}</dd>
+              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
+            </div>
           {% endif %}
 
 
           {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] === 'No order for costs' %}
-          <div class="app-check-your-answers__contents">
-            <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
-            <dd class="app-check-your-answers__answer">{{data.costsOrderDecision}}</dd>
-            <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
-          </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
+              <dd class="app-check-your-answers__answer">{{data.costsOrderDecision}}</dd>
+              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
+            </div>
           {% endif %}
 
 
