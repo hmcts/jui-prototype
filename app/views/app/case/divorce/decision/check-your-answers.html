@@ -33,7 +33,7 @@
             <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/decision">Change <span class="govuk-visually-hidden">decree nisi decision</span></a></dd>
           </div>
 
-          {% if data['satisfied'] === 'Yes' and data['costsOrderDecision'] %}
+          {% if data['satisfied'] === 'Yes' %}
             <div class="app-check-your-answers__contents">
               <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
 
@@ -67,16 +67,26 @@
                   {{data['more-detail']}}
                 {% endif %}
 
+              </dd>
 
+              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
+            </div>
+          {% endif %}
 
+          {% if data['satisfied'] === 'No' %}
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Order</dt>
 
+              <dd class="app-check-your-answers__answer">
 
+                {{data['generate-order']}}
 
               </dd>
 
               <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
             </div>
           {% endif %}
+
 
 
 
