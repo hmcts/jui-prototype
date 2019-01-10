@@ -39,18 +39,61 @@
 
       <h1 class="govuk-heading-xl">Linked cases</h1>
 
-      <div class="govuk-grid-row">
+            {{ govukTable({
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Reference"
+                },
+                {
+                  text: "Parties"
+                },
+                {
+                  text: "Type"
+                },
+                {
+                  text: ""
+                }
+              ],
+              rows: [
+                [
+                  {
+                    html: '<a href="#">DV1231612322</a>'
+                  },
+                  {
+                    html: 'John Smith<br>v Jane Smith'
+                  },
+                  {
+                    html: 'Divorce'
+                  },
+                  {
+                    html: ''
+                  }
+                ],
+                [
+                  {
+                    html: '<a href="#">FR1231612322</a>'
+                  },
+                  {
+                    html: 'Mary Harrison<br>v Matthew Harrison'
+                  },
+                  {
+                    html: 'Financial remedy'
+                  },
+                  {
+                    html: '<a href="#">Remove</a>'
+                  }
+                ]
+              ]
+            }) }}
 
-        <div class="govuk-grid-column-two-thirds">
+<!--
+
 
           {% for case in linkedCases %}
             <h2 class="govuk-heading-m">{{case.type}}</h2>
             <p><a href="#">{{case.parties}} ({{case.id}} )</a></p>
-          {% endfor %}
-
-        </div>
-
-      </div>
+          {% endfor %} -->
 
 		</main>
 
