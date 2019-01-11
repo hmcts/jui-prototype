@@ -33,7 +33,6 @@
 			{% set petitioner %}
 				<div class="govuk-grid-row">
 					<div class="govuk-grid-column-one-half">
-						<h2 class="govuk-heading-l">Petitioner</h2>
 						{{ govukTable({
               classes: 'jui-table  jui-table--fixed',
 							firstCellIsHeader: false,
@@ -46,7 +45,6 @@
 			{% set respondent %}
 				<div class="govuk-grid-row">
 					<div class="govuk-grid-column-one-half">
-						<h2 class="govuk-heading-l">Respondent</h2>
 						{{ govukTable({
               classes: 'jui-table  jui-table--fixed',
 							firstCellIsHeader: false,
@@ -56,21 +54,27 @@
 				</div>
 			{% endset -%}
 
-      {{govukTabs({
-        items: [{
-          id: 'petitioner',
-          label: 'Petitioner',
-          panel: {
-            html: petitioner
-          }
-        }, {
-          id: 'respondent',
-          label: 'Respondent',
-          panel: {
-            html: respondent
-          }
-        }]
-      })}}
+      {{ govukAccordion({
+				id: "accordion-with-summary-sections",
+				items: [
+					{
+						heading: {
+							text: "Petitioner"
+						},
+						content: {
+							html: petitioner
+						}
+					},
+					{
+						heading: {
+							text: "Respondent"
+						},
+						content: {
+							html: respondent
+						}
+					}
+				]
+			}) }}
 
 		</main>
 

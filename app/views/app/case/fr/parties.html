@@ -35,7 +35,7 @@
 			{% set applicant %}
 				<div class="govuk-grid-row">
 					<div class="govuk-grid-column-one-half">
-						<h2 class="govuk-heading-l">Applicant</h2>
+
 						{{ govukTable({
               classes: 'jui-table  jui-table--fixed',
 							firstCellIsHeader: false,
@@ -48,7 +48,7 @@
 			{% set respondent %}
 				<div class="govuk-grid-row">
 					<div class="govuk-grid-column-one-half">
-						<h2 class="govuk-heading-l">Respondent</h2>
+
 						{{ govukTable({
               classes: 'jui-table  jui-table--fixed',
 							firstCellIsHeader: false,
@@ -58,55 +58,23 @@
 				</div>
 			{% endset -%}
 
-      <!-- {{govukTabs({
-        items: [{
-          id: 'applicant',
-          label: 'Applicant',
-          panel: {
-            html: applicant
-          }
-        }, {
-          id: 'respondent',
-          label: 'Respondent',
-          panel: {
-            html: respondent
-          }
-        }]
-			})}} -->
-
 			{{ govukAccordion({
-				id: "accordion-default",
+				id: "accordion-with-summary-sections",
 				items: [
 					{
 						heading: {
-							text: "Writing well for the web"
+							text: "Applicant"
 						},
 						content: {
-							html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+							html: applicant
 						}
 					},
 					{
 						heading: {
-							text: "Writing well for specialists"
+							text: "Respondent"
 						},
 						content: {
-							html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
-						}
-					},
-						{
-						heading: {
-							text: "Know your audience"
-						},
-						content: {
-							html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
-						}
-					},
-						{
-						heading: {
-							text: "How people read"
-						},
-						content: {
-							html: "<p class='govuk-body'>This is the content for How people read.</p>"
+							html: respondent
 						}
 					}
 				]
