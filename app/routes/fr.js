@@ -30,6 +30,7 @@ router.route('/app/cases/:id/fr')
     pageObject.detailsRows.push([{ html: 'Case number' }, {html: _case.id}]);
     pageObject.detailsRows.push([{ html: 'Case type' }, {html: helpers.getCaseTypeLabel(_case)}]);
     pageObject.detailsRows.push([{ html: 'Decree nisi granted' }, {html: helpers.getFormattedDate(_case.decreeDate)}]);
+    pageObject.detailsRows.push([{ html: 'Decree absolute granted' }, {html: helpers.getFormattedDate(_case.absoluteDate)}]);
     pageObject.linkedCaseRows = [];
     _case.linkedCases.forEach((item) => {
       pageObject.detailsRows.push([{

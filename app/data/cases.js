@@ -12,6 +12,7 @@ module.exports = [
     tribunalCentre: 'East Midlands Regional Divorce Centre',
     requirements: 'Assisted Digital support requested',
     decreeDate: moment('2018-05-01 13:01'),
+    absoluteData: moment('2018-08-11 11:01'),
     events: [
       {
         id: uuid(),
