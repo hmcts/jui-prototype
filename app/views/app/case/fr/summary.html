@@ -8,22 +8,7 @@
   title: {
     html: casebar.parties + ' <span class="jui-status  jui-status--new  govuk-!-margin-left-1">Reserved to you</span>'
     },
-  items: [
-    {
-      text: 'Make a decision',
-      href: '/app/cases/'+_case.id+'/fr/decision'
-    },
-    {
-      text: 'Reassign',
-      href: '/app/cases/'+_case.id+'/fr/reassign',
-      classes: 'hmcts-button--secondary'
-    },
-    {
-      text: 'Reserve',
-      href: '/app/cases/'+_case.id+'/fr/reserve',
-      classes: 'hmcts-button--secondary'
-    }
-  ]
+  items: caseActions
 }) }}
 
 <div class="jui-width-container">

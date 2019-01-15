@@ -19,6 +19,7 @@ router.route('/app/cases/:id/fr')
       _case: _case,
       success: req.session.success,
       casebar: helpers.getCaseBarObject(_case),
+      caseActions: helpers.getCaseActions(_case),
       caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
       detailsRows: [],
       panelRows: [],
@@ -73,27 +74,26 @@ router.get('/app/cases/:id/fr/parties', (req, res) => {
 	};
 
 	pageObject.applicantRows = [];
-	pageObject.respondentRows = [];
+  pageObject.respondentRows = [];
+
+  function addSummaryListRow(array, item) {
+    array.push({ key: { text: 'Full name'}, value: { text: item.fullname } });
+    array.push({ key: { text: 'Date of birth' }, value: { text: helpers.getFormattedDate(item.dateOfBirth) } } );
+    array.push({ key: { text: 'Address' }, value: { html: item.address } } );
+    array.push({ key: { text: 'Phone' }, value: { text: item.phone } } );
+    array.push({ key: { text: 'Email' }, value: { text: item.email } } );
+    array.push({ key: { text: 'Representative' }, value: { text: item.representative ? _case.representative : 'Unrepresented' } } );
+  }
 
 	if(_case.applicant) {
 		_case.applicant.forEach((item) => {
-			pageObject.applicantRows.push([{ html: 'Full name' }, { html: item.fullname }]);
-			pageObject.applicantRows.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(item.dateOfBirth) }]);
-			pageObject.applicantRows.push([{ html: 'Address' }, { html: item.address }]);
-			pageObject.applicantRows.push([{ html: 'Phone' }, { html: item.phone }]);
-			pageObject.applicantRows.push([{ html: 'Email' }, { html: item.email }]);
-			pageObject.applicantRows.push([{ html: 'Representative' }, { html: item.representative ? _case.representative : 'Unrepresented' }]);
+      addSummaryListRow(pageObject.applicantRows, item);
 		});
 	}
 
 	if(_case.respondent) {
 		_case.respondent.forEach((item) => {
-			pageObject.respondentRows.push([{ html: 'Full name' }, { html: item.fullname }]);
-			pageObject.respondentRows.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(item.dateOfBirth) }]);
-			pageObject.respondentRows.push([{ html: 'Address' }, { html: item.address }]);
-			pageObject.respondentRows.push([{ html: 'Phone' }, { html: item.phone }]);
-			pageObject.respondentRows.push([{ html: 'Email' }, { html: item.email }]);
-			pageObject.respondentRows.push([{ html: 'Representative' }, { html: item.representative ? _case.representative : 'Unrepresented' }]);
+      addSummaryListRow(pageObject.respondentRows, item);
 		});
 	}
 

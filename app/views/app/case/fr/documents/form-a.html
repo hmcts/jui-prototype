@@ -7,13 +7,8 @@
   {{ hmctsIdentityBar({
     title: {
       html: casebar.parties
-      },
-    items: [
-      {
-        text: 'Make a decision',
-        href: '/app/cases/'+_case.id+'/fr/decision'
-      }
-    ]
+    },
+    items: caseActions
   }) }}
 
   <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">

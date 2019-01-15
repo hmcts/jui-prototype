@@ -95,8 +95,18 @@ function getCaseActions(_case) {
 		case 'fr':
 			return [
 				{
-					href: `/app/cases/${_case.id}/fr/decision`,
-					text: 'Make decision'
+					text: 'Make a decision',
+					href: '/app/cases/'+_case.id+'/fr/decision'
+				},
+				{
+					text: 'Reassign',
+					href: '/app/cases/'+_case.id+'/fr/reassign',
+					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Reserve',
+					href: '/app/cases/'+_case.id+'/fr/reserve',
+					classes: 'hmcts-button--secondary'
 				}
 			];
 		case 'divorce':

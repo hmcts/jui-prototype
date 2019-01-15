@@ -35,10 +35,7 @@
 			{% set applicant %}
 				<div class="govuk-grid-row">
 					<div class="govuk-grid-column-one-half">
-
-						{{ govukTable({
-              classes: 'jui-table  jui-table--fixed',
-							firstCellIsHeader: false,
+						{{ govukSummaryList({
 							rows: applicantRows
 						}) }}
 					</div>
@@ -48,10 +45,7 @@
 			{% set respondent %}
 				<div class="govuk-grid-row">
 					<div class="govuk-grid-column-one-half">
-
-						{{ govukTable({
-              classes: 'jui-table  jui-table--fixed',
-							firstCellIsHeader: false,
+						{{ govukSummaryList({
 							rows: respondentRows
 						}) }}
 					</div>
