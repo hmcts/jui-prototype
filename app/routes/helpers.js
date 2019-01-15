@@ -234,6 +234,19 @@ function getQuestion(_case, questionId) {
 	return q;
 }
 
+function getLinkedCase(_case, linkedCaseId) {
+	var lc = null;
+
+	for(let linkedCase of _case.linkedCases) {
+		if(linkedCase.id === linkedCaseId) {
+			lc = linkedCase;
+			break;
+		}
+	}
+
+	return lc;
+}
+
 function isDraftQuestion(_case, questionId) {
 	var isDraft = false;
 	for(let round of _case.rounds) {
@@ -251,6 +264,10 @@ function removeQuestion(_case, question) {
 	for(let round of _case.rounds) {
 		removeItemFromArray(round.questions, question);
 	}
+}
+
+function removeLinkedCase(_case, linkedCase) {
+	removeItemFromArray(_case.linkedCases, linkedCase);
 }
 
 function removeItemFromArray(array, element) {
@@ -343,3 +360,5 @@ exports.getRecentEvents = getRecentEvents;
 exports.getEvents = getEvents;
 exports.getCaseNavItems = getCaseNavItems;
 exports.getLinkedCases = getLinkedCases;
+exports.getLinkedCase = getLinkedCase;
+exports.removeLinkedCase = removeLinkedCase;

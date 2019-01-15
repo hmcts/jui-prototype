@@ -1,0 +1,46 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Linked cases {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+{{ hmctsIdentityBar({
+  title: {
+    html: casebar.parties
+    },
+  items: caseActions
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: '/app/cases/'+_case.id+'/linked-cases/'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <h1 class="govuk-heading-xl">Remove link</h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <form action="/app/cases/{{_case.id}}/linked-cases/{{linkedCase.id}}/delete" method="post">
+              {{ govukTextarea({
+                label: {
+                  text: 'Reason for removing the link',
+                  classes: 'govuk-label--m'
+                },
+                id: 'reason',
+                name: 'reason'
+              }) }}
+
+              {{ govukButton({
+                text: 'Remove link'
+              }) }}
+          </form>
+        </div>
+      </div>
+
+		</main>
+	</div>
+{% endblock %}
