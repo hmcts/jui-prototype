@@ -96,16 +96,16 @@ function getCaseActions(_case) {
 			return [
 				{
 					text: 'Make a decision',
-					href: '/app/cases/'+_case.id+'/fr/decision'
+					href: `/app/cases/${_case.id}/fr/decision`
 				},
 				{
 					text: 'Reassign',
-					href: '/app/cases/'+_case.id+'/fr/reassign',
+					href: `/app/cases/${_case.id}/fr/reassign`,
 					classes: 'hmcts-button--secondary'
 				},
 				{
 					text: 'Reserve',
-					href: '/app/cases/'+_case.id+'/fr/reserve',
+					href: `/app/cases/${_case.id}/fr/reserve`,
 					classes: 'hmcts-button--secondary'
 				}
 			];
@@ -317,14 +317,7 @@ function getEvents(_case) {
 }
 
 function getLinkedCases(_case) {
-	return _case.linkedCases.map(linkedCase => {
-		var o = {
-			id: linkedCase.id,
-			type: linkedCase.type,
-			parties: linkedCase.parties
-		};
-		return o;
-	});
+	return _case.linkedCases;
 }
 
 exports.getCaseBarObject = getCaseBarObject;

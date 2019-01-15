@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-router.use('/', require('./routes/jui'));
+router.use('/', require('./routes/core'));
 router.use('/', require('./routes/pip'));
 router.use('/', require('./routes/divorce'));
 router.use('/', require('./routes/fr'));

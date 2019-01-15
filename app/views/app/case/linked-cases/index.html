@@ -4,20 +4,16 @@
 
 {% block content %}
 
-{{ hmctsIdentityBar({
-  title: {
-    html: casebar.parties
-    },
-  items: caseActions
-}) }}
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties
+      },
+    items: caseActions
+  }) }}
 
 	<div class="jui-width-container">
 
     <main class="govuk-main-wrapper" role="main">
-
-      {{ hmctsSubNavigation({
-        items: caseNavItems
-      }) }}
 
       {% if success %}
         {{ hmctsBanner({
@@ -27,65 +23,52 @@
         }) }}
       {% endif %}
 
-      <h1 class="govuk-heading-xl">Linked cases</h1>
-
-            {{ govukTable({
-              firstCellIsHeader: true,
-              head: [
-                {
-                  text: "Reference"
-                },
-                {
-                  text: "Parties"
-                },
-                {
-                  text: "Type"
-                },
-                {
-                  text: ""
-                }
-              ],
-              rows: [
-                [
-                  {
-                    html: '<a href="#">DV1231612322</a>'
-                  },
-                  {
-                    html: 'John Smith<br>v Jane Smith'
-                  },
-                  {
-                    html: 'Divorce'
-                  },
-                  {
-                    html: ''
-                  }
-                ],
-                [
-                  {
-                    html: '<a href="#">FR1231612322</a>'
-                  },
-                  {
-                    html: 'Mary Harrison<br>v Matthew Harrison'
-                  },
-                  {
-                    html: 'Financial remedy'
-                  },
-                  {
-                    html: '<a href="#">Remove</a>'
-                  }
-                ]
-              ]
-            }) }}
-
-<!--
+      {{ hmctsSubNavigation({
+        items: caseNavItems
+      }) }}
 
 
-          {% for case in linkedCases %}
-            <h2 class="govuk-heading-m">{{case.type}}</h2>
-            <p><a href="#">{{case.parties}} ({{case.id}} )</a></p>
-          {% endfor %} -->
+      {{ hmctsPageHeaderWithActions({
+        title: {
+          html: '
+          <h1 class="govuk-heading-xl">Linked cases</h1>'
+        },
+        items: [{
+          classes: 'hmcts-button--secondary',
+          text: 'Link a case',
+          href: '/app/cases/'+_case.id+'/linked-cases/new'
+        }]
+      }) }}
 
+
+      {% for case in linkedCases %}
+        {{case.url}}
+      {% endfor %}
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Reference"
+          },
+          {
+            text: "Parties"
+          },
+          {
+            text: "Type"
+          },
+          {
+            text: "Reason"
+          },
+          {
+            text: "Linked by"
+          },
+          {
+            text: ""
+          }
+        ],
+        rows: linkedCaseRows
+      }) }}
 		</main>
-
 	</div>
 {% endblock %}

@@ -24,11 +24,6 @@
 	<div class="jui-width-container">
 
     <main class="govuk-main-wrapper" role="main">
-
-      {{ hmctsSubNavigation({
-        items: caseNavItems
-      }) }}
-
       {% if success %}
         {{ hmctsBanner({
           type: 'success',
@@ -36,6 +31,10 @@
           iconFallbackText: 'Success'
         }) }}
       {% endif %}
+
+      {{ hmctsSubNavigation({
+        items: caseNavItems
+      }) }}
 
       <h1 class="govuk-heading-xl">Questions to appellant</h1>
 

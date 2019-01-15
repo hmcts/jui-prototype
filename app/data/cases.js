@@ -142,9 +142,31 @@ module.exports = [
       label: 'Grant of decree nisi'
     }],
     linkedCases: [{
-      type: 'Divorce',
+      linkReason: 'Dependent case',
+      linkPerson: 'Judge Shah',
+      linkType: 'hard',
+      typeId: types.divorce.id,
       id: 'BV18D00153',
-      parties: 'John Smith and Jane Smith'
+      parties: [{
+        type: 'Applicant',
+        firstName: 'John',
+        lastName: 'Smith',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      },
+      {
+        type: 'Respondent',
+        firstName: 'Jane',
+        lastName: 'Smith',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      }]
     }]
   },
 
