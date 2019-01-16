@@ -29,7 +29,11 @@ router.get('/app/cases/:id/linked-cases', (req, res) => {
 
 	var successFlash = req.flash('success');
 	if(successFlash[0] == 'case linked') {
-		pageObject.success = 'Case linked';
+		pageObject.success = 'Case linked successfully';
+	}
+
+	if(successFlash[0] == 'case unlinked') {
+		pageObject.success = 'Case unlinked successfully';
 	}
 
 	res.render('app/case/linked-cases/index', pageObject);
