@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Tribunal’s view submitted {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Case reassigned {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -14,13 +14,9 @@
 
           {{ govukPanel({
             headingLevel: 1,
-            titleText: 'Tribunal’s view submitted',
+            titleText: 'Case reassigned',
             html: _case.id
           }) }}
-
-          <h2 class="govuk-heading-m">What happens next</h2>
-
-          <p>The tribunal’s view will be sent to the appellant and DWP.</p>
 
           <p><a href="/app/dashboard">Go to your cases</a></p>
 

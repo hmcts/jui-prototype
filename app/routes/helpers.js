@@ -100,7 +100,7 @@ function getCaseActions(_case) {
 				},
 				{
 					text: 'Reassign',
-					href: `/app/cases/${_case.id}/fr/reassign`,
+					href: `/app/cases/${_case.id}/reassign`,
 					classes: 'hmcts-button--secondary'
 				},
 				{

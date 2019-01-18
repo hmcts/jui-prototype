@@ -1,0 +1,97 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Reassign case {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties
+    }
+  }) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: './'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <h1 class="govuk-heading-xl">Check answers</h1>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Name"
+                },
+                value: {
+                  text: "Sarah Philips"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Date of birth"
+                },
+                value: {
+                  text: "5 January 1978"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Contact information"
+                },
+                value: {
+                  html: "72 Guild Street<br>London<br>SE23 6FH"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "contact information"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+          <form method="post">
+            {{ govukButton({
+              "text": "Reassign case"
+            }) }}
+          </form>
+
+        </div>
+      </div>
+
+
+		</main>
+	</div>
+{% endblock %}
