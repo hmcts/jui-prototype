@@ -17,12 +17,13 @@
 
     {% set bannerHtml %}
       <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
+      <p>Reason: [The reason]</p>
       <p><a href="#">Dismiss</a></p>
     {% endset %}
 
-    <!-- {{ hmctsBanner({
+    {{ hmctsBanner({
       html: bannerHtml
-    }) }} -->
+    }) }}
 
     {{ hmctsSubNavigation({
       label: 'Case navigation',
