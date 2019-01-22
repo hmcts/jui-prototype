@@ -12,7 +12,7 @@ router.use('/', require('./routes/reassign-case'));
 
 router.get('/', function (req, res) {
 	req.session.destroy();
-	res.redirect('/app/dashboard');
+	res.redirect('/index');
 });
 
 module.exports = router;
