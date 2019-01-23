@@ -1,0 +1,52 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}What do you want to send to the parties? {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+{{ hmctsIdentityBar({
+  title: {
+    html: '<b>Warren Sutton</b> and <b>DWP</b>'
+  }
+}) }}
+
+<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'javascript:history.back()'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <form method="post" action="/app/case/pip/reassign/reserve">
+
+            {{ govukTextarea({
+              label: {
+                text: 'Reason for reassigning',
+                isPageHeading: true,
+                classes: 'govuk-label--xl'
+              },
+              id: 'reason',
+              name: 'reason'
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+	</main>
+
+</div>
+
+{% endblock %}

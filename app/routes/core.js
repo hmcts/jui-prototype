@@ -230,4 +230,14 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 
 });
 
+router.post('/app/case/pip/reassign', (req, res) => {
+	if(req.body.who === 'namedperson') {
+		res.redirect('/app/case/pip/reassign/name');
+	} else if(req.body.who === 'role') {
+		res.redirect('/app/case/pip/reassign/role');
+	} else {
+		res.redirect('/app/case/pip/reassign/reason');
+	}
+});
+
 module.exports = router;

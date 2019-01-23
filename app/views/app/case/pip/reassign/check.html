@@ -1,0 +1,211 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Reassign case {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+{{ hmctsIdentityBar({
+  title: {
+    html: '<b>Warren Sutton</b> and <b>DWP</b>'
+  }
+}) }}
+
+	<div class="jui-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: './'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <h1 class="govuk-heading-xl">Check answers</h1>
+
+          {% if data.who == 'namedperson' %}
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Name"
+                  },
+                  value: {
+                    text: data.name
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Reason for reassignment"
+                  },
+                  value: {
+                    text: data.reason
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Do you want the case to come back to you?"
+                  },
+                  value: {
+                    text: data.reserve
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+          {% elseif data.who == 'role' %}
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Role"
+                  },
+                  value: {
+                    text: data.role
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Reason for reassignment"
+                  },
+                  value: {
+                    text: data.reason
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Do you want the case to come back to you?"
+                  },
+                  value: {
+                    text: data.reserve
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+          {% else %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Role"
+                },
+                value: {
+                  text: 'Court administrator'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Reason for reassignment"
+                },
+                value: {
+                  text: data.reason
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Do you want the case to come back to you?"
+                },
+                value: {
+                  text: data.reserve
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Change",
+                      visuallyHiddenText: "date of birth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+          {% endif %}
+
+          <form method="post" action="/app/case/pip/reassign/confirmation">
+            {{ govukButton({
+              "text": "Reassign case"
+            }) }}
+          </form>
+
+        </div>
+      </div>
+
+
+		</main>
+	</div>
+{% endblock %}

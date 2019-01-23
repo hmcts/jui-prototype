@@ -8,17 +8,7 @@
   title: {
     html: casebar.parties
     },
-  items: [
-    {
-      text: 'Send view or decision',
-      href: '/app/cases/'+_case.id+'/pip/decision'
-    },
-    {
-      classes: 'hmcts-button--secondary',
-      text: 'List for hearing',
-      href: '/app/cases/'+_case.id+'/pip/list-for-hearing'
-    }
-  ]
+  items: caseActions
 }) }}
 
 <div class="jui-width-container">
@@ -30,9 +20,9 @@
       <p><a href="#">View request</a></p>
     {% endset %}
 
-    {{ hmctsBanner({
+    <!-- {{ hmctsBanner({
       html: bannerHtml
-    }) }}
+    }) }} -->
 
     {{ hmctsSubNavigation({
       items: caseNavItems

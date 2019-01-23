@@ -84,12 +84,18 @@ function getCaseActions(_case) {
 		case 'pip':
 			return [
 				{
-					href: `/app/cases/${_case.id}/pip/make-decision`,
-					text: 'Make decision'
+					href: `/app/cases/${_case.id}/pip/decision`,
+					text: 'Send view or decision'
 				},
 				{
 					href: `/app/cases/${_case.id}/pip/list-for-hearing`,
-					text: 'List for hearing'
+					text: 'List for hearing',
+					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Reassign',
+					href: `/app/case/pip/reassign`,
+					classes: 'hmcts-button--secondary'
 				}
 			];
 		case 'fr':
