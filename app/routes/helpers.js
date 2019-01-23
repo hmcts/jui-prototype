@@ -24,7 +24,7 @@ function getPartiesLineDashboard(_case) {
 			return party.firstName + ' ' + party.lastName + '<br>';
 		}
 
-	}).join(' v ');
+	}).join(' and ');
 }
 
 
