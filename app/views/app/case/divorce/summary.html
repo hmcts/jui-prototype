@@ -20,6 +20,16 @@
 
   <main role="main" class="govuk-main-wrapper">
 
+    {% set bannerHtml %}
+      <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
+      <p>Reason: Similarities between this and your recent case for Paul Fox vs Helen Fox</p>
+      <p><a href="#">Dismiss</a></p>
+    {% endset %}
+
+    {{ hmctsBanner({
+      html: bannerHtml
+    }) }}
+
     {{ hmctsSubNavigation({
       items: caseNavItems
     }) }}
@@ -66,7 +76,62 @@
 
         <h2 class="govuk-heading-m  govuk-!-margin-bottom-4">Recent events</h2>
 
-        {% if recentEvents.length %}
+        <div class="hmcts-timeline">
+
+
+  <div class="hmcts-timeline__item">
+
+    <div class="hmcts-timeline__header">
+      <h3 class="hmcts-timeline__title">Case assigned to you</h3>
+      <p class="hmcts-timeline__by">by Jane Doe, District Judge</p>
+      <br>
+      <h3 class="hmcts-timeline__title" style="font-weight:normal;">Reason: Similarities between this and your recent case for Paul Fox vs Helen Fox</h3>
+
+
+
+    </div>
+
+    <p class="hmcts-timeline__date"><time datetime="2018-04-16T13:10:00.000Z">Mon 16 Apr 2018 at 2:10pm</time></p>
+
+
+
+  </div>
+
+  <div class="hmcts-timeline__item">
+
+    <div class="hmcts-timeline__header">
+      <h3 class="hmcts-timeline__title">Acknowledgement of service by the court</h3>
+
+        <p class="hmcts-timeline__by">by William Blake, respondent</p>
+
+    </div>
+
+    <p class="hmcts-timeline__date"><time datetime="2018-04-24T14:22:00.000Z">Tue 24 Apr 2018 at 3:22pm</time></p>
+
+
+
+  </div>
+
+  <div class="hmcts-timeline__item">
+
+    <div class="hmcts-timeline__header">
+      <h3 class="hmcts-timeline__title">Application for decree nisi received</h3>
+
+        <p class="hmcts-timeline__by">by Margaret Blake, petitioner</p>
+
+    </div>
+
+    <p class="hmcts-timeline__date"><time datetime="2018-02-27T13:01:00.000Z">Tue 27 Feb 2018 at 1:01pm</time></p>
+
+
+
+  </div>
+
+
+</div>
+
+
+        <!-- {% if recentEvents.length %}
 
           {{hmctsTimeline({
             headingLevel: 3,
@@ -79,7 +144,7 @@
 
           <p>No events.</p>
 
-        {% endif %}
+        {% endif %} -->
 
       </div>
 

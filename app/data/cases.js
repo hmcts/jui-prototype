@@ -649,8 +649,9 @@ module.exports = [
       {
         id: uuid(),
         date: moment('2018-04-16 14:10'),
-        title: 'Application for divorce submitted',
-        by: 'Magaret Blake, petitioner'
+        title: 'Case assigned to you',
+        reason: 'Case assigned to you',
+        by: 'Jane Doe, District Judge'
       }
     ]
   }
