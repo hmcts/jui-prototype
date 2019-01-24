@@ -89,7 +89,7 @@ module.exports = [
     ],
 
     applicant: [{
-      fullname: 'John Smith',
+      fullname: 'Margaret Blake',
       dateOfBirth: moment('1987-02-20'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07700 900 772',
@@ -98,7 +98,7 @@ module.exports = [
     }],
 
     respondent: [{
-      fullname: 'Jane Smith',
+      fullname: 'William Blake',
       dateOfBirth: moment('1985-03-15'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07787 557 967',
@@ -109,8 +109,8 @@ module.exports = [
     parties: [
       {
         type: 'Applicant',
-        firstName: 'John',
-        lastName: 'Smith',
+        firstName: 'Margaret',
+        lastName: 'Blake',
         representative: {
           name: '',
           role: '',
@@ -119,8 +119,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith',
+        firstName: 'William',
+        lastName: 'Blake',
         representative: {
           name: '',
           role: '',
@@ -179,6 +179,33 @@ module.exports = [
     urgent: true,
     tribunalCentre: 'Fox Court',
     requirements: 'Assisted Digital support requested',
+    linkedCases: [{
+      linkReason: 'Dependent case',
+      linkPerson: 'Judge Shah',
+      linkType: 'hard',
+      typeId: types.fr.id,
+      id: 'FR1231612322',
+      parties: [{
+        type: 'Applicant',
+        firstName: 'Margaret',
+        lastName: 'Blake',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      },
+      {
+        type: 'Respondent',
+        firstName: 'William',
+        lastName: 'Blake',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      }]
+    }],
     documents: [{
       id: '1-w',
       label: 'Personal independence payment'

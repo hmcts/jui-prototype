@@ -163,6 +163,11 @@ function getCaseNavItems(_case, id) {
 					href: `/app/cases/${_case.id}/questions`,
 					text: 'Questions',
 					active: id === 'questions'
+				},
+				{
+					href: `/app/cases/${_case.id}/linked-cases`,
+					text: 'Linked cases',
+					active: id === 'linked-cases'
 				}
 			];
 		case 'fr':
