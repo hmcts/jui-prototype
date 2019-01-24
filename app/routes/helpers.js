@@ -96,6 +96,11 @@ function getCaseActions(_case) {
 					text: 'Reassign',
 					href: `/app/case/pip/reassign`,
 					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Reserve',
+					href: `/app/cases/${_case.id}/reserve`,
+					classes: 'hmcts-button--secondary'
 				}
 			];
 		case 'fr':
@@ -111,7 +116,7 @@ function getCaseActions(_case) {
 				},
 				{
 					text: 'Reserve',
-					href: `/app/cases/${_case.id}/fr/reserve`,
+					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
 				}
 			];
@@ -120,16 +125,17 @@ function getCaseActions(_case) {
 				{
 					href: `/app/cases/${_case.id}/divorce/decision`,
 					text: 'Make decision'
+				},
+				{
+					href: `/app/cases/${_case.id}/reassign`,
+					text: 'Reassign',
+					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Reserve',
+					href: `/app/cases/${_case.id}/reserve`,
+					classes: 'hmcts-button--secondary'
 				}
-				//,
-				// {
-				// 	href: `/app/cases/${_case.id}/divorce/mark-as-prepared`,
-				// 	text: 'Mark as prepared'
-				// },
-				// {
-				// 	href: `/app/cases/${_case.id}/divorce/reassign`,
-				// 	text: 'Reassign'
-				// }
 			];
 	}
 }
@@ -208,6 +214,11 @@ function getCaseNavItems(_case, id) {
 					href: `/app/cases/${_case.id}/divorce/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
+				},
+				{
+					href: `/app/cases/${_case.id}/linked-cases`,
+					text: 'Linked cases',
+					active: id === 'linked-cases'
 				}
 			];
 	}
