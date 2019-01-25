@@ -1,6 +1,6 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Check view before sending {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Check decision before sending {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -23,7 +23,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <h1 class="govuk-heading-xl">Check view before sending</h1>
+          <h1 class="govuk-heading-xl">Check decision before sending</h1>
 
           {{ govukInsetText({
             html: 'This will be sent to both the appellant and DWP.'
@@ -31,13 +31,13 @@
 
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-          <h2 class="govuk-heading-l">The tribunal’s view on your appeal</h2>
+          <h2 class="govuk-heading-l">The tribunal’s decision on your appeal</h2>
 
           <div class="panel panel--information">
 
             <p>The tribunal have considered all the information submitted by you and DWP.</p>
 
-            <p>Their view is that you’re entitled to PIP at the rate below from 3 October 2017 until 3 March 2020.</p>
+            <p>Their decision is that you’re entitled to PIP at the rate below from 3 October 2017 until 3 March 2020.</p>
 
             {{ govukTable({
               firstCellIsHeader: true,
@@ -63,18 +63,18 @@
 
             <p>This is the same DWP initially awarded you.</p>
 
-            <p>If both you and DWP accept this view, you’ll be awarded PIP at the above rate.</p>
+            <!-- <p>If both you and DWP accept this decision, you’ll be awarded PIP at the above rate.</p> -->
 
           </div>
 
-          <h2 class="govuk-heading-l govuk-!-margin-top-8">Reasons for the tribunal’s view</h2>
+          <h2 class="govuk-heading-l govuk-!-margin-top-8">Reasons for the tribunal’s decision</h2>
 
           {% set additionalReasons = data['additionalReasons'] %}
           <!--p>{{ additionalReasons | replace('\n', '<br>') | trim | safe }}</p-->
 
           <p>{{ additionalReasons | trim | safe }}</p>
 
-          <p><a href="/app/cases/{{_case.id}}/pip/decision/preliminary-advanced/panel-reasons">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s view</span></a></p>
+          <p><a href="/app/cases/{{_case.id}}/pip/decision/preliminary-advanced/panel-reasons">Change<span class="govuk-visually-hidden"> the reasons for the tribunal’s decision</span></a></p>
 
           <h2 class="govuk-heading-l govuk-!-margin-top-6">PIP activities and the descriptors we consider apply to your appeal</h2>
 
