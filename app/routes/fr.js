@@ -33,13 +33,13 @@ router.route('/app/cases/:id/fr')
     pageObject.detailsRows.push([{ html: 'Decree nisi granted' }, {html: helpers.getFormattedDate(_case.decreeDate)}]);
     pageObject.detailsRows.push([{ html: 'Decree absolute granted' }, {html: helpers.getFormattedDate(_case.absoluteDate)}]);
     pageObject.linkedCaseRows = [];
-    _case.linkedCases.forEach((item) => {
-      pageObject.detailsRows.push([{
-        html: 'Full divorce case'
-      }, {
-        html: `<a href="/app/cases/${item.id}">${item.id}</a>`
-      }]);
-    });
+    // _case.linkedCases.forEach((item) => {
+    //   pageObject.detailsRows.push([{
+    //     html: 'Full divorce case'
+    //   }, {
+    //     html: `<a href="/app/cases/${item.id}">${item.id}</a>`
+    //   }]);
+    // });
     res.render('app/case/fr/summary', pageObject);
   });
 
