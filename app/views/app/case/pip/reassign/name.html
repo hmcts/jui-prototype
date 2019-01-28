@@ -25,7 +25,7 @@
 
           <form method="post" action="/app/case/pip/reassign/reason">
 
-            {{ govukInput({
+            <!-- {{ govukInput({
               label: {
                 text: 'Name',
                 isPageHeading: true,
@@ -33,6 +33,34 @@
               },
               id: 'name',
               name: 'name'
+            }) }} -->
+
+            {{ govukSelect({
+              id: "name",
+              name: "name",
+              label: {
+                text: "Name of the person you're reassigning to",
+                classes: 'govuk-label--xl',
+                isPageHeading: true
+              },
+              items: [
+                {
+                  value: "",
+                  text: ""
+                },
+                {
+                  value: "Adam Silver",
+                  text: "Adam Silver"
+                },
+                {
+                  value: "Chris Sisk",
+                  text: "Chris Sisk"
+                },
+                {
+                  value: "Rob Taub",
+                  text: "Rob Taub"
+                }
+              ]
             }) }}
 
             {{ govukButton({
@@ -49,4 +77,13 @@
 
 </div>
 
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#name'),
+      displayMenu: 'overlay'
+    })
+  </script>
 {% endblock %}
