@@ -82,8 +82,8 @@ function getCaseTypeLabel(_case) {
 function getCaseActions(_case) {
 	switch(_case.typeId) {
 		case 'pip':
-			return [
-				{
+			return [{
+				items: [{
 					href: `/app/cases/${_case.id}/pip/decision`,
 					text: 'Send view or decision'
 				},
@@ -91,8 +91,9 @@ function getCaseActions(_case) {
 					href: `/app/cases/${_case.id}/pip/list-for-hearing`,
 					text: 'List for hearing',
 					classes: 'hmcts-button--secondary'
-				},
-				{
+				}]
+			}, {
+				items: [	{
 					text: 'Reassign',
 					href: `/app/case/pip/reassign`,
 					classes: 'hmcts-button--secondary'
@@ -101,15 +102,16 @@ function getCaseActions(_case) {
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
-				}
-			];
+				}]
+			}]
 		case 'fr':
-			return [
-				{
+			return [{
+				items: [{
 					text: 'Make a decision',
 					href: `/app/cases/${_case.id}/fr/decision`
-				},
-				{
+				}]
+			}, {
+				items: [{
 					text: 'Reassign',
 					href: `/app/cases/${_case.id}/reassign`,
 					classes: 'hmcts-button--secondary'
@@ -118,15 +120,17 @@ function getCaseActions(_case) {
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
-				}
-			];
+				}]
+			}]
+
 		case 'divorce':
-			return [
-				{
+			return [{
+				items: [{
 					href: `/app/cases/${_case.id}/divorce/decision`,
 					text: 'Make decision'
-				},
-				{
+				}]
+			}, {
+				items: [{
 					href: `/app/cases/${_case.id}/reassign`,
 					text: 'Reassign',
 					classes: 'hmcts-button--secondary'
@@ -135,8 +139,8 @@ function getCaseActions(_case) {
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
-				}
-			];
+				}]
+			}]
 	}
 }
 
