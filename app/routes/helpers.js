@@ -93,9 +93,14 @@ function getCaseActions(_case) {
 					classes: 'hmcts-button--secondary'
 				}]
 			}, {
-				items: [	{
+				items: [{
 					text: 'Reassign',
 					href: `/app/case/pip/reassign`,
+					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Refer',
+					href: `/app/case/pip/refer`,
 					classes: 'hmcts-button--secondary'
 				},
 				{

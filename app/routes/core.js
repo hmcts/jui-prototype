@@ -240,4 +240,14 @@ router.post('/app/case/pip/reassign', (req, res) => {
 	}
 });
 
+router.post('/app/case/pip/refer', (req, res) => {
+	if(req.body.who === 'namedperson') {
+		res.redirect('/app/case/pip/refer/name');
+	} else if(req.body.who === 'role') {
+		res.redirect('/app/case/pip/refer/role');
+	} else {
+		res.redirect('/app/case/pip/refer/reason');
+	}
+});
+
 module.exports = router;
