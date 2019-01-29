@@ -18,7 +18,7 @@
     {% set bannerHtml %}
       <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
       <p>Reason: Similarities between this and your recent case for Paul Fox vs Helen Fox</p>
-      <p><a href="#">Dismiss</a></p>
+      <p><a class="dismiss" href="#">Dismiss</a></p>
     {% endset %}
 
     {% if _case.justBeenAssigned %}
@@ -152,4 +152,12 @@
 
 </div>
 
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    $('.dismiss').on('click', function() {
+      $('.hmcts-banner').hide();
+    });
+  </script>
 {% endblock %}
