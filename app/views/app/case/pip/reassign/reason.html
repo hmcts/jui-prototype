@@ -27,9 +27,12 @@
 
             {{ govukTextarea({
               label: {
-                text: 'Reason for reassigning',
+                text: 'Notes for the recipient',
                 isPageHeading: true,
                 classes: 'govuk-label--xl'
+              },
+              hint: {
+                text: "Why are you referring the case to them? What do they need to know?"
               },
               id: 'reason',
               name: 'reason'
