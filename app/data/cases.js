@@ -654,28 +654,8 @@ module.exports = [
       linkReason: 'Dependent case',
       linkPerson: 'Judge Shah',
       linkType: 'hard',
-      typeId: types.divorce.id,
-      id: 'FR18D00153',
-      parties: [{
-        type: 'Applicant',
-        firstName: 'John',
-        lastName: 'Smith',
-        representative: {
-          name: '',
-          role: '',
-          company: ''
-        }
-      },
-      {
-        type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith',
-        representative: {
-          name: '',
-          role: '',
-          company: ''
-        }
-      }]
+      typeId: types.fr.id,
+      id: 'FR18D00153'
     }]
   },
 
@@ -683,9 +663,21 @@ module.exports = [
     id: 'BV18D00153',
     typeId: types.divorce.id,
     linkedCases: [{
-      type: 'Financial remedy',
-      id: 'FR1231612322',
-      parties: 'John Smith and Jane Smith'
+      linkReason: 'Dependent case',
+      linkPerson: 'Judge Shah',
+      linkType: 'hard',
+      typeId: types.fr.id,
+      id: 'BV18D00153',
+      parties: [{
+        type: 'Applicant',
+        firstName: 'John',
+        lastName: 'Smith'
+      },
+      {
+        type: 'Respondent',
+        firstName: 'Jane',
+        lastName: 'Smith'
+      }]
     }],
 
     petitioner: [{
