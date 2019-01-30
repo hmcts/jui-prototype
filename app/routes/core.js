@@ -130,6 +130,10 @@ router.get('/app/dashboard', (req, res) => {
 		caseList = caseList.filter(c => req.session.types.indexOf(c.typeId) > -1);
 	}
 
+	// temp
+	caseList = caseList.filter(c => c.id !== 'BV18D06676');
+
+
 	caseList = caseList.map(function(c) {
 		var cells = [];
 
