@@ -189,7 +189,7 @@
 .jui-cf__document-page {
   // @include aspect-ratio(1,1.414); // True A4 aspect ratio
   position: relative;
-  overflow: scroll;
+  // overflow: scroll;
   background: govuk-colour(white);
   box-sizing: border-box;
   box-shadow: 0 0 1px 0 #D1D1D1, 0 0 3px 0 #CCCCCC;
