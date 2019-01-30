@@ -867,7 +867,7 @@ module.exports = [
         id: uuid(),
         date: moment('2018-04-16 14:10'),
         title: 'Case assigned to you',
-        reason: 'Case assigned to you',
+        description: 'Can you advise whether there is sufficient evidence to support two years separation whilst living at the same address?',
         by: 'Jane Doe, District Judge'
       }
     ]
