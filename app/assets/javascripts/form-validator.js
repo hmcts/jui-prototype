@@ -93,10 +93,9 @@ FormValidator.prototype.showInlineError = function (error) {
   var fieldContainer = control.parents(".govuk-form-group");
   var label = fieldContainer.find('label');
   var legend = fieldContainer.find("legend");
-  // fieldContainer.find(".govuk-error-message").remove();
   fieldContainer.addClass('govuk-form-group--error');
   if(legend.length) {
-    legend.append(errorSpan);
+    legend.after(errorSpan);
     fieldContainer.attr('aria-invalid', 'true');
   } else {
     label.after(errorSpan);
@@ -106,6 +105,7 @@ FormValidator.prototype.showInlineError = function (error) {
 
 FormValidator.prototype.removeInlineErrors = function () {
   $(this.form).find(".govuk-error-message").remove();
+  $(this.form).find(".govuk-form-group--error").removeClass('govuk-form-group--error');
   $(this.form).find("[aria-invalid]").attr('aria-invalid', 'false');
 };
 

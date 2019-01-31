@@ -57,6 +57,38 @@
               name: "password"
             }) }}
 
+            {% from "radios/macro.njk" import govukRadios %}
+
+            {{ govukRadios({
+              idPrefix: "location",
+              name: "location",
+
+              fieldset: {
+                legend: {
+                  text: "Where do you live?"
+                }
+              },
+              items: [
+                {
+                  id: 'location',
+                  value: "england",
+                  text: "England"
+                },
+                {
+                  value: "scotland",
+                  text: "Scotland"
+                },
+                {
+                  value: "wales",
+                  text: "Wales"
+                },
+                {
+                  value: "northern-ireland",
+                  text: "Northern Ireland"
+                }
+              ]
+            }) }}
+
             {{ govukButton({
               text: "Save and continue"
             }) }}
@@ -99,6 +131,12 @@
 		    return /\d/.test(field.value);
 			},
 			message: 'Your password must contain at least one number.'
+    }]);
+    validator.addValidator('location', [{
+			method: function(field) {
+				return field.value.trim().length > 0;
+			},
+			message: 'Select where you live.'
 		}]);
   </script>
 {% endblock %}
