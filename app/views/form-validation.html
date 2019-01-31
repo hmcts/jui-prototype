@@ -1,0 +1,69 @@
+{% extends "layouts/service/base.html" %}
+
+{% block bodyStart %}
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-tabs-enabled' : 'js-tabs-enabled');</script>
+{% endblock %}
+
+{% block page_title %}Tabs for GDS{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <main role="main" class="govuk-main-wrapper">
+
+    {{ govukErrorSummary({
+      classes: 'js-hidden',
+      titleText: "There is a problem",
+      errorList: [ {
+        text: "Error message for email",
+        href: "#email"
+      }]
+    }) }}
+
+
+    <h1 class="govuk-heading-xl">Form validation demo</h1>
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+
+        <form>
+          {{ govukInput({
+            label: {
+              text: "Email"
+            },
+            id: "email",
+            name: "email"
+          }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        </form>
+      </div>
+    </div>
+
+
+  </main>
+
+</div>
+
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    var validator = new FormValidator(document.forms[0]);
+		validator.addValidator('email', [{
+		 	method: function(field) {
+		    	return field.value.trim().length > 0;
+			},
+			message: 'Enter your email address.'
+		},{
+			method: function(field) {
+		    	return (field.value.indexOf('@') > -1);
+		  	},
+			message: 'You need to enter the ‘at’ symbol in the email address.'
+		}]);
+  </script>
+{% endblock %}
