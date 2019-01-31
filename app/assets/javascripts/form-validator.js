@@ -65,8 +65,8 @@ FormValidator.prototype.getSummaryHtml = function() {
 };
 
 FormValidator.prototype.hideSummary = function() {
-    this.summary.addClass('js-hidden');
-    this.summary.removeAttr('aria-labelledby');
+  this.summary.addClass('js-hidden');
+  this.summary.removeAttr('aria-labelledby');
 };
 
 FormValidator.prototype.onSubmit = function (e) {
@@ -93,7 +93,7 @@ FormValidator.prototype.showInlineError = function (error) {
   var fieldContainer = control.parents(".govuk-form-group");
   var label = fieldContainer.find('label');
   var legend = fieldContainer.find("legend");
-  fieldContainer.find(".govuk-error-message").remove();
+  // fieldContainer.find(".govuk-error-message").remove();
   fieldContainer.addClass('govuk-form-group--error');
   if(legend.length) {
     legend.append(errorSpan);
@@ -105,7 +105,7 @@ FormValidator.prototype.showInlineError = function (error) {
 };
 
 FormValidator.prototype.removeInlineErrors = function () {
-  $(this.form).find(".field-error").remove();
+  $(this.form).find(".govuk-error-message").remove();
   $(this.form).find("[aria-invalid]").attr('aria-invalid', 'false');
 };
 

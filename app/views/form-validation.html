@@ -37,6 +37,14 @@
             name: "email"
           }) }}
 
+          {{ govukInput({
+            label: {
+              text: "Password"
+            },
+            id: "password",
+            name: "password"
+          }) }}
+
           {{ govukButton({
             text: "Save and continue"
           }) }}
@@ -64,6 +72,22 @@
 		    	return (field.value.indexOf('@') > -1);
 		  	},
 			message: 'You need to enter the ‘at’ symbol in the email address.'
+    }]);
+    validator.addValidator('password', [{
+			method: function(field) {
+		    	return field.value.trim().length > 0;
+			},
+			message: 'Enter your password.'
+		}, {
+			method: function(field) {
+		    	return field.value.length > 8;
+			},
+			message: 'Your password must contain at least 8 characters.'
+		}, {
+			method: function(field) {
+		    return /\d/.test(field.value);
+			},
+			message: 'Your password must contain at least one number.'
 		}]);
   </script>
 {% endblock %}
