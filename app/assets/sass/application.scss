@@ -29,6 +29,10 @@ $hmcts-page-width: 1220px;
 // JUI styles
 @import "jui/all";
 
+.hidden {
+  display: none;
+}
+
 html {
   background-color: govuk-colour("grey-3");
 }

@@ -1,0 +1,104 @@
+{% extends "layouts/service/base.html" %}
+
+{% block bodyStart %}
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-tabs-enabled' : 'js-tabs-enabled');</script>
+{% endblock %}
+
+{% block page_title %}Tabs for GDS{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <main role="main" class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+
+      <div tabindex="-1" role="group" id="errorSummary" class="govuk-error-summary js-hidden" aria-labelledby="error-summary-title">
+
+      </div>
+
+        <!-- <div class="govuk-error-summary hidden" aria-labelledby="error-summary-title" role="group" tabindex="-1" data-module="error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#dob-error">Date of birth must be in the past</a>
+              </li>
+              <li>
+                <a href="#postcode-error">Enter a postcode, like AA1 1AA</a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+
+
+          <h1 class="govuk-heading-xl">Validation demo (client-side)</h1>
+
+          <form novalidate>
+            {{ govukInput({
+              label: {
+                text: "Email"
+              },
+              id: "email",
+              name: "email"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: "Password"
+              },
+              id: "password",
+              name: "password"
+            }) }}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+          </form>
+        </div>
+      </div>
+
+  </main>
+
+</div>
+
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    var validator = new FormValidator(document.forms[0]);
+		validator.addValidator('email', [{
+		 	method: function(field) {
+		    	return field.value.trim().length > 0;
+			},
+			message: 'Enter your email address.'
+		},{
+			method: function(field) {
+		    	return (field.value.indexOf('@') > -1);
+		  	},
+			message: 'You need to enter the ‘at’ symbol in the email address.'
+    }]);
+    validator.addValidator('password', [{
+			method: function(field) {
+		    	return field.value.trim().length > 0;
+			},
+			message: 'Enter your password.'
+		}, {
+			method: function(field) {
+		    	return field.value.length > 8;
+			},
+			message: 'Your password must contain at least 8 characters.'
+		}, {
+			method: function(field) {
+		    return /\d/.test(field.value);
+			},
+			message: 'Your password must contain at least one number.'
+		}]);
+  </script>
+{% endblock %}

@@ -37,7 +37,7 @@ FormValidator.prototype.resetTitle = function() {
 };
 
 FormValidator.prototype.updateTitle = function() {
-  document.title = "(" + this.errors.length + " errors) - " + document.title;
+  document.title = "" + this.errors.length + " errors - " + document.title;
 };
 
 FormValidator.prototype.showSummary = function () {
