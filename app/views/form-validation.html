@@ -12,46 +12,89 @@
 
   <main role="main" class="govuk-main-wrapper">
 
-    {{ govukErrorSummary({
-      classes: 'js-hidden',
-      titleText: "There is a problem",
-      errorList: [ {
-        text: "Error message for email",
-        href: "#email"
-      }]
-    }) }}
-
-
-    <h1 class="govuk-heading-xl">Form validation demo</h1>
-
     <div class="govuk-grid-row">
 
       <div class="govuk-grid-column-two-thirds">
 
-        <form>
-          {{ govukInput({
-            label: {
-              text: "Email"
-            },
-            id: "email",
-            name: "email"
-          }) }}
+      <div tabindex="-1" role="group" id="errorSummary" class="govuk-error-summary js-hidden" aria-labelledby="error-summary-title">
 
-          {{ govukInput({
-            label: {
-              text: "Password"
-            },
-            id: "password",
-            name: "password"
-          }) }}
-
-          {{ govukButton({
-            text: "Save and continue"
-          }) }}
-        </form>
       </div>
-    </div>
 
+        <!-- <div class="govuk-error-summary hidden" aria-labelledby="error-summary-title" role="group" tabindex="-1" data-module="error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#dob-error">Date of birth must be in the past</a>
+              </li>
+              <li>
+                <a href="#postcode-error">Enter a postcode, like AA1 1AA</a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+
+
+          <h1 class="govuk-heading-xl">Validation demo (client-side)</h1>
+
+          <form novalidate>
+            {{ govukInput({
+              label: {
+                text: "Email"
+              },
+              id: "email",
+              name: "email"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                text: "Password"
+              },
+              id: "password",
+              name: "password"
+            }) }}
+
+            {% from "radios/macro.njk" import govukRadios %}
+
+            {{ govukRadios({
+              idPrefix: "location",
+              name: "location",
+
+              fieldset: {
+                legend: {
+                  text: "Where do you live?"
+                }
+              },
+              items: [
+                {
+                  id: 'location',
+                  value: "england",
+                  text: "England"
+                },
+                {
+                  value: "scotland",
+                  text: "Scotland"
+                },
+                {
+                  value: "wales",
+                  text: "Wales"
+                },
+                {
+                  value: "northern-ireland",
+                  text: "Northern Ireland"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+          </form>
+        </div>
+      </div>
 
   </main>
 
@@ -88,6 +131,12 @@
 		    return /\d/.test(field.value);
 			},
 			message: 'Your password must contain at least one number.'
+    }]);
+    validator.addValidator('location', [{
+			method: function(field) {
+				return field.value.trim().length > 0;
+			},
+			message: 'Select where you live.'
 		}]);
   </script>
 {% endblock %}
