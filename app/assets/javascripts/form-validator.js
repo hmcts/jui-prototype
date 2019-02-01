@@ -88,18 +88,22 @@ FormValidator.prototype.showInlineErrors = function() {
 };
 
 FormValidator.prototype.showInlineError = function (error) {
-  var errorSpan = '<span class="govuk-error-message" id="'+ error.fieldName + '-error">'+FormValidator.escapeHtml(error.message)+'</span>';
+  var errorSpanId = error.fieldName + '-error';
+  var errorSpan = '<span class="govuk-error-message" id="'+ errorSpanId +'">'+FormValidator.escapeHtml(error.message)+'</span>';
   var control = $("#" + error.fieldName);
   var fieldContainer = control.parents(".govuk-form-group");
   var label = fieldContainer.find('label');
   var legend = fieldContainer.find("legend");
+  var fieldset = fieldContainer.find("fieldset");
   fieldContainer.addClass('govuk-form-group--error');
   if(legend.length) {
     legend.after(errorSpan);
     fieldContainer.attr('aria-invalid', 'true');
+    fieldset.attr('aria-describedby', errorSpanId);
   } else {
     label.after(errorSpan);
     control.attr('aria-invalid', 'true');
+    control.attr('aria-describedby', errorSpanId);
   }
 };
 
