@@ -13,7 +13,7 @@ router.use('/', require('./routes/reserve-case'));
 
 router.get('/', function (req, res) {
 	req.session.destroy();
-	res.redirect('/index');
+	res.render('index');
 });
 
 module.exports = router;
