@@ -158,7 +158,7 @@
       }
 		}, {
 			method: function(field, params) {
-        var d = new Date(parseInt(params.year, 10), parseInt(params.month, 10)-1, parseInt(params.day, 10)-1);
+        var d = new Date(parseInt(params.year.value, 10), parseInt(params.month.value, 10)-1, parseInt(params.day.value, 10)-1);
         return d instanceof Date && !isNaN(d);
 			},
       message: 'Enter a valid date of birth.',

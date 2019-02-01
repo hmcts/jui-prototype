@@ -1,3 +1,32 @@
+function removeAttributeValue(el, attr, value) {
+  var re, m;
+  if (el.getAttribute(attr)) {
+    if (el.getAttribute(attr) == value) {
+      el.removeAttribute(attr);
+    } else {
+      re = new RegExp('(^|\\s)' + value + '(\\s|$)');
+      m = el.getAttribute(attr).match(re);
+      if (m && m.length == 3) {
+        el.setAttribute(attr, el.getAttribute(attr).replace(re, (m[1] && m[2])?' ':''))
+      }
+    }
+  }
+}
+
+function addAttributeValue(el, attr, value) {
+  var re;
+  if (!el.getAttribute(attr)) {
+    el.setAttribute(attr, value);
+  }
+  else {
+    re = new RegExp('(^|\\s)' + value + '(\\s|$)');
+    if (!re.test(el.getAttribute(attr))) {
+      el.setAttribute(attr, el.getAttribute(attr) + ' ' + value);
+    }
+  }
+};
+
+
 function FormValidator(form, options) {
   this.form = form;
   this.errors = [];
@@ -99,19 +128,30 @@ FormValidator.prototype.showInlineError = function (error) {
   if(legend.length) {
     legend.after(errorSpan);
     fieldContainer.attr('aria-invalid', 'true');
-    fieldset.attr('aria-describedby', errorSpanId);
+    addAttributeValue(fieldset[0], 'aria-describedby', errorSpanId);
   } else {
     label.after(errorSpan);
     control.attr('aria-invalid', 'true');
-    control.attr('aria-describedby', errorSpanId);
+    addAttributeValue(control[0], 'aria-describedby', errorSpanId);
   }
 };
 
-FormValidator.prototype.removeInlineErrors = function () {
-  $(this.form).find(".govuk-form-group .govuk-error-message").remove();
-  $(this.form).find(".govuk-form-group--error").removeClass('govuk-form-group--error');
-  $(this.form).find(".govuk-form-group [aria-invalid]").attr('aria-invalid', 'false');
-  $(this.form).find(".govuk-form-group [aria-describedby]").removeAttr('aria-describedby');
+FormValidator.prototype.removeInlineErrors = function() {
+  var error;
+  var i;
+  for (var i = 0; i < this.errors.length; i++) {
+    this.removeInlineError(this.errors[i]);
+  }
+};
+
+FormValidator.prototype.removeInlineError = function(error) {
+  var control = $("#" + error.fieldName);
+  var fieldContainer = control.parents(".govuk-form-group");
+  fieldContainer.find('.govuk-error-message').remove();
+  fieldContainer.removeClass('govuk-form-group--error');
+  fieldContainer.find("[aria-invalid]").attr('aria-invalid', 'false');
+  var errorSpanId = error.fieldName + '-error';
+  removeAttributeValue(fieldContainer.find('[aria-describedby]')[0], 'aria-describedby', errorSpanId);
 };
 
 FormValidator.prototype.addValidator = function(fieldName, rules) {
