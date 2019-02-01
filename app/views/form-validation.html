@@ -146,7 +146,7 @@
 			},
 			message: 'Select where you live.'
     }]);
-    validator.addValidator('dob', [{
+    validator.addValidator('dob-day', [{
 			method: function(field, params) {
         return (params.day.value.length !== 0 && params.month.value.length !== 0 && params.year.value !== 0);
 			},
