@@ -108,9 +108,10 @@ FormValidator.prototype.showInlineError = function (error) {
 };
 
 FormValidator.prototype.removeInlineErrors = function () {
-  $(this.form).find(".govuk-error-message").remove();
+  $(this.form).find(".govuk-form-group .govuk-error-message").remove();
   $(this.form).find(".govuk-form-group--error").removeClass('govuk-form-group--error');
-  $(this.form).find("[aria-invalid]").attr('aria-invalid', 'false');
+  $(this.form).find(".govuk-form-group [aria-invalid]").attr('aria-invalid', 'false');
+  $(this.form).find(".govuk-form-group [aria-describedby]").removeAttr('aria-describedby');
 };
 
 FormValidator.prototype.addValidator = function(fieldName, rules) {
