@@ -4,7 +4,7 @@ function FormValidator(form, options) {
   this.validators = [];
   $(this.form).on('submit', $.proxy(this, 'onSubmit'));
   this.summary = (options && options.summary) ? $(options.summary) : $('.govuk-error-summary');
-  this.summary.on('click', 'a', $.proxy(this, 'onErrorClick'));
+  // this.summary.on('click', 'a', $.proxy(this, 'onErrorClick'));
   this.originalTitle = document.title;
 };
 
