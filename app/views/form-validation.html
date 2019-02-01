@@ -87,6 +87,19 @@
               ]
             }) }}
 
+            {{ govukDateInput({
+              id: "dob",
+              namePrefix: "dob",
+              fieldset: {
+                legend: {
+                  text: "What is your date of birth?"
+                }
+              },
+              hint: {
+                text: "For example, 31 3 1980"
+              }
+            }) }}
+
             {{ govukButton({
               text: "Save and continue"
             }) }}
@@ -132,6 +145,29 @@
 				return field.value.trim().length > 0;
 			},
 			message: 'Select where you live.'
+    }]);
+    validator.addValidator('dob', [{
+			method: function(field, params) {
+        return (params.day.value.length !== 0 && params.month.value.length !== 0 && params.year.value !== 0);
+			},
+      message: 'Enter a date of birth.',
+      params: {
+        day: document.getElementById('dob-day'),
+        month: document.getElementById('dob-month'),
+        year: document.getElementById('dob-year')
+      }
+		}, {
+			method: function(field, params) {
+        var d = new Date(parseInt(params.year, 10), parseInt(params.month, 10)-1, parseInt(params.day, 10)-1);
+        return d instanceof Date && !isNaN(d);
+			},
+      message: 'Enter a valid date of birth.',
+      params: {
+        day: document.getElementById('dob-day'),
+        month: document.getElementById('dob-month'),
+        year: document.getElementById('dob-year')
+      }
 		}]);
   </script>
 {% endblock %}
+
