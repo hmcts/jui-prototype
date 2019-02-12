@@ -4,11 +4,19 @@
 
 {% block content %}
 
+
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+  <span class="jui-status jui-status--new govuk-!-margin-left-1">{{_case.reserved}}</span>
+{% endif %}
+{% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: casebar.parties
-    },
-  menus: caseActions
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  },
+menus: caseActions
 }) }}
 
 	<div class="jui-width-container">
@@ -34,243 +42,10 @@
         </div>
       {% endset %}
 
-      <!-- <table class="govuk-table">
-
-
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col"></th>
-            <th class="govuk-table__header" scope="col">Case number</th>
-
-            <th class="govuk-table__header" scope="col">Parties</th>
-
-            <th class="govuk-table__header" scope="col">Type</th>
-
-            <th class="govuk-table__header" scope="col">Date of last event</th>
-
-          </tr>
-        </thead>
-
-        <tbody class="govuk-table__body">
-
-          <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="row">{{checkbox | safe}}</th>
-
-
-            <th class="govuk-table__header" scope="row"><a href="/app/cases/FR1231612322">FR1231612322</a></th>
-
-
-
-            <td class="govuk-table__cell">John Smith<br> v Jane Smith<br></td>
-
-
-
-            <td class="govuk-table__cell">Financial remedy</td>
-
-
-
-
-
-
-            <td class="govuk-table__cell">20 Nov 2017</td>
-
-
-
-
-          </tr>
-
-          <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="row">{{checkbox | safe}}</th>
-
-            <th class="govuk-table__header" scope="row"><a href="/app/cases/SC1231612322">SC1231612322</a> </th>
-
-
-
-            <td class="govuk-table__cell">Warren Sutton<br> v DWP<br></td>
-
-
-
-            <td class="govuk-table__cell">PIP</td>
-
-
-
-
-
-
-            <td class="govuk-table__cell">20 Nov 2017</td>
-
-
-
-
-          </tr>
-
-          <tr class="govuk-table__row">
-
-              <th class="govuk-table__header" scope="row">{{checkbox | safe}}</th>
-            <th class="govuk-table__header" scope="row"><a href="/app/cases/SC1231612323">SC1231612323</a></th>
-
-
-
-            <td class="govuk-table__cell">Alan Jones<br> v DWP<br></td>
-
-
-
-            <td class="govuk-table__cell">PIP</td>
-
-
-
-
-
-
-            <td class="govuk-table__cell">9 May 2018</td>
-
-
-
-
-          </tr>
-
-          <tr class="govuk-table__row">
-
-              <th class="govuk-table__header" scope="row">{{checkbox | safe}}</th>
-            <th class="govuk-table__header" scope="row"><a href="/app/cases/SC1231612324">SC1231612324</a></th>
-
-
-
-            <td class="govuk-table__cell">Jennifer Langley<br> v DWP<br></td>
-
-
-
-            <td class="govuk-table__cell">PIP</td>
-
-
-
-
-
-
-            <td class="govuk-table__cell">9 May 2018</td>
-
-
-
-
-          </tr>
-
-          <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="row">{{checkbox | safe}}</th>
-
-            <th class="govuk-table__header" scope="row"><a href="/app/cases/BV18D00150">BV18D00150</a></th>
-
-
-
-            <td class="govuk-table__cell">Susan Francis<br> v David Francis<br></td>
-
-
-
-            <td class="govuk-table__cell">Divorce</td>
-
-
-
-
-
-
-            <td class="govuk-table__cell">9 May 2018</td>
-
-
-
-
-
-          </tr>
-
-        </tbody>
-      </table> -->
-
-      <!-- {{hmctsPagination({
-        results: {
-        from: 10,
-        to: 20,
-        count: 256
-        },
-
-        previous: {
-        text: 'Previous',
-        href: ''
-        },
-        next: {
-        text: 'Next',
-        href: ''
-        },
-        items: [{
-        text: '1',
-        href: '/page=1'
-        }, {
-        type: 'dots'
-        }, {
-        text: '5',
-        href: '/page=5'
-        }, {
-        text: '6',
-        href: '/page=6',
-        selected: true
-        }, {
-        text: '7',
-        href: '/page=7'
-        }, {
-        type: 'dots'
-        }, {
-        text: '10',
-        href: '/page=10'
-        }]
-        })}} -->
-
-
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <form action="/app/cases/{{_case.id}}/linked-cases/new" method="post">
-
-          <!-- {{ govukRadios({
-            classes: "govuk-radios--inline",
-            idPrefix: 'whatissue',
-            name: 'whatissue',
-            fieldset: {
-              legend: {
-                text: 'Do you know the case number that you want to link?',
-                isPageHeading: true,
-                classes: 'govuk-fieldset__legend--xl'
-              }
-            },
-            items: [
-              {
-                html: 'Yes',
-                value: 'Yes'
-              },
-              {
-                html: 'No',
-                value: 'No'
-              }
-            ]
-          }) }} -->
-
-
-
-
-
-          <!-- {{ govukInput({
-            label: {
-              text: 'Search for case',
-              isPageHeading: true,
-              classes: 'govuk-label--xl'
-            },
-            hint: { text: 'Search for party name or any detail about the case' },
-            classes: "govuk-input--width-20",
-            id: 'case-number',
-            name: 'case-number'
-          }) }} -->
-
-          <!-- {{ govukButton({
-            text: 'Link case'
-          }) }} -->
-
-
 
 
             {{ govukInput({

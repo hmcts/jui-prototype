@@ -4,17 +4,20 @@
 
 {% block content %}
 
-  {{ hmctsIdentityBar({
-    title: {
-      html: casebar.parties
-      },
-    items: [
-      {
-        text: 'Make a decision',
-        href: '/app/cases/'+_case.id+'/fr/decision'
-      }
-    ]
-  }) }}
+
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+  <span class="jui-status jui-status--new govuk-!-margin-left-1">{{_case.reserved}}</span>
+{% endif %}
+{% endset %}
+
+
+{{ hmctsIdentityBar({
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  },
+menus: caseActions
+}) }}
 
 <div class="jui-width-container">
 

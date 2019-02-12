@@ -4,6 +4,7 @@ var moment = require('moment');
 
 module.exports = [
   {
+    reserved: 'Reserved to you',
     id: 'FR1231612322',
     typeId: types.fr.id,
     status: '<a href="/app/cases/FR1231612322/documents/draft-consent-order">Draft consent order</a>',

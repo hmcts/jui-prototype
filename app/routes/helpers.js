@@ -242,8 +242,7 @@ function getCaseNavItems(_case, id) {
 
 function getCaseBarObject(_case) {
 	return {
-		parties: getPartiesLineCasebar(_case),
-		id: _case.id
+		parties: getPartiesLineCasebar(_case)
 	};
 }
 

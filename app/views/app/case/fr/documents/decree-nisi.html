@@ -4,11 +4,17 @@
 
 {% block content %}
 
+
+  {% set reservedBadgeHtml %}
+    <span class="jui-status jui-status--new govuk-!-margin-left-1">{{_case.reserved}}</span>
+  {% endset %}
+
+
   {{ hmctsIdentityBar({
-    title: {
-      html: casebar.parties
+  title: {
+    html: casebar.parties + reservedBadgeHtml
     },
-    menus: caseActions
+  menus: caseActions
   }) }}
 
   <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">
