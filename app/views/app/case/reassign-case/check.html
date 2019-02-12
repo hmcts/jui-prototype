@@ -24,16 +24,96 @@
         <div class="govuk-grid-column-two-thirds">
 
 
-          <h1 class="govuk-heading-xl">Check answers</h1>
+          <h1 class="govuk-heading-xl">Check your answers before reassigning the case</h1>
 
+
+          {% if data.who == 'namedperson' %}
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "Name of the person you're reassigning to"
+                  },
+                  value: {
+                    text: data.name
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Notes for the recipient"
+                  },
+                  value: {
+                    text: data.reason
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+          {% elseif data.who == 'role' %}
+            {{ govukSummaryList({
+              rows: [
+                {
+                  key: {
+                    text: "What is the role of the person you want to assign to?"
+                  },
+                  value: {
+                    text: data.role
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Notes for the recipient"
+                  },
+                  value: {
+                    text: data.reason
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "date of birth"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+          {% else %}
           {{ govukSummaryList({
             rows: [
               {
                 key: {
-                  text: "Name"
+                  text: "Role"
                 },
                 value: {
-                  text: "Sarah Philips"
+                  text: 'Court administrator'
                 },
                 actions: {
                   items: [
@@ -47,10 +127,10 @@
               },
               {
                 key: {
-                  text: "Reason"
+                  text: "Notes for the recipient"
                 },
                 value: {
-                  text: "As they are better placed to deal with this than me."
+                  text: data.reason
                 },
                 actions: {
                   items: [
@@ -64,6 +144,7 @@
               }
             ]
           }) }}
+          {% endif %}
 
           <form method="post">
             {{ govukButton({

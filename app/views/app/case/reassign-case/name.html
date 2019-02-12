@@ -1,20 +1,20 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}What do you want to send to the parties? {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Reassign case {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
-{{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
-  }
-}) }}
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties
+    }
+  }) }}
 
-<div class="jui-width-container">
+	<div class="jui-width-container">
 
     {{ govukBackLink({
       text: 'Back',
-      href: 'javascript:history.back()'
+      href: './'
     }) }}
 
     <main class="govuk-main-wrapper" role="main">
@@ -23,18 +23,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <form method="post" action="/app/case/pip/reassign/reason">
-
-            <!-- {{ govukInput({
-              label: {
-                text: 'Name',
-                isPageHeading: true,
-                classes: 'govuk-label--xl'
-              },
-              id: 'name',
-              name: 'name'
-            }) }} -->
-
+          <form method="post">
             {{ govukSelect({
               id: "name",
               name: "name",
@@ -90,17 +79,12 @@
             {{ govukButton({
               text: 'Continue'
             }) }}
-
           </form>
-
         </div>
-
       </div>
 
-	</main>
-
-</div>
-
+		</main>
+	</div>
 {% endblock %}
 
 {% block page_scripts %}

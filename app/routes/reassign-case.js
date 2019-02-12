@@ -15,13 +15,15 @@ router.get('/app/cases/:id/reassign', (req, res) => {
 
 router.post('/app/cases/:id/reassign', (req, res) => {
 	if(req.body.who === 'namedperson') {
-		res.redirect(`/app/cases/${req.params.id}/reassign/named-person`);
+		res.redirect(`/app/cases/${req.params.id}/reassign/name`);
+	} else if(req.body.who === 'role') {
+		res.redirect(`/app/cases/${req.params.id}/reassign/role`);
 	} else {
-		res.redirect(`/app/cases/${req.params.id}/reassign/check`);
+		res.redirect(`/app/cases/${req.params.id}/reassign/recipient-notes`);
 	}
 });
 
-router.get('/app/cases/:id/reassign/named-person', (req, res) => {
+router.get('/app/cases/:id/reassign/name', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
 	var pageObject = {
@@ -29,10 +31,40 @@ router.get('/app/cases/:id/reassign/named-person', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/named-person', pageObject);
+	res.render('app/case/reassign-case/name', pageObject);
 });
 
-router.post('/app/cases/:id/reassign/named-person', (req, res) => {
+router.post('/app/cases/:id/reassign/name', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/reassign/recipient-notes`);
+});
+
+router.get('/app/cases/:id/reassign/role', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case)
+	};
+
+	res.render('app/case/reassign-case/role', pageObject);
+});
+
+router.post('/app/cases/:id/reassign/role', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/reassign/recipient-notes`);
+});
+
+router.get('/app/cases/:id/reassign/recipient-notes', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case)
+	};
+
+	res.render('app/case/reassign-case/recipient-notes', pageObject);
+});
+
+router.post('/app/cases/:id/reassign/recipient-notes', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/reassign/check`);
 });
 

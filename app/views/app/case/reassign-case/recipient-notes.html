@@ -25,30 +25,17 @@
 
           <form method="post">
 
-            {{ govukRadios({
-              idPrefix: 'who',
-              name: 'who',
-              fieldset: {
-                legend: {
-                  text: 'Who do you want to reassign the case to?',
-                  isPageHeading: true,
-                  classes: 'govuk-fieldset__legend--xl'
-                }
+            {{ govukTextarea({
+              label: {
+                text: 'Notes for the recipient',
+                isPageHeading: true,
+                classes: 'govuk-label--xl'
               },
-              items: [
-                {
-                  html: 'A named person',
-                  value: 'namedperson'
-                },
-                {
-                  html: 'A person with a specific role',
-                  value: 'role'
-                },
-                {
-                  html: 'A court adminstrator',
-                  value: 'courtadmin'
-                }
-              ]
+              hint: {
+                text: "Why are you referring the case to them? What do they need to know?"
+              },
+              id: 'reason',
+              name: 'reason'
             }) }}
 
             {{ govukButton({

@@ -19,17 +19,6 @@
 
     <main class="govuk-main-wrapper" role="main">
 
-      {% set courtAdminHtml %}
-        {{ govukTextarea({
-          label: {
-            text: 'Reason for reassigning',
-            classes: 'govuk-label--m'
-          },
-          id: 'reason',
-          name: 'reason'
-        }) }}
-      {% endset %}
-
       <form method="post">
         {{ govukRadios({
           idPrefix: 'who',
@@ -44,16 +33,15 @@
           items: [
             {
               html: 'A named person',
-              value: 'namedperson',
-              checked: checked('who', 'namedperson') == 'checked'
+              value: 'namedperson'
+            },
+            {
+              html: 'A person with a specific role',
+              value: 'role'
             },
             {
               html: 'A court adminstrator',
-              value: 'courtadmin',
-              checked: checked('who', 'courtadmin') == 'checked',
-              conditional: {
-                html: courtAdminHtml
-              }
+              value: 'courtadmin'
             }
           ]
         }) }}
