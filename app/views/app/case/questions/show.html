@@ -59,7 +59,7 @@
                 {{ govukButton({
                   href: deleteQuestionLink.href,
                   text: 'Delete question',
-                  classes: 'jui-button--secondary'
+                  classes: 'hmcts-button--secondary'
                 }) }}
               </div>
 
@@ -133,6 +133,6 @@
 
 {% block page_scripts %}
   <script>
-    new Editor($('.js-editor'))
+    new HMCTSFrontend.RichTextEditor($('.js-editor'));
   </script>
 {% endblock %}
