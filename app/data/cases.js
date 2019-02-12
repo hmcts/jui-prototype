@@ -176,7 +176,7 @@ module.exports = [
     status: '<a href="/app/cases/SC1231612322/questions/">Appellant’s answers</a>',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
-    urgent: true,
+    urgent: false,
     tribunalCentre: 'Fox Court',
     requirements: 'Assisted Digital support requested',
     linkedCases: [{
