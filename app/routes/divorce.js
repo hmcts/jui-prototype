@@ -18,7 +18,7 @@ router.get('/app/cases/:id/divorce', (req, res) => {
 		recentEvents: helpers.getRecentEvents(_case)
 	};
 
-	pageObject.detailsRows.push([{ html: 'Case number' },	{ html: _case.id + (_case.urgent ? ' <span class="jui-status  jui-status--urgent  govuk-!-margin-left-1">Urgent</span> ' : '') }]);
+	pageObject.detailsRows.push([{ html: 'Case number' },	{ html: _case.id }]);
 	pageObject.detailsRows.push([{ html: 'Case type' },	{ html: helpers.getCaseTypeLabel(_case) }]);
 	pageObject.detailsRows.push([{ html: 'Case status' }, { html: _case.summaryStatus ? _case.summaryStatus : _case.status }]);
 	pageObject.detailsRows.push([{ html: 'Reason for divorce' }, { html: _case.reason }]);

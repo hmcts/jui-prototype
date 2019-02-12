@@ -85,7 +85,7 @@ router.get('/app/divorce/dashboard', (req, res) => {
     var cells = [];
 
 		cells.push({
-			html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' + (c.urgent ? ' <span class="jui-status  jui-status--urgent  govuk-!-margin-left-1">Urgent</span> ' : '')
+			html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>'
 		});
 
 		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
@@ -130,25 +130,15 @@ router.get('/app/dashboard', (req, res) => {
 		caseList = caseList.filter(c => req.session.types.indexOf(c.typeId) > -1);
 	}
 
-	// temp
-	caseList = caseList.filter(c => c.id !== 'BV18D06676');
-
-
 	caseList = caseList.map(function(c) {
 		var cells = [];
-
-		cells.push({
-			html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' + (c.urgent ? ' <span class="jui-status  jui-status--urgent  govuk-!-margin-left-1">Urgent</span> ' : '')
-		});
-
+		cells.push({ html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' });
 		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
 		cells.push({ html: helpers.getCaseTypeLabel(c) });
 		cells.push({ html: c.status });
 		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
 		cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
-
 		return cells;
-
 	});
 
 	var successFlash = req.flash('success')[0];
@@ -161,9 +151,8 @@ router.get('/app/dashboard', (req, res) => {
 			var cells = [];
 
 			cells.push({
-				html : '<a href="/app/cases/' + c.id + '">'+ c.id +'</a>' + ' <span class="jui-status  jui-status--new  govuk-!-margin-left-1">New</span>'
+				html : '<a href="/app/cases/' + c.id + '">'+ c.id +'</a>'
 			});
-
 
       cells.push({ html: helpers.getPartiesLineDashboard(c)	});
       cells.push({ html: helpers.getCaseTypeLabel(c) });

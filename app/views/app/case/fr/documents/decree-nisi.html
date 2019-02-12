@@ -6,7 +6,10 @@
 
 
   {% set reservedBadgeHtml %}
-    <span class="jui-status jui-status--new govuk-!-margin-left-1">{{_case.reserved}}</span>
+  {{hmctsBadge({
+    classes: 'govuk-!-margin-left-1',
+    text: _case.reserved
+  })}}
   {% endset %}
 
 

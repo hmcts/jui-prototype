@@ -4,9 +4,19 @@
 
 {% block content %}
 
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+{{hmctsBadge({
+  classes: 'govuk-!-margin-left-1',
+  text: _case.reserved
+})}}
+{% endif %}
+{% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
+title: {
+  html: casebar.parties + reservedBadgeHtml
   }
 }) }}
 

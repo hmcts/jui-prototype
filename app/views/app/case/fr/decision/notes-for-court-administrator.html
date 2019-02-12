@@ -4,11 +4,21 @@
 
 {% block content %}
 
-  {{ hmctsIdentityBar({
-    title: {
-      html: casebar.parties
-    }
-  }) }}
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+{{hmctsBadge({
+  classes: 'govuk-!-margin-left-1',
+  text: _case.reserved
+})}}
+{% endif %}
+{% endset %}
+
+
+{{ hmctsIdentityBar({
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  }
+}) }}
 
 	<div class="jui-width-container">
 

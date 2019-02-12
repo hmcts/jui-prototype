@@ -149,6 +149,7 @@ router.route('/app/cases/:id/fr/decision')
   .get((req, res) => {
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
+      _case: _case,
       casebar: helpers.getCaseBarObject(_case),
       caseActions: helpers.getCaseActions(_case),
       backLink: {
@@ -313,6 +314,7 @@ router.route('/app/cases/:id/fr/draft-consent-order')
   .get((req, res) => {
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
+      _case: _case,
       casebar: helpers.getCaseBarObject(_case),
       caseActions: helpers.getCaseActions(_case),
       backLink: {
@@ -338,6 +340,7 @@ router.route('/app/cases/:id/fr/notes-for-court-administrator')
   .get((req, res) => {
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
+      _case: _case,
       casebar: helpers.getCaseBarObject(_case),
       caseActions: helpers.getCaseActions(_case),
       backLink: {
