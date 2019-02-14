@@ -671,39 +671,39 @@ module.exports = [
       id: 'BV18D00153',
       parties: [{
         type: 'Applicant',
-        firstName: 'John',
-        lastName: 'Smith'
+        firstName: 'Zoe',
+        lastName: 'Dante'
       },
       {
         type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith'
+        firstName: 'John',
+        lastName: 'Dante'
       }]
     }],
 
     petitioner: [{
-      fullname: 'John Smith',
-      dateOfBirth: moment('1981-06-07'),
-      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
-      phone: '07787 557 967',
-      email: 'john.smith@gmail.com',
+      fullname: 'Zoe Elizabeth Dante',
+      dateOfBirth: moment('1979-04-16'),
+      address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
+      phone: '07700 900 772',
+      email: 'zoe.dante@gmail.com',
       representative: ''
     }],
 
     respondent: [{
-      fullname: 'Jane Smith',
-      dateOfBirth: moment('1979-04-16'),
-      address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
-      phone: '07700 900 772',
-      email: 'jane.smith@gmail.com',
+      fullname: 'John James Dante',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'john.dante@gmail.com',
       representative: ''
     }],
 
     parties: [
       {
         type: 'Petitioner',
-        firstName: 'John',
-        lastName: 'Smith',
+        firstName: 'Zoe',
+        lastName: 'Dante',
         representative: {
           name: '',
           role: '',
@@ -712,8 +712,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith',
+        firstName: 'John',
+        lastName: 'Dante',
         representative: {
           name: '',
           role: '',
@@ -739,23 +739,22 @@ module.exports = [
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'John Smith, petitioner'
+        by: 'Zoe Dante, petitioner'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Jane Smith, respondent'
+        by: 'John Dante, respondent'
       },
       {
         id: uuid(),
         date: moment('2018-04-25 14:10'),
         title: 'Application for divorce submitted',
-        by: 'John Smith, petitioner'
+        by: 'Zoe Dante, petitioner'
       }
     ]
   },
-
 
   {
     id: 'BV18D00156',
