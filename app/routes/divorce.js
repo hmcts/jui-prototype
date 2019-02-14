@@ -153,7 +153,7 @@ router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
 });
 
 router.post('/app/cases/:id/divorce/generate-order', (req, res) => {
-	res.redirect('check-your-answers');
+	res.redirect('confirmation');
 });
 
 // Costs order
@@ -167,13 +167,37 @@ router.get('/app/cases/:id/divorce/costs-order', (req, res) => {
 		},
 		_case: _case
 	};
-	res.render('app/case/divorce/decision/costs-order', pageObject);
+	res.render('app/case/divorce/decision/costs-order-1', pageObject);
 });
 
 router.post('/app/cases/:id/divorce/costs-order', (req, res) => {
-	res.redirect('check-your-answers');
+  if (req.body['cost-order'] === 'yes') {
+    res.redirect('costs-order-2');
+  } else {
+    res.redirect('check-your-answers');
+  }
 });
 
+router.get('/app/cases/:id/divorce/costs-order-2', (req, res) => {
+  var _case = helpers.getCase(req.session.cases, req.params.id);
+  var pageObject = {
+    casebar: helpers.getCaseBarObject(_case),
+    caseActions: helpers.getCaseActions(_case),
+    backLink: {
+      href: `/app/cases/${_case.id}/divorce/costs-order`
+    },
+    _case: _case
+  };
+  res.render('app/case/divorce/decision/costs-order-2', pageObject);
+});
+
+router.post('/app/cases/:id/divorce/costs-order-2', (req, res) => {
+  if (req.body['costsOrderDecision'] === 'yes') {
+    res.redirect('costs-order-2');
+  } else {
+    res.redirect('check-your-answers');
+  }
+});
 
 // Check your answers
 router.get('/app/cases/:id/divorce/check-your-answers', (req, res) => {
