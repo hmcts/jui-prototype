@@ -1,0 +1,123 @@
+{% extends "layouts/admin/base.html" %}
+
+{% set pageID = "alerts" %}
+
+{% block pageTitle %}Alerts {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+  <div class="hmcts-width-container">
+    <main class="govuk-main-wrapper" role="main">
+      <h1 class="govuk-heading-xl">Alerts (3 new)</h1>
+
+      <ul class="govuk-list">
+        <li>
+          {{hmctsBadge({
+            classes: 'govuk-!-margin-left-1',
+            text: 'New'
+          })}}
+          Judge Andrew Sisk reserved the <a href="/cases/">Margaret Blake and William Blake (Financial remedy)</a> case which was reserved to you.
+        </li>
+        <li>
+          {{hmctsBadge({
+            classes: 'govuk-!-margin-left-1',
+            text: 'New'
+          })}}
+          Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+            and DWP (PIP)</a> case which you referred.
+        </li>
+        <li>
+          {{hmctsBadge({
+            classes: 'govuk-!-margin-left-1',
+            text: 'New'
+          })}}
+          Judge Prita Jillian replied to the <a href="/cases/">Susan Francis
+            and David Francis (Divorce)</a> case.
+        </li>
+        <li>
+          Judge Jane Doe replied to the <a href="/cases/">Susan Francis
+            and David Francis (Divorce)</a> case.
+        </li>
+        <li>
+          Judge Jessica Jones progressed the <a href="/cases/">Susan Francis
+            and David Francis (Divorce)</a> case which you referred.
+        </li>
+        <li>
+          Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+            and DWP (PIP)</a> case which you referred.
+        </li>
+        <li>
+            Judge Jane Doe replied to the <a href="/cases/">Susan Francis
+              and David Francis (Divorce)</a> case.
+          </li>
+          <li>
+            Judge Jessica Jones progressed the <a href="/cases/">Susan Francis
+              and David Francis (Divorce)</a> case which you referred.
+          </li>
+          <li>
+            Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+              and DWP (PIP)</a> case which you referred.
+          </li>
+          <li>
+              Judge Jane Doe replied to the <a href="/cases/">Susan Francis
+                and David Francis (Divorce)</a> case.
+            </li>
+            <li>
+              Judge Jessica Jones progressed the <a href="/cases/">Susan Francis
+                and David Francis (Divorce)</a> case which you referred.
+            </li>
+            <li>
+              Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+                and DWP (PIP)</a> case which you referred.
+            </li>
+            <li>
+                Judge Jane Doe replied to the <a href="/cases/">Susan Francis
+                  and David Francis (Divorce)</a> case.
+              </li>
+              <li>
+                Judge Jessica Jones progressed the <a href="/cases/">Susan Francis
+                  and David Francis (Divorce)</a> case which you referred.
+              </li>
+              <li>
+                Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+                  and DWP (PIP)</a> case which you referred.
+              </li>
+              <li>
+                  Judge Jane Doe replied to the <a href="/cases/">Susan Francis
+                    and David Francis (Divorce)</a> case.
+                </li>
+                <li>
+                  Judge Jessica Jones progressed the <a href="/cases/">Susan Francis
+                    and David Francis (Divorce)</a> case which you referred.
+                </li>
+                <li>
+                  Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+                    and DWP (PIP)</a> case which you referred.
+                </li>
+                <li>
+                    Judge Jane Doe replied to the <a href="/cases/">Susan Francis
+                      and David Francis (Divorce)</a> case.
+                  </li>
+                  <li>
+                    Judge Jessica Jones progressed the <a href="/cases/">Susan Francis
+                      and David Francis (Divorce)</a> case which you referred.
+                  </li>
+                  <li>
+                    Judge Mike Jones progressed the <a href="/cases/">Warren Sutton
+                      and DWP (PIP)</a> case which you referred.
+                  </li>
+      </ul>
+
+
+      {{hmctsPagination({
+        previous: {
+        text: 'Previous',
+        href: '/'
+        },
+        next: {
+        text: 'Next',
+        href: '/'
+        }
+        })}}
+    </main>
+  </div>
+{% endblock %}

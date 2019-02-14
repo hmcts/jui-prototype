@@ -56,7 +56,7 @@
 
 
 .jui-cf__toolbar-container {
-  @include jui-width-container;
+  @include hmcts-width-container;
   border-left:1px solid govuk-colour("grey-3");
   border-right: 1px solid govuk-colour("grey-3");
   height: 100%;
@@ -157,7 +157,7 @@
 
 
 .jui-cf__window-container {
-  @include jui-width-container;
+  @include hmcts-width-container;
   @include govuk-clearfix;
   position: relative;
 }

@@ -37,7 +37,7 @@
 
 .jui-toolbar__container {
   @include govuk-clearfix;
-  @include jui-width-container;
+  @include hmcts-width-container;
   border-left:1px solid govuk-colour("grey-3");
   border-right: 1px solid govuk-colour("grey-3");
   height: 100%;
