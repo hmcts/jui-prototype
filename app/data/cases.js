@@ -722,16 +722,16 @@ module.exports = [
       }
     ],
 
-    status: '<a href="#">Decree nisi application</a>',
-    summaryStatus: '<a href="/app/cases/BV18D00153/documents/d84">Application for decree nisi received</a>',
+    status: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Decree nisi application</a>',
+    summaryStatus: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
-      id: 'd8',
-      label: 'D8'
+      id: 'decree-nisi-application-2',
+      label: 'Application for decree nisi'
     }, {
-      id: 'd84',
-      label: 'D84'
+      id: 'decree-nisi-answers',
+      label: 'Response to divorce application'
     }],
     lastAction: moment('2018-05-09'),
     events: [
