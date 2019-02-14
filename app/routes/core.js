@@ -130,6 +130,11 @@ router.get('/app/dashboard', (req, res) => {
 		caseList = caseList.filter(c => req.session.types.indexOf(c.typeId) > -1);
 	}
 
+  // Temporarily omit single case from case list. e.g. at end of a flow that returns to case list
+  if (req.query.omit) {
+    caseList = caseList.filter(c => c.id !== req.query.omit)
+  }
+
 	caseList = caseList.map(function(c) {
 		var cells = [];
 		cells.push({ html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' });
