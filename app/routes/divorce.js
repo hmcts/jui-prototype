@@ -139,9 +139,9 @@ router.get('/app/cases/:id/divorce/provide-reason', (req, res) => {
 });
 
 router.post('/app/cases/:id/divorce/provide-reason', (req, res) => {
-	res.redirect('generate-order');
+  const reason = req.body.reason
+	res.redirect('generate-order?decision=no&orderType=' + reason);
 });
-
 
 // Generate order
 router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
@@ -149,6 +149,9 @@ router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case)
 	};
+	pageObject.orderType = req.query.orderType
+	pageObject.costOrder = req.query.costOrder || 'no'
+	pageObject.decision = req.query.decision
 	res.render('app/case/divorce/decision/generate-order', pageObject);
 });
 
@@ -174,7 +177,7 @@ router.post('/app/cases/:id/divorce/costs-order', (req, res) => {
   if (req.body['cost-order'] === 'yes') {
     res.redirect('costs-order-2');
   } else {
-    res.redirect('check-your-answers');
+    res.redirect('generate-order?decision=yes&costOrder=no');
   }
 });
 
@@ -192,10 +195,11 @@ router.get('/app/cases/:id/divorce/costs-order-2', (req, res) => {
 });
 
 router.post('/app/cases/:id/divorce/costs-order-2', (req, res) => {
+  const costsOrderDecision = req.body.costsOrderDecision
   if (req.body['costsOrderDecision'] === 'yes') {
     res.redirect('costs-order-2');
   } else {
-    res.redirect('check-your-answers');
+    res.redirect('generate-order?decision=yes&orderType=' + costsOrderDecision + '&costOrder=yes');
   }
 });
 
