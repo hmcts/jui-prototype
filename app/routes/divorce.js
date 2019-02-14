@@ -152,6 +152,14 @@ router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
 	pageObject.orderType = req.query.orderType
 	pageObject.costOrder = req.query.costOrder || 'no'
 	pageObject.decision = req.query.decision
+  pageObject.orderPdf = null
+  if (pageObject.decision === 'yes' && pageObject.costOrder === 'yes') {
+    pageObject.orderPdf = 'Costs order.pdf'
+  } else if (pageObject.decision === 'yes' && pageObject.costOrder === 'no') {
+    pageObject.orderPdf = 'WAITING FOR DOC'
+  } else if (pageObject.decision === 'no') {
+    pageObject.orderPdf = 'refusal-order.pdf'
+  }
 	res.render('app/case/divorce/decision/generate-order', pageObject);
 });
 
