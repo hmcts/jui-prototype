@@ -4,11 +4,21 @@
 
 {% block content %}
 
+{% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: casebar.parties
-    },
-  menus: caseActions
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  },
+menus: caseActions
 }) }}
 
 <div class="hmcts-width-container">
@@ -20,7 +30,7 @@
       items: caseNavItems
     }) }}
 
-    <h1 class="govuk-heading-xl">Timeline</h1>
+    <h1 class="hmcts-page-heading__title govuk-heading-xl">Timeline</h1>
 
     <div class="govuk-grid-row">
 

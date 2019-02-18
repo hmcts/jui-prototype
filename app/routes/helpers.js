@@ -174,7 +174,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/pip/timeline`,
+					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},
@@ -207,7 +207,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/fr/timeline`,
+					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},
@@ -235,7 +235,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/divorce/timeline`,
+					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},

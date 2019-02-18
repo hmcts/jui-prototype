@@ -34,25 +34,6 @@ router.route('/app/cases/:id/fr').get((req, res) => {
   res.render('app/case/fr/summary', pageObject);
 });
 
-
-
-// Timeline
-router.route('/app/cases/:id/fr/timeline')
-
-  .get((req, res) => {
-    var _case = helpers.getCase(req.session.cases, req.params.id);
-    var pageObject = {
-      _case: _case,
-      casebar: helpers.getCaseBarObject(_case),
-      caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
-      caseActions: helpers.getCaseActions(_case),
-      events: helpers.getEvents(_case)
-    };
-    res.render('app/case/fr/timeline', pageObject);
-  });
-
-
-
 // Parties
 router.get('/app/cases/:id/fr/parties', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
