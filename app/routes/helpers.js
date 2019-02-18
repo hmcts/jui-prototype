@@ -353,6 +353,7 @@ function getEvents(_case) {
 			o.dateUtc = originalEvent.date;
 			o.date = getFormattedShortDateDay(originalEvent.date);
 			o.time = getFormattedTime(originalEvent.date);
+			o.href = `/app/cases/${_case.id}/timeline/${o.id}`;
 			return o;
 		});
 

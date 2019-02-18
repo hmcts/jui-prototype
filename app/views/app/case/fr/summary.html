@@ -6,7 +6,7 @@
 
   {% set reservedBadgeHtml %}
     {% if _case.reserved %}
-      {{ govukTag({
+      {{ hmctsBadge({
         classes: 'govuk-!-margin-left-1',
         text: _case.reserved
       }) }}
@@ -68,10 +68,26 @@
 
         {% if recentEvents.length %}
 
-          {{hmctsTimeline({
-            headingLevel: 3,
-            events: recentEvents
-          })}}
+          <div class="hmcts-timeline">
+            {% for event in recentEvents %}
+              <div class="hmcts-timeline__item">
+
+                <div class="hmcts-timeline__header">
+                  <h3 class="hmcts-timeline__title"><a href="{{event.href}}">{{event.title}}</a></h3>
+                  {% if event.by %}
+                    <p class="hmcts-timeline__by">by {{event.by}}</p>
+                  {% endif %}
+                </div>
+
+                <p class="hmcts-timeline__date"><time datetime="{{event.dateUtc}}">{{event.date}} at {{event.time }}</time></p>
+
+              </div>
+            {% endfor %}
+
+          </div>
+
+
+
 
           <p><a href="/app/cases/{{_case.id}}/fr/timeline">View full timeline</a></p>
 

@@ -8,7 +8,7 @@
 
 {% set reservedBadgeHtml %}
     {% if _case.reserved %}
-    {{ govukTag({
+    {{ hmctsBadge({
       classes: 'govuk-!-margin-left-1',
       text: _case.reserved
     }) }}
