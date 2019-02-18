@@ -11,13 +11,13 @@
 
 
 {% set reservedBadgeHtml %}
-{% if _case.reserved %}
-{{hmctsBadge({
-	classes: 'govuk-!-margin-left-1',
-	text: _case.reserved
-})}}
-{% endif %}
-{% endset %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
 
 
 {{ hmctsIdentityBar({
@@ -27,7 +27,7 @@ title: {
 menus: caseActions
 }) }}
 
-	<div class="jui-width-container">
+	<div class="hmcts-width-container">
 
     <main class="govuk-main-wrapper" role="main">
 

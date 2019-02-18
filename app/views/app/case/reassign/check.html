@@ -4,13 +4,23 @@
 
 {% block content %}
 
+{% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
+title: {
+  html: casebar.parties + reservedBadgeHtml
   }
 }) }}
 
-	<div class="jui-width-container">
+	<div class="hmcts-width-container">
 
     {{ govukBackLink({
       text: 'Back',
@@ -24,7 +34,7 @@
         <div class="govuk-grid-column-two-thirds">
 
 
-          <h1 class="govuk-heading-xl">Check your answers before referring the case</h1>
+          <h1 class="govuk-heading-xl">Check your answers before reassigning the case</h1>
 
 
           {% if data.who == 'namedperson' %}
@@ -32,7 +42,24 @@
               rows: [
                 {
                   key: {
-                    text: "Name"
+                    text: "Who do you want to reassign to?"
+                  },
+                  value: {
+                    text: "A named person"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/app/cases/"+_case.id+"/reassign",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Name of the person you're reassigning to"
                   },
                   value: {
                     text: data.name
@@ -49,7 +76,7 @@
                 },
                 {
                   key: {
-                    text: "Recipient notes"
+                    text: "Notes for the recipient"
                   },
                   value: {
                     text: data.reason
@@ -69,9 +96,26 @@
           {% elseif data.who == 'role' %}
             {{ govukSummaryList({
               rows: [
+              {
+                key: {
+                  text: "Who do you want to reassign to?"
+                },
+                value: {
+                  text: "A person with a specific role"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/app/cases/"+_case.id+"/reassign",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
                 {
                   key: {
-                    text: "Role"
+                    text: "What is the role of the person you want to assign to?"
                   },
                   value: {
                     text: data.role
@@ -88,7 +132,7 @@
                 },
                 {
                   key: {
-                    text: "Recipient notes"
+                    text: "Notes for the recipient"
                   },
                   value: {
                     text: data.reason
@@ -108,26 +152,26 @@
           {% else %}
           {{ govukSummaryList({
             rows: [
-              {
-                key: {
-                  text: "Role"
-                },
-                value: {
-                  text: 'Court administrator'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "#",
-                      text: "Change",
-                      visuallyHiddenText: "name"
-                    }
-                  ]
-                }
+            {
+              key: {
+                text: "Who do you want to reassign to?"
               },
+              value: {
+                text: "A court admin"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/app/cases/"+_case.id+"/reassign",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
               {
                 key: {
-                  text: "Recipient notes"
+                  text: "Notes for the recipient"
                 },
                 value: {
                   text: data.reason
@@ -146,9 +190,9 @@
           }) }}
           {% endif %}
 
-          <form method="post" action="/app/case/pip/refer/confirmation">
+          <form method="post">
             {{ govukButton({
-              "text": "Refer case"
+              "text": "Reassign case"
             }) }}
           </form>
 

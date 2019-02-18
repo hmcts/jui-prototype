@@ -4,13 +4,23 @@
 
 {% block content %}
 
+{% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
+title: {
+  html: casebar.parties + reservedBadgeHtml
   }
 }) }}
 
-<div class="jui-width-container">
+<div class="hmcts-width-container">
 
     {{ govukBackLink({
       text: 'Back',
@@ -23,7 +33,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <form method="post" action="/app/case/pip/refer/check">
+          <form method="post">
 
             {{ govukTextarea({
               label: {
@@ -32,7 +42,7 @@
                 classes: 'govuk-label--xl'
               },
               hint: {
-                text: "Why are you referring the case to them? What do they need to know?"
+                text: "Why are you reassigning the case to them? What do they need to know?"
               },
               id: 'reason',
               name: 'reason'

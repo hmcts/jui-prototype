@@ -1,0 +1,66 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Reassign case {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+{% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
+
+
+{{ hmctsIdentityBar({
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  }
+}) }}
+
+	<div class="hmcts-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: './'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <form method="post">
+        {{ govukRadios({
+          idPrefix: 'who',
+          name: 'who',
+          fieldset: {
+            legend: {
+              text: 'Who do you want to reassign the case to?',
+              isPageHeading: true,
+              classes: 'govuk-fieldset__legend--xl'
+            }
+          },
+          items: [
+            {
+              html: 'A named person',
+              value: 'namedperson'
+            },
+            {
+              html: 'A person with a specific role',
+              value: 'role'
+            },
+            {
+              html: 'A court adminstrator',
+              value: 'courtadmin'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </form>
+
+		</main>
+	</div>
+{% endblock %}

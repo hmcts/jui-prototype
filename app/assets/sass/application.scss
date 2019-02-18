@@ -173,3 +173,41 @@ html {
   background: govuk-colour("grey-1");
   border-radius: govuk-spacing(1);
 }
+
+.jui-alert-link__text {
+  text-decoration: underline;
+  display: inline-block;
+  margin-right: govuk-spacing(1);
+}
+
+.jui-alert-link__number {
+  @include govuk-font($size: 16, $line-height: 25px);
+  border-radius: 50%;
+  background-color: #fff;
+  color: govuk-colour('blue');
+  font-weight: bold;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+.jui-notification {
+  border-bottom: 1px solid govuk-colour("grey-2");
+  padding-top: govuk-spacing(3);
+  padding-bottom: govuk-spacing(3);
+}
+
+.jui-notification:first-of-type {
+  border-top: 1px solid govuk-colour("grey-2");
+}
+
+.jui-notification p:last-child {
+  margin-bottom: 0;
+}
+
+.jui-notification:last-of-type {
+  margin-bottom: govuk-spacing(6);
+}

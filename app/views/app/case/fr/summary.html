@@ -6,10 +6,10 @@
 
   {% set reservedBadgeHtml %}
     {% if _case.reserved %}
-      {{hmctsBadge({
+      {{ hmctsBadge({
         classes: 'govuk-!-margin-left-1',
         text: _case.reserved
-      })}}
+      }) }}
     {% endif %}
   {% endset %}
 
@@ -20,19 +20,23 @@
     menus: caseActions
   }) }}
 
-<div class="jui-width-container">
+<div class="hmcts-width-container">
 
   <main class="govuk-main-wrapper" role="main">
 
-    {% set bannerHtml %}
-      <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
-      <p>Reason: Similarities between this and your recent case for Paul Fox vs Helen Fox</p>
-      <p><a href="#">Dismiss</a></p>
-    {% endset %}
+    {% if _case.banner %}
+      {% set bannerHtml %}
+        <h2 class="govuk-heading-m">{{_case.banner.heading}}</h2>
+        <p>{{_case.banner.description}}</p>
+        {% if _case.banner.dismiss %}
+          <p><a href="#">Dismiss</a></p>
+        {% endif %}
+      {% endset %}
 
-    {{ hmctsBanner({
-      html: bannerHtml
-    }) }}
+      {{ hmctsBanner({
+        html: bannerHtml
+      }) }}
+    {% endif %}
 
     {{ hmctsSubNavigation({
       label: 'Case navigation',
@@ -64,10 +68,26 @@
 
         {% if recentEvents.length %}
 
-          {{hmctsTimeline({
-            headingLevel: 3,
-            events: recentEvents
-          })}}
+          <div class="hmcts-timeline">
+            {% for event in recentEvents %}
+              <div class="hmcts-timeline__item">
+
+                <div class="hmcts-timeline__header">
+                  <h3 class="hmcts-timeline__title"><a href="{{event.href}}">{{event.title}}</a></h3>
+                  {% if event.by %}
+                    <p class="hmcts-timeline__by">by {{event.by}}</p>
+                  {% endif %}
+                </div>
+
+                <p class="hmcts-timeline__date"><time datetime="{{event.dateUtc}}">{{event.date}} at {{event.time }}</time></p>
+
+              </div>
+            {% endfor %}
+
+          </div>
+
+
+
 
           <p><a href="/app/cases/{{_case.id}}/fr/timeline">View full timeline</a></p>
 

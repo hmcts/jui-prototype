@@ -4,13 +4,23 @@
 
 {% block content %}
 
-{{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
-  }
-}) }}
+{% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
 
-<div class="jui-width-container">
+
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties + reservedBadgeHtml
+    }
+  }) }}
+
+  <div class="hmcts-width-container">
 
     {{ govukBackLink({
       text: 'Back',
@@ -23,7 +33,7 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <form method="post" action="/app/case/pip/refer/reason">
+          <form method="post">
 
             {{ govukRadios({
               idPrefix: 'role',
@@ -34,9 +44,6 @@
                   isPageHeading: true,
                   classes: 'govuk-fieldset__legend--xl'
                 }
-              },
-              hint: {
-                text: 'Select role'
               },
               items: [
                 {

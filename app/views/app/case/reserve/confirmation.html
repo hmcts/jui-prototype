@@ -1,10 +1,10 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Case refered {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Case reserved {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
-  <div class="jui-width-container">
+  <div class="hmcts-width-container">
 
     <main class="govuk-main-wrapper" role="main">
 
@@ -14,7 +14,7 @@
 
           {{ govukPanel({
             headingLevel: 1,
-            titleText: 'Case referred',
+            titleText: 'Case reserved',
             html: _case.id
           }) }}
 

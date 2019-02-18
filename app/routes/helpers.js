@@ -99,6 +99,11 @@ function getCaseActions(_case) {
 					classes: 'hmcts-button--secondary'
 				},
 				{
+					text: 'Refer',
+					href: `/app/cases/${_case.id}/refer`,
+					classes: 'hmcts-button--secondary'
+				},
+				{
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
@@ -114,6 +119,11 @@ function getCaseActions(_case) {
 				items: [{
 					text: 'Reassign',
 					href: `/app/cases/${_case.id}/reassign`,
+					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Refer',
+					href: `/app/cases/${_case.id}/refer`,
 					classes: 'hmcts-button--secondary'
 				},
 				{
@@ -133,6 +143,11 @@ function getCaseActions(_case) {
 				items: [{
 					href: `/app/cases/${_case.id}/reassign`,
 					text: 'Reassign',
+					classes: 'hmcts-button--secondary'
+				},
+				{
+					text: 'Refer',
+					href: `/app/cases/${_case.id}/refer`,
 					classes: 'hmcts-button--secondary'
 				},
 				{
@@ -159,7 +174,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/pip/timeline`,
+					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},
@@ -192,7 +207,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/fr/timeline`,
+					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},
@@ -220,7 +235,7 @@ function getCaseNavItems(_case, id) {
 					active: id === 'casefile'
 				},
 				{
-					href: `/app/cases/${_case.id}/divorce/timeline`,
+					href: `/app/cases/${_case.id}/timeline`,
 					text: 'Timeline',
 					active: id === 'timeline'
 				},
@@ -338,6 +353,7 @@ function getEvents(_case) {
 			o.dateUtc = originalEvent.date;
 			o.date = getFormattedShortDateDay(originalEvent.date);
 			o.time = getFormattedTime(originalEvent.date);
+			o.href = `/app/cases/${_case.id}/timeline/${o.id}`;
 			return o;
 		});
 

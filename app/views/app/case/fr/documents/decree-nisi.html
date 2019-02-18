@@ -4,12 +4,13 @@
 
 {% block content %}
 
-
   {% set reservedBadgeHtml %}
-  {{hmctsBadge({
-    classes: 'govuk-!-margin-left-1',
-    text: _case.reserved
-  })}}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
   {% endset %}
 
 
@@ -22,7 +23,7 @@
 
   <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">
 
-    <div class="jui-width-container">
+    <div class="hmcts-width-container">
 
       {{ hmctsSubNavigation({
         label: 'Case navigation',

@@ -37,6 +37,14 @@
   }) }}
 
 {% else %}
+
+  {% set alertsLinkHtml %}
+    <span class="jui-alert-link">
+      <span class="jui-alert-link__text">Notifications</span><span class="jui-alert-link__number">2</span>
+    </span>
+  {% endset %}
+
+
   {{ hmctsGlobalHeader({
 
     service: {
@@ -47,6 +55,9 @@
     navigation: {
       label: 'Account navigation',
       items: [{
+        html: alertsLinkHtml,
+        href: '/app/alerts'
+      }, {
         text: 'Sign out',
         href: '/sign-out'
       }]

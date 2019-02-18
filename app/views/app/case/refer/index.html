@@ -5,22 +5,22 @@
 {% block content %}
 
 {% set reservedBadgeHtml %}
-{% if _case.reserved %}
-{{hmctsBadge({
-  classes: 'govuk-!-margin-left-1',
-  text: _case.reserved
-})}}
-{% endif %}
-{% endset %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
 
 
-{{ hmctsIdentityBar({
-title: {
-  html: casebar.parties + reservedBadgeHtml
-  }
-}) }}
+  {{ hmctsIdentityBar({
+  title: {
+    html: casebar.parties + reservedBadgeHtml
+    }
+  }) }}
 
-	<div class="jui-width-container">
+	<div class="hmcts-width-container">
 
     {{ govukBackLink({
       text: 'Back',
@@ -35,7 +35,7 @@ title: {
           name: 'who',
           fieldset: {
             legend: {
-              text: 'Who do you want to reassign the case to?',
+              text: 'Who do you want to refer the case to?',
               isPageHeading: true,
               classes: 'govuk-fieldset__legend--xl'
             }

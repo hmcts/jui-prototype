@@ -4,7 +4,7 @@
 
 {% block content %}
 
-  <div class="jui-width-container">
+  <div class="hmcts-width-container">
 
     <main class="govuk-main-wrapper" role="main">
 
@@ -14,11 +14,11 @@
 
           {{ govukPanel({
             headingLevel: 1,
-            titleText: 'Case reassigned',
+            titleText: 'Case referred',
             html: _case.id
           }) }}
 
-          <p>The case has been removed from your case list.</p>
+          <p>The case will remain in your case list and the status will change when you receive a response.</p>
 
           <p><a href="/app/dashboard">Go to your cases</a></p>
 

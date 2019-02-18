@@ -6,10 +6,10 @@
 
 {% set reservedBadgeHtml %}
 {% if _case.reserved %}
-{{hmctsBadge({
+{{ hmctsBadge({
   classes: 'govuk-!-margin-left-1',
   text: _case.reserved
-})}}
+}) }}
 {% endif %}
 {% endset %}
 
@@ -20,7 +20,7 @@ title: {
   }
 }) }}
 
-  <div class="jui-width-container">
+  <div class="hmcts-width-container">
 
     {{ govukBackLink({
       text: 'Back',
