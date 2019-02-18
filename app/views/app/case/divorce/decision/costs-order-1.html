@@ -1,70 +1,70 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Make a decision on costs {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Make a decision on costs {{ '- ' + serviceName }}{% endblock %}
 
 {% block content %}
 
-{{ hmctsIdentityBar({
-  title: {
-    html: casebar.parties
-  }
-}) }}
-
-<div class="jui-width-container">
-
-  {{ govukBackLink({
-    text: 'Back',
-    href: 'javascript:history.back()'
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties
+    }
   }) }}
 
-  <main role="main" class="govuk-main-wrapper">
+  <div class="hmcts-width-container">
 
-    <div class="govuk-grid-row">
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'javascript:history.back()'
+    }) }}
 
-      <div class="govuk-grid-column-two-thirds">
+    <main role="main" class="govuk-main-wrapper">
 
-        <form method="post">
+      <div class="govuk-grid-row">
 
-{% from "radios/macro.njk" import govukRadios %}
+        <div class="govuk-grid-column-two-thirds">
 
-          {{ govukRadios({
-            classes: "govuk-radios--inline",
-            idPrefix: "cost-order",
-            name: "cost-order",
-            fieldset: {
-              legend: {
-                text: "Will you grant an order for costs?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--xl"
-              }
-            },
-            hint: {
-              text: ""
-            },
-            items: [
-              {
-                value: "yes",
-                text: "Yes"
+          <form method="post">
+
+            {% from "radios/macro.njk" import govukRadios %}
+
+            {{ govukRadios({
+              classes: "govuk-radios--inline",
+              idPrefix: "cost-order",
+              name: "cost-order",
+              fieldset: {
+                legend: {
+                  text: "Will you grant an order for costs?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--xl"
+                }
               },
-              {
-                value: "no",
-                text: "No"
-              }
-            ]
-          }) }}
+              hint: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
 
-          {{ govukButton({
-            text: 'Continue'
-          }) }}
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
 
-        </form>
+          </form>
+
+        </div>
 
       </div>
 
-    </div>
+    </main>
 
-  </main>
-
-</div>
+  </div>
 
 {% endblock %}
