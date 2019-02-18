@@ -745,6 +745,9 @@ module.exports = [
     }, {
       id: 'decree-nisi-answers',
       label: 'Response to divorce application'
+    }, {
+      id: 'd8-2',
+      label: 'Mini petition'
     }],
     lastAction: moment('2018-05-09'),
     events: [

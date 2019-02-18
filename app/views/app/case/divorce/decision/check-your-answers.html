@@ -88,11 +88,12 @@
             </div>
           {% endif %}
 
-
-
-
-
         </dl>
+
+
+        <h3 class="govuk-heading-m">Preview the order</h3>
+
+        <p>You can <a href="/public/downloads/divorce/{{ orderPdf }}" target="_blank">preview the order</a> before submitting if you would like to check the document first. </p>
 
         <form method="post" action="/app/cases/{{_case.id}}/divorce/submit-decision">
           {{ govukButton({
