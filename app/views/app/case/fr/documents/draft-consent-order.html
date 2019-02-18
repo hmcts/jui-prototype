@@ -4,14 +4,14 @@
 
 {% block content %}
 
-  {% set reservedBadgeHtml %}
-    {% if _case.reserved %}
-      {{hmctsBadge({
-        classes: 'govuk-!-margin-left-1',
-        text: _case.reserved
-      })}}
-    {% endif %}
-  {% endset %}
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+{{ govukTag({
+  classes: 'govuk-!-margin-left-1',
+  text: _case.reserved
+}) }}
+{% endif %}
+{% endset %}
 
   {{ hmctsIdentityBar({
     title: {

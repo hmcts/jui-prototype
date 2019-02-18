@@ -9,10 +9,10 @@
   <div class="jui-notification">
     <p class="govuk-body">
       {% if params.new %}
-        {{hmctsBadge({
-          classes: 'govuk-!-margin-right-1',
+        {{ govukTag({
+          classes: 'govuk-!-margin-left-1',
           text: 'New'
-        })}}
+        }) }}
       {% endif %}
 
       {{params.message | safe}}</p>
