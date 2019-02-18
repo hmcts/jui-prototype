@@ -14,6 +14,13 @@ module.exports = [
     requirements: 'Assisted Digital support requested',
     decreeDate: moment('2018-05-01 13:01'),
     absoluteData: moment('2018-08-11 11:01'),
+
+    banner: {
+      heading: 'This case has been reassigned to you by Jane Doe',
+      description: 'Reason: Similarities between this and your recent case for Paul Fox vs Helen Fox',
+      dismiss: true
+    },
+
     events: [
       {
         id: uuid(),
@@ -870,6 +877,186 @@ module.exports = [
         by: 'Jane Doe, District Judge'
       }
     ]
-  }
+  },
+
+  {
+    id: 'FR1231612399',
+    typeId: types.fr.id,
+    status: '<a href="/app/cases/FR1231612399/documents/draft-consent-order">Draft consent order</a>',
+    applicationDate: moment('2019-01-20 13:01'),
+    lastAction: moment('2019-02-25 16:48'),
+    tribunalCentre: 'East Midlands Regional Divorce Centre',
+    requirements: 'Assisted Digital support requested',
+    decreeDate: moment('2018-05-01 13:01'),
+    absoluteData: moment('2018-08-11 11:01'),
+
+    banner: {
+      heading: 'This case has been referred to you by Judge Prita Shah',
+      description: 'Message: what\'s the bit about the thing?',
+      dismiss: false
+    },
+
+    events: [
+      {
+        id: uuid(),
+        date: moment('2018-09-04 13:37'),
+        title: 'Consent order application submitted',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-04 15:33'),
+        title: 'Draft consent order uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-04 15:34'),
+        title: 'Joint statement of information uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-04 15:35'),
+        title: 'Form A uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-06 09:21'),
+        title: 'Case checked and ready for judge',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-06 11:44'),
+        title: 'Case referred to judge',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-06 14:01'),
+        title: 'Consent order not approved',
+        by: 'DJ Nightingale'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-07 09:15'),
+        title: 'Directions order uploaded',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-10 16:54'),
+        title: 'Redrafted consent order uploaded',
+        by: 'Bernadette Jones, applicant’s solicitor'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-11 10:56'),
+        title: 'Case referred to judge for 2nd time',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-11 16:15'),
+        title: 'Consent order approved',
+        by: 'DJ Nightingale'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-12 09:38'),
+        title: 'Approved consent order uploaded',
+        by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-14 09:38'),
+        title: 'Case referred to you',
+        by: 'Judge Prita Shah'
+      }
+    ],
+
+    applicant: [{
+      fullname: 'Margaret Blake',
+      dateOfBirth: moment('1987-02-20'),
+      address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
+      phone: '07700 900 772',
+      email: 'john.smith@gmail.com',
+      representative: ''
+    }],
+
+    respondent: [{
+      fullname: 'William Blake',
+      dateOfBirth: moment('1985-03-15'),
+      address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
+      phone: '07787 557 967',
+      email: 'jane.smith@gmail.com',
+      representative: ''
+    }],
+
+    parties: [
+      {
+        type: 'Applicant',
+        firstName: 'Margaret',
+        lastName: 'Blake',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      },
+      {
+        type: 'Respondent',
+        firstName: 'William',
+        lastName: 'Blake',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      }
+    ],
+    documents: [{
+      id: 'draft-consent-order',
+      label: 'Draft consent order'
+    }, {
+      id: '3',
+      label: 'Statement of information (D81)'
+    }, {
+      id: '2',
+      label: 'Form A'
+    }, {
+      id: '4',
+      label: 'Grant of decree nisi'
+    }],
+    linkedCases: [{
+      linkReason: 'Dependent case',
+      linkPerson: 'Judge Shah',
+      linkType: 'hard',
+      typeId: types.divorce.id,
+      id: 'BV18D00153',
+      parties: [{
+        type: 'Applicant',
+        firstName: 'John',
+        lastName: 'Smith',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      },
+      {
+        type: 'Respondent',
+        firstName: 'Jane',
+        lastName: 'Smith',
+        representative: {
+          name: '',
+          role: '',
+          company: ''
+        }
+      }]
+    }]
+  },
 
 ];
