@@ -86,6 +86,12 @@ module.exports = [
         date: moment('2018-09-12 09:38'),
         title: 'Approved consent order uploaded',
         by: 'Simon Saint, court administrator'
+      },
+      {
+        id: uuid(),
+        date: moment('2018-09-14 09:38'),
+        title: 'Case reasssigned to you',
+        by: 'Jane Doe, court administrator'
       }
     ],
 
