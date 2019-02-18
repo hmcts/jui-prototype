@@ -10,7 +10,7 @@ router.get('/app/cases/:id/refer', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/refer-case/index', pageObject);
+	res.render('app/case/refer/index', pageObject);
 });
 
 router.post('/app/cases/:id/refer', (req, res) => {
@@ -31,7 +31,7 @@ router.get('/app/cases/:id/refer/name', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/refer-case/name', pageObject);
+	res.render('app/case/refer/name', pageObject);
 });
 
 router.post('/app/cases/:id/refer/name', (req, res) => {
@@ -46,7 +46,7 @@ router.get('/app/cases/:id/refer/role', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/refer-case/role', pageObject);
+	res.render('app/case/refer/role', pageObject);
 });
 
 router.post('/app/cases/:id/refer/role', (req, res) => {
@@ -61,7 +61,7 @@ router.get('/app/cases/:id/refer/recipient-notes', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/refer-case/recipient-notes', pageObject);
+	res.render('app/case/refer/recipient-notes', pageObject);
 });
 
 router.post('/app/cases/:id/refer/recipient-notes', (req, res) => {
@@ -76,7 +76,7 @@ router.get('/app/cases/:id/refer/check', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/refer-case/check', pageObject);
+	res.render('app/case/refer/check', pageObject);
 });
 
 router.post('/app/cases/:id/refer/check', (req, res) => {
@@ -91,7 +91,7 @@ router.get('/app/cases/:id/refer/confirmation', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/refer-case/confirmation', pageObject);
+	res.render('app/case/refer/confirmation', pageObject);
 });
 
 module.exports = router;

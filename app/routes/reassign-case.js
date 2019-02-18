@@ -10,7 +10,7 @@ router.get('/app/cases/:id/reassign', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/index', pageObject);
+	res.render('app/case/reassign/index', pageObject);
 });
 
 router.post('/app/cases/:id/reassign', (req, res) => {
@@ -31,7 +31,7 @@ router.get('/app/cases/:id/reassign/name', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/name', pageObject);
+	res.render('app/case/reassign/name', pageObject);
 });
 
 router.post('/app/cases/:id/reassign/name', (req, res) => {
@@ -46,7 +46,7 @@ router.get('/app/cases/:id/reassign/role', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/role', pageObject);
+	res.render('app/case/reassign/role', pageObject);
 });
 
 router.post('/app/cases/:id/reassign/role', (req, res) => {
@@ -61,7 +61,7 @@ router.get('/app/cases/:id/reassign/recipient-notes', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/recipient-notes', pageObject);
+	res.render('app/case/reassign/recipient-notes', pageObject);
 });
 
 router.post('/app/cases/:id/reassign/recipient-notes', (req, res) => {
@@ -76,7 +76,7 @@ router.get('/app/cases/:id/reassign/check', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/check', pageObject);
+	res.render('app/case/reassign/check', pageObject);
 });
 
 router.post('/app/cases/:id/reassign/check', (req, res) => {
@@ -91,7 +91,7 @@ router.get('/app/cases/:id/reassign/confirmation', (req, res) => {
 		casebar: helpers.getCaseBarObject(_case)
 	};
 
-	res.render('app/case/reassign-case/confirmation', pageObject);
+	res.render('app/case/reassign/confirmation', pageObject);
 });
 
 module.exports = router;

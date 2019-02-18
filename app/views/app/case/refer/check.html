@@ -1,12 +1,22 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}Reassign case {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}refer case {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+{{hmctsBadge({
+  classes: 'govuk-!-margin-left-1',
+  text: _case.reserved
+})}}
+{% endif %}
+{% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
+title: {
+  html: casebar.parties + reservedBadgeHtml
   }
 }) }}
 
@@ -32,7 +42,24 @@
               rows: [
                 {
                   key: {
-                    text: "Name"
+                    text: "Who do you want to refer to?"
+                  },
+                  value: {
+                    text: "A named person"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/app/cases/"+_case.id+"/refer",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Name of the person you're referring to"
                   },
                   value: {
                     text: data.name
@@ -49,7 +76,7 @@
                 },
                 {
                   key: {
-                    text: "Recipient notes"
+                    text: "Notes for the recipient"
                   },
                   value: {
                     text: data.reason
@@ -69,9 +96,26 @@
           {% elseif data.who == 'role' %}
             {{ govukSummaryList({
               rows: [
+              {
+                key: {
+                  text: "Who do you want to refer to?"
+                },
+                value: {
+                  text: "A person with a specific role"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/app/cases/"+_case.id+"/refer",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
                 {
                   key: {
-                    text: "Role"
+                    text: "What is the role of the person you want to refer to?"
                   },
                   value: {
                     text: data.role
@@ -88,7 +132,7 @@
                 },
                 {
                   key: {
-                    text: "Recipient notes"
+                    text: "Notes for the recipient"
                   },
                   value: {
                     text: data.reason
@@ -108,26 +152,26 @@
           {% else %}
           {{ govukSummaryList({
             rows: [
-              {
-                key: {
-                  text: "Role"
-                },
-                value: {
-                  text: 'Court administrator'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "#",
-                      text: "Change",
-                      visuallyHiddenText: "name"
-                    }
-                  ]
-                }
+            {
+              key: {
+                text: "Who do you want to refer to?"
               },
+              value: {
+                text: "A court admin"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/app/cases/"+_case.id+"/refer",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
               {
                 key: {
-                  text: "Recipient notes"
+                  text: "Notes for the recipient"
                 },
                 value: {
                   text: data.reason
@@ -146,7 +190,7 @@
           }) }}
           {% endif %}
 
-          <form method="post" action="/app/case/pip/refer/confirmation">
+          <form method="post">
             {{ govukButton({
               "text": "Refer case"
             }) }}

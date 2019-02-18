@@ -42,6 +42,23 @@ title: {
               rows: [
                 {
                   key: {
+                    text: "Who do you want to reassign to?"
+                  },
+                  value: {
+                    text: "A named person"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/app/cases/"+_case.id+"/reassign",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
                     text: "Name of the person you're reassigning to"
                   },
                   value: {
@@ -79,6 +96,23 @@ title: {
           {% elseif data.who == 'role' %}
             {{ govukSummaryList({
               rows: [
+              {
+                key: {
+                  text: "Who do you want to reassign to?"
+                },
+                value: {
+                  text: "A person with a specific role"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/app/cases/"+_case.id+"/reassign",
+                      text: "Change",
+                      visuallyHiddenText: "name"
+                    }
+                  ]
+                }
+              },
                 {
                   key: {
                     text: "What is the role of the person you want to assign to?"
@@ -118,23 +152,23 @@ title: {
           {% else %}
           {{ govukSummaryList({
             rows: [
-              {
-                key: {
-                  text: "Role"
-                },
-                value: {
-                  text: 'Court administrator'
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "#",
-                      text: "Change",
-                      visuallyHiddenText: "name"
-                    }
-                  ]
-                }
+            {
+              key: {
+                text: "Who do you want to reassign to?"
               },
+              value: {
+                text: "A court admin"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/app/cases/"+_case.id+"/reassign",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
               {
                 key: {
                   text: "Notes for the recipient"

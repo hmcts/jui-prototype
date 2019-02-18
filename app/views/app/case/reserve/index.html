@@ -1,16 +1,28 @@
 {% extends "layouts/admin/base.html" %}
 
-{% block pageTitle %}What do you want to send to the parties? {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Reserve case {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
+
+{% set reservedBadgeHtml %}
+{% if _case.reserved %}
+{{hmctsBadge({
+  classes: 'govuk-!-margin-left-1',
+  text: _case.reserved
+})}}
+{% endif %}
+{% endset %}
+
+
 {{ hmctsIdentityBar({
-  title: {
-    html: '<b>Warren Sutton</b> and <b>DWP</b>'
-  }
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  },
+menus: caseActions
 }) }}
 
-<div class="hmcts-width-container">
+	<div class="hmcts-width-container">
 
     {{ govukBackLink({
       text: 'Back',
@@ -23,16 +35,13 @@
 
         <div class="govuk-grid-column-two-thirds">
 
-          <form method="post" action="/app/case/pip/refer/check">
+          <form method="post" action="/app/cases/{{_case.id}}/reserve/check">
 
             {{ govukTextarea({
               label: {
-                text: 'Notes for the recipient',
+                text: 'Why do you want to reserve the case?',
                 isPageHeading: true,
                 classes: 'govuk-label--xl'
-              },
-              hint: {
-                text: "Why are you referring the case to them? What do they need to know?"
               },
               id: 'reason',
               name: 'reason'
@@ -48,8 +57,8 @@
 
       </div>
 
-	</main>
+		</main>
 
-</div>
+	</div>
 
 {% endblock %}
