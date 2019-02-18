@@ -1,0 +1,33 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Case reassigned {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+  <div class="hmcts-width-container">
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          {{ govukPanel({
+            headingLevel: 1,
+            titleText: 'Case referred',
+            html: _case.id
+          }) }}
+
+          <p>The case will remain in your case list and the status will change when you receive a response.</p>
+
+          <p><a href="/app/dashboard">Go to your cases</a></p>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+{% endblock %}

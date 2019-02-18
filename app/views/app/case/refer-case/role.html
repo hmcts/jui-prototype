@@ -1,0 +1,91 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}What do you want to send to the parties? {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+  {% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+      {{hmctsBadge({
+        classes: 'govuk-!-margin-left-1',
+        text: _case.reserved
+      })}}
+    {% endif %}
+  {% endset %}
+
+
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties + reservedBadgeHtml
+    }
+  }) }}
+
+  <div class="hmcts-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: 'javascript:history.back()'
+    }) }}
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <form method="post">
+
+            {{ govukRadios({
+              idPrefix: 'role',
+              name: 'role',
+              fieldset: {
+                legend: {
+                  text: 'What is the role of the person you want to refer to?',
+                  isPageHeading: true,
+                  classes: 'govuk-fieldset__legend--xl'
+                }
+              },
+              items: [
+                {
+                  html: 'Legal advisor',
+                  value: 'Legal advisor',
+                  checked: checked('role', 'namedperson') == 'checked'
+                },
+                {
+                  html: 'Magistrate',
+                  value: 'Magistrate',
+                  checked: checked('role', 'courtadmin') == 'checked'
+                },
+                {
+                  html: 'District judge',
+                  value: 'District judge',
+                  checked: checked('role', 'courtadmin') == 'checked'
+                },
+                {
+                  html: 'Deputy district judge',
+                  value: 'Deputy district judge',
+                  checked: checked('role', 'courtadmin') == 'checked'
+                },
+                {
+                  html: 'Circuit judge',
+                  value: 'Circuit judge',
+                  checked: checked('role', 'courtadmin') == 'checked'
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: 'Continue'
+            }) }}
+
+          </form>
+
+        </div>
+
+      </div>
+
+	</main>
+
+</div>
+
+{% endblock %}
