@@ -124,8 +124,6 @@ router.post('/app/cases/:id/divorce/provide-reason', (req, res) => {
     req.session.reasonForNo.pop['Additional information:']
     req.session.reasonForNo.push(req.body.additionalInformation)
   }
-  console.log(req.session.reasonForNo)
-
   // res.redirect('generate-order?decision=no&orderType=' + reason);
   res.redirect('check-your-answers')
 })
