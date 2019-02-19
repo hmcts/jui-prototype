@@ -20,15 +20,15 @@
         rows: [
           [
             {text: 'Full name'},
-            {text: 'Susan Francis'}
+            {text:  _case.petitioner.fullname }
           ],
           [
             {text: 'Date of birth'},
-            {text: '16 April 1979'}
+            {text: _case.petitioner.dateOfBirth }
           ],
           [
             {text: 'Address'},
-            {html: '89 London Road<br>Hinckley<br>London<br>LE10 1HH'}
+            {html: _case.petitioner.address }
           ]
         ]
       }) }}
@@ -41,15 +41,15 @@
         rows: [
           [
             {text: 'Full name'},
-            {text: 'David Francis'}
+            {text:  _case.respondent.fullname }
           ],
           [
             {text: 'Date of birth'},
-            {text: '7 June 1981'}
+            {text: _case.respondent.dateOfBirth }
           ],
           [
             {text: 'Address'},
-            {html: '24 Park Road<br>Lewisham<br>London<br>E11 4PR'}
+            {html: _case.respondent.address }
           ]
         ]
       }) }}
@@ -62,7 +62,7 @@
         rows: [
           [
             {text: 'Reason for divorce'},
-            {text: 'Separated for 2 years and consent'}
+            {text: _case.reason }
           ],
           [
             {text: 'Length of separation'},
@@ -70,7 +70,7 @@
           ],
           [
             {text: 'Date of petition'},
-            {html: '3 April 2018<br>Changes since petition (none)'}
+            {html:  _case.applicationDate + '<br>Changes since petition (none)'}
           ],
           [
             {text: 'Date of marriage'},

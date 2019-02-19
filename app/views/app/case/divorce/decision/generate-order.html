@@ -25,20 +25,37 @@
 
         <form method="post">
 
-          {{ govukTextarea({
-              id: 'generate-order',
-              name: 'generate-order',
-              rows: 10,
-              label: {
-                text: 'Preview and edit order',
-                isPageHeading: true,
-                classes: 'govuk-label--xl'
-              },
-              hint: {
-                text: 'Create order based on your decisions.'
-              },
-              value: 'It is directed that the petitioner should read the guidance on completing the divorce application to identify the appropriate provisions to establish jurisdiction. The petitioner should then provide the information by completing the online application and re-submitting. \n\n It is directed that the petitioner provide either the original or certified copy of the marriage certificate.  A certified copy should be available from the appropriate Registry.'
-            }) }}
+          <h1 class="govuk-heading-l">Docmosis generated PDF will go here.</h1>
+
+          <p>We need a mechanism to continue (submit decision) or go back and edit decision</p>
+
+          <h2 class="govuk-heading-m">This is show what we have captured:</h2>
+
+          <p><strong>Decision:</strong>
+          {% if decision === 'yes' %}
+            Yes.</p> <p><strong>Cost order:</strong> {% if costOrder !== 'no' %}{{ orderType }}{% else %}No{% endif %}</p>
+          {% else %}
+            No. <p><strong>Reason:</strong> {{ orderType }}</p>
+          {% endif %}
+
+          <h2 class="govuk-heading-m">The PDF order:</h2>
+
+          <p>{{ orderPdf }}</p>
+
+          {#{{ govukTextarea({#}
+              {#id: 'generate-order',#}
+              {#name: 'generate-order',#}
+              {#rows: 10,#}
+              {#label: {#}
+                {#text: 'Preview and edit order',#}
+                {#isPageHeading: true,#}
+                {#classes: 'govuk-label--xl'#}
+              {#},#}
+              {#hint: {#}
+                {#text: 'Create order based on your decisions.'#}
+              {#},#}
+              {#value: 'It is directed that the petitioner should read the guidance on completing the divorce application to identify the appropriate provisions to establish jurisdiction. The petitioner should then provide the information by completing the online application and re-submitting. \n\n It is directed that the petitioner provide either the original or certified copy of the marriage certificate.  A certified copy should be available from the appropriate Registry.'#}
+            {#}) }}#}
 
             {{ govukButton({
               text: 'Continue'

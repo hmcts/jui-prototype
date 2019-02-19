@@ -686,39 +686,39 @@ module.exports = [
       id: 'BV18D00153',
       parties: [{
         type: 'Applicant',
-        firstName: 'John',
-        lastName: 'Smith'
+        firstName: 'Zoe',
+        lastName: 'Dante'
       },
       {
         type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith'
+        firstName: 'John',
+        lastName: 'Dante'
       }]
     }],
 
-    petitioner: [{
-      fullname: 'John Smith',
-      dateOfBirth: moment('1981-06-07'),
-      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
-      phone: '07787 557 967',
-      email: 'john.smith@gmail.com',
-      representative: ''
-    }],
-
-    respondent: [{
-      fullname: 'Jane Smith',
+    petitioner: {
+      fullname: 'Zoe Elizabeth Dante',
       dateOfBirth: moment('1979-04-16'),
       address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
-      email: 'jane.smith@gmail.com',
+      email: 'zoe.dante@gmail.com',
       representative: ''
-    }],
+    },
+
+    respondent: {
+      fullname: 'John James Dante',
+      dateOfBirth: moment('1981-06-07'),
+      address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
+      phone: '07787 557 967',
+      email: 'john.dante@gmail.com',
+      representative: ''
+    },
 
     parties: [
       {
         type: 'Petitioner',
-        firstName: 'John',
-        lastName: 'Smith',
+        firstName: 'Zoe',
+        lastName: 'Dante',
         representative: {
           name: '',
           role: '',
@@ -727,8 +727,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith',
+        firstName: 'John',
+        lastName: 'Dante',
         representative: {
           name: '',
           role: '',
@@ -737,40 +737,53 @@ module.exports = [
       }
     ],
 
-    status: '<a href="#">Decree nisi application</a>',
-    summaryStatus: '<a href="/app/cases/BV18D00153/documents/d84">Application for decree nisi received</a>',
+    status: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Decree nisi application</a>',
+    summaryStatus: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
-    documents: [{
-      id: 'd8',
-      label: 'D8'
-    }, {
-      id: 'd84',
-      label: 'D84'
-    }],
+    documents: [
+      {
+        id: 'key-facts',
+        label: 'Key facts'
+      },
+      {
+        id: 'd8-2',
+        label: 'Petition'
+      },
+      {
+        id: 'decree-nisi-answers',
+        label: 'Acknowledgement of service'
+      },
+      {
+        id: 'decree-nisi-application-2',
+        label: 'Decree nisi'
+      },
+      {
+        id: 'marriage-certificate',
+        label: 'Marriage certificate'
+      }],
     lastAction: moment('2018-05-09'),
     events: [
       {
         id: uuid(),
         date: moment('2018-02-27 13:01'),
         title: 'Application for decree nisi received',
-        by: 'John Smith, petitioner'
+        by: 'Zoe Dante, petitioner'
       },
       {
         id: uuid(),
         date: moment('2018-04-24 15:22'),
         title: 'Acknowledgement of service by the court',
-        by: 'Jane Smith, respondent'
+        by: 'John Dante, respondent'
       },
       {
         id: uuid(),
         date: moment('2018-04-25 14:10'),
         title: 'Application for divorce submitted',
-        by: 'John Smith, petitioner'
+        by: 'Zoe Dante, petitioner'
       }
     ]
   },
-
 
   {
     id: 'BV18D00156',
