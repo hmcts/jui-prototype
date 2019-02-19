@@ -97,6 +97,7 @@ router.get('/app/cases/:id/divorce/decision', (req, res) => {
 })
 
 router.post('/app/cases/:id/divorce/decision', (req, res) => {
+  req.session.decision = req.body.satisfied
   if (req.body.satisfied === 'No') {
     res.redirect('provide-reason')
   } else if (req.body.satisfied === 'Yes') {
@@ -118,8 +119,9 @@ router.get('/app/cases/:id/divorce/provide-reason', (req, res) => {
 
 router.post('/app/cases/:id/divorce/provide-reason', (req, res) => {
   const reason = req.body.reason
+  req.session.reasonForNo = reason
   // res.redirect('generate-order?decision=no&orderType=' + reason);
-  res.redirect('check-your-answers?decision=no&orderType=' + reason)
+  res.redirect('check-your-answers')
 })
 
 // Generate order
@@ -161,7 +163,8 @@ router.get('/app/cases/:id/divorce/costs-order', (req, res) => {
 })
 
 router.post('/app/cases/:id/divorce/costs-order', (req, res) => {
-  if (req.body['cost-order'] === 'yes') {
+  req.session.costOrder = req.body['cost-order']
+  if (req.body['cost-order'] === 'Yes') {
     res.redirect('costs-order-2')
   } else {
     // res.redirect('generate-order?decision=yes&costOrder=no');
@@ -184,6 +187,7 @@ router.get('/app/cases/:id/divorce/costs-order-2', (req, res) => {
 
 router.post('/app/cases/:id/divorce/costs-order-2', (req, res) => {
   const costsOrderDecision = req.body.costsOrderDecision
+  req.session.orderType = costsOrderDecision
   if (req.body['costsOrderDecision'] === 'yes') {
     res.redirect('costs-order-2')
   } else {
@@ -199,9 +203,10 @@ router.get('/app/cases/:id/divorce/check-your-answers', (req, res) => {
     casebar: helpers.getCaseBarObject(_case),
     caseActions: helpers.getCaseActions(_case),
     petitioner: helpers.getPetitionerName(_case),
-    orderType: req.query.orderType,
-    costOrder: req.query.costOrder || 'no',
-    decision: req.query.decision,
+    reasonForNo: req.session.reasonForNo,
+    orderType: req.session.orderType,
+    costOrder: req.session.costOrder || 'No',
+    decision: req.session.decision,
     orderPdf: null,
     backLink: {
       href: `/app/cases/${_case.id}/divorce/costs-order`
