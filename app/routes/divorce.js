@@ -191,7 +191,6 @@ router.post('/app/cases/:id/divorce/costs-order-2', (req, res) => {
   if (req.body['costsOrderDecision'] === 'yes') {
     res.redirect('costs-order-2')
   } else {
-    console.log(req.body)
     if (req.body.limitedInPercentage !== '' && req.body.limitedInPounds === '') {
       req.session.orderType += ' ' + req.body.limitedInPercentage + '%'
     }
