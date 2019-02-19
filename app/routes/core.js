@@ -219,7 +219,12 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
 		caseActions: helpers.getCaseActions(_case),
 		activeDocument: req.params.document_id,
-		_case: _case
+		_case: _case,
+    caseDates: {
+		  petitionerDoB: new Date(_case.petitioner.dateOfBirth).toDateString(),
+		  respondentDoB: new Date(_case.respondent.dateOfBirth).toDateString(),
+		  applicationDate: new Date(_case.applicationDate).toDateString()
+    }
 	};
 
 	console.log(pageObject._case.petitioner)
