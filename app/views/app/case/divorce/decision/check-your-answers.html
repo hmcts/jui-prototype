@@ -29,62 +29,44 @@
 
           <div class="app-check-your-answers__contents">
             <dt class="app-check-your-answers__question">Decree nisi</dt>
-            <dd class="app-check-your-answers__answer">{{data.satisfied}}, I’m {% if data.satisfied == 'No' %} not {% endif %} satisifed that the petitioner is entitled to a decree nisi on the grounds of adultery</dd>
+            <dd class="app-check-your-answers__answer">{{ decision }}, I’m {% if decision === 'No' %} not {% endif %} satisfied that the petitioner is entitled to a decree nisi</dd>
             <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/decision">Change <span class="govuk-visually-hidden">decree nisi decision</span></a></dd>
           </div>
 
-          {% if data['satisfied'] === 'Yes' %}
+          {% if decision === 'Yes' %}
             <div class="app-check-your-answers__contents">
-              <dt class="app-check-your-answers__question">What type of costs order is needed?</dt>
+              <dt class="app-check-your-answers__question">Costs order is granted?</dt>
 
               <dd class="app-check-your-answers__answer">
-                {{data.costsOrderDecision}}<br><br>
-
-
-                {% if data.costsOrderDecision === 'Respondent to pay petitioner’s costs' %}
-
-                  {% if data['respondentPay'] === 'Agreed to' %}
-                    {% if data.agreedInPounds %}
-                      £{{data.agreedInPounds}}
-                    {% endif %}
-
-                    {% if data.agreedInPercentage %}
-                      {{data.agreedInPercentage}}%
-                    {% endif %}
-                  {% elseif data['respondentPay'] === 'Limited to' %}
-                    {% if data.limitedInPounds %}
-                      £{{data.limitedInPounds}}
-                    {% endif %}
-
-                    {% if data.limitedInPercentage %}
-                      {{data.limitedInPercentage}}%
-                    {% endif %}
-                  {% else %}
-                    To be subject to detailed assessment if not agreed
-                  {% endif %}
-
-                {% elseif data.costsOrderDecision === 'Other' %}
-                  {{data['more-detail']}}
-                {% endif %}
-
+                {{ costOrder }}
               </dd>
 
-              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
+              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">costs order?</span></a></dd>
             </div>
+            {% if costOrder === 'Yes' and orderType %}
+              <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Type of cost order</dt>
+
+                <dd class="app-check-your-answers__answer">
+                  {{ orderType }}
+                </dd>
+
+                <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order-2">Change <span class="govuk-visually-hidden">costs order type?</span></a></dd>
+              </div>
+            {% endif %}
           {% endif %}
 
-          {% if data['satisfied'] === 'No' %}
+          {% if decision === 'No' %}
             <div class="app-check-your-answers__contents">
-              <dt class="app-check-your-answers__question">Order</dt>
+              <dt class="app-check-your-answers__question">Reason{% if reasonForNo.length > 1 %}s{% endif %} provided</dt>
 
               <dd class="app-check-your-answers__answer">
-
-                <!-- {{data['generate-order']}} -->
-
-                <a href="#" download>Order.pdf</a>
+                {% for reason in reasonForNo %}
+                  {{ reason }}<br/>
+                {% endfor  %}
               </dd>
 
-              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/costs-order">Change <span class="govuk-visually-hidden">how should costs be handled?</span></a></dd>
+              <dd class="app-check-your-answers__change"><a href="/app/cases/{{_case.id}}/divorce/provide-reason">Change <span class="govuk-visually-hidden">reason provided?</span></a></dd>
             </div>
           {% endif %}
 
