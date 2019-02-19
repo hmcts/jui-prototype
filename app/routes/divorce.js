@@ -191,6 +191,19 @@ router.post('/app/cases/:id/divorce/costs-order-2', (req, res) => {
   if (req.body['costsOrderDecision'] === 'yes') {
     res.redirect('costs-order-2')
   } else {
+    console.log(req.body)
+    if (req.body.limitedInPercentage !== '' && req.body.limitedInPounds === '') {
+      req.session.orderType += ' ' + req.body.limitedInPercentage + '%'
+    }
+    if (req.body.limitedInPounds !== '' && req.body.limitedInPercentage === '') {
+      req.session.orderType += ' £' + req.body.limitedInPounds
+    }
+    if (req.body.agreedInPercentage !== '' && req.body.agreedInPounds === '') {
+      req.session.orderType += ' ' + req.body.agreedInPercentage + '%'
+    }
+    if (req.body.agreedInPounds !== '' && req.body.agreedInPercentage === '') {
+      req.session.orderType += ' £' + req.body.agreedInPounds
+    }
     // res.redirect('generate-order?decision=yes&orderType=' + costsOrderDecision + '&costOrder=yes');
     res.redirect('check-your-answers?decision=yes&orderType=' + costsOrderDecision + '&costOrder=yes')
   }
