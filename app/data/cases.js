@@ -694,23 +694,23 @@ module.exports = [
       }]
     }],
 
-    petitioner: [{
+    petitioner: {
       fullname: 'Zoe Elizabeth Dante',
       dateOfBirth: moment('1979-04-16'),
       address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
       email: 'zoe.dante@gmail.com',
       representative: ''
-    }],
+    },
 
-    respondent: [{
+    respondent: {
       fullname: 'John James Dante',
       dateOfBirth: moment('1981-06-07'),
       address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
       phone: '07787 557 967',
       email: 'john.dante@gmail.com',
       representative: ''
-    }],
+    },
 
     parties: [
       {
@@ -739,16 +739,27 @@ module.exports = [
     summaryStatus: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
-    documents: [{
-      id: 'decree-nisi-application-2',
-      label: 'Application for decree nisi'
-    }, {
-      id: 'decree-nisi-answers',
-      label: 'Response to divorce application'
-    }, {
-      id: 'd8-2',
-      label: 'Mini petition'
-    }],
+    documents: [
+      {
+        id: 'key-facts',
+        label: 'Key facts'
+      },
+      {
+        id: 'd8-2',
+        label: 'Petition'
+      },
+      {
+        id: 'decree-nisi-answers',
+        label: 'Acknowledgement of service'
+      },
+      {
+        id: 'decree-nisi-application-2',
+        label: 'Decree nisi'
+      },
+      {
+        id: 'marriage-certificate',
+        label: 'Marriage certificate'
+      }],
     lastAction: moment('2018-05-09'),
     events: [
       {

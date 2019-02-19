@@ -222,6 +222,8 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		_case: _case
 	};
 
+	console.log(pageObject._case.petitioner)
+
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
 
 	res.render(templatePath, pageObject);
