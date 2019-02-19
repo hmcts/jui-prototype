@@ -130,15 +130,16 @@ router.get('/app/cases/:id/divorce/generate-order', (req, res) => {
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case)
   }
-  pageObject.orderType = req.query.orderType
-  pageObject.costOrder = req.query.costOrder || 'no'
-  pageObject.decision = req.query.decision
+  pageObject.orderType = req.session.orderType
+  pageObject.costOrder = req.session.costOrder || 'no'
+  pageObject.decision = req.session.decision
   pageObject.orderPdf = null
-  if (pageObject.decision === 'yes' && pageObject.costOrder === 'yes') {
+  console.log(pageObject.decision)
+  if (pageObject.decision === 'Yes' && pageObject.costOrder === 'Yes') {
     pageObject.orderPdf = 'Costs order.pdf'
-  } else if (pageObject.decision === 'yes' && pageObject.costOrder === 'no') {
+  } else if (pageObject.decision === 'Yes' && pageObject.costOrder === 'no') {
     pageObject.orderPdf = 'WAITING FOR DOC'
-  } else if (pageObject.decision === 'no') {
+  } else if (pageObject.decision === 'No') {
     pageObject.orderPdf = 'refusal-order.pdf'
   }
   res.render('app/case/divorce/decision/generate-order', pageObject)
@@ -225,11 +226,11 @@ router.get('/app/cases/:id/divorce/check-your-answers', (req, res) => {
     },
     _case: _case
   }
-  if (pageObject.decision === 'yes' && pageObject.costOrder === 'yes') {
+  if (pageObject.decision === 'Yes' && pageObject.costOrder === 'Yes') {
     pageObject.orderPdf = 'Costs order.pdf'
-  } else if (pageObject.decision === 'yes' && pageObject.costOrder === 'no') {
+  } else if (pageObject.decision === 'Yes' && pageObject.costOrder === 'No') {
     pageObject.orderPdf = 'WAITING FOR DOC'
-  } else if (pageObject.decision === 'no') {
+  } else if (pageObject.decision === 'No') {
     pageObject.orderPdf = 'refusal-order.pdf'
   }
   res.render('app/case/divorce/decision/check-your-answers', pageObject)
