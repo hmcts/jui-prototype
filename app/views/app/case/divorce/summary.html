@@ -15,13 +15,17 @@
 
   <main role="main" class="govuk-main-wrapper">
 
-    {% set bannerHtml %}
-      <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
-      <p>Notes: Can you advise whether there is sufficient evidence to support two years separation whilst living at the same address?</p>
-      <p><a class="dismiss" href="#">Dismiss</a></p>
-    {% endset %}
-
-    {% if _case.justBeenAssigned %}
+    {% if _case.banner %}
+      {% set bannerHtml %}
+        <h2 class="govuk-heading-m">{{_case.banner.heading}}</h2>
+        <p>Notes: {{_case.banner.description}}</p>
+        {% if _case.banner.dismiss %}
+          <p><a class="dismiss" href="#">Dismiss</a></p>
+        {% endif %}
+        {% if _case.banner.reply %}
+          <p><a href="#">Reply</a></p>
+        {% endif %}
+      {% endset %}
 
       {{ hmctsBanner({
         html: bannerHtml

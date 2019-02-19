@@ -1,0 +1,67 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Timeline {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+{% set reservedBadgeHtml %}
+    {% if _case.reserved %}
+    {{ hmctsBadge({
+      classes: 'govuk-!-margin-left-1',
+      text: _case.reserved
+    }) }}
+    {% endif %}
+  {% endset %}
+
+
+{{ hmctsIdentityBar({
+title: {
+  html: casebar.parties + reservedBadgeHtml
+  },
+menus: caseActions
+}) }}
+
+<div class="hmcts-width-container">
+
+    {{ govukBackLink({
+      text: 'Back',
+      href: './'
+    }) }}
+
+  <main class="govuk-main-wrapper" role="main">
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-xl">Timeline</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">{{event.title}}</h1>
+        {% if event.by %}
+          <p class="govuk-body govuk-!-margin-bottom-9">by {{event.by}} </p>
+        {% endif %}
+
+        {% if event.by %}
+          <p class="govuk-body">Message: {{event.message}} </p>
+        {% endif %}
+
+        {% if event.type == 'referral' %}
+
+          {{govukButton({
+            text: 'Reply',
+            href: '/app/cases/'+_case.id+'/reply'
+          })}}
+
+        {% endif %}
+
+
+
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+{% endblock %}
