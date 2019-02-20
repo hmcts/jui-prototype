@@ -39,18 +39,7 @@ menus: caseActions
       }) }}
 
 
-      {{ hmctsPageHeaderWithActions({
-        title: {
-          html: '
-          <h1 class="govuk-heading-xl">Linked cases</h1>'
-        },
-        items: [{
-          classes: 'hmcts-button--secondary',
-          text: 'Link a case',
-          href: '/app/cases/'+_case.id+'/linked-cases/new'
-        }]
-      }) }}
-
+      <h1 class="govuk-heading-xl">Linked cases</h1>
 
       {% if linkedCaseRows.length %}
 
@@ -81,6 +70,21 @@ menus: caseActions
       {% else %}
         <p class="govuk-body">There are no linked cases.</p>
       {% endif %}
+
+      {{govukButton({
+        href:'/app/cases/'+_case.id+'/linked-cases/new',
+        text: 'Add new linked case',
+        classes: 'hmcts-button--secondary'
+      })}}
+
+        <h2 class="govuk-heading-l">Related cases</h2>
+        <p class="govuk-body">You have no related cases.</p>
+        {{govukButton({
+          href:'',
+          text: 'Add new related case',
+          classes: 'hmcts-button--secondary'
+        })}}
+
 		</main>
 	</div>
 {% endblock %}
