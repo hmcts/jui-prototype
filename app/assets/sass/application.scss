@@ -211,3 +211,7 @@ html {
 .jui-notification:last-of-type {
   margin-bottom: govuk-spacing(6);
 }
+
+.hmcts-banner__message {
+  overflow: visible; // temp
+}

@@ -33,7 +33,7 @@
         {% endif %}
         {% if _case.banner.type == 'referral' %}
           {{govukButton({
-            classes: 'govuk-!-margin-bottom-0',
+            classes: 'govuk-!-margin-bottom-0 hmcts-button--secondary',
             text: 'Reply',
             href: '/app/cases/'+_case.id+'/reply'
           })}}

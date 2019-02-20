@@ -24,7 +24,7 @@ router.get('/app/cases/:id/reserve/check', (req, res) => {
   res.render('app/case/reserve/check', pageObject);
 });
 
-router.post('/app/cases/:id/check', (req, res) => {
+router.post('/app/cases/:id/reserve/check', (req, res) => {
 	res.redirect(`/app/cases/${req.params.id}/reserve/confirmation`);
 });
 

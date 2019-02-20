@@ -34,13 +34,13 @@
         <div class="govuk-grid-column-two-thirds">
 
 
-          <h1 class="govuk-heading-xl">Check your answers before reserving the case</h1>
+          <h1 class="govuk-heading-xl">Check your response</h1>
 
           {{ govukSummaryList({
             rows: [
               {
                 key: {
-                  text: "Why are you reserving the case?"
+                  text: "Your response"
                 },
                 value: {
                   text: data.reason
@@ -60,7 +60,7 @@
 
           <form method="post">
             {{ govukButton({
-              "text": "Reserve case"
+              "text": "Send response"
             }) }}
           </form>
 

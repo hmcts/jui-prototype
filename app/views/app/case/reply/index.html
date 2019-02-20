@@ -4,8 +4,7 @@
 
 {% block content %}
 
-
-{% set reservedBadgeHtml %}
+  {% set reservedBadgeHtml %}
     {% if _case.reserved %}
     {{ hmctsBadge({
       classes: 'govuk-!-margin-left-1',
@@ -14,13 +13,12 @@
     {% endif %}
   {% endset %}
 
-
-{{ hmctsIdentityBar({
-title: {
-  html: casebar.parties + reservedBadgeHtml
-  },
-menus: caseActions
-}) }}
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties + reservedBadgeHtml
+    },
+    menus: caseActions
+  }) }}
 
 	<div class="hmcts-width-container">
 
@@ -35,16 +33,16 @@ menus: caseActions
 
         <div class="govuk-grid-column-two-thirds">
 
-          <form method="post" action="/app/cases/{{_case.id}}/reserve/check">
+          <form method="post" action="/app/cases/{{_case.id}}/reply">
 
             {{ govukTextarea({
               label: {
-                text: 'Why do you want to reserve the case?',
+                text: 'Your response',
                 isPageHeading: true,
                 classes: 'govuk-label--xl'
               },
-              id: 'reason',
-              name: 'reason'
+              id: 'response',
+              name: 'response'
             }) }}
 
             {{ govukButton({
