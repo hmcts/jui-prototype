@@ -8,16 +8,19 @@ var uuid = require('uuid/v4');
 router.get('/app/cases/:id/linked-cases', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
-	linkedCaseRows = helpers.getLinkedCases(_case).map(function(c) {
-		var cells = [];
-		cells.push({ html : `<a href="/app/cases/${c.id}">${c.id}</a>` });
-		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
-		cells.push({ html: helpers.getCaseTypeLabel(c) });
-		cells.push({ html: c.linkReason });
-		cells.push({ html: c.linkPerson });
-		cells.push({ html: (c.linkType == 'hard') ? '' : `<a href="/app/cases/${_case.id}/linked-cases/${c.id}/delete">Remove link</a>` });
-		return cells;
-	});
+	var linkedCases = helpers.getLinkedCases(_case);
+	if(linkedCases) {
+		var linkedCaseRows = helpers.getLinkedCases(_case).map(function(c) {
+			var cells = [];
+			cells.push({ html : `<a href="/app/cases/${c.id}">${c.id}</a>` });
+			cells.push({ html: helpers.getPartiesLineDashboard(c)	});
+			cells.push({ html: helpers.getCaseTypeLabel(c) });
+			cells.push({ html: c.linkReason });
+			cells.push({ html: c.linkPerson });
+			cells.push({ html: (c.linkType == 'hard') ? '' : `<a href="/app/cases/${_case.id}/linked-cases/${c.id}/delete">Remove link</a>` });
+			return cells;
+		});
+	}
 
 	var pageObject = {
 		_case: _case,
@@ -56,10 +59,13 @@ router.post('/app/cases/:id/linked-cases/new', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
 	var newCase = helpers.getCase(req.session.cases, req.body['case-number'].trim());
-	newCase.linkReason = req.body['reason'],
-  newCase.linkPerson = 'Judge Silver',
-  newCase.linkType = 'soft',
+	newCase.linkReason = req.body['reason'];
+  newCase.linkPerson = 'Judge Silver';
+  newCase.linkType = 'soft';
 
+	if(!_case.linkedCases) {
+		_case.linkedCases = [];
+	}
 	_case.linkedCases.push(newCase);
 
 	req.flash('success', 'case linked');

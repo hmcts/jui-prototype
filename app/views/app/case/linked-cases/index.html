@@ -52,34 +52,35 @@ menus: caseActions
       }) }}
 
 
-      {% for case in linkedCases %}
-        {{case.url}}
-      {% endfor %}
+      {% if linkedCaseRows.length %}
 
-      {{ govukTable({
-        firstCellIsHeader: true,
-        head: [
-          {
-            text: "Reference"
-          },
-          {
-            text: "Parties"
-          },
-          {
-            text: "Type"
-          },
-          {
-            text: "Reason"
-          },
-          {
-            text: "Linked by"
-          },
-          {
-            text: ""
-          }
-        ],
-        rows: linkedCaseRows
-      }) }}
+        {{ govukTable({
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Reference"
+            },
+            {
+              text: "Parties"
+            },
+            {
+              text: "Type"
+            },
+            {
+              text: "Reason"
+            },
+            {
+              text: "Linked by"
+            },
+            {
+              text: ""
+            }
+          ],
+          rows: linkedCaseRows
+        }) }}
+      {% else %}
+        <p class="govuk-body">There are no linked cases.</p>
+      {% endif %}
 		</main>
 	</div>
 {% endblock %}
