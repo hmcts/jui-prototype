@@ -26,7 +26,7 @@ router.get('/app/cases/:id/linked-cases', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		linkedCaseRows: linkedCaseRows
 	};
 
@@ -49,7 +49,7 @@ router.get('/app/cases/:id/linked-cases/new', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		linkedCases: helpers.getLinkedCases(_case)
 	};
 	res.render('app/case/linked-cases/new', pageObject);
@@ -78,7 +78,7 @@ router.get('/app/cases/:id/linked-cases/:linkedcaseid/delete', (req, res) => {
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		linkedCase: helpers.getCase(req.session.cases, req.params.linkedcaseid)
 	};
 	res.render('app/case/linked-cases/delete', pageObject);

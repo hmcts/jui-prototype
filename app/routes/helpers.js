@@ -79,11 +79,19 @@ function getCaseTypeLabel(_case) {
 	return caseType;
 }
 
+function getCaseBarActions(_case) {
+	return [{
+		items: [{
+			text: 'Choose action',
+		href: `/app/cases/${_case.id}/actions`
+		}]
+	}];
+}
+
 function getCaseActions(_case) {
 	switch(_case.typeId) {
 		case 'pip':
 			return [{
-				items: [{
 					href: `/app/cases/${_case.id}/pip/decision`,
 					text: 'Send view or decision'
 				},
@@ -91,9 +99,7 @@ function getCaseActions(_case) {
 					href: `/app/cases/${_case.id}/pip/list-for-hearing`,
 					text: 'List for hearing',
 					classes: 'hmcts-button--secondary'
-				}]
-			}, {
-				items: [{
+				}, {
 					text: 'Reassign',
 					href: `/app/cases/${_case.id}/reassign`,
 					classes: 'hmcts-button--secondary'
@@ -107,16 +113,13 @@ function getCaseActions(_case) {
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
-				}]
-			}]
+				}
+			]
 		case 'fr':
 			return [{
-				items: [{
 					text: 'Make a decision',
 					href: `/app/cases/${_case.id}/fr/decision`
-				}]
-			}, {
-				items: [{
+				}, {
 					text: 'Reassign',
 					href: `/app/cases/${_case.id}/reassign`,
 					classes: 'hmcts-button--secondary'
@@ -130,17 +133,14 @@ function getCaseActions(_case) {
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
-				}]
-			}]
+				}
+			]
 
 		case 'divorce':
 			return [{
-				items: [{
 					href: `/app/cases/${_case.id}/divorce/decision`,
 					text: 'Make decision'
-				}]
-			}, {
-				items: [{
+				}, {
 					href: `/app/cases/${_case.id}/reassign`,
 					text: 'Reassign',
 					classes: 'hmcts-button--secondary'
@@ -154,8 +154,8 @@ function getCaseActions(_case) {
 					text: 'Reserve',
 					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
-				}]
-			}]
+				}
+			]
 	}
 }
 
@@ -387,6 +387,7 @@ exports.getPartiesLineSummary = getPartiesLineSummary;
 exports.getCase = getCase;
 exports.getCaseType = getCaseType;
 exports.getCaseTypeLabel = getCaseTypeLabel;
+exports.getCaseBarActions = getCaseBarActions;
 exports.getCaseActions = getCaseActions;
 exports.getQuestion = getQuestion;
 exports.isDraftQuestion = isDraftQuestion;

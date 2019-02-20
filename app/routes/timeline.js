@@ -8,7 +8,7 @@ router.get('/app/cases/:id/timeline', (req, res) => {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
       caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       events: helpers.getEvents(_case)
     };
     res.render('app/case/timeline/index', pageObject);
@@ -20,7 +20,7 @@ router.get('/app/cases/:id/timeline/:question_id', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		event: helpers.getEvents(_case).filter(event => event.id === req.params.question_id)[0]
 	};
   res.render('app/case/timeline/show', pageObject);

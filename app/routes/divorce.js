@@ -10,7 +10,7 @@ router.get('/app/cases/:id/divorce', (req, res) => {
   var pageObject = {
     _case: _case,
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
     detailsRows: [],
     representativesRows: [],
@@ -47,7 +47,7 @@ router.get('/app/cases/:id/divorce/parties', (req, res) => {
 
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     caseNavItems: helpers.getCaseNavItems(_case, 'parties'),
     _case: _case
   }
@@ -88,7 +88,7 @@ router.get('/app/cases/:id/divorce/decision', (req, res) => {
 
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     petitioner: helpers.getPetitionerName(_case),
   }
 
@@ -158,7 +158,7 @@ router.get('/app/cases/:id/divorce/costs-order', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id)
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/divorce/decision`
     },
@@ -181,7 +181,7 @@ router.get('/app/cases/:id/divorce/costs-order-2', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id)
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/divorce/costs-order`
     },
@@ -218,7 +218,7 @@ router.get('/app/cases/:id/divorce/check-your-answers', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id)
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     petitioner: helpers.getPetitionerName(_case),
     reasonForNo: req.session.reasonForNo,
     orderType: req.session.orderType,
@@ -249,7 +249,7 @@ router.get('/app/cases/:id/divorce/confirmation', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id)
   var pageObject = {
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     petitioner: helpers.getPetitionerName(_case),
     backLink: {
       href: ''

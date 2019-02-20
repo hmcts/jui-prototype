@@ -49,7 +49,7 @@ router.route('/app/cases/:id/fr/more-information')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/decision`
       },
@@ -217,7 +217,7 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		documents: _case.documents,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		activeDocument: req.params.document_id,
 		_case: _case,
     caseDates: {}
