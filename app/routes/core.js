@@ -220,12 +220,18 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		caseActions: helpers.getCaseActions(_case),
 		activeDocument: req.params.document_id,
 		_case: _case,
-    caseDates: {
-		  petitionerDoB: new Date(_case.petitioner.dateOfBirth).toDateString(),
-		  respondentDoB: new Date(_case.respondent.dateOfBirth).toDateString(),
-		  applicationDate: new Date(_case.applicationDate).toDateString()
-    }
+    caseDates: {}
 	};
+
+	if(_case.petitioner && _case.petitioner.dateOfBirth) {
+		pageObject.caseDates.petitionerDoB = new Date(_case.petitioner.dateOfBirth).toDateString();
+	}
+	if(_case.petitioner && _case.petitioner.dateOfBirth) {
+		pageObject.caseDates.respondentDoB = new Date(_case.respondent.dateOfBirth).toDateString();
+	}
+	if(_case.applicationDate) {
+		pageObject.caseDates.applicationDate = new Date(_case.applicationDate).toDateString();
+	}
 
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
 
