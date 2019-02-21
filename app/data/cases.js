@@ -104,23 +104,23 @@ module.exports = [
       }
     ],
 
-    applicant: [{
+    applicant: {
       fullname: 'Margaret Blake',
       dateOfBirth: moment('1987-02-20'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07700 900 772',
       email: 'john.smith@gmail.com',
       representative: ''
-    }],
+    },
 
-    respondent: [{
+    respondent: {
       fullname: 'William Blake',
       dateOfBirth: moment('1985-03-15'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07787 557 967',
       email: 'jane.smith@gmail.com',
       representative: ''
-    }],
+    },
 
     parties: [
       {
@@ -453,23 +453,23 @@ module.exports = [
     id: 'BV18D00150',
     typeId: types.divorce.id,
 
-    petitioner: [{
+    petitioner: {
       fullname: 'Susan Francis',
       dateOfBirth: moment('1979-04-16'),
       address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
       email: 'susan.francis@gmail.com',
       representative: ''
-    }],
+    },
 
-    respondent: [{
+    respondent: {
       fullname: 'David Francis',
       dateOfBirth: moment('1981-06-07'),
       address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
       phone: '07787 557 967',
       email: 'david.francis@gmail.com',
       representative: ''
-    }],
+    },
 
     parties: [
       {
@@ -613,23 +613,23 @@ module.exports = [
       }
     ],
 
-    applicant: [{
+    applicant: {
       fullname: 'Paul Fox',
       dateOfBirth: moment('1987-02-20'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07700 900 772',
       email: 'john.smith@gmail.com',
       representative: ''
-    }],
+    },
 
-    respondent: [{
+    respondent: {
       fullname: 'Helen Fox',
       dateOfBirth: moment('1985-03-15'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07787 557 967',
       email: 'jane.smith@gmail.com',
       representative: ''
-    }],
+    },
 
     parties: [
       {
@@ -817,23 +817,23 @@ module.exports = [
       }]
     }],
 
-    petitioner: [{
+    petitioner: {
       fullname: 'Margaret Blake',
       dateOfBirth: moment('1981-06-07'),
       address: '24 Park Road<br>Lewisham<br>LONDON<br>E11 4PR',
       phone: '07787 557 967',
       email: 'margaret.blake@gmail.com',
       representative: ''
-    }],
+    },
 
-    respondent: [{
+    respondent: {
       fullname: 'William Blake',
       dateOfBirth: moment('1979-04-16'),
       address: '89 LONDON Road<br>Hinckley<br>LONDON<br>LE10 1HH',
       phone: '07700 900 772',
       email: 'william.blake@gmail.com',
       representative: ''
-    }],
+    },
 
     parties: [
       {
@@ -995,23 +995,23 @@ module.exports = [
       }
     ],
 
-    applicant: [{
+    applicant: {
       fullname: 'Margaret Blake',
       dateOfBirth: moment('1987-02-20'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07700 900 772',
       email: 'john.smith@gmail.com',
       representative: ''
-    }],
+    },
 
-    respondent: [{
+    respondent: {
       fullname: 'William Blake',
       dateOfBirth: moment('1985-03-15'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07787 557 967',
       email: 'jane.smith@gmail.com',
       representative: ''
-    }],
+    },
 
     parties: [
       {

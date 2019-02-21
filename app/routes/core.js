@@ -224,13 +224,13 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 	};
 
 	if(_case.petitioner && _case.petitioner.dateOfBirth) {
-		pageObject.caseDates.petitionerDoB = new Date(_case.petitioner.dateOfBirth).toDateString();
+		pageObject.caseDates.petitionerDoB = helpers.getFormattedDate(_case.petitioner.dateOfBirth);
 	}
 	if(_case.petitioner && _case.petitioner.dateOfBirth) {
-		pageObject.caseDates.respondentDoB = new Date(_case.respondent.dateOfBirth).toDateString();
+		pageObject.caseDates.respondentDoB = helpers.getFormattedDate(_case.respondent.dateOfBirth);
 	}
 	if(_case.applicationDate) {
-		pageObject.caseDates.applicationDate = new Date(_case.applicationDate).toDateString();
+		pageObject.caseDates.applicationDate = helpers.getFormattedDate(_case.applicationDate);
 	}
 
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
