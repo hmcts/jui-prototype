@@ -50,7 +50,6 @@ menus: caseActions
       <div class="govuk-grid-column-two-thirds">
         <form action="/app/cases/{{_case.id}}/linked-cases/new" method="post">
 
-
             {{ govukInput({
               label: {
                 text: 'Case number',
@@ -71,14 +70,11 @@ menus: caseActions
             }) }}
 
             {{ govukButton({
-              text: 'Link case'
+              text: 'Continue'
             }) }}
         </form>
       </div>
     </div>
-
-
-
 
 		</main>
 
