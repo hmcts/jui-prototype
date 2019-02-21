@@ -27,9 +27,16 @@
     {% if _case.banner %}
       {% set bannerHtml %}
         <h2 class="govuk-heading-m">{{_case.banner.heading}}</h2>
-        <p>{{_case.banner.description}}</p>
-        {% if _case.banner.dismiss %}
-          <p><a href="#">Dismiss</a></p>
+        <p>Notes: {{_case.banner.description}}</p>
+        {% if _case.banner.dismissable %}
+          <p><a class="dismiss" href="#">Dismiss</a></p>
+        {% endif %}
+        {% if _case.banner.type == 'referral' %}
+          {{govukButton({
+            classes: 'govuk-!-margin-bottom-0 hmcts-button--secondary',
+            text: 'Reply',
+            href: '/app/cases/'+_case.id+'/reply'
+          })}}
         {% endif %}
       {% endset %}
 
@@ -89,7 +96,7 @@
 
 
 
-          <p><a href="/app/cases/{{_case.id}}/fr/timeline">View full timeline</a></p>
+          <p><a href="/app/cases/{{_case.id}}/timeline">View full timeline</a></p>
 
         {% else %}
 
@@ -105,4 +112,12 @@
 
 </div>
 
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    $('.dismiss').on('click', function() {
+      $('.hmcts-banner').hide();
+    });
+  </script>
 {% endblock %}

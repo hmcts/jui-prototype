@@ -1,0 +1,33 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Case reserved {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+  <div class="hmcts-width-container">
+
+    <main class="govuk-main-wrapper" role="main">
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+          {{ govukPanel({
+            headingLevel: 1,
+            titleText: 'Response sent',
+            html: _case.id
+          }) }}
+
+          <p class="govuk-body">The case will now disappear from your case list.</p>
+
+          <p class="govuk-body"><a href="/app/dashboard">Go to your cases</a></p>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+{% endblock %}

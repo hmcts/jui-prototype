@@ -11,7 +11,7 @@ router.get('/app/cases/:id/questions', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'questions'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		appellantName: helpers.getAppellantName(_case),
 		createQuestionsLink: {
 			href: '/app/cases/' + req.params.id + '/questions/new'
@@ -78,7 +78,7 @@ router.get('/app/cases/:id/questions/check', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		backLink: {
 			href: `/app/cases/${_case.id}/questions/`
 		},
@@ -113,7 +113,7 @@ router.get('/app/cases/:id/questions/new', (req, res) => {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'questions'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 
@@ -159,7 +159,7 @@ router.get('/app/cases/:case_id/questions/:question_id', (req, res) => {
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case)
+		caseActions: helpers.getCaseBarActions(_case)
 	};
 
 	var question = helpers.getQuestion(_case, req.params.question_id);
@@ -184,7 +184,7 @@ router.get('/app/cases/:case_id/questions/:question_id/edit', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case)
+		caseActions: helpers.getCaseBarActions(_case)
 	};
 
 	var question = helpers.getQuestion(_case, req.params.question_id);
@@ -237,7 +237,7 @@ router.post('/app/cases/:case_id/questions/:question_id/edit', (req, res) => {
 	} else {
 		var pageObject = {
 			casebar: helpers.getCaseBarObject(_case),
-			caseActions: helpers.getCaseActions(_case)
+			caseActions: helpers.getCaseBarActions(_case)
 		};
 		pageObject.backLink = {
 			href: `/app/cases/${_case.id}/questions/${question.id}`
@@ -257,7 +257,7 @@ router.get('/app/cases/:case_id/questions/:question_id/delete', (req, res) => {
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		question: question,
 		backLink: {
 			href: `/app/cases/${_case.id}/questions/${question.id}`

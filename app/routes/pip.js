@@ -133,7 +133,7 @@ router.get('/app/cases/:id/pip', (req, res) => {
 		_case: _case,
 		success: req.session.success,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
 		detailsRows: [],
 		panelRows: [],
@@ -154,7 +154,7 @@ router.get('/app/cases/:id/pip/filters', (req, res) => {
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'timeline'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     events: helpers.getEvents(_case),
     _case: _case
 	};
@@ -166,7 +166,7 @@ router.get('/app/cases/:id/pip/decision', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
   var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		backLink: {
 			href: `/app/cases/${_case.id}`
 		},
@@ -218,7 +218,7 @@ router.get('/app/cases/:id/pip/decision/final', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}/pip/decision`
     },
@@ -245,7 +245,7 @@ router.post('/app/cases/:id/pip/decision/final', (req, res) => {
 		var _case = helpers.getCase(req.session.cases, req.params.id);
 		var pageObject = {
 			casebar: helpers.getCaseBarObject(_case),
-			caseActions: helpers.getCaseActions(_case),
+			caseActions: helpers.getCaseBarActions(_case),
 			backLink: {
 				href: `/app/cases/${_case.id}`
 			},
@@ -309,7 +309,7 @@ router.get('/app/cases/:id/pip/decision/preliminary', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/index', pageObject);
@@ -377,7 +377,7 @@ router.get('/app/cases/:id/pip/list-for-hearing', (req, res) => {
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     backLink: {
       href: `/app/cases/${_case.id}`
     },
@@ -396,7 +396,7 @@ router.get('/app/cases/:id/pip/check-hearing-notes', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		backLink: {
 			href: `/app/cases/${_case.id}/pip/list-for-hearing`
 		},
@@ -445,7 +445,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/index', pageObject);
@@ -470,7 +470,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/set-award-dates', (
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/set-award-dates', pageObject);
@@ -486,7 +486,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/scores', (req, res)
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/scores', pageObject);
@@ -520,7 +520,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/preparing-food', (r
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
   res.render('app/case/pip/decision/preliminary-advanced/preparing-food', pageObject);
@@ -553,7 +553,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/taking-nutrition', 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/taking-nutrition', pageObject);
@@ -585,7 +585,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/managing-therapy', 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/managing-therapy', pageObject);
@@ -618,7 +618,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/washing-bathing', (
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/washing-bathing', pageObject);
@@ -650,7 +650,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/managing-toilet', (
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/managing-toilet', pageObject);
@@ -682,7 +682,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/dressing-undressing
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/dressing-undressing', pageObject);
@@ -714,7 +714,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/communicating-verba
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/communicating-verbally', pageObject);
@@ -746,7 +746,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/reading-signs', (re
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/reading-signs', pageObject);
@@ -778,7 +778,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/engaging-face', (re
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/engaging-face', pageObject);
@@ -810,7 +810,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/budgeting-decisions
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/budgeting-decisions', pageObject);
@@ -842,7 +842,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/planning-journeys',
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/planning-journeys', pageObject);
@@ -874,7 +874,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/moving-around', (re
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/moving-around', pageObject);
@@ -906,7 +906,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/panel-reasons', (re
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/panel-reasons', pageObject);
@@ -922,7 +922,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/preview-decision', 
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/preview-decision', pageObject);
@@ -937,7 +937,7 @@ router.get('/app/cases/:id/pip/decision/preliminary/decision-submitted', (req, r
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/decision-submitted', pageObject);
@@ -949,7 +949,7 @@ router.get('/app/cases/:id/pip/decision/preliminary-advanced/decision-submitted'
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary-advanced/decision-submitted', pageObject);
@@ -1002,7 +1002,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/index', pageObject);
@@ -1024,7 +1024,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/set-award-dates', (req, r
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/set-award-dates', pageObject);
@@ -1040,7 +1040,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/scores', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/scores', pageObject);
@@ -1074,7 +1074,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/preparing-food', (req, re
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
   res.render('app/case/pip/decision/final-advanced/preparing-food', pageObject);
@@ -1107,7 +1107,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/taking-nutrition', (req, 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/taking-nutrition', pageObject);
@@ -1139,7 +1139,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/managing-therapy', (req, 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/managing-therapy', pageObject);
@@ -1172,7 +1172,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/washing-bathing', (req, r
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/washing-bathing', pageObject);
@@ -1204,7 +1204,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/managing-toilet', (req, r
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/managing-toilet', pageObject);
@@ -1236,7 +1236,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/dressing-undressing', (re
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/dressing-undressing', pageObject);
@@ -1268,7 +1268,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/communicating-verbally', 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/communicating-verbally', pageObject);
@@ -1300,7 +1300,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/reading-signs', (req, res
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/reading-signs', pageObject);
@@ -1332,7 +1332,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/engaging-face', (req, res
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/engaging-face', pageObject);
@@ -1364,7 +1364,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/budgeting-decisions', (re
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/budgeting-decisions', pageObject);
@@ -1396,7 +1396,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/planning-journeys', (req,
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/planning-journeys', pageObject);
@@ -1428,7 +1428,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/moving-around', (req, res
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/moving-around', pageObject);
@@ -1460,7 +1460,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/panel-reasons', (req, res
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/panel-reasons', pageObject);
@@ -1476,7 +1476,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/preview-decision', (req, 
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
     _case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/preview-decision', pageObject);
@@ -1492,7 +1492,7 @@ router.get('/app/cases/:id/pip/decision/preliminary/decision-submitted', (req, r
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/preliminary/decision-submitted', pageObject);
@@ -1504,7 +1504,7 @@ router.get('/app/cases/:id/pip/decision/final-advanced/decision-submitted', (req
   var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		_case: _case
 	};
 	res.render('app/case/pip/decision/final-advanced/decision-submitted', pageObject);

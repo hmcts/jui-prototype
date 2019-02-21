@@ -8,32 +8,50 @@ var uuid = require('uuid/v4');
 router.get('/app/cases/:id/linked-cases', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
-	linkedCaseRows = helpers.getLinkedCases(_case).map(function(c) {
-		var cells = [];
-		cells.push({ html : `<a href="/app/cases/${c.id}">${c.id}</a>` });
-		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
-		cells.push({ html: helpers.getCaseTypeLabel(c) });
-		cells.push({ html: c.linkReason });
-		cells.push({ html: c.linkPerson });
-		cells.push({ html: (c.linkType == 'hard') ? '' : `<a href="/app/cases/${_case.id}/linked-cases/${c.id}/delete">Remove link</a>` });
-		return cells;
-	});
+	var linkedCases = helpers.getLinkedCases(_case);
+	if(linkedCases) {
+		var linkedCaseRows = linkedCases.map(function(c) {
+			var cells = [];
+			cells.push({ html : `<a href="/app/cases/${c.id}">${c.id}</a>` });
+			cells.push({ html: helpers.getPartiesLineDashboard(c)	});
+			cells.push({ html: helpers.getCaseTypeLabel(c) });
+			cells.push({ html: c.linkReason });
+			cells.push({ html: c.linkPerson });
+			cells.push({ html: (c.linkType == 'hard') ? '' : `<a href="/app/cases/${_case.id}/linked-cases/${c.id}/delete">Remove link</a>` });
+			return cells;
+		});
+	}
+
+	var relatedCases = helpers.getRelatedCases(_case);
+	if(relatedCases) {
+		var relatedCaseRows = relatedCases.map(function(c) {
+			var cells = [];
+			cells.push({ html : `<a href="/app/cases/${c.id}">${c.id}</a>` });
+			cells.push({ html: helpers.getPartiesLineDashboard(c)	});
+			cells.push({ html: helpers.getCaseTypeLabel(c) });
+			cells.push({ html: c.linkReason });
+			cells.push({ html: c.linkPerson });
+			cells.push({ html: `<a href="/app/cases/${_case.id}/related-cases/${c.id}/delete">Remove link</a>`});
+			return cells;
+		});
+	}
 
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
-		caseActions: helpers.getCaseActions(_case),
-		linkedCaseRows: linkedCaseRows
+		caseActions: helpers.getCaseBarActions(_case),
+		linkedCaseRows: linkedCaseRows,
+		relatedCaseRows: relatedCaseRows,
 	};
 
 	var successFlash = req.flash('success');
-	if(successFlash[0] == 'case linked') {
-	pageObject.success = 'Case linked successfully';
+	if(successFlash[0] == 'relatedcase added') {
+		pageObject.success = 'Related case added successfully';
 	}
 
-	if(successFlash[0] == 'case unlinked') {
-		pageObject.success = 'Case unlinked successfully';
+	if(successFlash[0] == 'relatedcase removed') {
+		pageObject.success = 'Related case removed successfully';
 	}
 
 	res.render('app/case/linked-cases/index', pageObject);
@@ -46,44 +64,42 @@ router.get('/app/cases/:id/linked-cases/new', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		linkedCases: helpers.getLinkedCases(_case)
 	};
-	res.render('app/case/linked-cases/new', pageObject);
+	res.render('app/case/linked-cases/new/index', pageObject);
 });
 
 router.post('/app/cases/:id/linked-cases/new', (req, res) => {
-	var _case = helpers.getCase(req.session.cases, req.params.id);
-
-	var newCase = helpers.getCase(req.session.cases, req.body['case-number'].trim());
-	newCase.linkReason = req.body['reason'],
-  newCase.linkPerson = 'Judge Silver',
-  newCase.linkType = 'soft',
-
-	_case.linkedCases.push(newCase);
-
-	req.flash('success', 'case linked');
-	res.redirect(`/app/cases/${_case.id}/linked-cases`);
-
+	res.redirect(`/app/cases/${req.params.id}/linked-cases/new/check`);
 });
 
-router.get('/app/cases/:id/linked-cases/:linkedcaseid/delete', (req, res) => {
+router.get('/app/cases/:id/linked-cases/new/check', (req, res) => {
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 	var pageObject = {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
-		linkedCase: helpers.getCase(req.session.cases, req.params.linkedcaseid)
+		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
+		caseActions: helpers.getCaseBarActions(_case),
+		linkedCases: helpers.getLinkedCases(_case)
 	};
-	res.render('app/case/linked-cases/delete', pageObject);
+	res.render('app/case/linked-cases/new/check', pageObject);
 });
 
-router.post('/app/cases/:case_id/linked-cases/:linkedcaseid/delete', (req, res) => {
-	var _case = helpers.getCase(req.session.cases, req.params.case_id);
-	var linkedCase = helpers.getLinkedCase(_case, req.params.linkedcaseid);
-	helpers.removeLinkedCase(_case, linkedCase);
-	req.flash('success', 'case unlinked');
-	res.redirect(`/app/cases/${_case.id}/linked-cases`);
+router.post('/app/cases/:id/linked-cases/new/check', (req, res) => {
+	res.redirect(`/app/cases/${req.params.id}/linked-cases/new/confirmation`);
+});
+
+router.get('/app/cases/:id/linked-cases/new/confirmation', (req, res) => {
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+	var pageObject = {
+		_case: _case,
+		casebar: helpers.getCaseBarObject(_case),
+		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
+		caseActions: helpers.getCaseBarActions(_case),
+		linkedCases: helpers.getLinkedCases(_case)
+	};
+	res.render('app/case/linked-cases/new/confirmation', pageObject);
 });
 
 module.exports = router;

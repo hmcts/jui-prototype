@@ -17,7 +17,7 @@ router.route('/app/cases/:id/fr').get((req, res) => {
     _case: _case,
     success: req.session.success,
     casebar: helpers.getCaseBarObject(_case),
-    caseActions: helpers.getCaseActions(_case),
+    caseActions: helpers.getCaseBarActions(_case),
     caseNavItems: helpers.getCaseNavItems(_case, 'summary'),
     detailsRows: [],
     panelRows: [],
@@ -40,7 +40,7 @@ router.get('/app/cases/:id/fr/parties', (req, res) => {
 
 	var pageObject = {
 		casebar: helpers.getCaseBarObject(_case),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'parties'),
     _case: _case
 	};
@@ -83,7 +83,7 @@ router.route('/app/cases/:id/fr/consent-orders')
     var pageObject = {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       caseNavItems: helpers.getCaseNavItems(_case, 'consentorders')
     };
     res.render('app/case/fr/consent-orders', pageObject);
@@ -99,7 +99,7 @@ router.route('/app/cases/:id/fr/history')
     var pageObject = {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       caseNavItems: helpers.getCaseNavItems(_case, 'casefile')
     };
     res.render('app/case/fr/history', pageObject);
@@ -115,7 +115,7 @@ router.route('/app/cases/:id/fr/upload-new-item')
     var pageObject = {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case)
+      caseActions: helpers.getCaseBarActions(_case)
     };
     res.render('app/case/fr/upload-new-item', pageObject);
   });
@@ -130,7 +130,7 @@ router.route('/app/cases/:id/fr/decision')
     var pageObject = {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}`
       }
@@ -171,7 +171,7 @@ router.route('/app/cases/:id/fr/decision')
       var _case = helpers.getCase(req.session.cases, req.params.id);
       var pageObject = {
         casebar: helpers.getCaseBarObject(_case),
-        caseActions: helpers.getCaseActions(_case),
+        caseActions: helpers.getCaseBarActions(_case),
         backLink: {
           href: `/app/cases/${_case.id}`
         }
@@ -190,7 +190,7 @@ router.route('/app/cases/:id/fr/upload-1')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/decision`
       },
@@ -224,7 +224,7 @@ router.route('/app/cases/:id/fr/upload-2')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/upload-1`
       },
@@ -250,7 +250,7 @@ router.route('/app/cases/:id/fr/more-information')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/decision`
       },
@@ -272,7 +272,7 @@ router.route('/app/cases/:id/fr/hearing-details')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/decision`
       },
@@ -295,7 +295,7 @@ router.route('/app/cases/:id/fr/draft-consent-order')
     var pageObject = {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/decision`
       }
@@ -321,7 +321,7 @@ router.route('/app/cases/:id/fr/notes-for-court-administrator')
     var pageObject = {
       _case: _case,
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/draft-consent-order`
       }
@@ -342,7 +342,7 @@ router.route('/app/cases/:id/fr/reject-reasons')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}`
       }
@@ -416,7 +416,7 @@ router.route('/app/cases/:id/fr/reject-reasons')
       var _case = helpers.getCase(req.session.cases, req.params.id);
       var pageObject = {
         casebar: helpers.getCaseBarObject(_case),
-        caseActions: helpers.getCaseActions(_case),
+        caseActions: helpers.getCaseBarActions(_case),
         backLink: {
           href: `/app/cases/${_case.id}`
         }
@@ -436,7 +436,7 @@ router.route('/app/cases/:id/fr/reject-reason')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}`
       }
@@ -457,7 +457,7 @@ router.route('/app/cases/:id/fr/reject-notes')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}`
       }
@@ -478,7 +478,7 @@ router.route('/app/cases/:id/fr/check')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/notes`
       },
@@ -542,7 +542,7 @@ router.route('/app/cases/:id/fr/draft-consent-order')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}`
       }

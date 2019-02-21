@@ -38,10 +38,24 @@ menus: caseActions
 
         {% if events.length %}
 
-          {{hmctsTimeline({
-            classes: 'hmcts-timeline--full',
-            events: events
-          })}}
+          <div class="hmcts-timeline govuk-!-margin-bottom-0">
+            {% for event in events %}
+              <div class="hmcts-timeline__item">
+
+                <div class="hmcts-timeline__header">
+                  <h2 class="hmcts-timeline__title"><a href="{{event.href}}">{{event.title}}</a></h2>
+                  {% if event.by %}
+                    <p class="hmcts-timeline__by">by {{event.by}}</p>
+                  {% endif %}
+                </div>
+
+                <p class="hmcts-timeline__date"><time datetime="{{event.dateUtc}}">{{event.date}} at {{event.time }}</time></p>
+
+              </div>
+            {% endfor %}
+
+          </div>
+
 
         {% else %}
 

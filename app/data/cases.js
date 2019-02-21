@@ -4,6 +4,7 @@ var moment = require('moment');
 
 module.exports = [
   {
+    urgent: false,
     reserved: 'Reserved to you',
     id: 'FR1231612322',
     typeId: types.fr.id,
@@ -16,9 +17,9 @@ module.exports = [
     absoluteData: moment('2018-08-11 11:01'),
 
     banner: {
-      heading: 'This case has been reassigned to you by Jane Doe',
-      description: 'Reason: Similarities between this and your recent case for Paul Fox vs Helen Fox',
-      dismiss: true
+      heading: 'Case reassigned by Jane Doe',
+      description: 'Similarities between this and your recent case for Paul Fox vs Helen Fox',
+      dismissable: true
     },
 
     events: [
@@ -98,6 +99,7 @@ module.exports = [
         id: uuid(),
         date: moment('2018-09-14 09:38'),
         title: 'Case reasssigned to you',
+        message: 'Similarities between this and your recent case for Paul Fox vs Helen Fox',
         by: 'Jane Doe, court administrator'
       }
     ],
@@ -904,9 +906,10 @@ module.exports = [
     absoluteData: moment('2018-08-11 11:01'),
 
     banner: {
-      heading: 'This case has been referred to you by Judge Prita Shah',
-      description: 'Message: what\'s the bit about the thing?',
-      dismiss: false
+      heading: 'Case referred by Judge Prita Shah',
+      description: '[Notes about why the case has been referred]',
+      type: 'referral',
+      dismissable: false
     },
 
     events: [
@@ -986,7 +989,9 @@ module.exports = [
         id: uuid(),
         date: moment('2018-09-14 09:38'),
         title: 'Case referred to you',
-        by: 'Judge Prita Shah'
+        message: '[Notes about why the case has been referred]',
+        by: 'Judge Prita Shah',
+        type: 'referral'
       }
     ],
 

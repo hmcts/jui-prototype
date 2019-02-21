@@ -49,7 +49,7 @@ router.route('/app/cases/:id/fr/more-information')
     var _case = helpers.getCase(req.session.cases, req.params.id);
     var pageObject = {
       casebar: helpers.getCaseBarObject(_case),
-      caseActions: helpers.getCaseActions(_case),
+      caseActions: helpers.getCaseBarActions(_case),
       backLink: {
         href: `/app/cases/${_case.id}/fr/decision`
       },
@@ -217,15 +217,21 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		documents: _case.documents,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
-		caseActions: helpers.getCaseActions(_case),
+		caseActions: helpers.getCaseBarActions(_case),
 		activeDocument: req.params.document_id,
 		_case: _case,
-    caseDates: {
-		  petitionerDoB: helpers.getFormattedDate(_case.petitioner.dateOfBirth),
-		  respondentDoB: helpers.getFormattedDate(_case.respondent.dateOfBirth),
-		  applicationDate: helpers.getFormattedDate(_case.applicationDate)
-    }
+    caseDates: {}
 	};
+
+	if(_case.petitioner && _case.petitioner.dateOfBirth) {
+		pageObject.caseDates.petitionerDoB = helpers.getFormattedDate(_case.petitioner.dateOfBirth);
+	}
+	if(_case.petitioner && _case.petitioner.dateOfBirth) {
+		pageObject.caseDates.respondentDoB = helpers.getFormattedDate(_case.respondent.dateOfBirth);
+	}
+	if(_case.applicationDate) {
+		pageObject.caseDates.applicationDate = helpers.getFormattedDate(_case.applicationDate);
+	}
 
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
 
