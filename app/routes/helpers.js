@@ -401,6 +401,13 @@ function getRelatedCases(_case) {
 	return _case.relatedCases;
 }
 
+function getDocumentName (_case, documentId) {
+  const document = _case.documents.filter(document => documentId === document.id)
+  if (document.length) {
+    return document[0].label
+  }
+}
+
 exports.getCaseBarObject = getCaseBarObject;
 
 exports.getPartiesLineCasebar = getPartiesLineCasebar;
@@ -430,3 +437,4 @@ exports.removeLinkedCase = removeLinkedCase;
 exports.getRelatedCases = getRelatedCases;
 exports.getRelatedCase = getRelatedCase;
 exports.removeRelatedCase = removeRelatedCase;
+exports.getDocumentName = getDocumentName;

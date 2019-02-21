@@ -1,0 +1,113 @@
+{% extends "layouts/admin/base.html" %}
+
+{% block pageTitle %}Case file {{ '- ' + serviceName }}{% endblock %}
+
+{% block content %}
+
+  {{ hmctsIdentityBar({
+    title: {
+      html: casebar.parties
+    },
+    menus: caseActions
+  }) }}
+
+  <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">
+
+    <div class="hmcts-width-container">
+
+      {{ hmctsSubNavigation({
+        label: 'Case navigation',
+        items: caseNavItems
+      }) }}
+
+      {{ hmctsPageHeaderWithActions({
+        classes: 'govuk-!-margin-bottom-9',
+        title: {
+          html: '<span class="govuk-caption-xl">Case file</span>
+          <h1 class="govuk-heading-xl">' + activeDocumentName + '</h1>'
+        },
+        items: [{
+          classes: 'hmcts-button--secondary',
+          text: 'Upload new item',
+          href: '/app/cases/'+_case.id+'/fr/upload-new-item'
+        }]
+      }) }}
+
+    </div>
+
+    <div class="jui-cf">
+
+      <div class="jui-cf__toolbar" role="toolbar">
+
+        <div class="jui-cf__toolbar-container">
+          <button class="jui-cf__toolbar-button jui-cf__toolbar-button--items" type="button" aria-controls="files">All
+            items
+          </button>
+          <button class="jui-cf__toolbar-button jui-cf__toolbar-button--comments" type="button"
+                  aria-controls="comments">Comments
+          </button>
+        </div>
+
+      </div>
+
+      <div class="jui-cf__window">
+
+        <div class="jui-cf__window-container">
+
+          <div class="jui-cf__files" id="files">
+
+            <h2 class="govuk-visually-hidden" id="all-items">All items</h2>
+
+            <ul class="jui-tree jui-tree__folder-group" aria-labelledby="all-items">
+
+              {% for document in documents %}
+                <li class="jui-tree__doc">
+                  <a class="jui-tree__doc-link" href="/app/cases/{{ _case.id }}/documents/{{ document.id }}"
+                     {% if(document.id === activeDocument) %}aria-current="true"{% endif %}>
+                    <span class="jui-tree__doc-name">{{ document.label }}</span>
+                    <span class="jui-tree__doc-meta">{{ document.added }}</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="jui-cf__document">
+
+            <div class="jui-cf__document-comments" id="comments">
+
+              {{ hmctsBanner({
+                type: 'information',
+                text: 'Select text to add a comment.',
+                iconFallbackText: 'Success'
+              }) }}
+
+            </div>
+
+            <div class="jui-cf__document-pages">
+              {% block file_content %}
+              {% endblock %}
+            </div>
+
+          </div>
+
+          <div class="jui-casefile-document-wrapper">
+            {% block file_actions %}{% endblock %}
+            <div class="jui-casefile-page editable">
+              {#{% block file_content %}{% endblock %}#}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}
+
+{% block page_scripts %}
+  <script>
+    new Casefile($('.jui-cf'))
+    new Tree($('.jui-tree'))
+  </script>
+{% endblock %}

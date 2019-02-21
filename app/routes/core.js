@@ -219,6 +219,7 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
 		caseActions: helpers.getCaseBarActions(_case),
 		activeDocument: req.params.document_id,
+		activeDocumentName: helpers.getDocumentName(_case, req.params.document_id),
 		_case: _case,
     caseDates: {}
 	};
