@@ -24,7 +24,7 @@
         classes: 'govuk-!-margin-bottom-9',
         title: {
           html: '<span class="govuk-caption-xl">Case file</span>
-          <h1 class="govuk-heading-xl">' + activeDocumentName + '</h1>'
+          <h1 class="govuk-heading-xl">' + activeDocument.name + '</h1>'
         },
         items: [{
           classes: 'hmcts-button--secondary',
@@ -63,7 +63,7 @@
               {% for document in documents %}
                 <li class="jui-tree__doc">
                   <a class="jui-tree__doc-link" href="/app/cases/{{ _case.id }}/documents/{{ document.id }}"
-                     {% if(document.id === activeDocument) %}aria-current="true"{% endif %}>
+                     {% if(document.id === activeDocument.id) %}aria-current="true"{% endif %}>
                     <span class="jui-tree__doc-name">{{ document.label }}</span>
                     <span class="jui-tree__doc-meta">{{ document.added }}</span>
                   </a>
