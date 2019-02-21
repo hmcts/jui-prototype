@@ -219,10 +219,13 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 		caseNavItems: helpers.getCaseNavItems(_case, 'casefile'),
 		caseActions: helpers.getCaseActions(_case),
 		activeDocument: req.params.document_id,
-		_case: _case
+		_case: _case,
+    caseDates: {
+		  petitionerDoB: helpers.getFormattedDate(_case.petitioner.dateOfBirth),
+		  respondentDoB: helpers.getFormattedDate(_case.respondent.dateOfBirth),
+		  applicationDate: helpers.getFormattedDate(_case.applicationDate)
+    }
 	};
-
-	console.log(pageObject._case.petitioner)
 
 	var templatePath = `app/case/${helpers.getCaseType(_case).toLowerCase()}/documents/${req.params.document_id}`;
 
