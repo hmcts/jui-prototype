@@ -744,23 +744,28 @@ module.exports = [
     documents: [
       {
         id: 'key-facts',
-        label: 'Key facts'
+        label: 'Key facts',
+        added: '27 May 2018 at 11:32am'
       },
       {
         id: 'd8-2',
-        label: 'Petition'
+        label: 'Petition',
+        added: '27 May 2018 at 11:32am'
       },
       {
         id: 'decree-nisi-answers',
-        label: 'Acknowledgement of service'
+        label: 'Acknowledgement of service',
+        added: '27 May 2018 at 11:32am'
       },
       {
         id: 'decree-nisi-application-2',
-        label: 'Decree nisi'
+        label: 'Decree nisi',
+        added: '27 May 2018 at 11:32am'
       },
       {
         id: 'marriage-certificate',
-        label: 'Marriage certificate'
+        label: 'Marriage certificate',
+        added: '27 May 2018 at 11:32am'
       }],
     lastAction: moment('2018-05-09'),
     events: [
