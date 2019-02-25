@@ -55,26 +55,25 @@ router.get('/app/cases/:id/divorce/parties', (req, res) => {
   pageObject.petitionerRows = []
   pageObject.respondentRows = []
 
-  if (_case.petitioner) {
-    // _case.petitioner.forEach((item) => {
-      pageObject.petitionerRows.push([{ html: 'Full name' }, { html: _case.petitioner.fullname }])
-      pageObject.petitionerRows.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(_case.petitioner.dateOfBirth) }])
-      pageObject.petitionerRows.push([{ html: 'Address' }, { html: _case.petitioner.address }])
-      pageObject.petitionerRows.push([{ html: 'Phone' }, { html: _case.petitioner.phone }])
-      pageObject.petitionerRows.push([{ html: 'Email' }, { html: _case.petitioner.email }])
-      pageObject.petitionerRows.push([{ html: 'Representative' }, { html: _case.petitioner.representative ? _case.representative : 'Unrepresented' }])
-    // })
+  function addRows (array, type) {
+    array.push([{ html: 'Full name' }, { html: type.fullname }])
+    array.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(type.dateOfBirth) }])
+    array.push([{ html: 'Address' }, { html: type.address }])
+    array.push([{ html: 'Phone' }, { html: type.phone }])
+    array.push([{ html: 'Email' }, { html: type.email }])
+    array.push([{ html: 'Representative' }, { html: type.representative ? _case.representative : 'Unrepresented' }])
   }
-  //
+
+  if (_case.petitioner) {
+    addRows(pageObject.petitionerRows, _case.petitioner)
+  }
+
+  if (_case.applicant) {
+    addRows(pageObject.petitionerRows, _case.applicant)
+  }
+
   if (_case.respondent) {
-    // _case.respondent.forEach((item) => {
-      pageObject.respondentRows.push([{ html: 'Full name' }, { html: _case.respondent.fullname }])
-      pageObject.respondentRows.push([{ html: 'Date of birth' }, { html: helpers.getFormattedDate(_case.respondent.dateOfBirth) }])
-      pageObject.respondentRows.push([{ html: 'Address' }, { html: _case.respondent.address }])
-      pageObject.respondentRows.push([{ html: 'Phone' }, { html: _case.respondent.phone }])
-      pageObject.respondentRows.push([{ html: 'Email' }, { html: _case.respondent.email }])
-      pageObject.respondentRows.push([{ html: 'Representative' }, { html: _case.respondent.representative ? _case.representative : 'Unrepresented' }])
-    // })
+    addRows(pageObject.respondentRows, _case.respondent)
   }
 
   res.render('app/case/divorce/parties', pageObject)
