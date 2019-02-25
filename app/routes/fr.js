@@ -48,25 +48,21 @@ router.get('/app/cases/:id/fr/parties', (req, res) => {
 	pageObject.applicantRows = [];
   pageObject.respondentRows = [];
 
-  function addSummaryListRow(array, item) {
-    array.push({ key: { text: 'Full name'}, value: { text: item.fullname } });
-    array.push({ key: { text: 'Date of birth' }, value: { text: helpers.getFormattedDate(item.dateOfBirth) } } );
-    array.push({ key: { text: 'Address' }, value: { html: item.address } } );
-    array.push({ key: { text: 'Phone' }, value: { text: item.phone } } );
-    array.push({ key: { text: 'Email' }, value: { text: item.email } } );
-    array.push({ key: { text: 'Representative' }, value: { text: item.representative ? _case.representative : 'Unrepresented' } } );
+  function addSummaryListRow(array, type) {
+    array.push({ key: { text: 'Full name'}, value: { text: type.fullname } });
+    array.push({ key: { text: 'Date of birth' }, value: { text: helpers.getFormattedDate(type.dateOfBirth) } } );
+    array.push({ key: { text: 'Address' }, value: { html: type.address } } );
+    array.push({ key: { text: 'Phone' }, value: { text: type.phone } } );
+    array.push({ key: { text: 'Email' }, value: { text: type.email } } );
+    array.push({ key: { text: 'Representative' }, value: { text: type.representative ? _case.representative : 'Unrepresented' } } );
   }
 
 	if(_case.applicant) {
-		_case.applicant.forEach((item) => {
-      addSummaryListRow(pageObject.applicantRows, item);
-		});
+      addSummaryListRow(pageObject.applicantRows, _case.applicant);
 	}
 
 	if(_case.respondent) {
-		_case.respondent.forEach((item) => {
-      addSummaryListRow(pageObject.respondentRows, item);
-		});
+      addSummaryListRow(pageObject.respondentRows, _case.respondent);
 	}
 
 	res.render('app/case/fr/parties', pageObject);
