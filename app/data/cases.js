@@ -165,8 +165,8 @@ module.exports = [
       id: 'BV18D00153',
       parties: [{
         type: 'Applicant',
-        firstName: 'John',
-        lastName: 'Smith',
+        firstName: 'Margaret',
+        lastName: 'Blake',
         representative: {
           name: '',
           role: '',
@@ -175,8 +175,8 @@ module.exports = [
       },
       {
         type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith',
+        firstName: 'William',
+        lastName: 'Blake',
         representative: {
           name: '',
           role: '',
