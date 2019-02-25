@@ -56,10 +56,6 @@ router.get('/app/cases/:id/questions', (req, res) => {
 		pageObject.success = 'Question added';
 	}
 
-	if(successFlash[0] == 'questions sent') {
-		pageObject.success = 'Questions sent';
-	}
-
 	if(successFlash[0] == 'question deleted') {
 		pageObject.success = 'Question deleted';
 	}
@@ -91,7 +87,7 @@ router.get('/app/cases/:id/questions/check', (req, res) => {
 });
 
 
-router.post('/app/cases/:id/questions/send', (req, res) => {
+router.post('/app/cases/:id/questions/check', (req, res) => {
 
 	var _case = helpers.getCase(req.session.cases, req.params.id);
 
@@ -99,11 +95,23 @@ router.post('/app/cases/:id/questions/send', (req, res) => {
 
 	round.dateSent = new Date();
 
-	req.flash('success', 'questions sent');
-
-	res.redirect(`/app/cases/${_case.id}/questions`);
+	res.redirect(`/app/cases/${_case.id}/questions/confirmation`);
 
 });
+
+router.get('/app/cases/:id/questions/confirmation', (req, res) => {
+
+	var _case = helpers.getCase(req.session.cases, req.params.id);
+
+	var pageObject = {
+		casebar: helpers.getCaseBarObject(_case),
+		_case: _case
+	};
+
+	res.render('app/case/questions/confirmation', pageObject);
+
+});
+
 
 
 router.get('/app/cases/:id/questions/new', (req, res) => {
