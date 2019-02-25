@@ -1001,28 +1001,28 @@ module.exports = [
     ],
 
     applicant: {
-      fullname: 'Margaret Blake',
+      fullname: 'Maggie Gale',
       dateOfBirth: moment('1987-02-20'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07700 900 772',
-      email: 'john.smith@gmail.com',
+      email: 'mgale@gmail.com',
       representative: ''
     },
 
     respondent: {
-      fullname: 'William Blake',
+      fullname: 'William Gale',
       dateOfBirth: moment('1985-03-15'),
       address: '7 Garrison Lane<br>Kingston<br>Surry<br>KT6 7GH',
       phone: '07787 557 967',
-      email: 'jane.smith@gmail.com',
+      email: 'wgale@gmail.com',
       representative: ''
     },
 
     parties: [
       {
         type: 'Applicant',
-        firstName: 'Margaret',
-        lastName: 'Blake',
+        firstName: 'Maggie',
+        lastName: 'Gale',
         representative: {
           name: '',
           role: '',
@@ -1032,7 +1032,7 @@ module.exports = [
       {
         type: 'Respondent',
         firstName: 'William',
-        lastName: 'Blake',
+        lastName: 'Gale',
         representative: {
           name: '',
           role: '',
@@ -1052,33 +1052,6 @@ module.exports = [
     }, {
       id: '4',
       label: 'Grant of decree nisi'
-    }],
-    linkedCases: [{
-      linkReason: 'Dependent case',
-      linkPerson: 'Judge Shah',
-      linkType: 'hard',
-      typeId: types.divorce.id,
-      id: 'BV18D00153',
-      parties: [{
-        type: 'Applicant',
-        firstName: 'John',
-        lastName: 'Smith',
-        representative: {
-          name: '',
-          role: '',
-          company: ''
-        }
-      },
-      {
-        type: 'Respondent',
-        firstName: 'Jane',
-        lastName: 'Smith',
-        representative: {
-          name: '',
-          role: '',
-          company: ''
-        }
-      }]
     }]
   },
 
