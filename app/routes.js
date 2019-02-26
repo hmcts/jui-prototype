@@ -11,6 +11,7 @@ router.use('/', require('./routes/linked-cases'));
 router.use('/', require('./routes/related-cases'));
 router.use('/', require('./routes/reassign'));
 router.use('/', require('./routes/reserve'));
+router.use('/', require('./routes/unreserve'));
 router.use('/', require('./routes/refer'));
 router.use('/', require('./routes/reply'));
 router.use('/', require('./routes/actions'));

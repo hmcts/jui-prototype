@@ -35,11 +35,11 @@ menus: caseActions
 
         <div class="govuk-grid-column-two-thirds">
 
-          <form method="post" action="/app/cases/{{_case.id}}/reserve">
+          <form method="post" action="/app/cases/{{_case.id}}/unreserve">
 
             {{ govukTextarea({
               label: {
-                text: 'Why do you want to reserve the case?',
+                text: 'Why do you want to remove the reservation?',
                 isPageHeading: true,
                 classes: 'govuk-label--xl'
               },
