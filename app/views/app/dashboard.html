@@ -29,14 +29,12 @@
     }) }}
 
     {{ govukTable({
-        firstCellIsHeader: true,
+        firstCellIsHeader: false,
         head: [
-          {text: 'Case number'},
+          {text: 'Reference'},
           {text: 'Parties'},
-          {text: 'Type'},
-          {text: 'Decision needed on'},
-          {text: 'Case received'},
-          {text: 'Date of last event'}
+          {text: 'Case created'},
+          {text: 'Last updated'}
         ],
         rows: caseList
       }) }}

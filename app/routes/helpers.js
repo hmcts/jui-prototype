@@ -19,9 +19,9 @@ function getPartiesLineCasebar(_case) {
 function getPartiesLineDashboard(_case) {
 	return _case.parties.map(function(party) {
 		if(party.org) {
-			return party.org + '<br>';
+			return party.org + '';
 		} else {
-			return party.firstName + ' ' + party.lastName + '<br>';
+			return party.firstName + ' ' + party.lastName + '';
 		}
 
 	}).join(' and ');

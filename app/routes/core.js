@@ -137,10 +137,9 @@ router.get('/app/dashboard', (req, res) => {
 
 	caseList = caseList.map(function(c) {
 		var cells = [];
-		cells.push({ html : '<a href="/app/cases/' + c.id + '">'+ c.id + '</a>' });
-		cells.push({ html: helpers.getPartiesLineDashboard(c)	});
-		cells.push({ html: helpers.getCaseTypeLabel(c) });
-		cells.push({ html: c.status });
+		cells.push({ html : '<a href="/app/cases/' + c.id + '">' + c.id + '</a>' });
+		cells.push({ html: helpers.getPartiesLineDashboard(c) + '<br><span class="govuk-caption-m govuk-!-font-size-16"> ' + helpers.getCaseTypeLabel(c) + '</span>' });
+		// cells.push({ html: c.status });
 		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
 		cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 		return cells;
