@@ -5,7 +5,6 @@ var moment = require('moment');
 module.exports = [
   {
     urgent: false,
-    reserved: 'Reserved to you',
     id: 'FR1231612322',
     typeId: types.fr.id,
     status: '<a href="/app/cases/FR1231612322/documents/draft-consent-order">Draft consent order</a>',
@@ -15,12 +14,6 @@ module.exports = [
     requirements: 'Assisted Digital support requested',
     decreeDate: moment('2018-05-01 13:01'),
     absoluteData: moment('2018-08-11 11:01'),
-
-    banner: {
-      heading: 'Case reassigned by Jane Doe',
-      description: 'Similarities between this and your recent case for Paul Fox vs Helen Fox',
-      dismissable: true
-    },
 
     events: [
       {

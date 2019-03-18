@@ -4,18 +4,9 @@
 
 {% block content %}
 
-  {% set reservedBadgeHtml %}
-    {% if _case.reserved %}
-      {{ hmctsBadge({
-        classes: 'govuk-!-margin-left-1',
-        text: _case.reserved
-      }) }}
-    {% endif %}
-  {% endset %}
-
   {{ hmctsIdentityBar({
     title: {
-      html: casebar.parties + reservedBadgeHtml
+      html: casebar.parties
       },
     menus: caseActions
   }) }}
@@ -26,8 +17,8 @@
 
     {% if _case.banner %}
       {% set bannerHtml %}
-        <h2 class="govuk-heading-m">{{_case.banner.heading}}</h2>
-        <p>Notes: {{_case.banner.description}}</p>
+        <h2 class="govuk-heading-m">Task</h2>
+        <p>{{_case.banner.description}}</p>
         {% if _case.banner.dismissable %}
           <p><a class="dismiss" href="#">Dismiss</a></p>
         {% endif %}
