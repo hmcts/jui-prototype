@@ -128,11 +128,6 @@ function getCaseActions(_case) {
 					text: 'Refer',
 					href: `/app/cases/${_case.id}/refer`,
 					classes: 'hmcts-button--secondary'
-				},
-				{
-					text: (_case.reserved) ? 'Unreserve' : 'Reserve',
-					href: (_case.reserved) ? `/app/cases/${_case.id}/unreserve` : `/app/cases/${_case.id}/reserve`,
-					classes: 'hmcts-button--secondary'
 				}
 			]
 
