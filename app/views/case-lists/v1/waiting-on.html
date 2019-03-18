@@ -1,0 +1,225 @@
+{% extends "layouts/admin/base.html" %}
+
+{% set pageID = "your-cases" %}
+
+{% block pageTitle %}Your cases {{'- ' + serviceName}}{% endblock %}
+
+{%- block header %}
+{% set toggleSearchHtml %}
+<div class="hmcts-search-toggle">
+  <div class="hmcts-search-toggle__toggle"></div>
+  <div class="hmcts-search-toggle__search">
+    {{ hmctsSearch({
+      action: '/app/search-results',
+      classes: 'hmcts-search--ondark hmcts-search--toggle hmcts-hidden',
+      input: {
+        id: 'search2',
+        name: 'search2'
+      },
+      label: {
+        classes: 'govuk-visually-hidden',
+        text: 'Search'
+      },
+      hint: {
+        text: 'Enter case number or party name.'
+      },
+      button: {
+        text: 'Search'
+      }
+    }) }}
+  </div>
+</div>
+{% endset %}
+
+
+{% if pageID == "Signin" %}
+
+{{ hmctsGlobalHeader({
+
+  service: {
+    name: serviceName,
+    url: '/app/dashboard'
+  }
+
+}) }}
+
+{% else %}
+
+{% macro alertLink(params) %}
+  <span class="jui-alert-link">
+    <span class="jui-alert-link__text">{{params.text}}</span><span class="jui-alert-link__number">{{params.number}}</span>
+  </span>
+{% endmacro %}
+
+{% set alertsLinkHtml %}
+  {{alertLink({
+    text: 'Notifications',
+    number: '2'
+  })}}
+{% endset %}
+
+
+
+
+{{ hmctsGlobalHeader({
+
+  service: {
+    name: serviceName,
+    url: '/app/dashboard'
+  },
+
+  navigation: {
+    label: 'Account navigation',
+    items: [{
+      html: alertsLinkHtml,
+      href: '/app/alerts'
+    }, {
+      text: 'Sign out',
+      href: '/sign-out'
+    }]
+  }
+
+}) }}
+
+{% set todoHtml %}
+  {{alertLink({
+    text: 'Todo',
+    number: '4'
+  })}}
+{% endset %}
+
+{% set waitingOnHtml %}
+  {{alertLink({
+    text: 'Waiting on',
+    number: '3'
+  })}}
+{% endset %}
+
+{{ hmctsPrimaryNavigation({
+  label: 'Primary navigation',
+  classes: 'govuk-!-margin-bottom-0',
+  items: [{
+    html: todoHtml,
+    href: '/case-lists/v1/todo',
+    active: false
+  }, {
+    html: waitingOnHtml,
+    href: '/case-lists/v1/waiting-on',
+    active: true
+  }],
+  searchHtml: toggleSearchHtml
+}) }}
+{% endif %}
+
+
+{% endblock -%}
+
+
+{% block content %}
+
+<div class="hmcts-width-container">
+
+  <main class="govuk-main-wrapper" role="main">
+
+
+    {{ hmctsPageHeaderWithActions({
+      title: {
+        html: '<h1 class="govuk-heading-xl">Waiting on</h1>'
+      },
+      items: [{
+        text: 'Get new case',
+        href: './get-new-case'
+      }]
+    }) }}
+
+    <table class="govuk-table">
+
+
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+
+          <th class="govuk-table__header" scope="col">Reference</th>
+
+          <th class="govuk-table__header" scope="col">Parties</th>
+
+          <th class="govuk-table__header" scope="col">Case created</th>
+
+          <th class="govuk-table__header" scope="col">Last updated</th>
+
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+
+
+
+        <tr class="govuk-table__row">
+
+
+          <td class="govuk-table__cell"><a href="/app/cases/BV18D06676">BV18D06676</a></td>
+
+
+
+          <td class="govuk-table__cell">Paul Fox and Helen Fox<br><span class="govuk-caption-m govuk-!-font-size-16"> Divorce</span></td>
+
+
+
+          <td class="govuk-table__cell">20 Nov 2017</td>
+
+
+
+          <td class="govuk-table__cell">25 Jan 2018</td>
+
+
+        </tr>
+
+        <tr class="govuk-table__row">
+
+
+          <td class="govuk-table__cell"><a href="/app/cases/BV18D00153">BV18D00153</a></td>
+
+
+
+          <td class="govuk-table__cell">Zoe Dante and John Dante<br><span class="govuk-caption-m govuk-!-font-size-16"> Divorce</span></td>
+
+
+
+          <td class="govuk-table__cell">9 May 2018</td>
+
+
+
+          <td class="govuk-table__cell">9 May 2018</td>
+
+
+        </tr>
+
+        <tr class="govuk-table__row">
+
+
+          <td class="govuk-table__cell"><a href="/app/cases/BV18D00156">BV18D00156</a></td>
+
+
+
+          <td class="govuk-table__cell">Margaret Blake and William Blake<br><span class="govuk-caption-m govuk-!-font-size-16"> Divorce</span></td>
+
+
+
+          <td class="govuk-table__cell">9 May 2018</td>
+
+
+
+          <td class="govuk-table__cell">9 May 2018</td>
+
+
+        </tr>
+
+
+
+      </tbody>
+    </table>
+
+  </main>
+
+</div>
+
+{% endblock %}
