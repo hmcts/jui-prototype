@@ -135,9 +135,8 @@
 
           <th class="govuk-table__header" scope="col">Parties</th>
 
-          <th class="govuk-table__header" scope="col">Case created</th>
-
-          <th class="govuk-table__header" scope="col">Last updated</th>
+          <th class="govuk-table__header" scope="col">Task</th>
+          <th class="govuk-table__header" scope="col"></th>
 
         </tr>
       </thead>
@@ -152,14 +151,15 @@
 
 
           <td class="govuk-table__cell">Margaret Blake and William Blake<br><span class="govuk-caption-m govuk-!-font-size-16"> Financial remedy</span></td>
+          <td class="govuk-table__cell" style="max-width: 50%">This is what needs doing.</td>
 
+          <td class="govuk-table__cell">
+            {{ hmctsBadge({
+              text: 'Urgent',
+              classes: 'hmcts-badge--red'
+            }) }}
+          </td>
 
-
-          <td class="govuk-table__cell">20 Nov 2017</td>
-
-
-
-          <td class="govuk-table__cell">25 Jan 2018</td>
 
 
         </tr>
@@ -173,14 +173,10 @@
 
           <td class="govuk-table__cell">Warren Sutton and DWP<br><span class="govuk-caption-m govuk-!-font-size-16"> PIP</span></td>
 
+          <td class="govuk-table__cell" style="max-width: 50%">This is what needs doing. And here's some more information just in case it's needed.  </td>
+          <td class="govuk-table__cell">
 
-
-          <td class="govuk-table__cell">20 Nov 2017</td>
-
-
-
-          <td class="govuk-table__cell">25 Jan 2018</td>
-
+            </td>
 
         </tr>
 
@@ -193,13 +189,11 @@
 
           <td class="govuk-table__cell">Alan Jones and DWP<br><span class="govuk-caption-m govuk-!-font-size-16"> PIP</span></td>
 
+          <td class="govuk-table__cell" style="max-width: 50%"> This is what needs doing. And here's some more information just in case it's needed. And just a little more to see it go onto more than one line.</td>
+          <td class="govuk-table__cell">
 
+            </td>
 
-          <td class="govuk-table__cell">9 May 2018</td>
-
-
-
-          <td class="govuk-table__cell">9 May 2018</td>
 
 
         </tr>
@@ -214,16 +208,15 @@
 
           <td class="govuk-table__cell">Maggie Gale and William Gale<br><span class="govuk-caption-m govuk-!-font-size-16"> Financial remedy</span></td>
 
+          <td class="govuk-table__cell" style="width: 50%">This is what needs doing. And here's some more information just in case it's needed. And just a little more to see it go onto more than one line.</td>
+          <td class="govuk-table__cell">
+              {{ hmctsBadge({
+                text: 'Referal'
+              }) }}
+            </td>
 
 
-          <td class="govuk-table__cell">20 Jan 2019</td>
-
-
-
-          <td class="govuk-table__cell">25 Feb 2019</td>
-
-
-        </tr>
+          </tr>
 
       </tbody>
     </table>

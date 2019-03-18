@@ -136,9 +136,7 @@
 
           <th class="govuk-table__header" scope="col">Parties</th>
 
-          <th class="govuk-table__header" scope="col">Case created</th>
-
-          <th class="govuk-table__header" scope="col">Last updated</th>
+          <th class="govuk-table__header" scope="col"></th>
 
         </tr>
       </thead>
@@ -158,11 +156,11 @@
 
 
 
-          <td class="govuk-table__cell">20 Nov 2017</td>
-
-
-
-          <td class="govuk-table__cell">25 Jan 2018</td>
+          <td class="govuk-table__cell">
+              {{ hmctsBadge({
+                text: 'Referral'
+              }) }}
+          </td>
 
 
         </tr>
@@ -178,11 +176,10 @@
 
 
 
-          <td class="govuk-table__cell">9 May 2018</td>
 
 
 
-          <td class="govuk-table__cell">9 May 2018</td>
+          <td class="govuk-table__cell"></td>
 
 
         </tr>
@@ -198,11 +195,17 @@
 
 
 
-          <td class="govuk-table__cell">9 May 2018</td>
 
 
-
-          <td class="govuk-table__cell">9 May 2018</td>
+          <td class="govuk-table__cell">
+            {{ hmctsBadge({
+              text: 'Urgent',
+              classes: 'hmcts-badge--red'
+            }) }}
+            {{ hmctsBadge({
+              text: 'Referral'
+            }) }}
+          </td>
 
 
         </tr>
