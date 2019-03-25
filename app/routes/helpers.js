@@ -120,8 +120,8 @@ function getCaseActions(_case) {
 					text: 'Make a decision',
 					href: `/app/cases/${_case.id}/fr/decision`
 				}, {
-					text: 'Reassign',
-					href: `/app/cases/${_case.id}/reassign`,
+					text: 'Reserve',
+					href: `/app/cases/${_case.id}/reserve`,
 					classes: 'hmcts-button--secondary'
 				},
 				{
@@ -136,8 +136,8 @@ function getCaseActions(_case) {
 					href: `/app/cases/${_case.id}/divorce/decision`,
 					text: 'Make decision'
 				}, {
-					href: `/app/cases/${_case.id}/reassign`,
-					text: 'Reassign',
+					href: `/app/cases/${_case.id}/reserve`,
+					text: 'Reserve',
 					classes: 'hmcts-button--secondary'
 				},
 				{

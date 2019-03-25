@@ -5,9 +5,10 @@ var moment = require('moment');
 module.exports = [
   {
     urgent: false,
+    todo: true,
     id: 'FR1231612322',
     typeId: types.fr.id,
-    status: '<a href="/app/cases/FR1231612322/documents/draft-consent-order">Draft consent order</a>',
+    status: 'Check draft consent order',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'East Midlands Regional Divorce Centre',
@@ -180,9 +181,10 @@ module.exports = [
   },
 
   {
+    todo: true,
     id: 'SC1231612322',
     typeId: types.pip.id,
-    status: '<a href="/app/cases/SC1231612322/questions/">Appellant’s answers</a>',
+    status: 'Check appellant’s answers',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     urgent: false,
@@ -315,6 +317,7 @@ module.exports = [
   },
 
   {
+    todo: true,
     id: 'SC1231612323',
     typeId: types.pip.id,
     documents: [{
@@ -348,7 +351,7 @@ module.exports = [
         }
       }
     ],
-    status: '<a href="/app/cases/SC1231612323/questions/">Appellant’s answers</a>',
+    status: 'Check appellant’s answers',
     applicationDate: moment('2018-05-09'),
     lastAction: moment('2018-05-09'),
     urgent: false,
@@ -379,6 +382,7 @@ module.exports = [
   },
 
   {
+    todo: true,
     id: 'SC1231612324',
     typeId: types.pip.id,
     documents: [{
@@ -412,7 +416,7 @@ module.exports = [
         }
       }
     ],
-    status: '<a href="/app/cases/SC1231612324/questions/">Appellant’s answers</a>',
+    status: 'Check appellant’s answers',
     applicationDate: moment('2018-05-09'),
     lastAction: moment('2018-05-09'),
     urgent: false,
@@ -487,7 +491,7 @@ module.exports = [
       }
     ],
 
-    status: '<a href="/app/cases/BV18D00150/divorce/">Decree nisi application</a>',
+    status: 'Approve decree nisi application',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
     documents: [{
@@ -522,9 +526,10 @@ module.exports = [
 
 
   {
+    todo: true,
     id: 'BV18D06676',
     typeId: types.divorce.id,
-    status: '<a href="/app/cases/BV18D06676/documents/draft-consent-order">Draft consent order</a>',
+    status: 'Approve draft consent order',
     applicationDate: moment('2017-11-20 13:01'),
     lastAction: moment('2018-01-25 16:48'),
     tribunalCentre: 'East Midlands Regional Divorce Centre',
@@ -669,6 +674,7 @@ module.exports = [
   },
 
   {
+    todo: true,
     id: 'BV18D00153',
     typeId: types.divorce.id,
     linkedCases: [{
@@ -730,7 +736,7 @@ module.exports = [
       }
     ],
 
-    status: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Decree nisi application</a>',
+    status: 'Approve decree nisi application',
     summaryStatus: '<a href="/app/cases/BV18D00153/documents/decree-nisi-application-2">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
@@ -784,6 +790,7 @@ module.exports = [
   },
 
   {
+    todo: true,
     id: 'BV18D00156',
     typeId: types.divorce.id,
     justBeenAssigned: true,
@@ -856,7 +863,7 @@ module.exports = [
       }
     ],
 
-    status: '<a href="/app/cases/BV18D00156/documents/d84">Decree nisi application</a>',
+    status: 'Approve decree nisi application',
     summaryStatus: '<a href="/app/cases/BV18D00156/documents/d84">Application for decree nisi received</a>',
     reason: 'Separated for 2 years and consent',
     applicationDate: moment('2018-05-09'),
@@ -893,9 +900,10 @@ module.exports = [
   },
 
   {
+    todo: true,
     id: 'FR1231612399',
     typeId: types.fr.id,
-    status: '<a href="/app/cases/FR1231612399/documents/draft-consent-order">Draft consent order</a>',
+    status: 'Approve draft consent order',
     applicationDate: moment('2019-01-20 13:01'),
     lastAction: moment('2019-02-25 16:48'),
     tribunalCentre: 'East Midlands Regional Divorce Centre',
@@ -905,7 +913,7 @@ module.exports = [
 
     banner: {
       heading: 'Case referred by Judge Prita Shah',
-      description: '[Notes about why the case has been referred]',
+      description: 'I need a realistic scenario for why it\'s been referred.',
       type: 'referral',
       dismissable: false
     },

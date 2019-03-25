@@ -139,9 +139,9 @@ router.get('/app/dashboard', (req, res) => {
 		var cells = [];
 		cells.push({ html : '<a href="/app/cases/' + c.id + '">' + c.id + '</a>' });
 		cells.push({ html: helpers.getPartiesLineDashboard(c) + '<br><span class="govuk-caption-m govuk-!-font-size-16"> ' + helpers.getCaseTypeLabel(c) + '</span>' });
-		// cells.push({ html: c.status });
-		cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
-		cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
+		cells.push({ html: c.status });
+		// cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
+		// cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 		return cells;
 	});
 
@@ -236,16 +236,6 @@ router.get('/app/cases/:case_id/documents/:document_id', (req, res) => {
 
 	res.render(templatePath, pageObject);
 
-});
-
-router.post('/app/case/pip/refer', (req, res) => {
-	if(req.body.who === 'namedperson') {
-		res.redirect('/app/case/pip/refer/name');
-	} else if(req.body.who === 'role') {
-		res.redirect('/app/case/pip/refer/role');
-	} else {
-		res.redirect('/app/case/pip/refer/reason');
-	}
 });
 
 module.exports = router;
