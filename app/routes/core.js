@@ -137,9 +137,10 @@ router.get('/app/dashboard', (req, res) => {
 
 	caseList = caseList.map(function(c) {
 		var cells = [];
-		cells.push({ html : '<a href="/app/cases/' + c.id + '">' + c.id + '</a>' });
-		cells.push({ html: helpers.getPartiesLineDashboard(c) + '<br><span class="govuk-caption-m govuk-!-font-size-16"> ' + helpers.getCaseTypeLabel(c) + '</span>' });
+		cells.push({ html : helpers.getPartiesLineDashboard(c) + ' <br><span class="govuk-caption-m govuk-!-font-size-16"> ' + c.id + ' </span> ' });
+		cells.push({ html: helpers.getCaseTypeLabel(c) });
 		cells.push({ html: c.status });
+		cells.push({ html: '<a href="/app/cases/' + c.id + '">View</a>' });
 		// cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
 		// cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 		return cells;
@@ -147,34 +148,34 @@ router.get('/app/dashboard', (req, res) => {
 
 	var successFlash = req.flash('success')[0];
 
-	if(successFlash == 'cases added') {
+	// if(successFlash == 'cases added') {
 
-		var newCases = req.session.cases
-			.map(function(c) {
+	// 	var newCases = req.session.cases
+	// 		.map(function(c) {
 
-			var cells = [];
+	// 		var cells = [];
 
-			cells.push({
-				html : '<a href="/app/cases/' + c.id + '">'+ c.id +'</a>'
-			});
+	// 		cells.push({
+	// 			html : '<a href="/app/cases/' + c.id + '">'+ c.id +'</a>'
+	// 		});
 
-      cells.push({ html: helpers.getPartiesLineDashboard(c)	});
-      cells.push({ html: helpers.getCaseTypeLabel(c) });
-      cells.push({ html: c.status });
-      cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
-      cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
+  //     cells.push({ html: helpers.getPartiesLineDashboard(c)	});
+  //     cells.push({ html: helpers.getCaseTypeLabel(c) });
+  //     cells.push({ html: c.status });
+  //     cells.push({ html: helpers.getFormattedShortDate(c.applicationDate) });
+  //     cells.push({ html: helpers.getFormattedShortDate(c.lastAction) });
 
-			return cells;
+	// 		return cells;
 
-		});
+	// 	});
 
-		Array.prototype.injectArray = function( idx, arr ) {
-			return this.slice( 0, idx ).concat( arr ).concat( this.slice( idx ) );
-		};
+	// 	Array.prototype.injectArray = function( idx, arr ) {
+	// 		return this.slice( 0, idx ).concat( arr ).concat( this.slice( idx ) );
+	// 	};
 
-		caseList = caseList.injectArray(1, newCases);
+	// 	caseList = caseList.injectArray(1, newCases);
 
-	}
+	// }
 
 	var pageObject = {
 		caseList: caseList
