@@ -190,7 +190,7 @@ module.exports = [
     urgent: false,
     tribunalCentre: 'Fox Court',
     requirements: 'Assisted Digital support requested',
-    linkedCases: [{
+    relatedCases: [{
       linkReason: 'Dependent case',
       linkPerson: 'Judge Shah',
       linkType: 'hard',
@@ -664,7 +664,7 @@ module.exports = [
       id: '4',
       label: 'Grant of decree nisi'
     }],
-    linkedCases: [{
+    relatedCases: [{
       linkReason: 'Dependent case',
       linkPerson: 'Judge Shah',
       linkType: 'hard',
@@ -677,7 +677,7 @@ module.exports = [
     todo: true,
     id: 'BV18D00153',
     typeId: types.divorce.id,
-    linkedCases: [{
+    relatedCases: [{
       linkReason: 'Dependent case',
       linkPerson: 'Judge Shah',
       linkType: 'hard',
@@ -794,7 +794,7 @@ module.exports = [
     id: 'BV18D00156',
     typeId: types.divorce.id,
     justBeenAssigned: true,
-    linkedCases: [{
+    relatedCases: [{
       linkReason: 'Dependent case',
       linkPerson: 'Judge Shah',
       linkType: 'hard',

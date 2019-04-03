@@ -39,18 +39,25 @@ menus: caseActions
       }) }}
 
 
-      <h1 class="govuk-heading-xl">Linked cases</h1>
+      {{ hmctsPageHeaderWithActions({
+        title: {
+        html: '<h1 class="govuk-heading-xl">Linked cases</h1>'
+        },
+        items: [ {
+          href: '/app/cases/'+_case.id+'/related-cases/new',
+          text: 'Add new related case',
+          classes: 'hmcts-button--secondary'
+        }]
+      }) }}
+
 
       {% if linkedCaseRows.length %}
 
         {{ govukTable({
-          firstCellIsHeader: true,
+          firstCellIsHeader: falses,
           head: [
             {
               text: "Reference"
-            },
-            {
-              text: "Parties"
             },
             {
               text: "Type"
@@ -71,13 +78,13 @@ menus: caseActions
         <p class="govuk-body">There are no linked cases.</p>
       {% endif %}
 
-      {{govukButton({
+      <!-- {{govukButton({
         href: '/app/cases/'+_case.id+'/linked-cases/new',
         text: 'Add new linked case',
         classes: 'hmcts-button--secondary'
-      })}}
+      })}} -->
 
-        <h2 class="govuk-heading-l">Related cases</h2>
+        <!-- <h2 class="govuk-heading-l">Related cases</h2>
         {% if relatedCaseRows.length %}
         {{ govukTable({
           firstCellIsHeader: true,
@@ -105,12 +112,12 @@ menus: caseActions
         }) }}
         {% else %}
           <p class="govuk-body">There are no related cases.</p>
-        {% endif %}
-        {{govukButton({
+        {% endif %} -->
+        <!-- {{govukButton({
           href: '/app/cases/'+_case.id+'/related-cases/new',
           text: 'Add new related case',
           classes: 'hmcts-button--secondary'
-        })}}
+        })}} -->
 
 		</main>
 	</div>

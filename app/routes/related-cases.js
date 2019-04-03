@@ -19,7 +19,7 @@ router.post('/app/cases/:id/related-cases/new', (req, res) => {
 	var newCase = helpers.getCase(req.session.cases, req.body['case-number'].trim());
 	newCase.linkReason = req.body['reason'];
   newCase.linkPerson = 'Judge Silver';
-  newCase.linkType = 'soft';
+  newCase.linkType = 'hard';
 
 	if(!_case.relatedCases) {
 		_case.relatedCases = [];
