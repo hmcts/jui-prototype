@@ -40,9 +40,12 @@ router.get('/app/cases/:id/linked-cases', (req, res) => {
 		_case: _case,
 		casebar: helpers.getCaseBarObject(_case),
 		caseNavItems: helpers.getCaseNavItems(_case, 'linked-cases'),
-		caseActions: helpers.getCaseBarActions(_case),
-		linkedCaseRows: relatedCaseRows,
+		caseActions: helpers.getCaseBarActions(_case)
 	};
+
+	if(relatedCaseRows) {
+		pageObject.linkedCaseRows = relatedCaseRows;
+	}
 
 	var successFlash = req.flash('success');
 	if(successFlash[0] == 'relatedcase added') {

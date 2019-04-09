@@ -81,10 +81,7 @@ function getCaseTypeLabel(_case) {
 
 function getCaseBarActions(_case) {
 	return [{
-		items: [{
-			text: 'Choose action',
-		href: `/app/cases/${_case.id}/actions`
-		}]
+		items: getCaseActions(_case)
 	}];
 }
 

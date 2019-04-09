@@ -32,4 +32,16 @@
     }
   });
 
+  var identityBarMenu = $('.hmcts-identity-bar__menu .hmcts-menu');
+
+  if(identityBarMenu[0]) {
+    new HMCTSFrontend.Menu({
+      container: identityBarMenu,
+      mq: '(min-width: 200em)',
+      buttonText: 'Actions',
+      menuClasses: 'hmcts-menu__wrapper--right'
+    });
+  }
+
+
 </script>
