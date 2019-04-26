@@ -27,7 +27,7 @@
 
 {% if pageID == "Signin" %}
 
-  {{ hmctsGlobalHeader({
+  {{ hmctsHeader({
 
     service: {
       name: serviceName,
@@ -45,7 +45,7 @@
   {% endset %}
 
 
-  {{ hmctsGlobalHeader({
+  {{ hmctsHeader({
 
     service: {
       name: serviceName,
@@ -57,6 +57,9 @@
       items: [{
         html: alertsLinkHtml,
         href: '/app/alerts'
+      },{
+        html: 'Profile',
+        href: '/app/profile'
       }, {
         text: 'Sign out',
         href: '/sign-out'

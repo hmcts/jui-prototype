@@ -25,22 +25,24 @@
 {%- from "accordion/macro.njk" import govukAccordion %}
 {%- from "summary-list/macro.njk" import govukSummaryList %}
 
-{%- from "timeline/macro.njk" import hmctsTimeline %}
-{%- from "global-header/macro.njk" import hmctsGlobalHeader %}
-{%- from "global-footer/macro.njk" import hmctsGlobalFooter %}
-{%- from "primary-navigation/macro.njk" import hmctsPrimaryNavigation %}
-{%- from "sub-navigation/macro.njk" import hmctsSubNavigation %}
-{%- from "banner/macro.njk" import hmctsBanner %}
-{%- from "search/macro.njk" import hmctsSearch %}
-{%- from "pagination/macro.njk" import hmctsPagination %}
+{%- from "hmcts-timeline/macro.njk" import hmctsTimeline %}
+{%- from "hmcts-header/macro.njk" import hmctsHeader %}
+{%- from "hmcts-footer/macro.njk" import hmctsFooter %}
+{%- from "hmcts-primary-navigation/macro.njk" import hmctsPrimaryNavigation %}
+{%- from "hmcts-sub-navigation/macro.njk" import hmctsSubNavigation %}
+{%- from "hmcts-banner/macro.njk" import hmctsBanner %}
+{%- from "hmcts-search/macro.njk" import hmctsSearch %}
+{%- from "hmcts-pagination/macro.njk" import hmctsPagination %}
+
+
+{%- from "hmcts-identity-bar/macro.njk" import hmctsIdentityBar %}
+{%- from "hmcts-filter/macro.njk" import hmctsFilter %}
+{%- from "hmcts-page-header-with-actions/macro.njk" import hmctsPageHeaderWithActions %}
+{%- from "hmcts-menu/macro.njk" import hmctsMenu %}
+{%- from "hmcts-badge/macro.njk" import hmctsBadge %}
 
 {%- from "information-panel/macro.njk" import juiInformationPanel %}
 {%- from "document/macro.njk" import juiDocument %}
-{%- from "identity-bar/macro.njk" import hmctsIdentityBar %}
-{%- from "filter/macro.njk" import hmctsFilter %}
-{%- from "page-header-with-actions/macro.njk" import hmctsPageHeaderWithActions %}
-{%- from "menu/macro.njk" import hmctsMenu %}
-{%- from "badge/macro.njk" import hmctsBadge %}
 
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="{{ html_lang|default('en') }}"><![endif]-->
