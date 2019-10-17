@@ -51,9 +51,17 @@
   float: left;
 }
 
+.jui-toolbar__section3 {
+   float: left;
+   position: relative;
+   padding-left: 20%;
+}
+
+
 .jui-toolbar__section2 {
   float: right;
 }
+
 
 .jui-toolbar__button {
   @include govuk-font($size: 19, $line-height: 1);
@@ -223,6 +231,18 @@
   background-position: 15px 50%;
   padding-left: 45px;
 }
+
+.jui-toolbar__menu-button--rotate {
+  background-image: url(#{$jui-assets-path}icon-casefile-rotate.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+
+
 
 .jui-toolbar__menu-item {
   @include govuk-font($size: 19, $line-height: 1);
