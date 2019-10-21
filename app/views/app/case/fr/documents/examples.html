@@ -7,35 +7,38 @@
               margin-left: .5em;
               margin-right: .5em;
             }
-            .icon-medium {
+
+  .icon-medium {
               font-size: 24px;
-              &:before {
+              &:before 
                 vertical-align: bottom;
                 padding-bottom: 1em;
               }
-            }
+            
             .icon-small {
-              font-size: 18px;
-              &:before {
+              font-size: 16px;
+              &:before 
                 vertical-align: middle;
                 padding-bottom: 1em;
               }
 
-            }
+              .icon-xs { width: .5em;}
+
+            
   .side-space-right {
               
               margin-right: .3em;
             }
             .icon-medium {
               font-size: 24px;
-              &:before {
+              &:before 
                 vertical-align: bottom;
                 padding-bottom: 1em;
               }
-            }
+            
             .icon-small {
-              font-size: 18px;
-              &:before {
+              font-size: 16px;
+              &:before 
                 vertical-align: middle;
                 padding-bottom: 1em;
               }
@@ -47,19 +50,19 @@
             }
             .icon-medium {
               font-size: 24px;
-              &:before {
+              &:before 
                 vertical-align: bottom;
                 padding-bottom: 1em;
-              }
+              
             }
             .icon-small {
-              font-size: 18px;
-              &:before {
+              font-size: 16px;
+              &:before 
                 vertical-align: middle;
                 padding-bottom: 1em;
               }
 
-       }
+       
 
 .icon {
   display: inline-block;
@@ -125,22 +128,51 @@ Single-colored icons can be modified like so:
 </ul>
 
 <br>
-<h2 class="govuk-heading-m" id="how-it-works">Code example</h2>
+<h2 class="govuk-heading-m" id="how-it-works">Code examples</h2>
+<h3 class="govuk-heading-s" id="how-it-works">Toolbar with button</h3>
+
 <div class="jui-toolbar">
       <div class="jui-toolbar__container">
-       <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="false">Index</button>
+      <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="false">Index</button>
 </div> 
 
 </div>
 <br><br>
-<h2 class="govuk-heading-m" id="how-it-works">Code example pressed</h2>
+<h3 class="govuk-heading-s" id="how-it-works">Buttons</h3>
+
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="false">Index</button>
+ 
+</div>
+<br><br>
+
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--draw" aria-pressed="false">Draw a box</button>
+
+</div>
+<br><br>
+
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--highlight" aria-pressed="false">Highlight</button>
+ 
+</div>
+<br><br>
+
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--rotate" aria-pressed="false">Rotate</button>
+
+</div>
+<br><br>
+
+<h3 class="govuk-heading-s" id="how-it-works">Code example pressed</h3>
 <div class="jui-toolbar">
       <div class="jui-toolbar__container">
        <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="true">Index</button>
 </div> 
 </div>
-
 <br><br>
+
+
   
 <h2 class="govuk-heading-m" id="how-it-works">ROUGH code example</h2>
 
@@ -187,13 +219,13 @@ Single-colored icons can be modified like so:
           </tr>
           <!-- hod-draw -->
           <tr class="govuk-table__row">
-            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space"><img src="/public/images/icon-draw-box.svg"></span></th>
+            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-xs"><img src="/public/images/icon-draw-box.svg"></span></th>
             <th class="govuk-table__cell table-summary-content">Draw a box</th>
             <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
           </tr>
           <!-- hod-key -->
           <tr class="govuk-table__row">
-            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space"><img src="/public/images/icon-highlight.svg"></span></th>
+            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-xsn"><img src="/public/images/icon-highlight.svg"></span></th>
             <th class="govuk-table__cell table-summary-content">Highlight</th>
             <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
           </tr>

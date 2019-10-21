@@ -241,6 +241,32 @@
   font-weight: 400;
 }
 
+.jui-toolbar__menu-button--draw {
+  background-image: url(#{$jui-assets-path}icon-draw-box.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--highlight {
+  background-image: url(#{$jui-assets-path}icon-highlight.svg);
+  background-repeat: no-repeat;
+  background-size: 18px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--page {
+  background-image: url(#{$jui-assets-path}icon-highlight.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
 
 
 
