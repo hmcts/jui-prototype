@@ -1,6 +1,5 @@
 {% extends "layouts/admin/base-clear.html" %} %}
 
-
 {% block content %}
 
 <style type="text/css">
@@ -21,6 +20,7 @@
                 vertical-align: middle;
                 padding-bottom: 1em;
               }
+
             }
   .side-space-right {
               
@@ -39,7 +39,7 @@
                 vertical-align: middle;
                 padding-bottom: 1em;
               }
-            }
+     
 .side-space-left {
               
               margin-left: .3em;
@@ -58,21 +58,45 @@
                 vertical-align: middle;
                 padding-bottom: 1em;
               }
-            }
+
+       }
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-icon-draw-box {
+  width: 1.0em;
+}
+.icon-icon-highlight {
+  width: 1.0em;
+}
+
+
+
 </style>
 
 <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">
     <div class="hmcts-width-container">
-
-
- 
 
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Components</span>Media Viewer Toolbar</h1>
 
   <strong class="govuk-tag govuk-!-margin-bottom-8">
   experimental
 </strong>
-
 
     <p class="govuk-body">Use the Media Viewer Toolbar component for any service or system not hosted on GOV.UK such as those for the judiciary or HMCTS staff.</p>
 <p class="govuk-body">Do not use this for citizen-facing services.</p>
@@ -120,14 +144,10 @@
   
 <h2 class="govuk-heading-m" id="how-it-works">ROUGH code example</h2>
 
-
-
 <div class="govuk-form-group govuk-body-s "><span>Page</span><span class="hod-arrow-down side-space-left icon-medium"></span>  <span class="hod-arrow-up side-space-right icon-medium"></span>  
  
    <input class="govuk-input govuk-input--width-2" id="width-1" name="width-1" type="text" value="9"> / 10
 </div>
-
-
 
 <div class="govuk-form-group"> <Span class="govuk-body-s" for="sort">
    Zoom
@@ -167,13 +187,13 @@
           </tr>
           <!-- hod-draw -->
           <tr class="govuk-table__row">
-            <th class="govuk-table__cell table-summary-content--icons"><span class=" side-space icon-medium"></span></th>
+            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space"><img src="/public/images/icon-draw-box.svg"></span></th>
             <th class="govuk-table__cell table-summary-content">Draw a box</th>
             <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
           </tr>
           <!-- hod-key -->
           <tr class="govuk-table__row">
-            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"></span></th>
+            <th class="govuk-table__cell table-summary-content--icons"><span class="side-space"><img src="/public/images/icon-highlight.svg"></span></th>
             <th class="govuk-table__cell table-summary-content">Highlight</th>
             <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
           </tr>
