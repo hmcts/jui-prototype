@@ -88,12 +88,50 @@ Single-colored icons can be modified like so:
   width: 1.0em;
 }
 
+.hmcts-toolbar-input {
+  font-family: "nta", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  margin-top: 0;
+  padding: 2px;
+  border: 2px solid #0b0c0c;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
+.hmcts-toolbar-select {
+  font-family: "nta", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 24px;
+  padding: 0px;
+  border: 2px solid #0b0c0c;
+}
+
+.hmcts-toolbar-width-container {
+  max-width: 1440px;
+  margin: 0px;
+}
 
 </style>
 
 <main class="govuk-main-wrapper govuk-!-padding-bottom-0" role="main">
-    <div class="hmcts-width-container">
+    <div class="hmcts-toolbar-width-container">
 
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><span class="govuk-caption-xl">Components</span>Media Viewer Toolbar</h1>
 
@@ -127,42 +165,154 @@ Single-colored icons can be modified like so:
 <li>Search</li>
 </ul>
 
-<br>
+
+<h2 class="govuk-heading-m" id="how-it-works">Search</h2>
+<p>Basic search</p>
+ <a href="">
+<img src="/public/images/search-c.png" alt="Toolbar"></a><br>
+<p>Options behind advanced search</p>
+ <a href="">
+<img src="/public/images/search-o.png" alt="Toolbar"></a>
+
+<br><br>
 <h2 class="govuk-heading-m" id="how-it-works">Code examples</h2>
 <h3 class="govuk-heading-s" id="how-it-works">Toolbar with button</h3>
 
 <div class="jui-toolbar">
-      <div class="jui-toolbar__container">
+      <div class="mv-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="false">Index</button>
-</div> 
-
+      <button class="jui-toolbar__button jui-toolbar__menu-button--draw" aria-pressed="false">Draw a box</button>
+      <button class="jui-toolbar__button jui-toolbar__menu-button--highlight" aria-pressed="false">Highlight</button>
+    <button class="jui-toolbar__button " aria-pressed="false">Page<span class="jui-toolbar__menu-button--down"></span><span class="jui-toolbar__menu-button--up"></span><input class="hmcts-toolbar-input govuk-input--width-2" id="width-2" name="width-2" type="text" value="9"> / 10</button>
+    <button class="jui-toolbar__button " aria-pressed="false">Zoom<span class="jui-toolbar__menu-button--zoom-out"></span><select class="hmcts-toolbar-select" id="sort" name="sort">
+    <option value="10">10%</option>
+    <option value="25">25%</option>
+    <option value="50">50%</option>
+    <option value="75">75%</option>
+    <option value="100" selected>100%</option>
+    <option value="125">125%</option>
+    <option value="150">150%</option>
+    <option value="250">250%</option>
+    <option value="300">300%</option>
+    <option value="500">500%</option>
+  </select><span class="jui-toolbar__menu-button--zoom-in"></span></button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--rotate" aria-pressed="false">Rotate</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--download" aria-pressed="false">Download</button>
+<button class="jui-toolbar__button jui-toolbar__menu-button--printer" aria-pressed="false">Print</button>
+<button class="jui-toolbar__button jui-toolbar__menu-button--search" aria-pressed="false">Search</button>
+      </div>
 </div>
 <br><br>
+
 <h3 class="govuk-heading-s" id="how-it-works">Buttons</h3>
 
       <div class="jui-toolbar__container">
        <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="false">Index</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="true">Index</button>
  
 </div>
 <br><br>
 
       <div class="jui-toolbar__container">
        <button class="jui-toolbar__button jui-toolbar__menu-button--draw" aria-pressed="false">Draw a box</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--draw" aria-pressed="true">Draw a box</button>
 
 </div>
-<br><br>
+<br>
 
       <div class="jui-toolbar__container">
        <button class="jui-toolbar__button jui-toolbar__menu-button--highlight" aria-pressed="false">Highlight</button>
  
 </div>
-<br><br>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--highlight" aria-pressed="true">Highlight</button>
+ 
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button " aria-pressed="false">Page<span class="jui-toolbar__menu-button--down"></span><span class="jui-toolbar__menu-button--up"></span><input class="hmcts-toolbar-input govuk-input--width-2" id="width-2" name="width-2" type="text" value="9"> / 10</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button " aria-pressed="true">Page<span class="jui-toolbar__menu-button--down"></span><span class="jui-toolbar__menu-button--up"></span><input class="hmcts-toolbar-input govuk-input--width-2" id="width-2" name="width-2" type="text" value="9"> / 10</button>
+</div>
 
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button " aria-pressed="false">Zoom<span class="jui-toolbar__menu-button--zoom-out"></span><select class="hmcts-toolbar-select" id="sort" name="sort">
+    <option value="10">10%</option>
+    <option value="25">25%</option>
+    <option value="50">50%</option>
+    <option value="75">75%</option>
+    <option value="100" selected>100%</option>
+    <option value="125">125%</option>
+    <option value="150">150%</option>
+    <option value="250">250%</option>
+    <option value="300">300%</option>
+    <option value="500">500%</option>
+  </select><span class="jui-toolbar__menu-button--zoom-in"></span></button>
+      
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button " aria-pressed="true">Zoom<span class="jui-toolbar__menu-button--zoom-out"></span><select class="hmcts-toolbar-select" id="sort" name="sort">
+    <option value="10">10%</option>
+    <option value="25">25%</option>
+    <option value="50">50%</option>
+    <option value="75">75%</option>
+    <option value="100" selected>100%</option>
+    <option value="125">125%</option>
+    <option value="150">150%</option>
+    <option value="250">250%</option>
+    <option value="300">300%</option>
+    <option value="500">500%</option>
+  </select><span class="jui-toolbar__menu-button--zoom-in"></span></button>
+      
+</div>
+<br>
       <div class="jui-toolbar__container">
        <button class="jui-toolbar__button jui-toolbar__menu-button--rotate" aria-pressed="false">Rotate</button>
+</div>
+<br>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--rotate" aria-pressed="true">Rotate</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--download" aria-pressed="false">Download</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--download" aria-pressed="true">Download</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--printer" aria-pressed="false">Print</button>
 
 </div>
-<br><br>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--printer" aria-pressed="true">Print</button>
+
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--search" aria-pressed="false">Search</button>
+</div>
+<br>
+      <div class="jui-toolbar__container">
+       <button class="jui-toolbar__button jui-toolbar__menu-button--search" aria-pressed="true">Search</button>
+</div>
+<br>
+
 
 <h3 class="govuk-heading-s" id="how-it-works">Code example pressed</h3>
 <div class="jui-toolbar">

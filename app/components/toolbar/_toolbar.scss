@@ -47,6 +47,19 @@
 
 }
 
+.mv-toolbar__container {
+  @include govuk-clearfix;
+  border-left:1px solid govuk-colour("grey-3");
+  border-right: 1px solid govuk-colour("grey-3");
+  height: 100%;
+  position: relative;
+  left: 0; top: 0;
+  z-index: 1;
+
+}
+
+
+
 .jui-toolbar__section1 {
   float: left;
 }
@@ -69,12 +82,8 @@
   border: 0 none;
   color: govuk-colour("black");
   cursor: pointer;
-
-
-
   padding-top: 16px;
   padding-bottom: 15px;
-
   float: left;
   margin: 0;
   padding-left: 15px;
@@ -232,14 +241,7 @@
   padding-left: 45px;
 }
 
-.jui-toolbar__menu-button--rotate {
-  background-image: url(#{$jui-assets-path}icon-casefile-rotate.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
+
 
 .jui-toolbar__menu-button--draw {
   background-image: url(#{$jui-assets-path}icon-draw-box.svg);
@@ -259,8 +261,8 @@
   font-weight: 400;
 }
 
-.jui-toolbar__menu-button--page {
-  background-image: url(#{$jui-assets-path}icon-highlight.svg);
+.jui-toolbar__menu-button--up {
+  background-image: url(#{$jui-assets-path}arrow-up.svg);
   background-repeat: no-repeat;
   background-size: 16px 19px;
   background-position: 15px 50%;
@@ -268,6 +270,69 @@
   font-weight: 400;
 }
 
+.jui-toolbar__menu-button--down {
+  background-image: url(#{$jui-assets-path}arrow-down.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+
+.jui-toolbar__menu-button--zoom-in {
+  background-image: url(#{$jui-assets-path}search-plus.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--zoom-out {
+  background-image: url(#{$jui-assets-path}search-minus.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--rotate {
+  background-image: url(#{$jui-assets-path}icon-casefile-rotate.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--download {
+  background-image: url(#{$jui-assets-path}download-button.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--printer {
+  background-image: url(#{$jui-assets-path}printer.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--search {
+  background-image: url(#{$jui-assets-path}search.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
 
 
 .jui-toolbar__menu-item {
