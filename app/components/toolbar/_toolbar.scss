@@ -343,6 +343,25 @@
   font-weight: 400;
 }
 
+.jui-toolbar__menu-button--previewshow{
+  background-image: url(#{$jui-assets-path}eye.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+.jui-toolbar__menu-button--previewhide{
+  background-image: url(#{$jui-assets-path}eye-undo.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
+
 .jui-toolbar__menu-button--marker {
   background-image: url(#{$jui-assets-path}marker-pen-2.svg);
   background-repeat: no-repeat;

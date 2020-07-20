@@ -141,10 +141,15 @@ Single-colored icons can be modified like so:
     <p class="govuk-body">Do not use this for citizen-facing services.</p>
 
 
+
+    <h2 class="govuk-heading-m" id="how-it-works">Toolbar versions</h2>
     <!--
 <p>You may be able to configure this component using the <a href="https://github.com/hmcts/frontend/tree/master/src/components/hmcts-header#arguments">Nunjucks macro arguments</a></p> -->
-    <a href="">
-      <img src="/public/images/toolbar.png" alt="Toolbar"></a>
+    <h3 class="govuk-heading-m" id="how-it-works">Version 1 - initial</h3>
+    <p><a href=""><img src="/public/images/toolbar.png" alt="Toolbar"></a></p>
+    <h3 class="govuk-heading-m" id="how-it-works">Version 2 - additional features</h3>
+    <p><a href=""><img src="/public/images/toolbar-extra.png" alt="Toolbar"></a></p>
+    <p><a href=""><img src="/public/images/toolbar-extra-focus.png" alt="Toolbar"></a></p>
 
     <h2 class="govuk-heading-m" id="how-it-works">How it works</h2>
     <p class="govuk-body">The Media Viewer Tool has been designed to be used when opening the Media Viewer in an external (new) window.</p>
@@ -329,6 +334,14 @@ Single-colored icons can be modified like so:
       <button class="jui-toolbar__button jui-toolbar__menu-button--marker" aria-pressed="true">Redact</button>
     </div>
     <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--previewshow" aria-pressed="false">Preview all marked content</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--previewhide" aria-pressed="true">Hide all marked content</button>
+    </div>
+    <br>
     <h3 class="govuk-heading-s" id="how-it-works">Code example pressed</h3>
     <div class="jui-toolbar">
       <div class="jui-toolbar__container">
@@ -428,6 +441,17 @@ Single-colored icons can be modified like so:
           <th class="govuk-table__cell table-summary-content">Present</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
+        <!-- hod-redact -->
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/marker-pen.svg" width="24" height="24"></span></th>
+          <th class="govuk-table__cell table-summary-content">Redact - option 1</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/marker-pen-2.svg" width="24" height="24"></span></th>
+          <th class="govuk-table__cell table-summary-content">Redact - option 2</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
       </tbody>
     </table>
 
@@ -506,23 +530,18 @@ Single-colored icons can be modified like so:
           <th class="govuk-table__cell table-summary-content">Comment</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
-        <!-- hod-present -->
+        <!-- hod-preview -->
         <tr class="govuk-table__row">
-          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/present.svg" width="24" height="24"></span></th>
-          <th class="govuk-table__cell table-summary-content">Present</th>
-          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
-        </tr>
-        <!-- hod-redact -->
-        <tr class="govuk-table__row">
-          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/marker-pen.svg" width="24" height="24"></span></th>
-          <th class="govuk-table__cell table-summary-content">Redact - option 1</th>
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/eye.svg" width="30" height="26"></span></th>
+          <th class="govuk-table__cell table-summary-content">Preview all marked content</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
         <tr class="govuk-table__row">
-          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/marker-pen-2.svg" width="24" height="24"></span></th>
-          <th class="govuk-table__cell table-summary-content">Redact - option 2</th>
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/eye-undo.svg" width="30" height="30"></span></th>
+          <th class="govuk-table__cell table-summary-content">Hide preview</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
+
     </table>
   </div>
 </main>
