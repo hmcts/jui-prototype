@@ -240,11 +240,32 @@
   background-position: 15px 50%;
   padding-left: 45px;
 }
-
+.jui-toolbar__menu-button--hide {
+  background-image: url(#{$jui-assets-path}icon-casefile-hide.svg);
+  background-repeat: no-repeat;
+  background-size: 19px 13px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+}
+.jui-toolbar__menu-button--bookmark {
+  background-image: url(#{$jui-assets-path}bookmark.svg);
+  background-repeat: no-repeat;
+  background-size: 19px 13px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+}
 
 
 .jui-toolbar__menu-button--draw {
   background-image: url(#{$jui-assets-path}icon-draw-box.svg);
+  background-repeat: no-repeat;
+  background-size: 20px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+.jui-toolbar__menu-button--draw-redact {
+  background-image: url(#{$jui-assets-path}icon-draw-redact-box-alt.svg);
   background-repeat: no-repeat;
   background-size: 20px 19px;
   background-position: 15px 50%;
@@ -315,6 +336,23 @@
   padding-left: 45px;
   font-weight: 400;
 }
+.jui-toolbar__menu-button--download-save {
+  background-image: url(#{$jui-assets-path}download-save-button.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+.jui-toolbar__menu-button--clear-all {
+  background-image: url(#{$jui-assets-path}clear-all.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+
 
 .jui-toolbar__menu-button--printer {
   background-image: url(#{$jui-assets-path}printer.svg);
@@ -363,7 +401,15 @@
 
 
 .jui-toolbar__menu-button--marker {
-  background-image: url(#{$jui-assets-path}marker-pen-2.svg);
+  background-image: url(#{$jui-assets-path}marker-pen.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
+.jui-toolbar__menu-button--comment {
+  background-image: url(#{$jui-assets-path}icon-casefile-comments.svg);
   background-repeat: no-repeat;
   background-size: 16px 19px;
   background-position: 15px 50%;

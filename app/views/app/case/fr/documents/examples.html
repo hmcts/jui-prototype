@@ -223,8 +223,16 @@ Single-colored icons can be modified like so:
       <button class="jui-toolbar__button jui-toolbar__button--items" aria-pressed="true">Index</button>
 
     </div>
-    <br><br>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--bookmark" aria-pressed="false">Bookmark</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--bookmark" aria-pressed="true">Bookmark</button>
 
+    </div>
+    <br>
     <div class="jui-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__menu-button--draw" aria-pressed="false">Draw a box</button>
     </div>
@@ -339,14 +347,66 @@ Single-colored icons can be modified like so:
     </div>
     <br>
     <h3 class="govuk-heading-s" id="how-it-works">Redact sub navigation items</h3>
+
     <div class="jui-toolbar__container">
-      <button class="jui-toolbar__button jui-toolbar__menu-button--previewshow" aria-pressed="false">Preview all marked content</button>
+      <button class="jui-toolbar__button jui-toolbar__menu-button--draw-redact" aria-pressed="false">Draw a box</button>
     </div>
     <br>
     <div class="jui-toolbar__container">
-      <button class="jui-toolbar__button jui-toolbar__menu-button--previewhide" aria-pressed="true">Hide all marked content</button>
+      <button class="jui-toolbar__button jui-toolbar__menu-button--draw-redact" aria-pressed="true">Draw a box</button>
     </div>
     <br>
+
+
+
+
+
+
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--marker" aria-pressed="false">Redact text</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--marker" aria-pressed="true">Redact text</button>
+    </div>
+    <br>
+
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--clear-all" aria-pressed="false">Clear all</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--clear-all" aria-pressed="true">Clear all</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--view" aria-pressed="false">Preview</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--view" aria-pressed="true">Preview</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--hide" aria-pressed="false">Hide preview</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--hide" aria-pressed="true">Hide preview</button>
+    </div>
+    <br>
+
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--download-save" aria-pressed="false">Download and save</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--download-save" aria-pressed="true">Download and save</button>
+    </div>
+    <br>
+
+
+
     <h3 class="govuk-heading-s" id="how-it-works">Code example pressed</h3>
     <div class="jui-toolbar">
       <div class="jui-toolbar__container">
@@ -402,6 +462,7 @@ Single-colored icons can be modified like so:
           <th class="govuk-table__cell table-summary-content">Index</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
+
         <!-- hod-draw -->
         <tr class="govuk-table__row">
           <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-xs"><img src="/public/images/icon-draw-box.svg"></span></th>
@@ -434,12 +495,7 @@ Single-colored icons can be modified like so:
           <th class="govuk-table__cell table-summary-content">Search</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup">@hod-search</code></th>
         </tr>
-        <!-- hod-search -->
-        <tr class="govuk-table__row">
-          <th class="govuk-table__cell table-summary-content--icons"><span class="hod-search side-space icon-medium"></span></th>
-          <th class="govuk-table__cell table-summary-content">Search</th>
-          <th class="govuk-table__cell table-summary-action"><code class="language-markup">@hod-search</code></th>
-        </tr>
+
         <!-- hod-present -->
         <tr class="govuk-table__row">
           <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/present.svg" width="24" height="24"></span></th>
@@ -515,6 +571,11 @@ Single-colored icons can be modified like so:
           <th class="govuk-table__cell table-summary-content">Download</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup">@hod-download-button</code></th>
         </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/bookmark.svg" width="25" height="25"></span></th>
+          <th class="govuk-table__cell table-summary-content">Bookmark</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
 
         <!-- hod-printer -->
         <tr class="govuk-table__row">
@@ -535,18 +596,39 @@ Single-colored icons can be modified like so:
           <th class="govuk-table__cell table-summary-content">Comment</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
-        <!-- hod-preview -->
+
         <tr class="govuk-table__row">
-          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/eye.svg" width="30" height="26"></span></th>
-          <th class="govuk-table__cell table-summary-content">Preview all marked content</th>
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/icon-draw-redact-box-alt.svg" width="25" height="25"></span></th>
+          <th class="govuk-table__cell table-summary-content">Draw a box - Redaction</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
         <tr class="govuk-table__row">
-          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/eye-undo.svg" width="30" height="30"></span></th>
-          <th class="govuk-table__cell table-summary-content">Hide preview</th>
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/marker-pen.svg" width="24" height="24"></span></th>
+          <th class="govuk-table__cell table-summary-content">Redact text - Redaction</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/clear-all.svg" width="24" height="24"></span></th>
+          <th class="govuk-table__cell table-summary-content">Clear all - Redaction</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
+        <!-- hod-preview -->
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/icon-casefile-view.svg" width="30" height="26"></span></th>
+          <th class="govuk-table__cell table-summary-content">Preview - Redaction</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/icon-casefile-hide.svg" width="30" height="30"></span></th>
+          <th class="govuk-table__cell table-summary-content">Hide preview - Redaction</th>
           <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
         </tr>
 
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell table-summary-content--icons"><span class="side-space icon-medium"><img src="/public/images/download-save-button.svg" width="25" height="25"></span></th>
+          <th class="govuk-table__cell table-summary-content">Download and save - Redaction</th>
+          <th class="govuk-table__cell table-summary-action"><code class="language-markup"></code></th>
+        </tr>
     </table>
   </div>
 </main>
