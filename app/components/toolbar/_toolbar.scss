@@ -353,6 +353,14 @@
   font-weight: 400;
 }
 
+.jui-toolbar__menu-button--more {
+  background-image: url(#{$jui-assets-path}more.svg);
+  background-repeat: no-repeat;
+  background-size: 16px 19px;
+  background-position: 15px 50%;
+  padding-left: 45px;
+  font-weight: 400;
+}
 
 .jui-toolbar__menu-button--printer {
   background-image: url(#{$jui-assets-path}printer.svg);
