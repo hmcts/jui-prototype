@@ -186,6 +186,31 @@
     width: 1px;
   }
 
+  .jui-toolbar__menu-button-disabled {
+    @include govuk-font($size: 19, $line-height: 1);
+    background-color: #eff0f1;
+    border: 0 none;
+    color: govuk-colour("mid-grey");
+    cursor: pointer;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+
+    &::after {
+      background-color: #DEE0E2;
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1px;
+    }
+
+
   // Fix unwanted button padding in Firefox
   &::-moz-focus-inner {
     padding: 0;
@@ -344,6 +369,10 @@
   padding-left: 45px;
   font-weight: 400;
 }
+
+
+
+
 .jui-toolbar__menu-button--clear-all {
   background-image: url(#{$jui-assets-path}clear-all.svg);
   background-repeat: no-repeat;
