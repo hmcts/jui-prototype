@@ -331,6 +331,14 @@ Single-colored icons can be modified like so:
     </div>
     <br>
     <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--grab" aria-pressed="false">Grab n drag</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--grab" aria-pressed="true">Grab n drag</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__menu-button--download" aria-pressed="false">Download</button>
     </div>
     <br>
@@ -365,38 +373,44 @@ Single-colored icons can be modified like so:
     </div>
     <br>
 
+
+
+
+
+
+
   <h3 class="govuk-heading-s" id="how-it-works">Disabled buttons</h3>
 
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__button--items jui-toolbar--disabled" aria-pressed="true">Index</button>
+    <button class="jui-toolbar__button jui-toolbar__button--items_disabled" aria-pressed="true">Index</button>
 
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--bookmark jui-toolbar--disabled" aria-pressed="true">Bookmark</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--bookmark_disabled" aria-pressed="true">Bookmark</button>
 
   </div>
 
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--draw jui-toolbar--disabled" aria-pressed="true">Draw a box</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--draw_disabled" aria-pressed="true">Draw a box</button>
 
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--highlight jui-toolbar--disabled" aria-pressed="true">Highlight</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--highlight_disabled" aria-pressed="true">Highlight</button>
   </div>
   <br>
 
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar--disabled" aria-pressed="true">Page<span class="jui-toolbar__menu-button--down"></span><span class="jui-toolbar__menu-button--up"></span><input class="hmcts-toolbar-input govuk-input--width-2" id="width-2"
+    <button class="jui-toolbar__button_disabled" aria-pressed="true">Page<span class="jui-toolbar__menu-button--down"></span><span class="jui-toolbar__menu-button--up"></span><input class="hmcts-toolbar-input govuk-input--width-2" id="width-2"
         name="width-2" type="text" value="9"> / 10</button>
   </div>
 
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar--disabled" aria-pressed="true">Zoom<span class="jui-toolbar__menu-button--zoom-out"></span><select class="hmcts-toolbar-select" id="sort" name="sort">
+    <button class="jui-toolbar__button_disabled" aria-pressed="true">Zoom<span class="jui-toolbar__menu-button--zoom-out"></span><select class="hmcts-toolbar-select" id="sort" name="sort">
         <option value="10">10%</option>
         <option value="25">25%</option>
         <option value="50">50%</option>
@@ -412,35 +426,39 @@ Single-colored icons can be modified like so:
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--rotate jui-toolbar--disabled" aria-pressed="true">Rotate</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--rotate_disabled" aria-pressed="true">Rotate</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--search jui-toolbar--disabled" aria-pressed="true">Search</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--search_disabled" aria-pressed="true">Search</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--present jui-toolbar--disabled" aria-pressed="true">Present</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--present_disabled" aria-pressed="true">Present</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--marker jui-toolbar--disabled" aria-pressed="true">Redact</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--marker_disabled" aria-pressed="true">Redact</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--download jui-toolbar--disabled" aria-pressed="true">Download</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--grab_disabled" aria-pressed="true">Grab n drag</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--printer jui-toolbar--disabled" aria-pressed="true">Print</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--download_disabled" aria-pressed="true">Download</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--comment jui-toolbar--disabled" aria-pressed="true">Comments</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--printer_disabled" aria-pressed="true">Print</button>
   </div>
   <br>
   <div class="jui-toolbar__container">
-    <button class="jui-toolbar__button jui-toolbar__menu-button--more jui-toolbar--disabled" aria-pressed="true">More options</button>
+    <button class="jui-toolbar__button jui-toolbar__menu-button--comment_disabled" aria-pressed="true">Comments</button>
+  </div>
+  <br>
+  <div class="jui-toolbar__container">
+    <button class="jui-toolbar__button jui-toolbar__menu-button--more_disabled" aria-pressed="true">More options</button>
   </div>
   <br>
 
@@ -461,15 +479,16 @@ Single-colored icons can be modified like so:
 
 
 
-
-
-
     <div class="jui-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__menu-button--marker" aria-pressed="false">Redact text</button>
     </div>
     <br>
     <div class="jui-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__menu-button--marker" aria-pressed="true">Redact text</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button jui-toolbar__menu-button--marker_disabled" aria-pressed="true">Redact text</button>
     </div>
     <br>
 

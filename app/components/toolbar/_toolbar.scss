@@ -19,9 +19,9 @@
     position: absolute;
     width: 100%;
     z-index: -1;
-    -webkit-box-shadow: 0px 0px 3px 2px #BEBEBE;
-      -moz-box-shadow: 0px 0px 3px 2px #BEBEBE;
-            box-shadow: 0px 0px 3px 2px #BEBEBE;
+    -webkit-box-shadow: 0 0 3px 2px #BEBEBE;
+    -moz-box-shadow: 0 0 3px 2px #BEBEBE;
+    box-shadow: 0 0 3px 2px #BEBEBE;
   }
 
   &::before {
@@ -32,49 +32,51 @@
     width: 100%;
     z-index: 0;
   }
-
 }
+
+
+
 
 .jui-toolbar__container {
   @include govuk-clearfix;
   @include hmcts-width-container;
-  border-left:1px solid govuk-colour("grey-3");
+  border-left: 1px solid govuk-colour("grey-3");
   border-right: 1px solid govuk-colour("grey-3");
   height: 100%;
   position: relative;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   z-index: 1;
-
 }
+
+
 
 .mv-toolbar__container {
   @include govuk-clearfix;
-  border-left:1px solid govuk-colour("grey-3");
+  border-left: 1px solid govuk-colour("grey-3");
   border-right: 1px solid govuk-colour("grey-3");
   height: 100%;
   position: relative;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   z-index: 1;
-
 }
-
 
 
 .jui-toolbar__section1 {
   float: left;
 }
 
-.jui-toolbar__section3 {
-   float: left;
-   position: relative;
-   padding-left: 20%;
-}
 
+.jui-toolbar__section3 {
+  float: left;
+  position: relative;
+  padding-left: 20%;
+}
 
 .jui-toolbar__section2 {
   float: right;
 }
-
 
 .jui-toolbar__button {
   @include govuk-font($size: 19, $line-height: 1);
@@ -114,348 +116,836 @@
     z-index: 2;
   }
 
-
   &:focus::after {
     content: none;
   }
-
 
   &:hover {
     background-color: govuk-colour("grey-4");
   }
 
-
   &[aria-pressed=true] {
     background-color: govuk-colour("grey-4");
     cursor: default;
   }
-
-
 }
 
 
-.jui-toolbar__section2 {
 
-  .jui-toolbar__button {
-    &::before {
+.jui-toolbar__button_disabled {
+  @include govuk-font($size: 19, $line-height: 1);
+  background-color: govuk-colour("grey-4");
+  border: 0 none;
+  color: govuk-colour("black");
+  cursor: pointer;
+  padding-top: 16px;
+  padding-bottom: 15px;
+  float: left;
+  margin: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  opacity: 0.5;
+  cursor: default;
+
+  &:hover {
+    background-color: govuk-colour('grey-4');
+    cursor: default;
+  }
+
+  &:focus {
+    outline: none;
+    cursor: default;
+  }
+}
+
+
+  .jui-toolbar__section2 {
+    .jui-toolbar__button {
+      &::before {
+        background-color: #DEE0E2;
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+      }
+    }
+
+    .jui-toolbar__button {
+      &::after {
+        width: 0;
+      }
+    }
+  }
+
+  .jui-toolbar__menu {
+    float: left;
+    position: relative;
+  }
+
+  .jui-toolbar__menu-button {
+    @include govuk-font($size: 19, $line-height: 1);
+    background-color: govuk-colour("white");
+    border: 0 none;
+    color: govuk-colour("black");
+    cursor: pointer;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+
+    &::after {
       background-color: #DEE0E2;
       content: "";
       display: block;
       height: 100%;
       position: absolute;
-      left: 0;
+      right: 0;
       top: 0;
       width: 1px;
     }
-  }
+    // Fix unwanted button padding in Firefox
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
 
-  .jui-toolbar__button {
-    &::after {
-      width: 0;
+    &:focus {
+      outline: 3px solid $govuk-focus-colour;
+      outline-offset: -1px;
+      position: relative;
+      z-index: 2;
+    }
+
+    &:focus::after {
+      content: none;
+    }
+
+    &:hover {
+      background-color: govuk-colour("grey-4");
+    }
+
+    &[aria-expanded=true] {
+      background-color: govuk-colour("grey-4");
+      cursor: default;
     }
   }
-}
 
-
-.jui-toolbar__menu {
-  float: left;
-  position: relative;
-}
-
-.jui-toolbar__menu-button {
-  @include govuk-font($size: 19, $line-height: 1);
-  background-color: govuk-colour("white");
-  border: 0 none;
-  color: govuk-colour("black");
-  cursor: pointer;
-  padding-top: 16px;
-  padding-bottom: 15px;
-  margin: 0;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: relative;
-
-  &::after {
-    background-color: #DEE0E2;
-    content: "";
-    display: block;
-    height: 100%;
+  .jui-toolbar__menu-content {
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 1px;
+    width: 300px;
+    background: white;
+    border: 1px solid #DDDDDD;
+    left: -1px;
   }
 
-
-  // Fix unwanted button padding in Firefox
-  &::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-  }
-
-  &:focus {
-    outline: 3px solid $govuk-focus-colour;
-    outline-offset: -1px;
-    position: relative;
-    z-index: 2;
-  }
-
-
-  &:focus::after {
-    content: none;
-  }
-
-
-  &:hover {
-    background-color: govuk-colour("grey-4");
-  }
-
-  &[aria-expanded=true] {
-    background-color: govuk-colour("grey-4");
-    cursor: default;
-  }
-}
-
-.jui-toolbar__menu-content {
-  position: absolute;
-  width: 300px;
-  background: white;
-  border: 1px solid #DDDDDD;
-  left: -1px;
-}
-
-.jui-toolbar--disabled, .jui-toolbar[disabled="disabled"], .jui-toolbar[disabled] {
-    opacity: 0.5;
-}
-
-.jui-toolbar__button--items {
-  background-image: url(#{$jui-assets-path}icon-casefile-items.svg);
-  background-repeat: no-repeat;
-  background-size: 18px 14px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-}
-
-.jui-toolbar__menu-button--view {
-  background-image: url(#{$jui-assets-path}icon-casefile-view.svg);
-  background-repeat: no-repeat;
-  background-size: 19px 13px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-}
-.jui-toolbar__menu-button--hide {
-  background-image: url(#{$jui-assets-path}icon-casefile-hide.svg);
-  background-repeat: no-repeat;
-  background-size: 19px 13px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-}
-.jui-toolbar__menu-button--bookmark {
-  background-image: url(#{$jui-assets-path}bookmark.svg);
-  background-repeat: no-repeat;
-  background-size: 19px 13px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-}
-
-
-.jui-toolbar__menu-button--draw {
-  background-image: url(#{$jui-assets-path}icon-draw-box.svg);
-  background-repeat: no-repeat;
-  background-size: 20px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-.jui-toolbar__menu-button--draw-redact {
-  background-image: url(#{$jui-assets-path}icon-draw-redact-box-alt.svg);
-  background-repeat: no-repeat;
-  background-size: 20px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--highlight {
-  background-image: url(#{$jui-assets-path}icon-highlight.svg);
-  background-repeat: no-repeat;
-  background-size: 18px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--up {
-  background-image: url(#{$jui-assets-path}arrow-up.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--down {
-  background-image: url(#{$jui-assets-path}arrow-down.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-
-.jui-toolbar__menu-button--zoom-in {
-  background-image: url(#{$jui-assets-path}search-plus.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--zoom-out {
-  background-image: url(#{$jui-assets-path}search-minus.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--rotate {
-  background-image: url(#{$jui-assets-path}icon-casefile-rotate.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--download {
-  background-image: url(#{$jui-assets-path}download-button.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-.jui-toolbar__menu-button--download-save {
-  background-image: url(#{$jui-assets-path}download-save-button.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-
-
-
-.jui-toolbar__menu-button--clear-all {
-  background-image: url(#{$jui-assets-path}clear-all.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--more {
-  background-image: url(#{$jui-assets-path}more.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--printer {
-  background-image: url(#{$jui-assets-path}printer.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--search {
-  background-image: url(#{$jui-assets-path}search.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--present {
-  background-image: url(#{$jui-assets-path}present.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--previewshow{
-  background-image: url(#{$jui-assets-path}eye.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-button--previewhide{
-  background-image: url(#{$jui-assets-path}eye-undo.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-
-.jui-toolbar__menu-button--marker {
-  background-image: url(#{$jui-assets-path}marker-pen.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-.jui-toolbar__menu-button--comment {
-  background-image: url(#{$jui-assets-path}icon-casefile-comments.svg);
-  background-repeat: no-repeat;
-  background-size: 16px 19px;
-  background-position: 15px 50%;
-  padding-left: 45px;
-  font-weight: 400;
-}
-
-.jui-toolbar__menu-item {
-  @include govuk-font($size: 19, $line-height: 1);
-  background-color: govuk-colour("white");
-  border: 0 none;
-  color: govuk-colour("black");
-  cursor: pointer;
-  padding-top: 16px;
-  padding-bottom: 15px;
-  margin: 0;
-  padding-left: 45px;
-  padding-right: 15px;
-  border-bottom: 1px solid govuk-colour('grey-3');
-  width: 100%;
-  text-align: left;
-
-  &:hover {
-    background-color: govuk-colour('grey-4');
-  }
-
-  &[aria-pressed=true] {
-    background-image: url(#{$jui-assets-path}icon-casefile-tick.svg);
+  .jui-toolbar__button--items {
+    background-image: url("#{$jui-assets-path}icon-casefile-items.svg");
     background-repeat: no-repeat;
-    background-size: 17px 13px;
+    background-size: 18px 14px;
     background-position: 15px 50%;
-    background-color: govuk-colour('grey-4');
+    padding-left: 45px;
   }
-}
+
+  .jui-toolbar__menu-button--view {
+    background-image: url("#{$jui-assets-path}icon-casefile-view.svg");
+    background-repeat: no-repeat;
+    background-size: 19px 13px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+  }
+
+  .jui-toolbar__menu-button--hide {
+    background-image: url("#{$jui-assets-path}icon-casefile-hide.svg");
+    background-repeat: no-repeat;
+    background-size: 19px 13px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+  }
+
+  .jui-toolbar__menu-button--bookmark {
+    background-image: url("#{$jui-assets-path}bookmark.svg");
+    background-repeat: no-repeat;
+    background-size: 19px 13px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+  }
+
+  .jui-toolbar__menu-button--draw {
+    background-image: url("#{$jui-assets-path}icon-draw-box.svg");
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--draw-redact {
+    background-image: url("#{$jui-assets-path}icon-draw-redact-box-alt.svg");
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--highlight {
+    background-image: url("#{$jui-assets-path}icon-highlight.svg");
+    background-repeat: no-repeat;
+    background-size: 18px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--up {
+    background-image: url("#{$jui-assets-path}arrow-up.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--down {
+    background-image: url("#{$jui-assets-path}arrow-down.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--zoom-in {
+    background-image: url("#{$jui-assets-path}search-plus.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--zoom-out {
+    background-image: url("#{$jui-assets-path}search-minus.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--rotate {
+    background-image: url("#{$jui-assets-path}icon-casefile-rotate.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--download {
+    background-image: url("#{$jui-assets-path}download-button.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--download-save {
+    background-image: url("#{$jui-assets-path}download-save-button.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--clear-all {
+    background-image: url("#{$jui-assets-path}clear-all.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--more {
+    background-image: url("#{$jui-assets-path}more.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--printer {
+    background-image: url("#{$jui-assets-path}printer.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--search {
+    background-image: url("#{$jui-assets-path}search.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--present {
+    background-image: url("#{$jui-assets-path}present.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--previewshow {
+    background-image: url("#{$jui-assets-path}eye.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--previewhide {
+    background-image: url("#{$jui-assets-path}eye-undo.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--marker {
+    background-image: url("#{$jui-assets-path}marker-pen.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--grab {
+    background-image: url("#{$jui-assets-path}grab_n_drag.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--comment {
+    background-image: url("#{$jui-assets-path}icon-casefile-comments.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-item {
+    @include govuk-font($size: 19, $line-height: 1);
+    background-color: govuk-colour("white");
+    border: 0 none;
+    color: govuk-colour("black");
+    cursor: pointer;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    margin: 0;
+    padding-left: 45px;
+    padding-right: 15px;
+    border-bottom: 1px solid govuk-colour('grey-3');
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+    }
+
+    &[aria-pressed=true] {
+      background-image: url("#{$jui-assets-path}icon-casefile-tick.svg");
+      background-repeat: no-repeat;
+      background-size: 17px 13px;
+      background-position: 15px 50%;
+      background-color: govuk-colour('grey-4');
+    }
+  }
+  // Disabled Buttons
+  //Index
+
+  .jui-toolbar__button--items_disabled {
+    background-image: url("#{$jui-assets-path}icon-casefile-items.svg");
+    background-repeat: no-repeat;
+    background-size: 18px 14px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+  //Bookmark
+
+  .jui-toolbar__menu-button--bookmark_disabled {
+    background-image: url("#{$jui-assets-path}bookmark.svg");
+    background-repeat: no-repeat;
+    background-size: 19px 13px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+  // Draw a box
+
+  .jui-toolbar__menu-button--draw_disabled {
+    background-image: url("#{$jui-assets-path}icon-draw-box.svg");
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+  // Highlight
+
+  .jui-toolbar__menu-button--highlight_disabled {
+    background-image: url("#{$jui-assets-path}icon-highlight.svg");
+    background-repeat: no-repeat;
+    background-size: 18px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+  // Rotate
+
+  .jui-toolbar__menu-button--rotate_disabled {
+    background-image: url("#{$jui-assets-path}icon-casefile-rotate.svg");
+    background-repeat: no-repeat;
+    background-size: 18px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+  // comment
+
+  .jui-toolbar__menu-button--comment_disabled {
+    background-image: url("#{$jui-assets-path}icon-casefile-comments.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+  // Down
+
+  .jui-toolbar__menu-button--down_disabled {
+    background-image: url("#{$jui-assets-path}arrow-down.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--hide_disabled {
+    background-image: url("#{$jui-assets-path}icon-casefile-hide.svg");
+    background-repeat: no-repeat;
+    background-size: 19px 13px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--view_disabled {
+    background-image: url("#{$jui-assets-path}icon-casefile-view.svg");
+    background-repeat: no-repeat;
+    background-size: 19px 13px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--draw-redact_disabled {
+    background-image: url("#{$jui-assets-path}icon-draw-redact-box-alt.svg");
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--up_disabled {
+    background-image: url("#{$jui-assets-path}arrow-up.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--more_disabled {
+    background-image: url("#{$jui-assets-path}more.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--download-save_disabled {
+    background-image: url("#{$jui-assets-path}download-save-button.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--clear-all_disabled {
+    background-image: url("#{$jui-assets-path}clear-all.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--printer_disabled {
+    background-image: url("#{$jui-assets-path}printer.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--search_disabled {
+    background-image: url("#{$jui-assets-path}search.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--present_disabled {
+    background-image: url("#{$jui-assets-path}present.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--marker_disabled {
+    background-image: url("#{$jui-assets-path}marker-pen.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--zoom-in_disabled {
+    background-image: url("#{$jui-assets-path}search-plus.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--zoom-out_disabled {
+    background-image: url("#{$jui-assets-path}search-minus.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--download_disabled {
+    background-image: url("#{$jui-assets-path}download-button.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
+
+  .jui-toolbar__menu-button--grab_disabled {
+    background-image: url("#{$jui-assets-path}grab_n_drag.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 15px 50%;
+    padding-left: 45px;
+    font-weight: 400;
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: govuk-colour('grey-4');
+      cursor: default;
+    }
+
+    &:focus {
+      outline: none;
+      cursor: default;
+    }
+  }
