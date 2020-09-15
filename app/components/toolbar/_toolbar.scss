@@ -224,7 +224,9 @@
   left: -1px;
 }
 
-
+.jui-toolbar--disabled, .jui-toolbar[disabled="disabled"], .jui-toolbar[disabled] {
+    opacity: 0.5;
+}
 
 .jui-toolbar__button--items {
   background-image: url(#{$jui-assets-path}icon-casefile-items.svg);
