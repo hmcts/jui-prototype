@@ -296,6 +296,8 @@ Single-colored icons can be modified like so:
 
     </div>
     <br>
+
+    <!--
     <div class="jui-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__menu-button--rotate" aria-pressed="false">Rotate</button>
     </div>
@@ -303,6 +305,14 @@ Single-colored icons can be modified like so:
     <br>
     <div class="jui-toolbar__container">
       <button class="jui-toolbar__button jui-toolbar__menu-button--rotate" aria-pressed="true">Rotate</button>
+    </div>
+    <br> -->
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button" aria-pressed="false"><span class="jui-toolbar__menu-button--rotate_left"></span><span class="jui-toolbar__menu-button--rotate_right"></span>Rotate</button>
+    </div>
+    <br>
+    <div class="jui-toolbar__container">
+      <button class="jui-toolbar__button" aria-pressed="true"><span class="jui-toolbar__menu-button--rotate_left"></span><span class="jui-toolbar__menu-button--rotate_right"></span>Rotate</button>
     </div>
     <br>
 
@@ -425,10 +435,17 @@ Single-colored icons can be modified like so:
 
   </div>
   <br>
+
+
+  <div class="jui-toolbar__container">
+    <button class="jui-toolbar__button_disabled" aria-pressed="true"><span class="jui-toolbar__menu-button--rotate_left"></span><span class="jui-toolbar__menu-button--rotate_right"></span>Rotate</button>
+  </div>
+  <br>
+<!--
   <div class="jui-toolbar__container">
     <button class="jui-toolbar__button jui-toolbar__menu-button--rotate_disabled" aria-pressed="true">Rotate</button>
   </div>
-  <br>
+  <br> -->
   <div class="jui-toolbar__container">
     <button class="jui-toolbar__button jui-toolbar__menu-button--search_disabled" aria-pressed="true">Search</button>
   </div>

@@ -347,6 +347,23 @@
     padding-left: 45px;
     font-weight: 400;
   }
+  .jui-toolbar__menu-button--rotate_right {
+    background-image: url("#{$jui-assets-path}icon-casefile-rotate.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 3px 50%;
+    padding-left: 33px;
+    font-weight: 400;
+  }
+
+  .jui-toolbar__menu-button--rotate_left {
+    background-image: url("#{$jui-assets-path}icon-casefile-rotate-left.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 19px;
+    background-position: 3px 50%;
+    padding-left: 30px;
+    font-weight: 400;
+  }
 
   .jui-toolbar__menu-button--download {
     background-image: url("#{$jui-assets-path}download-button.svg");
